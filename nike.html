@@ -254,8 +254,10 @@
     </div>
 </div>
 <script>
-var stickyElements = Sticksy.initializeAll('.js-sticky-widget')
 
+window.addEventListener('load', function () {
+  var stickyElements = Sticksy.initializeAll('.js-sticky-widget')
+})
 
 
 let elementsArray = document.querySelectorAll(".tile");
