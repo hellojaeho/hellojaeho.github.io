@@ -1,0 +1,361 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Work | Jae Yoon Studio</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#fafafa">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sticksy@0.2.0/dist/sticksy.min.js"></script>
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
+  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+  <script type="text/javascript">
+    (function() {
+        // https://dashboard.emailjs.com/admin/account
+        emailjs.init('lonraSqGkmaxqkV0K');
+    })();
+  </script>
+  <div id="work-loader" class="work-load initial">
+    <!-- <div class="logo-wrap">
+        <img src="images/logo_large.png">
+    </div> -->
+  </div>
+  <div class="whole-container">
+    <div id="overlay"></div>
+    <div id="overlay"></div>
+    <nav>
+        <div class="container">
+            <!-- <ul>
+                <li><a href="work" data-link-alt="Work"><span> Work</span> </a></li>
+                <li><a href="capabilities" data-link-alt="Services"> <span>Services</span> </a></li>
+                <li class="toggle"><a href="" data-link-alt="About"><span> About</span></a></li>
+            </ul> -->
+            <div class="right-menu">
+                <ul>
+                    <li class="info-button"><a data-link-alt="Info" href="info.html"><span>Info</span></a></li>
+                    <li class="work-button"><a href="work.html" data-link-alt="Work"><span>Work</span></a></li>
+                </ul>
+                <button class="contact-us"><ul><li class="toggle"><span>Submit Inquiry</span></li></ul></button>
+            </div>
+        </div>
+    </nav>
+    <div class="lower-logo">
+        <a href="index.html">
+            <img src="images/logo_large.png">
+        </a>
+    </div>
+
+    
+    <div id="home-contact">
+        <h2>Let's make something incredible</h2>
+        <p>Please expect 24 hours for inquiry response.</p>
+        <form id="contact-form">
+            <label>Name*</label>
+            <input type="text" name="user_name">
+            <label>Email*</label>
+            <input type="email" name="user_email">
+            <label>Budget*</label>
+            <div class="dropdown">
+                <select name="budget" id="budget">
+                    <option value="10-20k">$10,000 - $20,000</option>
+                    <option value="20-50k">$20,000 - $50,000</option>
+                    <option value="50-100k">$50,000 - $100,000</option>
+                    <option value="100k-150k">$100,000 - $150,000</option>
+                    <option value="150k+">$150,000+</option>
+                </select>
+            </div>
+            <label>Message*</label>
+            <textarea name="message"></textarea>
+            <input class="form-button" type="submit" value="Submit" />
+            <div class="success">Sent! We'll be in touch soon.</div>
+        </form>
+        <div class="contact-close">
+            <img src="images/close.png" alt="close"></img>
+        </div>
+    </div>
+    <!-- <div id="home">
+      <video class="hero-video" className='videoTag' autoPlay loop muted>
+        <source src="videos/jys_hero_compressed.mp4" type='video/mp4' />
+      </video>
+    </div> -->
+    <div id="body-about" class="work">
+        <div id="select-engagements">
+            <div class="engagements-container tile">
+                <h3>Select Engagements</h3>
+                <div class="rows-container">
+                    <!-- <div class="eng-row">
+                        <div class="eng-row-tile">
+                        </div>
+                        <div class="eng-row-tile"><h3>Select Engagements</h3></div>
+                    </div> -->
+                    <div class="eng-row">
+                        <div class="eng-row-tile">
+                            <img src="images/work/select/apple.png">
+                            <p>
+                                Generated forward-thinking concepts to enhance the online-to-offline retail shopping experience. Also created designs, UX and motion work for one of Apple's interactive platform products.
+                            </p>
+                        </div>
+                        <div class="eng-row-tile">
+                            <img src="images/work/select/coinbase.png">
+                            <p>
+                                Partnered with Ustwo to create innovative design concepts to accelerate the growth of the cryptocurrency exchange.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="eng-row">
+                        <div class="eng-row-tile">
+                            <img src="images/work/select/google.png">
+                            <p>
+                                Partnered with Huge Inc. to envision the future of Google Shopping by revamping interactive components while optimizing for conversion and allowing for real estate to showcase seasonal campaigns.
+                            </p>
+                        </div>
+                        <div class="eng-row-tile">
+                            <img src="images/work/select/muir_dao.png">
+                            <p>
+                                Developed a comprehensive community-based gaming platform for the web3 DAO organization, delivering a full range of services including visual identity, logo, user experience, user interface and motion capabilities.</p>
+                        </div>
+                    </div>
+                    <div class="eng-row">
+                        <div class="eng-row-tile">
+                            <img src="images/work/select/formulyst.png">
+                            <p>
+                                Provided extensive range of services for the cosmetics umbrella company, including conversion optimization, UX and e-commerce website redesigns to enhance its online presence.
+                            </p>
+                        </div>
+                        <div class="eng-row-tile">
+                            <img src="images/work/select/twitter.png">
+                            <p>
+                                Partnered with Ueno to uncover new revenue driving product opportunities for Twitter’s enterprise business. Generated high-fidelity designs and prototypes for leadership at Twitter.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="body-work">
+            <div class="skew">
+            <h3 class="case-title"><div>Work</div> Case Studies</h3>
+            <div class="work-grid">
+                <div class="row row-2">
+                    <div class="work-tile tile">
+                        <a href="carrot-and-stick.html">
+                            <p class="work-client"><span></span>Carrot & Stick</p>
+                            <video class="work-video" className='videoTag' autoPlay loop muted>
+                                <!-- <source src="videos/deem.webm" type="video/webm" /> -->
+                                <source src="videos/cns_hp.mp4" type='video/mp4' />
+                            </video>
+                            <!-- <img src="images/cns_hp.jpg" /> -->
+                            <h2>Increasing conversion rates while staying beautiful</h2>
+                        </a>
+                    </div>
+                    <div class="work-tile tile">
+                        <a href="deem.html">
+                            <p class="work-client"><span></span>Deem</p>
+                            <video class="work-video" className='videoTag' autoPlay loop muted>
+                                <!-- <source src="videos/deem.webm" type="video/webm" /> -->
+                                <source src="videos/deem_comp.mp4" type='video/mp4' />
+                            </video>
+                            <h2>Transforming travel planning into an enjoyable journey</h2>
+                        </a>
+                    </div>
+                </div>
+                <div class="row row-1">
+                    <div class="work-tile tile">
+                        <a href="nike.html">
+                            <p class="work-client"><span></span>Nike</p>
+                            <video class="work-video" className='videoTag' autoPlay loop muted>
+                                <source src="videos/nike_hp.webm" type="video/webm" />
+                                <source src="videos/nike_hp.mp4" type='video/mp4' />
+                            </video>
+                            <h2>Virtual celebration for the annual Nike Air Max Day</h2>
+                        </a>
+                    </div>
+                </div>
+                <div class="row row-4">
+                    <div class="work-tile tile">
+                        <!-- <a href=""> -->
+                            <p class="work-client"><span></span>Deno</p>
+                            <video class="work-video" className='videoTag' autoPlay loop muted>
+                                <!-- <source src="videos/nike_hp.webm" type="video/webm" /> -->
+                                <source src="videos/deno_hp.mp4" type='video/mp4' />
+                            </video>
+                            <h2>Case study coming soon</h2>
+                        <!-- </a> -->
+                    </div>
+                </div>
+                <div class="row row-3">
+                    <div class="work-tile tile">
+                        <!-- <a href=""> -->
+                            <p class="work-client"><span></span>InHouse</p>
+                            <video class="work-video" className='videoTag' autoPlay loop muted>
+                                <!-- <source src="videos/nike_hp.webm" type="video/webm" /> -->
+                                <source src="videos/inhouse_hp.mp4" type='video/mp4' />
+                            </video>
+                            <h2>Case study coming soon</h2>
+                        <!-- </a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+        </div>
+        <div id="testimonial">
+            <div class="testimonial-tile tile">
+                <p class="reveal-text">Beyond being incredibly talented, Jae is incredibly smart and thoughtful when it comes to cracking creative problems. He was an absolute pleasure to work with, and I look forward to partnering with him in the future!</p>
+                <div class="testimonial-author tile">
+                    <span></span>
+                    <h4>Alex Sturtevant<div>Head of New Business, Stink Studios</div></h4>
+                </div>
+            </div>
+            <div class="testimonial-tile tile">
+                <p class="reveal-text">I worked with Jae on an initiative to uncover new revenue driving product opportunities for Twitter’s enterprise business. He was a great, positive and detail oriented design collaborator and together we unlocked some big opportunities for that side of the business. </p>
+                <div class="testimonial-author tile">
+                    <span></span>
+                    <h4>Dave Snyder<div>Product Design Director, Twitter</div></h4>
+                </div>
+            </div>
+        </div>
+        <div id="submit-inquiry">
+            <div class="submit-content">
+                <h1 class="reveal-text">Let's make something incredible.</h1>
+                <button class="contact-us tile"><ul><li class="toggle"><span>Submit Inquiry</span></li></ul></button>
+            </div>  
+        </div>
+    </div>
+    
+</div>
+<script>
+
+    let elementsArray = document.querySelectorAll(".tile");
+console.log(elementsArray);
+window.addEventListener('scroll', fadeIn ); 
+function fadeIn() {
+    for (var i = 0; i < elementsArray.length; i++) {
+        var elem = elementsArray[i]
+        var distInView = elem.getBoundingClientRect().top - window.innerHeight + 20;
+        if (distInView < 0) {
+            elem.classList.add("inView");
+        } else {
+            elem.classList.remove("inView");
+        }
+    }
+}
+
+fadeIn();
+
+function loaded() {
+        $('#work-loader.work-load').addClass("away");
+    }
+
+  
+        setTimeout(() => {
+            loaded();
+        }, "0")
+    
+</script>
+
+<script>
+
+
+const skew = document.querySelector(".skew");
+let currentPixel = window.pageYOffset
+
+//looper keeps running and keeps track of where the new pixel is
+const looper = function () {
+  const newPixel = window.pageYOffset;
+  const diff = newPixel - currentPixel
+  const speed = diff * 0.07;
+  
+  skew.style.transform = "skewY(" + speed + "deg)"
+  
+  
+  currentPixel = newPixel;
+  
+  requestAnimationFrame(looper)
+}
+
+looper();
+
+$(window).scroll(function() {
+        var scroll = $(window).scrollTop();
+        if ((scroll >= ($('#testimonial').offset().top)-400)) {
+          $('#home').addClass("white");
+          $('#body-work').addClass("white");
+          $('#testimonial').addClass("white");
+          $('#submit-inquiry').addClass("white");
+        }
+
+        if ((scroll >= ($('#submit-inquiry').offset().top)-400)) {
+          $('#home').removeClass("white");
+          $('#body-work').removeClass("white");
+          $('#testimonial').removeClass("white");
+          $('#submit-inquiry').removeClass("white");
+        }
+
+        if ((scroll <= ($('#testimonial').offset().top)-300)) {
+          $('#home').removeClass("white");
+          $('#body-work').removeClass("white");
+          $('#testimonial').removeClass("white");
+          $('#submit-inquiry').removeClass("white");
+        }
+
+        // else {
+        //   $('#home').removeClass("white");
+        //   $('#body-work').removeClass("white");
+        //   $('#testimonial').removeClass("white");
+        //   $('#submit-inquiry').removeClass("white");
+        // }
+      });
+</script>
+
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script type="text/javascript">
+    window.onload = function() {
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // these IDs from the previous steps
+            emailjs.sendForm('service_blfhcju', 'template_x64d0y4', this)
+                .then(function() {
+                    // var message = document.getElementsByClassName("success");
+                    // message.classList.toggle("show");
+                    $('.success').addClass("show");
+                    console.log('SUCCESS!');
+
+                }, function(error) {
+                    console.log('FAILED...', error);
+                });
+        });
+    }
+    
+</script>
+  <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async></script>
+</body>
+
+</html>

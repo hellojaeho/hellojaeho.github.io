@@ -1,289 +1,202 @@
-
-
-document.addEventListener("DOMContentLoaded", function() {
-  var lazyloadImages;
-
-  if ("IntersectionObserver" in window) {
-    lazyloadImages = document.querySelectorAll(".lazy");
-    var imageObserver = new IntersectionObserver(function(entries, observer) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          var image = entry.target;
-          image.src = image.dataset.src;
-          image.classList.remove("lazy");
-          imageObserver.unobserve(image);
-        }
-      });
-    });
-
-    lazyloadImages.forEach(function(image) {
-      imageObserver.observe(image);
-    });
-  } else {
-    var lazyloadThrottleTimeout;
-    lazyloadImages = document.querySelectorAll(".lazy");
-
-    function lazyload () {
-      if(lazyloadThrottleTimeout) {
-        clearTimeout(lazyloadThrottleTimeout);
-      }
-
-      lazyloadThrottleTimeout = setTimeout(function() {
-        var scrollTop = window.pageYOffset;
-        lazyloadImages.forEach(function(img) {
-            if(img.offsetTop < (window.innerHeight + scrollTop)) {
-              img.src = img.dataset.src;
-              img.classList.remove('lazy');
-            }
-        });
-        if(lazyloadImages.length == 0) {
-          document.removeEventListener("scroll", lazyload);
-          window.removeEventListener("resize", lazyload);
-          window.removeEventListener("orientationChange", lazyload);
-        }
-      }, 20);
-    }
-
-    document.addEventListener("scroll", lazyload);
-    window.addEventListener("resize", lazyload);
-    window.addEventListener("orientationChange", lazyload);
-  }
-});
-
 $(document).ready(function() {
 
-  if($(window).width() >= 800){
-    $('html, #main').mousewheel(function(e, delta) {
-    this.scrollLeft -= (delta);
+  $('a').click(function(e) {
+    $('body').addClass("fadeout");
+    var anchor = $(this), h;
+    h = anchor.attr('href');
     e.preventDefault();
+    anchor.animate({'opacity' : 1}, 500, function() {
+        window.location = h;
     });
 
-    $('.proj-mocks').mousewheel(function(e, delta) {
-    this.scrollTop -= (delta);
-    e.preventDefault();
-    });
-
-  }
-
-
-
-
-  $(".more_betterment").click(function() {
-
-        $(".betterment_proj").removeClass("hidden");
-        $(".main-content").addClass("invisible");
-        var position = document.getElementById('html').scrollLeft;
-        console.log(position);
-        $(".modal-close").click(function() {
-          $(".main-content").removeClass("invisible");
-            $(".project-detail-modal").addClass("hidden");
-            document.getElementById('html').scrollLeft = position;
-            console.log(position);
-
-        });
-    });
-
-$(".more_w").click(function() {
-
-      $(".w_proj").removeClass("hidden");
-      $(".main-content").addClass("invisible");
-      var position = document.getElementById('html').scrollLeft;
-      console.log(position);
-      $(".modal-close").click(function() {
-        $(".main-content").removeClass("invisible");
-          $(".project-detail-modal").addClass("hidden");
-          document.getElementById('html').scrollLeft = position;
-          console.log(position);
-
-      });
-  });
-
-
-
-  $(".more_kaie").click(function() {
-
-        $(".kaie_proj").removeClass("hidden");
-        $(".main-content").addClass("invisible");
-        var position = document.getElementById('html').scrollLeft;
-        console.log(position);
-        $(".modal-close").click(function() {
-          $(".main-content").removeClass("invisible");
-            $(".project-detail-modal").addClass("hidden");
-            document.getElementById('html').scrollLeft = position;
-            console.log(position);
-
-        });
-    });
-
-$(".more_life").click(function() {
-
-      $(".life_proj").removeClass("hidden");
-      $(".main-content").addClass("invisible");
-      var position = document.getElementById('html').scrollLeft;
-      console.log(position);
-      $(".modal-close").click(function() {
-        $(".main-content").removeClass("invisible");
-          $(".project-detail-modal").addClass("hidden");
-          document.getElementById('html').scrollLeft = position;
-          console.log(position);
-
-      });
-  });
-
-$(".more_red").click(function() {
-
-      $(".red_proj").removeClass("hidden");
-      $(".main-content").addClass("invisible");
-      var position = document.getElementById('html').scrollLeft;
-      console.log(position);
-      $(".modal-close").click(function() {
-        $(".main-content").removeClass("invisible");
-          $(".project-detail-modal").addClass("hidden");
-          document.getElementById('html').scrollLeft = position;
-          console.log(position);
-
-      });
-  });
-
-$(".more_rco").click(function() {
-
-  // $('html, body, *').mousewheel(function(e, delta) {
-  // this.scrollTop -= (delta);
-  // e.preventDefault();
-  // });
-
-      $(".rco_proj").removeClass("hidden");
-      $(".main-content").addClass("invisible");
-      var position = document.getElementById('html').scrollLeft;
-      console.log(position);
-      $(".modal-close").click(function() {
-      //   $('html, body, *').mousewheel(function(e, delta) {
-      //   this.scrollLeft -= (delta);
-      //   e.preventDefault();
-      // });
-
-        $(".main-content").removeClass("invisible");
-          $(".project-detail-modal").addClass("hidden");
-          document.getElementById('html').scrollLeft = position;
-          console.log(position);
-
-      });
-  });
-
-$(".more_deem").click(function() {
-
-  // $('html, body, *').mousewheel(function(e, delta) {
-  // this.scrollTop -= (delta);
-  // e.preventDefault();
-  // });
-
-      $(".deem_proj").removeClass("hidden");
-      $(".main-content").addClass("invisible");
-      var position = document.getElementById('html').scrollLeft;
-      console.log(position);
-      $(".modal-close").click(function() {
-      //   $('html, body, *').mousewheel(function(e, delta) {
-      //   this.scrollLeft -= (delta);
-      //   e.preventDefault();
-      // });
-
-        $(".main-content").removeClass("invisible");
-          $(".project-detail-modal").addClass("hidden");
-          document.getElementById('html').scrollLeft = position;
-          console.log(position);
-
-      });
-  });
-
-$(".more_nike").click(function() {
-
-  // $('html, body, *').mousewheel(function(e, delta) {
-  // this.scrollTop -= (delta);
-  // e.preventDefault();
-  // });
-
-      $(".nike_proj").removeClass("hidden");
-      $(".main-content").addClass("invisible");
-      var position = document.getElementById('html').scrollLeft;
-      console.log(position);
-      $(".modal-close").click(function() {
-      //   $('html, body, *').mousewheel(function(e, delta) {
-      //   this.scrollLeft -= (delta);
-      //   e.preventDefault();
-      // });
-
-        $(".main-content").removeClass("invisible");
-          $(".project-detail-modal").addClass("hidden");
-          document.getElementById('html').scrollLeft = position;
-          console.log(position);
-
-      });
-  });
-
-  $(".more_fekkai").click(function() {
-
-    // $('html, body, *').mousewheel(function(e, delta) {
-    // this.scrollTop -= (delta);
-    // e.preventDefault();
-    // });
-
-        $(".fekkai_proj").removeClass("hidden");
-        $(".main-content").addClass("invisible");
-        var position = document.getElementById('html').scrollLeft;
-        console.log(position);
-        $(".modal-close").click(function() {
-        //   $('html, body, *').mousewheel(function(e, delta) {
-        //   this.scrollLeft -= (delta);
-        //   e.preventDefault();
-        // });
-
-          $(".main-content").removeClass("invisible");
-            $(".project-detail-modal").addClass("hidden");
-            document.getElementById('html').scrollLeft = position;
-            console.log(position);
-
-        });
-    });
-
-    // $(".logo-1").delay(4000).addClass("show");
-    // $(".logo-primary").delay(4000).addClass("hidden");
-    // $(".logo-primary").delay(4500).removeClass("hidden");
-    // $(".logo-1").delay(4500).removeClass("show");
-    // setTimeout(function () {
-    //     $(".logo-3").addClass("show");
-    //     $(".logo-primary").addClass("hidden");
-    // }, 3000);
-    // setTimeout(function () {
-    //     $(".logo-primary").removeClass("hidden");
-    //     $(".logo-3").removeClass("show");
-    // }, 3150);
-
-// document.getElementById("button").click();
-
-
-
+    var stickyElements = Sticksy.initializeAll('.js-sticky-widget')
 });
 
-const button = document.querySelector("#button");
-const icon = document.querySelector("#button > img");
-const play = document.querySelector("#button > span");
-const audio = document.querySelector("audio");
 
-button.addEventListener("click", () => {
-  if (audio.paused) {
-    audio.volume = 0.15;
-    audio.play();
-    icon.classList.remove('fa-volume-up');
-    icon.classList.add('fa-volume-mute');
-    icon.classList.remove('hidden');
-    play.classList.add('hidden');
+// just for demonstration of state handling
+// stickyEl.onStateChanged = function (state) {
+//     if (state === 'fixed') stickyEl.nodeRef.classList.add('widget--fixed')
+//     else stickyEl.nodeRef.classList.remove('widget--fixed')
+// }
 
-  } else {
-    audio.pause();
-    icon.classList.remove('fa-volume-mute');
-    icon.classList.add('fa-volume-up');
+    $('.initial').removeClass("initial")
+    ;
 
-    play.classList.remove('hidden');
-  }
-  button.classList.add("fade");
+    setTimeout(() => {
+        $('.logo-wrap').addClass("close")
+    }, "1500")
+
+    setTimeout(() => {
+        $('#loader').delay( 800 ).addClass("away");
+    }, "1700")
+
+    
+    
+
+    $('button.contact-us').click( function() {
+        $("#home-contact").toggleClass("show");
+        $("#overlay").toggleClass("show");
+    } );
+
+    $('.contact-close').click( function() {
+        $("#home-contact").toggleClass("show");
+        $("#overlay").toggleClass("show");
+    } );
+
+    $('.form-button').click(function(){
+        $('.form-button').addClass("clicked");
+    })
+
+    $('.info-button').click(function(){
+        $('#home-about').toggleClass("show");
+        $("#overlay").toggleClass("show");
+    })
+
+
+    $('.info-close').click( function() {
+        $("#home-about").toggleClass("show");
+        $("#overlay").toggleClass("show");
+    } );
+
+    $(window).scroll(function(){
+        $(".hero-video").css("opacity", 1 - $(window).scrollTop() / 550);
+        $(".hero-video").css("margin-top", 0 - $(window).scrollTop() / 3);
+        $("#work").css("opacity", 1 - $(window).scrollTop() / 550);
+        $("#work").css("margin-top", 0 - $(window).scrollTop() / 3);
+      });
+      
 });
+
+// USING SPLITTING.JS
+
+/*
+window.addEventListener("load", function () {
+  let revealText = document.querySelectorAll(".reveal-text");
+  let results = Splitting({ target: revealText, by: "lines" });
+
+  results.forEach((splitResult) => {
+    const wrappedLines = splitResult.lines
+      .map(
+        (wordsArr) => `
+        <span class="line"><div class="words">
+          ${wordsArr
+            .map(
+              (word) => `${word.outerHTML}<span class="whitespace"> 
+         </span>`
+            )
+            .join("")}
+        </div></span>`
+      )
+      .join("");
+    splitResult.el.innerHTML = wrappedLines;
+  });
+
+  gsap.registerPlugin(ScrollTrigger);
+  let revealLines = revealText.forEach((element) => {
+    const lines = element.querySelectorAll(".line .words");
+
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: element,
+	      toggleActions:"restart none none reset",
+      }
+    });
+    tl.set(revealText, { autoAlpha: 1 });
+    tl.from(lines, 1, {
+      yPercent: 100,
+      ease: Power3.out,
+      stagger: 0.25,
+      delay: 0.2
+    });
+  });
+});
+*/
+
+// WITHOUT SPLITTING.JS
+
+window.addEventListener("load", function () {
+  let splitWords = function (selector) {
+    var elements = document.querySelectorAll(selector);
+
+    elements.forEach(function (el) {
+      el.dataset.splitText = el.textContent;
+      el.innerHTML = el.textContent
+        .split(/\s/)
+        .map(function (word) {
+          return word
+            .split("-")
+            .map(function (word) {
+              return '<span class="word">' + word + "</span>";
+            })
+            .join('<span class="hyphen">-</span>');
+        })
+        .join('<span class="whitespace"> </span>');
+    });
+  };
+
+  let splitLines = function (selector) {
+    var elements = document.querySelectorAll(selector);
+
+    splitWords(selector);
+
+    elements.forEach(function (el) {
+      var lines = getLines(el);
+
+      var wrappedLines = "";
+      lines.forEach(function (wordsArr) {
+        wrappedLines += '<span class="line"><span class="words">';
+        wordsArr.forEach(function (word) {
+          wrappedLines += word.outerHTML;
+        });
+        wrappedLines += "</span></span>";
+      });
+      el.innerHTML = wrappedLines;
+    });
+  };
+
+  let getLines = function (el) {
+    var lines = [];
+    var line;
+    var words = el.querySelectorAll("span");
+    var lastTop;
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      if (word.offsetTop != lastTop) {
+        // Don't start with whitespace
+        if (!word.classList.contains("whitespace")) {
+          lastTop = word.offsetTop;
+
+          line = [];
+          lines.push(line);
+        }
+      }
+      line.push(word);
+    }
+    return lines;
+  };
+
+  splitLines(".reveal-text");
+
+  let revealText = document.querySelectorAll(".reveal-text");
+
+  gsap.registerPlugin(ScrollTrigger);
+  let revealLines = revealText.forEach((element) => {
+    const lines = element.querySelectorAll(".words");
+
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: element,
+        toggleActions: "restart none none reset"
+      }
+    });
+    tl.set(element, { autoAlpha: 1 });
+    tl.from(lines, 1.7, {
+      yPercent: 100,
+      ease: Power4.easeOut,
+      stagger: 0.1,
+      delay: 0.5
+    });
+  });
+});
+
+
