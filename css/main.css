@@ -1960,8 +1960,8 @@ h2 {
   color: black !important;
 }
 
-#body-about.work {
-  margin-top: 0;
+body #body-about.work {
+  margin-top: 0 !important;
 }
 
 
