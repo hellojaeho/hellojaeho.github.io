@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Jae Yoon Studio | Digital Experience & Branding Studio</title>
+  <title>Work | Jae Yoon Studio</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,7 +22,6 @@
   <meta name="theme-color" content="#fafafa">
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sticksy@0.2.0/dist/sticksy.min.js"></script>
-
 </head>
 
 <body>
@@ -39,11 +38,11 @@
         emailjs.init('lonraSqGkmaxqkV0K');
     })();
   </script>
-  <div id="loader" class="initial">
-    <div class="logo-wrap">
+  <div id="work-loader" class="work-load initial">
+    <!-- <div class="logo-wrap">
         <img src="images/logo_large.png">
-    </div>
-</div>
+    </div> -->
+  </div>
   <div class="whole-container">
     <div id="overlay"></div>
     <div id="overlay"></div>
@@ -64,11 +63,14 @@
         </div>
     </nav>
     <div class="lower-logo">
-        <img src="images/logo_large.png">
+        <a href="index.html">
+            <img src="images/logo_large.png">
+        </a>
     </div>
+
     
     <div id="home-contact">
-        <h2>LET'S MAKE SOMETHING INCREDIBLE</h2>
+        <h2>Let's make something incredible</h2>
         <p>Please expect 24 hours for inquiry response.</p>
         <form id="contact-form">
             <label>Name*</label>
@@ -94,52 +96,75 @@
             <img src="images/close.png" alt="close"></img>
         </div>
     </div>
-    <div id="home">
+    <!-- <div id="home">
       <video class="hero-video" className='videoTag' autoPlay loop muted>
-        <!-- <source src="videos/jys_hero_compressed.webm" type='video/webm' /> -->
         <source src="videos/jys_hero_compressed.mp4" type='video/mp4' />
       </video>
-    </div>
-    <div id="body-about">
-        <div class="clients-ticker">
-            <div>
-                <img src="images/client_list.png">
-                <img class="2" src="images/client_list.png">
-            </div>
-        </div>
-        <div class="body-about-text">
-            <section>
-                <h1 class="reveal-text">We design world-class digital experiences, e-commerce platforms and identities for ambitious brands.</h1>
-                <!-- <ul class="tile">
-                    <li><span>45+</span><p>Brands</p></li>
-                    <li><span>2</span><p>Awards</p></li>
-                    <li><span>1M+</span><p>Happy Users</p></li>
-                </ul> -->
-                <p class="tile quick-quote">“Jae is a best-in-class creative professional.” </p>
-                <h6 class="tile"><img src="images/apple.png">Senior Art Director, Apple</h6>
-            </section>
-        </div>
-        <div id="body-work">
-            <div class="">
-            <div class="work-grid">
-                <div class="row row-1">
-                    <div class="work-tile tile">
-                        <a href="nike.html">
-                            <p class="work-client"><span></span>Nike</p>
-                            <video class="work-video" className='videoTag' autoPlay loop muted>
-                                <!-- <source src="videos/nike_hp.webm" type="video/webm" /> -->
-                                <source src="videos/nike_hp.mp4" type='video/mp4' />
-                            </video>
-                            <h2>Virtual celebration for the annual Nike Air Max Day</h2>
-                        </a>
+    </div> -->
+    <div id="body-about" class="work">
+        <div id="select-engagements">
+            <div class="engagements-container tile">
+                <h3>Select Engagements</h3>
+                <div class="rows-container">
+                    <!-- <div class="eng-row">
+                        <div class="eng-row-tile">
+                        </div>
+                        <div class="eng-row-tile"><h3>Select Engagements</h3></div>
+                    </div> -->
+                    <div class="eng-row">
+                        <div class="eng-row-tile">
+                            <img src="images/work/select/apple.png">
+                            <p>
+                                Generated forward-thinking concepts to enhance the online-to-offline retail shopping experience. Also created designs, UX and motion work for one of Apple's interactive platform products.
+                            </p>
+                        </div>
+                        <div class="eng-row-tile">
+                            <img src="images/work/select/coinbase.png">
+                            <p>
+                                Partnered with Ustwo to create innovative design concepts to accelerate the growth of the cryptocurrency exchange.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="eng-row">
+                        <div class="eng-row-tile">
+                            <img src="images/work/select/google.png">
+                            <p>
+                                Partnered with Huge Inc. to envision the future of Google Shopping by revamping interactive components while optimizing for conversion and allowing for real estate to showcase seasonal campaigns.
+                            </p>
+                        </div>
+                        <div class="eng-row-tile">
+                            <img src="images/work/select/muir_dao.png">
+                            <p>
+                                Developed a comprehensive community-based gaming platform for the web3 DAO organization, delivering a full range of services including visual identity, logo, user experience, user interface and motion capabilities.</p>
+                        </div>
+                    </div>
+                    <div class="eng-row">
+                        <div class="eng-row-tile">
+                            <img src="images/work/select/formulyst.png">
+                            <p>
+                                Provided extensive range of services for the cosmetics umbrella company, including conversion optimization, UX and e-commerce website redesigns to enhance its online presence.
+                            </p>
+                        </div>
+                        <div class="eng-row-tile">
+                            <img src="images/work/select/twitter.png">
+                            <p>
+                                Partnered with Ueno to uncover new revenue driving product opportunities for Twitter’s enterprise business. Generated high-fidelity designs and prototypes for leadership at Twitter.
+                            </p>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div id="body-work">
+            <div class="skew">
+            <h3 class="case-title"><div>Work</div> Case Studies</h3>
+            <div class="work-grid">
                 <div class="row row-2">
                     <div class="work-tile tile">
                         <a href="carrot-and-stick.html">
                             <p class="work-client"><span></span>Carrot & Stick</p>
                             <video class="work-video" className='videoTag' autoPlay loop muted>
-                                <source src="videos/cns_hp.webm" type="video/webm" />
+                                <!-- <source src="videos/deem.webm" type="video/webm" /> -->
                                 <source src="videos/cns_hp.mp4" type='video/mp4' />
                             </video>
                             <!-- <img src="images/cns_hp.jpg" /> -->
@@ -150,23 +175,23 @@
                         <a href="deem.html">
                             <p class="work-client"><span></span>Deem</p>
                             <video class="work-video" className='videoTag' autoPlay loop muted>
-                                <source src="videos/deem_comp.webm" type="video/webm" />
+                                <!-- <source src="videos/deem.webm" type="video/webm" /> -->
                                 <source src="videos/deem_comp.mp4" type='video/mp4' />
                             </video>
                             <h2>Transforming travel planning into an enjoyable journey</h2>
                         </a>
                     </div>
                 </div>
-                <div class="row row-3">
+                <div class="row row-1">
                     <div class="work-tile tile">
-                        <!-- <a href=""> -->
-                            <p class="work-client"><span></span>InHouse</p>
+                        <a href="nike.html">
+                            <p class="work-client"><span></span>Nike</p>
                             <video class="work-video" className='videoTag' autoPlay loop muted>
-                                <source src="videos/inhouse_hp.webm" type="video/webm" />
-                                <source src="videos/inhouse_hp.mp4" type='video/mp4' />
+                                <source src="videos/nike_hp.webm" type="video/webm" />
+                                <source src="videos/nike_hp.mp4" type='video/mp4' />
                             </video>
-                            <h2><i>Case study coming soon</i></h2>
-                        <!-- </a> -->
+                            <h2>Virtual celebration for the annual Nike Air Max Day</h2>
+                        </a>
                     </div>
                 </div>
                 <div class="row row-4">
@@ -174,34 +199,42 @@
                         <!-- <a href=""> -->
                             <p class="work-client"><span></span>Deno</p>
                             <video class="work-video" className='videoTag' autoPlay loop muted>
-                                <source src="videos/deno_hp.webm" type="video/webm" />
+                                <!-- <source src="videos/nike_hp.webm" type="video/webm" /> -->
                                 <source src="videos/deno_hp.mp4" type='video/mp4' />
                             </video>
-                            <h2><i>Case study coming soon</i></h2>
+                            <h2>Case study coming soon</h2>
                         <!-- </a> -->
                     </div>
                 </div>
-                
-            </div>
-            <div class="see-all">
-                <a href="">See All Work</a>
+                <div class="row row-3">
+                    <div class="work-tile tile">
+                        <!-- <a href=""> -->
+                            <p class="work-client"><span></span>InHouse</p>
+                            <video class="work-video" className='videoTag' autoPlay loop muted>
+                                <!-- <source src="videos/nike_hp.webm" type="video/webm" /> -->
+                                <source src="videos/inhouse_hp.mp4" type='video/mp4' />
+                            </video>
+                            <h2>Case study coming soon</h2>
+                        <!-- </a> -->
+                    </div>
+                </div>
             </div>
         </div>
         </section>
         </div>
         <div id="testimonial">
             <div class="testimonial-tile tile">
-                <p class="reveal-text">“Jae is a best in class creative professional. I’ve worked with Jae on problems that required deep visual and UX thinking and he was able to think through the interaction details with great precision. On top of that, his motion and video skills are excellent!”</p>
+                <p class="reveal-text">Beyond being incredibly talented, Jae is incredibly smart and thoughtful when it comes to cracking creative problems. He was an absolute pleasure to work with, and I look forward to partnering with him in the future!</p>
                 <div class="testimonial-author tile">
                     <span></span>
-                    <h4>MEGAN MITCHELL<div>SENIOR ART DIRECTOR, APPLE</div></h4>
+                    <h4>Alex Sturtevant<div>Head of New Business, Stink Studios</div></h4>
                 </div>
             </div>
             <div class="testimonial-tile tile">
-                <p class="reveal-text">“Jae Yoon is one of the most talented designers we have worked with. He is super well-rounded and can handle the full Product Design process from UX to UI to Interaction Design. Not only is he a skilled visual designer but also a thoughtful strategic designer who puts a lot of brain power towards every design decision he makes. In addition to his design skills he is an absolute pro. He handles himself well under pressure and is great at managing complex client relationships. I can’t recommend him enough.”</p>
+                <p class="reveal-text">I worked with Jae on an initiative to uncover new revenue driving product opportunities for Twitter’s enterprise business. He was a great, positive and detail oriented design collaborator and together we unlocked some big opportunities for that side of the business. </p>
                 <div class="testimonial-author tile">
                     <span></span>
-                    <h4>ADAM PERLIS<div>CEO, ACADEMY</div></h4>
+                    <h4>Dave Snyder<div>Product Design Director, Twitter</div></h4>
                 </div>
             </div>
         </div>
@@ -233,29 +266,38 @@ function fadeIn() {
 
 fadeIn();
 
+function loaded() {
+        $('#work-loader.work-load').addClass("away");
+    }
+
+  
+        setTimeout(() => {
+            loaded();
+        }, "0")
+    
 </script>
 
 <script>
 
 
-// const skew = document.querySelector(".skew");
-// let currentPixel = window.pageYOffset
+const skew = document.querySelector(".skew");
+let currentPixel = window.pageYOffset
 
-// //looper keeps running and keeps track of where the new pixel is
-// const looper = function () {
-//   const newPixel = window.pageYOffset;
-//   const diff = newPixel - currentPixel
-//   const speed = diff * 0.07;
+//looper keeps running and keeps track of where the new pixel is
+const looper = function () {
+  const newPixel = window.pageYOffset;
+  const diff = newPixel - currentPixel
+  const speed = diff * 0.07;
   
-//   skew.style.transform = "skewY(" + speed + "deg)"
+  skew.style.transform = "skewY(" + speed + "deg)"
   
   
-//   currentPixel = newPixel;
+  currentPixel = newPixel;
   
-//   requestAnimationFrame(looper)
-// }
+  requestAnimationFrame(looper)
+}
 
-// looper();
+looper();
 
 $(window).scroll(function() {
         var scroll = $(window).scrollTop();
