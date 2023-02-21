@@ -53,7 +53,7 @@ header, footer {
 }
 
 .row:first-of-type {
-  margin-top: 150px;
+  margin-top: 300px;
 }
 
 .eng-row-tile img {
@@ -698,8 +698,8 @@ div.row-1, div.row-3 {
 .row-1 .work-tile video {
   /* background: white; */
   width: 100%;
-  max-width: 728px;
-  height: 448px;
+  max-width: 878px;
+  height: 513px;
 }
 
 .row-3 .work-tile video {
@@ -797,21 +797,21 @@ div.row-1, div.row-3 {
 }
 
 .row-2 .work-tile:nth-child(1) {
-  max-width: 597px;
+  max-width: 900px;
 }
 
 .row-2 .work-tile:nth-child(2) {
-  max-width: 513px;
+  max-width: 481px;
 }
 
 .row-2 .work-tile:nth-child(1) video{
   padding-right: 20px;
-  height: 600px;
+  height: 670px;
   width: 100%;
 }
 
 .row-2 .work-tile:nth-child(2) video{
-  height: 359px;
+  height: 457px;
 }
 
 .body-about-text ul li {
