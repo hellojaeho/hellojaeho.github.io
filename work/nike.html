@@ -286,7 +286,9 @@ function loaded() {
     console.log('hi')
 }
 
-window.onload = loaded();
+window.onload = setTimeout(() => {
+    loaded();
+}, "0");
 
   
 console.log('hi')

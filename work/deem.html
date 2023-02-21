@@ -222,7 +222,7 @@ function loaded() {
     console.log('hi')
 }
 
-window.onload = loaded();
+// window.onload = loaded();
 
   
 console.log('hi')
@@ -230,6 +230,9 @@ console.log('hi')
 
 fadeIn();
 
+window.onload = setTimeout(() => {
+    loaded();
+}, "0");
 
 
 </script>
