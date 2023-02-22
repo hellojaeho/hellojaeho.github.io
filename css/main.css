@@ -1146,6 +1146,7 @@ section {
 
   .content-block.full-bleed-image {
     padding: 0 !important;
+    margin-top: 80px;
   }
 
   section.left-iso-para p {
@@ -1266,6 +1267,7 @@ section {
 
   .work-tile a {
     text-decoration: underline;
+    cursor: pointer;
   }
 
   .work-tile {
@@ -1581,6 +1583,10 @@ section {
 
 }
 
+.full-bleed-image video {
+  width: 100%;
+}
+
 #body-work {
   padding: 0 30px;
   /* max-width: 1440px; */
@@ -1634,6 +1640,10 @@ h2 {
   background-color: black;
   text-align: center;
   margin-top: 0;
+}
+
+.work-tile a {
+  cursor: pointer;
 }
 
 #loader.away {
