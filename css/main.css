@@ -236,6 +236,7 @@ aside {
 }
 
 video.outline {
+  max-width: 1090px;
   width: 100%;
   padding: 13px;
   border: solid 1px #FFF;
@@ -538,6 +539,11 @@ h3 {
   margin: 0 auto;
   display: block;
 }
+
+.content-block.single-image {
+  text-align: center;
+}
+
 
 div.skew {
   transition: transform 1.3s cubic-bezier(0,1,.5,1);
@@ -925,7 +931,7 @@ section {
   }
 
   .nike .work-hero img {
-    width: 172%;
+    width: 172% !important;
     height: auto !important;
   }
 
@@ -1577,6 +1583,11 @@ section {
 
 #body-work {
   padding: 0 30px;
+  /* max-width: 1440px; */
+  margin: 0 auto;
+}
+
+#body-work > div {
   max-width: 1440px;
   margin: 0 auto;
 }
@@ -1712,7 +1723,7 @@ h2 {
 }
 
 .nike .work-hero img {
-  height: 100vh;
+  width: 100%;
 }
 
 
