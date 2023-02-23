@@ -1518,6 +1518,10 @@ section {
     padding-left: 15px;
   }
 
+  .single-image .outline {
+    margin-bottom: 50px !important;
+  }
+
 
   body {
     /* overflow: hidden; */
@@ -1742,6 +1746,9 @@ h2 {
   object-fit: cover;
 }
 
+.single-image .outline{
+  margin-bottom: 100px;
+}
 
 .work-hero.info {
   flex-flow: column wrap;
