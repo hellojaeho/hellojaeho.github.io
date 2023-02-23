@@ -107,9 +107,10 @@
             <section class="work-intro">
                 <div class="work-title">
                     <p class="work-client"><span></span>Deno</p>
-                    <h1 class="reveal-text">Creating an elegant and user-friendly web deployment experience.</h1>
+                    <h1 class="reveal-text">Designing an elegant and user-friendly web deployment experience.</h1>
                 </div>
                 <ul class="work-services tile">
+                    <li>Content Strategy</li>
                     <li>UX Design</li>
                     <li>UI Motion</li>
                     <li>Visual Design</li>
@@ -125,41 +126,38 @@
                 <section class="content-block single-image">
                     <div class="outline">
                         <div class="outline">
-                            <img class="tile" src="../images/work/deno/projects.jpg">
+                            <img src="../images/work/deno/projects.jpg">
                             <h5>Projects</h5>
                         </div>
                         <div class="outline">
-                            <img class="tile" src="../images/work/deno/overview.jpg">
+                            <img src="../images/work/deno/overview.jpg">
                             <h5>Overview</h5>
                         </div>
                         <div class="outline">
-                            <img class="tile" src="../images/work/deno/analytics.jpg">
+                            <img src="../images/work/deno/analytics.jpg">
                             <h5>Analytics</h5>
                         </div>
                         <div class="outline">
-                            <img class="tile" src="../images/work/deno/deploy.jpg">
+                            <img src="../images/work/deno/deploy.jpg">
                             <h5>Deployment</h5>
                         </div>
                         <div class="outline">
-                            <img class="tile" src="../images/work/deno/logs.jpg">
+                            <img src="../images/work/deno/logs.jpg">
                             <h5>Logs</h5>
                         </div>
                         <div class="outline">
-                            <img class="tile" src="../images/work/deno/profile.jpg">
+                            <img src="../images/work/deno/profile.jpg">
                             <h5>Profile</h5>
                         </div>
                         <div class="outline">
-                            <img class="tile" src="../images/work/deno/settings.jpg">
+                            <img src="../images/work/deno/settings.jpg">
                             <h5>Settings - Environment Variables</h5>
                         </div>
                         
                     </div>      
                 </section>
-                <section class="content-block full-bleed-image tile">
-                    <video className='videoTag' autoplay loop muted playsinline>
-                        <source src="../videos/work/inhouse/pdp_situ.webm" type='video/webm' />
-                        <source src="../videos/work/inhouse/pdp_situ.mp4" type='video/mp4' />
-                    </video>
+                <section class="content-block full-bleed-image tile ">
+                    <img src="../images/work/deno/deno_lifestyle.jpg"/>
                 </section>
                 <section class="content-block right-text-image-scroll tile mobile_mock">
                     <div class="container">
@@ -182,38 +180,44 @@
                         </div>
                     </div>
                 </section>
+                <section class="content-block full-bleed-image tile ">
+                    <img src="../images/work/deno/deno_situ.jpg"/>
+                </section>
                 <section class="content-block left-iso-para tile">
                     <div class="title-header">
-                        <h3>Shopping portal for guests</h3>
+                        <h3>Further collaboration</h3>
                     </div>
-                    <p>Our partnership with InHouse extended beyond creating a shopping hub for hosts.</p>
-                    <p>We also developed a dedicated platform for guests to shop for the premium items placed in their Airbnb. With this platform, guests can easily find and purchase the items they like at their stay to get them delivered directly to their home.</p>
+                    <p>Beyond designing their dashboard product, we also helped with their marketing website, delivering content strategy, UX, and visual design to express their brand identity, while showcasing what Deno has to offer.</p>
                 </section>
-                <section class="content-block full-bleed-image tile no-padding">
-                    <img src="../images/work/inhouse/guestbook.jpg"/>
+                <section class="content-block single-image">
+                    <video class="outline" className='videoTag' autoplay loop muted playsinline>
+                        <source src="../videos/work/deno/deno_marketing.webm" type='video/webm' />
+                        <source src="../videos/work/deno/deno_marketing.mp4" type='video/mp4' />
+                    </video>
                 </section>
                 
+                
             </div>
-            <div id="testimonial">
+            <!-- <div id="testimonial" >
                 <div class="testimonial-tile tile">
-                    <p class="reveal-text">“This really is an exciting evolution from where we started. Seriously great work. Thank you for the hard work on this.”</p>
+                    <p class="reveal-text">“Beyond being incredibly talented, Jae is incredibly smart and thoughtful when it comes to cracking creative problems. He was an absolute pleasure to work with, and I look forward to partnering with him in the future!”</p>
                     <div class="testimonial-author tile">
                         <span></span>
-                        <h4>Michael Schafler<div>Co-founder, InHouse</div></h4>
+                        <h4>Alex Sturtevant<div>Head of New Business, Stink Studios</div></h4>
                     </div>
                 </div>
                 <div class="testimonial-tile tile">
-                    <p class="reveal-text">“We will be keeping your name top of pile to share with friends and colleagues who need your talents. Easy guy to recommend!”</p>
+                    <p class="reveal-text">“Jae is a prolific designer, with a Swiss army set of tools under his belt. He approaches any challenge strategically, coming at the problem from both a UX and visual design perspective, and will go the extra mile (whether to put things in motion comps, or create additional screens) to make sure stakeholders have full understanding of the solution. He's a confident and engaging presenter, and would be a valuable addition to any team.”</p>
                     <div class="testimonial-author tile">
                         <span></span>
-                        <h4>Jono Schafler<div>Co-founder, InHouse</div></h4>
+                        <h4>Erica Kung<div>Managing Director, Stink Studios</div></h4>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div id="submit-inquiry">
                 <div class="submit-content">
                     <h1 class="reveal-text">Next Case Study</h1>
-                    <a class="tile" href="carrot-and-stick">Carrot & Stick</a>
+                    <a class="tile" href="nike">Nike</a>
                 </div>  
             </div>
             
@@ -263,38 +267,7 @@ console.log('hi')
 
 fadeIn();
 
-$(window).scroll(function() {
-        var scroll = $(window).scrollTop();
-        if ((scroll >= ($('#testimonial').offset().top)-400)) {
-          $('#home').addClass("white");
-          $('#body-work').addClass("white");
-          $('#testimonial').addClass("white");
-          $('#submit-inquiry').addClass("white");
-          $('.blocks').addClass("white");
-        }
 
-        if ((scroll >= ($('#submit-inquiry').offset().top)-500)) {
-          $('#home').removeClass("white");
-          $('#body-work').removeClass("white");
-          $('#testimonial').removeClass("white");
-          $('#submit-inquiry').removeClass("white");
-        }
-
-        if ((scroll <= ($('#testimonial').offset().top)-300)) {
-          $('#home').removeClass("white");
-          $('#body-work').removeClass("white");
-          $('#testimonial').removeClass("white");
-          $('#submit-inquiry').removeClass("white");
-          $('.blocks').removeClass("white");
-        }
-
-        // else {
-        //   $('#home').removeClass("white");
-        //   $('#body-work').removeClass("white");
-        //   $('#testimonial').removeClass("white");
-        //   $('#submit-inquiry').removeClass("white");
-        // }
-      });
       
 </script>
 
