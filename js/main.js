@@ -1,5 +1,12 @@
 $(document).ready(function() {
 
+  $('.video-play-button').click(function(){
+    $('.video-js').addClass('show-video');
+    $('.initial-thumbnail').addClass('hide-video');
+    $('.video-play-button').addClass('hide-video');
+    $('button.vjs-play-control').click();
+  })
+
   $('a').click(function(e) {
     $('body').addClass("fadeout");
     var anchor = $(this), h;
