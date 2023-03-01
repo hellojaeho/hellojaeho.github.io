@@ -347,7 +347,7 @@ main {
 .outline img {
   padding: 13px;
   border: solid 1px #FFF;
-  border-radius: 27px;
+  border-radius: 32px;
 }
 
 .widget p {
@@ -536,7 +536,7 @@ h3 {
 
 .content-block.single-image img {
   width: 90%;
-  max-width: 1094px;
+  max-width: 1200px;
   margin: 0 auto;
   display: block;
 }
