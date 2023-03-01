@@ -233,7 +233,7 @@
                 <div class="row row-3">
                     <div class="work-tile tile">
                         <a href="work/wyndham">
-                            <p class="work-client"><span></span>Wyndham Hotels</p>
+                            <p class="work-client"><span></span>Wyndham</p>
                             <video class="work-video" className='videoTag' autoplay loop muted playsinline>
                                 <source src="videos/work/wyndham/wyndham_hp.mp4" type='video/mp4' />
                             </video>
@@ -243,7 +243,6 @@
                 </div>
             </div>
         </div>
-        </section>
         </div>
         <div id="testimonial">
             <div class="testimonial-tile tile">
@@ -303,25 +302,6 @@ function loaded() {
 <script>
 
 
-const skew = document.querySelector(".skew");
-let currentPixel = window.pageYOffset
-
-//looper keeps running and keeps track of where the new pixel is
-const looper = function () {
-  const newPixel = window.pageYOffset;
-  const diff = newPixel - currentPixel
-  const speed = diff * 0.07;
-  
-  skew.style.transform = "skewY(" + speed + "deg)"
-  
-  
-  currentPixel = newPixel;
-  
-  requestAnimationFrame(looper)
-}
-
-looper();
-
 $(window).scroll(function() {
         var scroll = $(window).scrollTop();
         if ((scroll >= ($('#testimonial').offset().top)-400)) {
@@ -329,6 +309,7 @@ $(window).scroll(function() {
           $('#body-work').addClass("white");
           $('#testimonial').addClass("white");
           $('#submit-inquiry').addClass("white");
+          
         }
 
         if ((scroll >= ($('#submit-inquiry').offset().top)-500)) {
@@ -343,6 +324,7 @@ $(window).scroll(function() {
           $('#body-work').removeClass("white");
           $('#testimonial').removeClass("white");
           $('#submit-inquiry').removeClass("white");
+          console.log('hi')
         }
 
         // else {
