@@ -188,7 +188,7 @@
                 
                 
             </div>
-            <div id="testimonial" >
+            <!-- <div id="testimonial" >
                 <div class="testimonial-tile tile">
                     <p class="reveal-text">“I love everything about this.”</p>
                     <div class="testimonial-author tile">
@@ -203,7 +203,7 @@
                         <h4>Steve Peck<div>Head of Brand Creative, Current</div></h4>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div id="submit-inquiry">
                 <div class="submit-content">
                     <h1 class="reveal-text">Next Case Study</h1>
@@ -263,38 +263,6 @@ fadeIn();
 
 <script>
 
-$(window).scroll(function() {
-        var scroll = $(window).scrollTop();
-        if ((scroll >= ($('#testimonial').offset().top)-400)) {
-          $('#home').addClass("white");
-          $('#body-work').addClass("white");
-          $('#testimonial').addClass("white");
-          $('#submit-inquiry').addClass("white");
-          $('.blocks').addClass("white");
-        }
-
-        if ((scroll >= ($('#submit-inquiry').offset().top)-500)) {
-          $('#home').removeClass("white");
-          $('#body-work').removeClass("white");
-          $('#testimonial').removeClass("white");
-          $('#submit-inquiry').removeClass("white");
-        }
-
-        if ((scroll <= ($('#testimonial').offset().top)-300)) {
-          $('#home').removeClass("white");
-          $('#body-work').removeClass("white");
-          $('#testimonial').removeClass("white");
-          $('#submit-inquiry').removeClass("white");
-          $('.blocks').removeClass("white");
-        }
-
-        // else {
-        //   $('#home').removeClass("white");
-        //   $('#body-work').removeClass("white");
-        //   $('#testimonial').removeClass("white");
-        //   $('#submit-inquiry').removeClass("white");
-        // }
-      });
 
 
 // const skew = document.querySelector(".skew");
