@@ -533,6 +533,11 @@ h3 {
   align-self: flex-start;
 }
 
+.no-outline {
+  border: none !important;
+  border-radius: 0 !important;
+}
+
 
 .content-block.single-image img {
   width: 90%;
