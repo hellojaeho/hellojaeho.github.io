@@ -775,7 +775,7 @@ div.row-1, div.row-3 {
 }
 
 .row-1 .work-tile img {
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .row-3 .work-tile video, 
