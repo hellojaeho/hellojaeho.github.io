@@ -568,8 +568,12 @@ h3 {
   margin-right: 80px
 }
 
+.full-bleed-image {
+  text-align: center;
+}
+
 .full-bleed-image img {
-  width: 100%;
+  width: 85%;
 }
 
 .small-bottom-padding {
