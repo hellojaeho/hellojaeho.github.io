@@ -1,5 +1,24 @@
 $(document).ready(function() {
 
+  $(function($) {
+    $("img.lazy").Lazy();
+});
+
+jQuery(function($) {
+  $("video").lazy();
+});
+
+var lastScrollTop = 0;
+$(window).scroll(function(event){
+   var st = $(this).scrollTop();
+   if (st > lastScrollTop){
+       $('.work-categories').addClass('disabled')
+   } else {
+       $('.disabled').removeClass('disabled')
+   }
+   lastScrollTop = st;
+});
+
   $('.video-play-button').click(function(){
     $('.video-js').addClass('show-video');
     $('.initial-thumbnail').addClass('hide-video');
@@ -18,6 +37,7 @@ $(document).ready(function() {
 
     var stickyElements = Sticksy.initializeAll('.js-sticky-widget')
 });
+
 
 
 // just for demonstration of state handling

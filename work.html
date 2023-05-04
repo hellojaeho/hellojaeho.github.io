@@ -16,23 +16,24 @@
   <link rel="apple-touch-icon" href="icon.png">
   <!-- Place favicon.ico in the root directory -->
 
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/main.css">
 
   <meta name="theme-color" content="#fafafa">
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sticksy@0.2.0/dist/sticksy.min.js"></script>
 </head>
-
 <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
-  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
-  <script src="js/plugins.js"></script>
-  <script src="js/main.js"></script>
-  <script type="text/javascript">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
+    <script src="../js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="../js/plugins.js"></script>
+    <script src="../js/main.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.10/jquery.lazy.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.10/jquery.lazy.plugins.min.js"></script>
+    <script type="text/javascript">
     (function() {
         // https://dashboard.emailjs.com/admin/account
         emailjs.init('lonraSqGkmaxqkV0K');
@@ -55,16 +56,27 @@
             </ul> -->
             <div class="right-menu">
                 <ul>
-                    <li class="info-button"><a data-link-alt="Info" href="info.html"><span>Info</span></a></li>
-                    <li class="work-button"><a href="work.html" data-link-alt="Work"><span>Work</span></a></li>
+                    <li class="info-button"><a data-link-alt="Info" href="../info"><span>Info</span></a></li>
+                    <li class="work-button"><a href="all" data-link-alt="Work"><span>Work</span></a></li>
                 </ul>
                 <button class="contact-us"><ul><li class="toggle"><span>Submit Inquiry</span></li></ul></button>
+                
             </div>
+            
         </div>
     </nav>
+    <div class="work-categories">
+        <ul>
+            <li class="category-active">All Work</li>
+            <li><a href="digital-products">Digital Products</a></li>
+            <li><a href="ecommerce">E-Commerce</a></li>
+            <li><a href="websites">Websites</a></li>
+            <li><a href="brands">Brand & Identity</a></li>
+        </ul>
+    </div>
     <div class="lower-logo">
         <a href="index.html">
-            <img src="images/logo_large.png">
+            <img src="../images/logo_large.png">
         </a>
     </div>
 
@@ -93,7 +105,7 @@
             <div class="success">Sent! We'll be in touch soon.</div>
         </form>
         <div class="contact-close">
-            <img src="images/close.png" alt="close"></img>
+            <img src="../images/close.png" alt="close"></img>
         </div>
     </div>
     <!-- <div id="home">
@@ -102,246 +114,158 @@
       </video>
     </div> -->
     <div id="body-about" class="work">
-        <div id="select-engagements">
-            <div class="engagements-container tile">
-                <h3>Select Engagements</h3>
-                <div class="rows-container">
-                    <!-- <div class="eng-row">
-                        <div class="eng-row-tile">
-                        </div>
-                        <div class="eng-row-tile"><h3>Select Engagements</h3></div>
-                    </div> -->
-                    <div class="eng-row">
-                        <div class="eng-row-tile">
-                            <img src="images/work/select/apple.png">
-                            <p>
-                                Generated forward-thinking concepts to enhance the online-to-offline retail shopping experience. Also created designs, UX and motion work for one of Apple's interactive platform products.
-                            </p>
-                        </div>
-                        <div class="eng-row-tile">
-                            <img src="images/work/select/coinbase.png">
-                            <p>
-                                Partnered with Ustwo to create innovative design concepts to accelerate the growth of the cryptocurrency exchange.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="eng-row">
-                        <div class="eng-row-tile">
-                            <img src="images/work/select/google.png">
-                            <p>
-                                Partnered with Huge Inc. to envision the future of Google Shopping by revamping interactive components while optimizing for conversion and allowing for real estate to showcase seasonal campaigns.
-                            </p>
-                        </div>
-                        <div class="eng-row-tile">
-                            <img src="images/work/select/muir_dao.png">
-                            <p>
-                                Designed a ommunity-based gaming platform for the web3 DAO organization, delivering a full range of services including visual identity, logo, user experience, user interface and motion capabilities.</p>
-                        </div>
-                    </div>
-                    <div class="eng-row">
-                        <div class="eng-row-tile">
-                            <img src="images/work/select/formulyst.png">
-                            <p>
-                                Provided extensive range of services for the cosmetics umbrella company, including conversion optimization, UX and e-commerce website redesigns to enhance its online presence.
-                            </p>
-                        </div>
-                        <div class="eng-row-tile">
-                            <img src="images/work/select/twitter.png">
-                            <p>
-                                Partnered with Ueno to uncover new revenue driving product opportunities for Twitter’s enterprise business. Generated high-fidelity designs and prototypes for leadership at Twitter.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div id="body-work">
             <div class="">
-            <h3 class="case-title"><div>Work</div> Case Studies</h3>
+            <!-- <h3 class="case-title"><div>Work</div> Case Studies</h3> -->
             <div class="work-grid">
-                <div class="row row-2">
-                    <div class="work-tile tile">
-                        <a href="work/carrot-and-stick">
-                            <p class="work-client"><span></span>Carrot & Stick</p>
-                            <video class="work-video" className='videoTag' autoplay loop muted playsinline>
-                                <!-- <source src="videos/deem.webm" type="video/webm" /> -->
-                                <source src="videos/cns_hp.mp4" type='video/mp4' />
-                            </video>
+                <div class="row large">
+                    <div class="one tile">
+                        <a href="katalyst">
+                            <video data-src="../videos/work/work/katalyst.mp4|video/mp4" autoplay loop muted playsinline></video>
                             <!-- <img src="images/cns_hp.jpg" /> -->
-                            <h2>Increasing conversion rates while staying beautiful</h2>
+                            <p class="work-client"><span></span>Identity and Product Design for Katalyst</p>
                         </a>
                     </div>
-                    <div class="work-tile tile">
-                        <a href="work/deem">
-                            <p class="work-client"><span></span>Deem</p>
-                            <video class="work-video" className='videoTag' autoplay loop muted playsinline>
-                                <!-- <source src="videos/deem.webm" type="video/webm" /> -->
-                                <source src="videos/deem_comp.mp4" type='video/mp4' />
-                            </video>
-                            <h2>Transforming travel planning into an enjoyable journey</h2>
+                    <div class="two tile">
+                        <a href="wyndham">
+                            
+                            <video data-src="../videos/work/work/wyndham.mp4|video/mp4" autoplay loop muted playsinline></video>
+                            <p class="work-client"><span></span>Online Booking Redesign for Wyndham Hotels</p>
                         </a>
-                    </div>
-                </div>
-                <div class="row row-1">
-                    <div class="work-tile tile">
-                        <a href="work/nike">
-                            <p class="work-client"><span></span>Nike</p>
-                            <video class="work-video" className='videoTag' autoplay loop muted playsinline>
-                                <source src="videos/nike_hp.webm" type="video/webm" />
-                                <source src="videos/nike_hp.mp4" type='video/mp4' />
-                            </video>
-                            <h2>Virtual celebration for the annual Nike Air Max Day</h2>
+                        <a href="bibi">
+                            <video data-src="../videos/work/work/bibi.mp4|video/mp4" autoplay loop muted playsinline></video>
+                            <p class="work-client"><span></span>Album Identity for Bibi</p>
                         </a>
                     </div>
                 </div>
-                <div class="row row-4">
-                    <div class="work-tile tile">
-                        <a href="work/deno">
-                            <p class="work-client"><span></span>Deno</p>
-                            <video class="work-video" className='videoTag' autoplay loop muted playsinline>
-                                <source src="videos/deno_hp.webm" type="video/webm" />
-                                <source src="videos/deno_hp.mp4" type='video/mp4' />
-                            </video>
-                            <h2>Making web deployment product beautiful and easy to use</h2>
+                <div class="row large">
+                    <div class="two tile">
+                        <a href="celtics">
+                            <video data-src="../videos/work/work/celtics_1.mp4|video/mp4" autoplay loop muted playsinline></video>
+                            <p class="work-client"><span></span>Product Design and Identity for Boston Celtics</p>
+                        </a>
+                        <a href="wish">
+                            <img class="lazy" data-src="../images/work/work/wish.jpg">
+                            <p class="work-client"><span></span>Loyalty Program Redesign for Wish</p>
                         </a>
                     </div>
-                </div>
-                <div class="row row-3">
-                    <div class="work-tile tile">
-                        <a href="work/inhouse">
-                            <p class="work-client"><span></span>InHouse</p>
-                            <video class="work-video" className='videoTag' autoplay loop muted playsinline>
-                                <source src="videos/inhouse_hp.webm" type="video/webm" />
-                                <source src="videos/inhouse_hp.mp4" type='video/mp4' />
-                            </video>
-                            <h2>Crafting the ultimate shopping platform for Airbnb hosts</h2>
-                        </a>
-                    </div>
-                </div>
-                <div class="row row-1">
-                    <div class="work-tile tile">
-                        <a href="work/current">
-                            <p class="work-client"><span></span>Current</p>
-                            <video class="work-video" className='videoTag' autoplay loop muted playsinline>
-                                <source src="videos/current_hp.webm" type="video/webm" />
-                                <source src="videos/current_hp.mp4" type='video/mp4' />
-                            </video>
-                            <h2>Complete website redesign for the future of banking</h2>
-                        </a>
-                    </div>
-                </div>
-                <div class="row row-3">
-                    <div class="work-tile tile">
-                        <a href="work/wyndham">
-                            <p class="work-client"><span></span>Wyndham Hotels</p>
-                            <video class="work-video" className='videoTag' autoplay loop muted playsinline>
-                                <source src="videos/work/wyndham/wyndham_hp.mp4" type='video/mp4' />
-                            </video>
-                            <h2>Redesigning the online booking experience</h2>
-                        </a>
-                    </div>
-                </div>
-                <div class="row row-2">
-                    <div class="work-tile tile">
-                        <a href="work/wish">
-                            <p class="work-client"><span></span>Wish</p>
-                            <img src="images/work/wish/wish_hero.jpg">
+                    <div class="one tile">
+                        <a href="r-and-co">
+                            
+                            <video data-src="../videos/work/work/randco.mp4|video/mp4" autoplay loop muted playsinline></video>
                             <!-- <img src="images/cns_hp.jpg" /> -->
-                            <h2>Designing a loyalty program for 30 million monthly active users</h2>
-                        </a>
-                    </div>
-                    <div class="work-tile tile">
-                        <a href="work/red">
-                            <p class="work-client"><span></span>(RED)</p>
-                            <video class="work-video" className='videoTag' autoplay loop muted playsinline>
-                                <!-- <source src="videos/deem.webm" type="video/webm" /> -->
-                                <source src="videos/work/red/red_snippet_robin.mp4" type='video/mp4' />
-                            </video>
-                            <h2>Raising awareness for the fight against AIDS in Africa</h2>
+                            <p class="work-client"><span></span>E-commerce Website Redesign for R+Co</p>
                         </a>
                     </div>
                 </div>
-                <div class="row row-1">
-                    <div class="work-tile tile">
-                        <a href="work/fekkai">
-                            <p class="work-client"><span></span>Fekkai</p>
-                            <video class="work-video" className='videoTag' autoplay loop muted playsinline>
-                                <source src="videos/work/fekkai/tablet_mock.mp4" type='video/mp4' />
-                            </video>
-                            <h2>Complete website redesign to attract the luxury audience</h2>
+                <div class="row large">
+                    <div class="one tile">
+                        <a href="deem">
+                            
+                            <video data-src="../videos/work/work/deem.mp4|video/mp4" autoplay loop muted playsinline></video>
+                            <!-- <img src="images/cns_hp.jpg" /> -->
+                            <p class="work-client"><span></span>Travel Planning Messenger for Deem</p>
+                        </a>
+                    </div>
+                    <div class="two tile">
+                        <a class="no-link">
+                            <img class="lazy" data-src="../images/work/work/coinbase.jpg">
+                            <p class="work-client"><span></span>Future-facing Concepts for Coinbase</p>
+                        </a>
+                        <a href="nike">
+                            <video data-src="../videos/work/work/nike.mp4|video/mp4" autoplay loop muted playsinline></video>
+                            <p class="work-client"><span></span>Concepts and User Experience Design for Nike</p>
                         </a>
                     </div>
                 </div>
-                <div class="row row-4">
-                    <div class="work-tile tile">
-                        <a href="work/survivornet">
-                            <p class="work-client"><span></span>SurvivorNet</p>
-                            <!-- <video class="work-video" className='videoTag' autoplay loop muted playsinline>
-                                <source src="videos/work/survivornet/" type='video/mp4' />
+                <div class="row large">
+                    <div class="two tile">
+                        <a href="kaie">
+                            <video data-src="../videos/work/work/kaie.mp4|video/mp4" autoplay loop muted playsinline></video>
+                            <p class="work-client"><span></span>Brand Identity for Kaie Hair Salon</p>
+                        </a>
+                        <a class="no-link">
+                            <img class="lazy" data-src="../images/work/work/apple.jpg">
+                            <p class="work-client"><span></span>Future-facing concepts for Apple</p>
+                        </a>
+                    </div>
+                    <div class="one tile">
+                        <a href="carrot-and-stick">
+                            
+                            <video data-src="../videos/work/work/carrotandstick.mp4|video/mp4" autoplay loop muted playsinline></video>
+                            <!-- <img src="images/cns_hp.jpg" /> -->
+                            <p class="work-client"><span></span>E-commerce Website Redesign for Carrot & Stick</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="row large">
+                    <div class="one tile">
+                        <a href="w-hotels">
+                            <video data-src="../videos/work/work/w_hotels.mp4|video/mp4" autoplay loop muted playsinline></video>
+                            <!-- <img src="images/cns_hp.jpg" /> -->
+                            <p class="work-client"><span></span>Website Redesign for W Hotels</p>
+                        </a>
+                    </div>
+                    <div class="two tile">
+                        <a href="inhouse">
+                            <video data-src="../videos/work/work/inhouse.mp4|video/mp4" autoplay loop muted playsinline></video>
+                            <p class="work-client"><span></span>Product and Website Design for InHouse</p>
+                        </a>
+                        <a href="current">
+                            <video data-src="../videos/work/work/current.mp4|video/mp4" autoplay loop muted playsinline></video>
+                            <p class="work-client"><span></span>Website Redesign for Current</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="row large">
+                    <div class="two tile">
+                        <a href="red">
+                     
+                            <video data-src="../videos/work/work/red.mp4|video/mp4" autoplay loop muted playsinline></video>
+                            <p class="work-client"><span></span>Website Redesign for (RED)</p>
+                        </a>
+                        <a class="no-link">
+                            <img class="lazy" data-src="../images/work/work/twitter.jpg">
+                            <p class="work-client"><span></span>Future-facing concepts for Twitter</p>
+                        </a>
+                    </div>
+                    <div class="one tile">
+                        <a href="ambush">
+                            <img class="lazy" data-src="../images/work/work/ambush.jpg">
+                            <!-- <img src="images/cns_hp.jpg" /> -->
+                            <p class="work-client"><span></span>Collection Identity Design for Ambush</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="row large">
+                    <div class="one tile">
+                        <a href="deno">
+                            <!-- <video class="lazy work-video" className='videoTag' autoplay loop muted playsinline>
+
+                                <source src="../videos/work/work/deno.mp4" type='video/mp4' />
                             </video> -->
-                            <img src="images/work/survivornet/sn_various.jpg">
-                            <h2>Empowering cancer patients & survivors</h2>
+
+                            <video data-src="../videos/work/work/deno.mp4|video/mp4" autoplay loop muted playsinline></video>
+                            <!-- <img src="images/cns_hp.jpg" /> -->
+                            <p class="work-client"><span></span>Product and Website Design for Deno</p>
+                        </a>
+                    </div>
+                    <div class="two tile">
+                        <a href="fekkai">
+                            <video data-src="../videos/work/work/fekkai.mp4|video/mp4" autoplay loop muted playsinline></video>
+                            
+                            <p class="work-client"><span></span>E-commerce Website Redesign for Fekkai</p>
+                        </a>
+                        <a class="no-link">
+                            <img class="lazy" data-src="../images/work/work/google.jpg">
+                            <p class="work-client"><span></span>Future-facing concepts for Google</p>
                         </a>
                     </div>
                 </div>
-                <div class="row row-1">
-                    <div class="work-tile tile">
-                        <a href="work/w-hotels">
-                            <p class="work-client"><span></span>W Hotels</p>
-                            <img src="images/work/w_hotels/mobile_hold.jpg">
-                            <h2>Transforming the W Hotel website to exude its vibrant energy and culture</h2>
-                        </a>
-                    </div>
-                </div>
-                <div class="row row-1">
-                    <div class="work-tile tile">
-                        <a href="work/r-and-co">
-                            <p class="work-client"><span></span>R+Co</p>
-                            <video class="work-video" className='videoTag' autoplay loop muted playsinline>
-                                <source src="videos/work/rco/rco_pdp.mp4" type='video/mp4' />
-                            </video>
-                            <h2>Complete website redesign to attract the luxury audience</h2>
-                        </a>
-                    </div>
-                </div>
-                <div class="row row-4">
-                    <div class="work-tile tile"> 
-                        <a href="work/celtics">
-                            <p class="work-client"><span></span>Boston Celtics</p>
-                            <!-- <video class="work-video" className='videoTag' autoplay loop muted playsinline>
-                                <source src="videos/work/survivornet/" type='video/mp4' />
-                            </video> -->
-                            <img src="images/work/celtics/celtics_tv.jpg">
-                            <h2>Engaging Celtics fans beyond casual fandom</h2>
-                        </a>
-                    </div>
-                </div>
-                <div class="row row-1">
-                    <div class="work-tile tile">
-                        <a href="work/ambush">
-                            <p class="work-client"><span></span>Ambush</p>
-                            <img src="images/work/ambush/ambush_OOH4.jpg">
-                            <h2>Crafting a distinctive and vibrant campaign concept for leading fashion brand</h2>
-                        </a>
-                    </div>
-                </div>
-                <div class="row row-4">
-                    <div class="work-tile tile"> 
-                        <a href="work/kaie">
-                            <p class="work-client"><span></span>Kaie Salon</p>
-                            <!-- <video class="work-video" className='videoTag' autoplay loop muted playsinline>
-                                <source src="videos/work/survivornet/" type='video/mp4' />
-                            </video> -->
-                            <img src="images/work/kaie/kaie_logo.jpg">
-                            <h2>Breathing life into a new hair salon launch</h2>
-                        </a>
-                    </div>
-                </div>
-                
             </div>
         </div>
         </div>
-        <div id="testimonial">
+        <!-- <div id="testimonial">
             <div class="testimonial-tile tile">
                 <p class="reveal-text">Beyond being incredibly talented, Jae is incredibly smart and thoughtful when it comes to cracking creative problems. He was an absolute pleasure to work with, and I look forward to partnering with him in the future!</p>
                 <div class="testimonial-author tile">
@@ -356,10 +280,10 @@
                     <h4>Dave Snyder<div>Product Design Director, Twitter</div></h4>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div id="submit-inquiry">
             <div class="submit-content">
-                <h1 class="reveal-text">Let's talk.</h1>
+                <h1 class="reveal-text">Get in touch.</h1>
                 <button class="contact-us tile"><ul><li class="toggle"><span>Submit Inquiry</span></li></ul></button>
             </div>  
         </div>
@@ -398,39 +322,6 @@ function loaded() {
 
 <script>
 
-
-$(window).scroll(function() {
-        var scroll = $(window).scrollTop();
-        if ((scroll >= ($('#testimonial').offset().top)-400)) {
-          $('#home').addClass("white");
-          $('#body-work').addClass("white");
-          $('#testimonial').addClass("white");
-          $('#submit-inquiry').addClass("white");
-          
-        }
-
-        if ((scroll >= ($('#submit-inquiry').offset().top)-500)) {
-          $('#home').removeClass("white");
-          $('#body-work').removeClass("white");
-          $('#testimonial').removeClass("white");
-          $('#submit-inquiry').removeClass("white");
-        }
-
-        if ((scroll <= ($('#testimonial').offset().top)-300)) {
-          $('#home').removeClass("white");
-          $('#body-work').removeClass("white");
-          $('#testimonial').removeClass("white");
-          $('#submit-inquiry').removeClass("white");
-          console.log('hi')
-        }
-
-        // else {
-        //   $('#home').removeClass("white");
-        //   $('#body-work').removeClass("white");
-        //   $('#testimonial').removeClass("white");
-        //   $('#submit-inquiry').removeClass("white");
-        // }
-      });
 </script>
 
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
