@@ -1817,6 +1817,7 @@ section {
 .one video, .two video,
 .one img, .two img {
   width: 100%;
+  background: #383838
 }
 
 .one a, .two a {
@@ -1829,12 +1830,12 @@ section {
 }
 
 
-.row .tile:first-of-type {
+.row div:first-of-type {
   color: white;
   padding-right: 10px;
 }
 
-.row .tile:last-of-type {
+.row div:last-of-type {
   padding-left: 10px;
 }
 
@@ -2334,6 +2335,19 @@ body div section div.video-with-caption video {
   padding-top: 200px;
   transform: scale(1.15);
 }
+
+#body-about.initial {
+  padding-top: 50px;
+  opacity: 0;
+  transform: scale(1);
+}
+
+#body-about {
+  opacity: 1;
+  transform: scale(1);
+  transition: 1.5s cubic-bezier(0.7, 0, 0.05, 1);
+}
+
 
 .cns .work-hero img{
   width: 1092px;
