@@ -889,8 +889,12 @@ div.row-1, div.row-3 {
 
 .work-client {
   font-size: 19px;
-  /* text-transform: uppercase; */
+  text-transform: uppercase;
   margin-bottom: 10px;
+}
+
+.work-grid .work-client {
+  text-transform: none !important;
 }
 
 .work-tile h2 {
@@ -2328,7 +2332,6 @@ body div section div.video-with-caption video {
   transform: scale(1);
   /* transition-duration: 5s; */
   transition: 1.4s cubic-bezier(0.5, 0, 0.05, 1);
-  
 }
 
 .work-hero.initial {
