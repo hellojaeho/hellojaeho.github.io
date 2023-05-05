@@ -32,6 +32,8 @@
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="js/plugins.js"></script>
   <script src="js/main.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.10/jquery.lazy.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.10/jquery.lazy.plugins.min.js"></script>
   <script type="text/javascript">
     (function() {
         // https://dashboard.emailjs.com/admin/account
@@ -109,94 +111,57 @@
         </div>
         <div class="body-about-text">
             <section>
-                <h1 class="reveal-text">Designing world-class digital experiences, e-commerce platforms and identities for ambitious brands.</h1>
-                <!-- <ul class="tile">
-                    <li><span>45+</span><p>Brands</p></li>
-                    <li><span>2</span><p>Awards</p></li>
-                    <li><span>1M+</span><p>Happy Users</p></li>
-                </ul> -->
-                <p class="tile quick-quote">“Jae is a best-in-class creative professional.” </p>
+                <h1 class="reveal-text">Providing design excellence for brands that value high-level craftmanship.</h1>
+                <p class="tile quick-quote">“Jae is a best-in-class creative professional.”</p>
                 <h6 class="tile"><img src="images/apple.png">Senior Art Director, Apple</h6>
             </section>
         </div>
-        <div id="body-work">
+        <div id="body-work" class="home-work">
             <div class="">
-            <div class="work-grid">
-                <div class="row row-1">
-                    <div class="work-tile tile">
-                        <a href="work/nike">
-                            <p class="work-client"><span></span>Nike</p>
-                            <video class="work-video" className='videoTag' autoplay loop muted playsinline>
-                                <!-- <source src="videos/nike_hp.webm" type="video/webm" /> -->
-                                <source src="videos/nike_hp.mp4" type='video/mp4' />
-                            </video>
-                            <h2>Virtual celebration for the annual Nike Air Max Day</h2>
-                        </a>
+                <div class="work-grid">
+                    <div class="row large">
+                        <div class="one ">
+                            <a href="work/katalyst">
+                                <video data-src="videos/work/work/katalyst.mp4|video/mp4" autoplay loop muted playsinline></video>
+                                <!-- <img src="images/cns_hp.jpg" /> -->
+                                <p class="work-client"><span></span>Identity and Product Design for Katalyst</p>
+                            </a>
+                        </div>
+                        <div class="two">
+                            <a href="work/wyndham">
+                                <video data-src="videos/work/work/wyndham.mp4|video/mp4" autoplay loop muted playsinline></video>
+                                <p class="work-client"><span></span>Online Booking Redesign for Wyndham Hotels</p>
+                            </a>
+                            <a href="work/nike">
+                                <video data-src="videos/work/work/nike.mp4|video/mp4" autoplay loop muted playsinline></video>
+                                <p class="work-client"><span></span>Concepts and User Experience Design for Nike</p>
+                            </a>
+                            
+                        </div>
+                    </div>
+                    <div class="row large">
+                        <div class="two">
+                            <a href="work/current">
+                                <video data-src="videos/work/work/current.mp4|video/mp4" autoplay loop muted playsinline></video>
+                                <p class="work-client"><span></span>Website Redesign for Current</p>
+                            </a>
+                            <a href="work/wish">
+                                <img class="lazy" data-src="images/work/work/wish.jpg">
+                                <p class="work-client"><span></span>Loyalty Program Redesign for Wish</p>
+                            </a>
+                        </div>
+                        <div class="one ">
+                            <a href="work/carrot-and-stick">
+                            
+                                <video data-src="videos/work/work/carrotandstick.mp4|video/mp4" autoplay loop muted playsinline></video>
+                                <!-- <img src="images/cns_hp.jpg" /> -->
+                                <p class="work-client"><span></span>E-commerce Website Redesign for Carrot & Stick</p>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="row row-2">
-                    <div class="work-tile tile">
-                        <a href="work/carrot-and-stick">
-                            <p class="work-client"><span></span>Carrot & Stick</p>
-                            <video class="work-video" className='videoTag' autoplay loop muted playsinline>
-                                <source src="videos/cns_hp.webm" type="video/webm" />
-                                <source src="videos/cns_hp.mp4" type='video/mp4' />
-                            </video>
-                            <!-- <img src="images/cns_hp.jpg" /> -->
-                            <h2>Increasing conversion rates while staying beautiful</h2>
-                        </a>
-                    </div>
-                    <div class="work-tile tile">
-                        <a href="work/deem">
-                            <p class="work-client"><span></span>Deem</p>
-                            <video class="work-video" className='videoTag' autoplay loop muted playsinline>
-                                <!-- <source src="videos/deem_comp_1.webm" type="video/webm" /> -->
-                                <source src="videos/deem_comp.mp4" type='video/mp4' />
-                            </video>
-                            <h2>Transforming travel planning into an enjoyable journey</h2>
-                        </a>
-                    </div>
-                </div>
-                <div class="row row-3">
-                    <div class="work-tile tile">
-                        <a href="work/inhouse">
-                            <p class="work-client"><span></span>InHouse</p>
-                            <video class="work-video" className='videoTag' autoplay loop muted playsinline>
-                                <source src="videos/inhouse_hp.webm" type="video/webm" />
-                                <source src="videos/inhouse_hp.mp4" type='video/mp4' />
-                            </video>
-                            <h2>Crafting the ultimate shopping platform for Airbnb hosts</h2>
-                        </a>
-                    </div>
-                </div>
-                <div class="row row-4">
-                    <div class="work-tile tile">
-                        <a href="work/deno">
-                            <p class="work-client"><span></span>Deno</p>
-                            <video class="work-video" className='videoTag' autoplay loop muted playsinline>
-                                <source src="videos/deno_hp.webm" type="video/webm" />
-                                <source src="videos/deno_hp.mp4" type='video/mp4' />
-                            </video>
-                            <h2>Making web deployment product beautiful and easy to use</h2>
-                        </a>
-                    </div>
-                </div>
-                <div class="row row-1">
-                    <div class="work-tile tile">
-                        <a href="work/current">
-                            <p class="work-client"><span></span>Current</p>
-                            <video class="work-video" className='videoTag' autoplay loop muted playsinline>
-                                <!-- <source src="videos/nike_hp.webm" type="video/webm" /> -->
-                                <source src="videos/current_hp.mp4" type='video/mp4' />
-                            </video>
-                            <h2>Complete website redesign for the future of banking</h2>
-                        </a>
-                    </div>
-                </div>
-                
-            </div>
             <div class="see-all">
-                <a href="work">See All Work</a>
+                <a href="work/all">See All Work</a>
             </div>
         </div>
         </section>
