@@ -971,6 +971,10 @@ div.row-1, div.row-3 {
   object-fit: cover;
 }
 
+#body-about #body-work {
+  margin-bottom: 0;
+}
+
 .body-about-text ul li {
   font-size: 23px;
   text-transform: uppercase;
@@ -1812,6 +1816,10 @@ section {
 
 .work-grid {
   margin-top: 356px;
+}
+
+.home-work .work-grid {
+  margin-top: 200px !important;
 }
 
 .row.large {
