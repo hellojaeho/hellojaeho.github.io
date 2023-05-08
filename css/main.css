@@ -273,6 +273,35 @@ video.outline {
   padding-top: 3px;
 }
 
+.prev-engagements {
+  margin-left: 291px;
+  margin-bottom: 100px;
+}
+
+.prev-engagements ul li {
+  font-size: 33px;
+}
+
+.prev-engagements ul li.engagements-header {
+  font-size: 23px;
+  font-weight: regular;
+  font-style: italic;
+  margin-bottom: 5px;
+}
+
+.prev-engagements h3 {
+  width: 60px;
+  margin-bottom: 80px;
+}
+
+.prev-lists {
+  display: flex;
+}
+
+.prev-lists ul {
+  margin-right: 100px;
+}
+
 
 .half-half {
   margin-top: 80px;
@@ -671,15 +700,45 @@ div.skew {
   color: white;
   opacity: 1 !important;
 }
+/* 
+.case-study #testimonial {
+  flex-direction: row;
+}
+
+.case-study #testimonial h4 {
+  margin-top: 0;
+} */
+
+#testimonial.info-testimonial {
+  flex-direction: column;
+  padding-top: 0;
+}
 
 #testimonial {
   display: flex;
   justify-content: center;
+  flex-direction: row;
   /* column-gap: 60px; */
   padding: 200px 30px;
   /* margin-top: 50px; */
   transition-duration: 1s;
   background-color: black;
+}
+
+#testimonial img {
+  margin-top: 10px;
+  width: 50%;
+}
+
+.testimonial-row {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  margin-top: 150px;
+  /* column-gap: 60px; */
+  /* margin-top: 50px; */
+  transition-duration: 1s;
+  /* background-color: black; */
 }
 
 #testimonial.white {
@@ -695,6 +754,10 @@ div.skew {
 .testimonial-tile:nth-of-type(1) {
   margin-right: 60px;
 }
+
+/* #testimonial.info-testimonial {
+  margin: 20px 0 0;
+} */
 
 #testimonial h4 {
   display: inline-block;
@@ -1109,6 +1172,19 @@ section {
     height: auto;
   }
 
+  .testimonial-row {
+    flex-direction: column;
+    margin-top: 0;
+  }
+
+  .testimonial-row .testimonial-tile:nth-of-type(1) {
+    margin-top: 50px;
+  }
+
+  #testimonial .testimonial-row p {
+    margin-bottom: 15px;
+  }
+
   .nike.current .work-hero img {
     width: 116% !important;
     height: auto !important;
@@ -1298,8 +1374,37 @@ section {
     margin-top: 80px !important;
   }
 
+  .prev-engagements {
+    margin-top: 100px;
+    margin-left: 0;
+    padding: 0 !important;
+  }
+
+  .prev-engagements h3 {
+    margin-bottom: 40px;
+    width: 60px !important;
+  }
+
+  .prev-engagements ul li {
+    width: 100%;
+    font-size: 25px;
+  }
+
+  .prev-engagements ul li.engagements-header {
+    font-size: 18px;
+    margin-bottom: 3px;
+  }
+
+  .prev-lists ul {
+    margin-bottom: 40px;
+  }
+  
   #work-body #testimonial {
     padding: 0 30px 140px;
+  }
+
+  .prev-lists {
+    display: block;
   }
   main img {
     margin-bottom: 40px;
@@ -1446,7 +1551,7 @@ section {
   .testimonial-tile p {
     font-size: 25px !important;
     line-height: 29px !important;
-    max-width: 300px;
+    max-width: 325px;
   }
 
   #testimonial h4 {
@@ -1553,9 +1658,9 @@ section {
     /* margin-top: 350px !important; */
   }
 
-  #work-body.info {
+  /* #work-body.info {
     margin-top: -250px !important;
-  }
+  } */
 
   .work-hero.info p, .work-hero.info ul {
     font-size: 25px;
@@ -2424,7 +2529,7 @@ body #body-about.work {
   color: white;
   position: absolute;
   z-index: 1;
-  margin-top: 100vh;
+  margin-top: 30vh;
   /* height: 3600px; */
   width: 100%;
 }
