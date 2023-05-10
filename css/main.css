@@ -984,6 +984,14 @@ div.row-1, div.row-3 {
    cursor: default;
 }
 
+#body-about a.no-link {
+  text-decoration: none !important;
+}
+
+#body-about a.no-link p {
+  opacity: 40%;
+}
+
 .one a:hover, .two a:hover {
   text-decoration: underline;
 }
