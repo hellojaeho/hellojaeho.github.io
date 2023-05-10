@@ -1270,6 +1270,7 @@ section {
 
   .info .right-iso-para {
     padding: 0;
+    margin-top: 60px;
     max-width: 310px;
   }
 
@@ -1320,6 +1321,7 @@ section {
 
   div .left-list-content {
     margin-left: 0 !important;
+    margin-bottom: 60px;
   }
 
   section.right-list ul{
