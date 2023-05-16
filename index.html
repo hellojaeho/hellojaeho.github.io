@@ -96,8 +96,11 @@
         </div>
     </div>
     <div id="home" >
+        <h1>We help you sell more and grow your customer base through digital transformation.</h1>
         <!-- <div class="hero-video vimeo-wrapper"><iframe src="https://player.vimeo.com/video/799140001?h=06c5ec6761&autoplay=1&loop=1&title=0&byline=0&controls=0&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="jys_hero_compressed.mp4"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script> -->
-      <video class="hero-video desktop" className='videoTag' fetchpriority="high" autoplay loop muted playsinline>
+      
+      <div class="home-hero"></div>
+        <video class="hero-video desktop" className='videoTag' fetchpriority="high" autoplay loop muted playsinline>
         <!-- <source src="videos/jys_hero_compressed.webm" type='video/webm' /> -->
         <source src="videos/jys_new.mp4" type='video/mp4'/>
       </video>
@@ -115,9 +118,9 @@
         </div>
         <div class="body-about-text">
             <section>
-                <h1 class="reveal-text">Delivering excellence in design and strategy for ambitious brands.</h1>
-                <p class="tile quick-quote">“Jae is a best-in-class creative professional.”</p>
-                <h6 class="tile"><img src="images/apple.png">Senior Art Director, Apple</h6>
+                <!-- <h1 class="reveal-text">Delivering excellence in design and strategy for ambitious brands.</h1> -->
+                <!-- <p class="tile quick-quote">“Jae is a best-in-class creative professional.”</p>
+                <h6 class="tile"><img src="images/apple.png">Senior Art Director, Apple</h6> -->
             </section>
         </div>
         <div id="body-work" class="home-work">
@@ -128,17 +131,20 @@
                             <a href="work/katalyst">
                                 <video data-src="videos/work/work/katalyst.mp4|video/mp4" autoplay loop muted playsinline></video>
                                 <!-- <img src="images/cns_hp.jpg" /> -->
-                                <p class="work-client"><span></span>Identity and Product Design for Katalyst</p>
+                                <p class="work-client">Katalyst</p>
+                                <span>Crafting a fresh brand identity and design system for AI startup</span>
                             </a>
                         </div>
                         <div class="two">
                             <a href="work/wyndham">
                                 <video data-src="videos/work/work/wyndham.mp4|video/mp4" autoplay loop muted playsinline></video>
-                                <p class="work-client"><span></span>Online Booking Redesign for Wyndham Hotels</p>
+                                <p class="work-client">Wyndham Hotels</p>
+                                <span>Increasing booking conversion rates for leading hotel chain</span>
                             </a>
                             <a href="work/nike">
                                 <video data-src="videos/work/work/nike.mp4|video/mp4" autoplay loop muted playsinline></video>
-                                <p class="work-client"><span></span>Concepts and User Experience Design for Nike</p>
+                                <p class="work-client">Nike</p>
+                                <span>Bringing together the Air Max community during the pandemic</span>
                             </a>
                             
                         </div>
@@ -147,19 +153,21 @@
                         <div class="two">
                             <a href="work/current">
                                 <video data-src="videos/work/work/current.mp4|video/mp4" autoplay loop muted playsinline></video>
-                                <p class="work-client"><span></span>Website Redesign for Current</p>
+                                <p class="work-client">Current</p>
+                                <span>Driving an increase in app downloads with a complete website redesign</span>
                             </a>
                             <a href="work/wish">
                                 <img class="lazy" data-src="images/work/work/wish.jpg">
-                                <p class="work-client"><span></span>Loyalty Program Redesign for Wish</p>
+                                <p class="work-client">Wish</p>
+                                <span>Boosting customer retention by redesigning the loyalty program</span>
                             </a>
                         </div>
-                        <div class="one ">
+                        <div class="one">
                             <a href="work/carrot-and-stick">
-                            
                                 <video data-src="videos/work/work/carrotandstick.mp4|video/mp4" autoplay loop muted playsinline></video>
                                 <!-- <img src="images/cns_hp.jpg" /> -->
-                                <p class="work-client"><span></span>E-commerce Website Redesign for Carrot & Stick</p>
+                                <p class="work-client">Carrot & Stick</p>
+                                <span>Inceasing checkout rates with a complete website redesign</span>
                             </a>
                         </div>
                     </div>
@@ -272,6 +280,41 @@ $(window).scroll(function() {
 
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
   <script type="text/javascript">
+
+var width = $(window).width();
+    if (width < 800){
+        var logoHeight = 
+        $(".lower-logo img").height();
+
+    console.log(logoHeight);
+
+    var bottomAmount = (logoHeight + 10);
+
+    $("#home h1").css("bottom", bottomAmount);
+    }
+
+    $(window).resize(function() {
+    var width = $(window).width();
+    if (width < 800){
+        var logoHeight = 
+        $(".lower-logo img").height();
+
+    console.log(logoHeight);
+
+    var bottomAmount = (logoHeight + 10);
+
+    $("#home h1").css("bottom", bottomAmount);
+    }
+
+    else {
+        $("#home h1").css("bottom", -6);
+    }
+
+    });
+
+   
+
+
     window.onload = function() {
         document.getElementById('contact-form').addEventListener('submit', function(event) {
             event.preventDefault();
