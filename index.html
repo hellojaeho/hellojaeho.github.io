@@ -65,6 +65,7 @@
         </div>
     </nav>
     <div class="lower-logo">
+        <h1>We help you sell more and grow your customer base through digital transformation.</h1>
         <img src="images/logo_large.png">
     </div>
     
@@ -248,6 +249,15 @@ fadeIn();
 
 $(window).scroll(function() {
         var scroll = $(window).scrollTop();
+
+        if (scroll > 1) {
+            $(".lower-logo h1").addClass("away");
+        }
+
+        if (scroll < 1) {
+            $(".lower-logo h1").removeClass("away");
+        }
+
         if ((scroll >= ($('#testimonial').offset().top)-400)) {
           $('#home').addClass("white");
           $('#body-work').addClass("white");
@@ -288,9 +298,9 @@ $(window).scroll(function() {
 
 //     console.log(logoHeight);
 
-//     var bottomAmount = (logoHeight + 110);
+//     var bottomAmount = (logoHeight);
 
-//     $("#home h1").css("bottom", bottomAmount);
+//     $(".lower-logo h1").css("bottom", bottomAmount);
 //     }
 
 //     $(window).resize(function() {
@@ -301,13 +311,13 @@ $(window).scroll(function() {
 
 //     console.log(logoHeight);
 
-//     var bottomAmount = (logoHeight + 110);
+//     var bottomAmount = (logoHeight);
 
-//     $("#home h1").css("bottom", bottomAmount);
+//     $(".lower-logo h1").css("bottom", bottomAmount);
 //     }
 
 //     else {
-//         $("#home h1").css("bottom", -6);
+//         $(".lower-logo h1").css("bottom", -6);
 //     }
 
 //     });

@@ -1125,16 +1125,16 @@ section {
 @media (max-width: 800px) {
 
   .work-grid span {
-    width: 370px;
+    width: 320px;
   }
 
   div #home h1 {
-    font-size: 18px;
+    display: none;
+    /* font-size: 18px;
     left: 17px;
-    bottom: 8vh;
-    /* right: 4px; */
-    width: 277px;
-    line-height: 19px !important;
+    bottom: 8vh; */
+    /* width: 277px;
+    line-height: 19px !important; */
   }
 
   div.home-hero {
@@ -1934,6 +1934,31 @@ section {
     margin-top: 0 !important;
   }
 
+  div.lower-logo h1 {
+    display: block;
+    position: relative;
+    color: white;
+    z-index: 10;
+    font-size: 18px;
+    left: 17px;
+    bottom: 0;
+    width: 277px;
+    line-height: 19px !important;
+    transition-duration: 1s;
+  transition-timing-function:cubic-bezier( 0.92, 0, 0.29, 1 );
+  }
+
+  div.lower-logo h1.away {
+    bottom: 10px;
+    opacity: 0;
+    transition-duration: 1s;
+    transition-timing-function:cubic-bezier( 0.92, 0, 0.29, 1 );
+  }
+
+}
+
+.lower-logo h1 {
+  display: none;
 }
 
 .flex {
