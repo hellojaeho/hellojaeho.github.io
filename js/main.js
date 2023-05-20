@@ -10,7 +10,7 @@ $(document).ready(function() {
 jQuery(function($) {
   $("video").lazy({
     enableThrottle: true,
-    throttle: 500
+    throttle: 1000
 });;
 });
 
