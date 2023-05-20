@@ -1,11 +1,17 @@
 $(document).ready(function() {
 
   $(function($) {
-    $("img.lazy").Lazy();
+    $("img.lazy").Lazy({
+      enableThrottle: true,
+      throttle: 500
+  });
 });
 
 jQuery(function($) {
-  $("video").lazy();
+  $("video").lazy({
+    enableThrottle: true,
+    throttle: 500
+});;
 });
 
 var lastScrollTop = 0;
