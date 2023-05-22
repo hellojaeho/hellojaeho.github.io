@@ -3,14 +3,14 @@ $(document).ready(function() {
   $(function($) {
     $("img.lazy").Lazy({
       enableThrottle: true,
-      throttle: 500
+      throttle: 10
   });
 });
 
 jQuery(function($) {
   $("video").lazy({
     enableThrottle: true,
-    throttle: 1000
+    throttle: 400
 });;
 });
 
