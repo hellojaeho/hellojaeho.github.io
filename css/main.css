@@ -2005,7 +2005,8 @@ section {
 }
 
 .one video, .two video,
-.one img, .two img {
+.one img, .two img,
+.one iframe, .two iframe {
   width: 100%;
   background: #383838
 }
