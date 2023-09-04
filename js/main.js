@@ -38,6 +38,9 @@ $(window).scroll(function(event){
     $('.full-reel-container').addClass('show');
     $('.video-play-button').removeClass('hide-video');
     // $('button.vjs-play-control').click();
+    $(function() {
+      $(window).scrollTop(0);
+   });
   })
 
   $('.reel-exit').click(function(){
@@ -115,6 +118,9 @@ $(window).scroll(function(event){
         $("#work").css("opacity", 1 - $(window).scrollTop() / 550);
         $("#work").css("margin-top", 0 - $(window).scrollTop() / 3);
       });
+
+      $('.hero-video.video-js .vjs-tech').height($('.div2').height());
+
       
 });
 

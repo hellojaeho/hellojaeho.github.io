@@ -1966,6 +1966,10 @@ section {
     transition-timing-function:cubic-bezier( 0.92, 0, 0.29, 1 );
   }
 
+  .full-reel-container.show {
+    display: none !important;
+  }
+
   /* .full-reel-container {
     display: none !important; } */
 
@@ -2116,15 +2120,21 @@ h2 {
   background: none;
 }
 
-.full-reel-container .vjs-control-bar {
+/* .full-reel-container .vjs-control-bar {
   display: none !important;
-}
+} */
 
 .full-reel-container.show {
   display: block;
   width: 100vw;
     height: 100vh;
     background: rgb(35 35 35 / 97%);
+}
+
+.hero-video.video-js .vjs-tech {
+  height: initial;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .reel-exit {
