@@ -32,6 +32,24 @@ $(window).scroll(function(event){
     $('button.vjs-play-control').click();
   })
 
+  $('.hero-play-button.video-play-button').click(function(){
+    $('.video-js').addClass('show-video');
+    $('.initial-thumbnail').removeClass('hide-video');
+    $('.full-reel-container').addClass('show');
+    $('.video-play-button').removeClass('hide-video');
+    // $('button.vjs-play-control').click();
+  })
+
+  $('.reel-exit').click(function(){
+    $('.full-reel-container').removeClass('show');
+    // $('button.vjs-play-control').click();
+  })
+
+  $('.full-reel-wrapper img').click(function(){
+    $('.full-reel-container').removeClass('show');
+    // $('button.vjs-play-control').click();
+  })
+
   $('a').click(function(e) {
     $('body').addClass("fadeout");
     var anchor = $(this), h;

@@ -1154,6 +1154,10 @@ section {
     display: none !important;
   }
 
+  .hero-video.desktop.video-js {
+    display: block !important;
+  }
+
   .work-categories ul {
     padding: 162px 30px 0;
     font-size: 27px;
@@ -2096,6 +2100,80 @@ h2 {
   margin-top: 0;
 }
 
+.full-reel-container {
+  position: absolute;
+  /* width: 100vw;
+  height: 100vh; */
+  z-index: 4;
+  display: none;
+}
+
+.full-reel-container .video-js {
+  z-index:2;
+  background: none;
+}
+
+.full-reel-container .vjs-control-bar {
+  display: none !important;
+}
+
+.full-reel-container.show {
+  display: block;
+  width: 100vw;
+    height: 100vh;
+    background: rgb(35 35 35 / 97%);
+}
+
+.reel-exit {
+  position: absolute;
+  top: 0;
+  display: block !important;
+  z-index:1;
+  width: 100%;
+  height: 100%;
+}
+
+.full-reel-wrapper {
+  display: block !important;
+  width: 100%;
+  height: 100%;
+  /* cursor: pointer; */
+}
+
+.video-js.hero-video.desktop {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 80%;
+  height: 80%;
+}
+
+.full-reel-container div {
+  /* display: none; */
+
+}
+
+.full-reel-container .hero-video {
+  /* width: 75vw;
+  left: 50%;
+  transform: translateX(-50%); */
+}
+
+.full-reel-wrapper img {
+  width: 20px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.full-reel-container {
+  transition-duration: 1s;
+  transition-timing-function:cubic-bezier( 0.92, 0, 0.29, 1 );
+  
+}
+
 .work-tile a {
   cursor: pointer;
 }
@@ -2170,6 +2248,67 @@ h2 {
 }
 }
 
+.play-square {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  background-color: white;
+  box-shadow: 0 0px 400px rgba(0,0,0,0.25);
+}
+
+.play-square img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-trasnform: translate(-50%, -50%);
+  width: 20px;
+}
+
+.marquee-play {
+  width: 110px;
+  overflow: hidden;
+  font-size: 17px;
+}
+
+.hero-play-button:hover marquee {
+  text-decoration: underline;
+}
+
+.hero-play-button img {
+  transition-duration: 1s;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.hero-play-button:hover img {
+  width: 15px;
+  transition-duration: 1s;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.hero-play-button:hover + video {
+  opacity: 0.25;
+  transition-duration: 0.8s;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.hero-video {
+  transition-duration: 0.8s;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.play-square span {
+  position: absolute;
+  top: 5px;
+  right: 6px;
+  color: black;
+  font-size: 13px;
+}
+
+.marquee-play {
+  text-transform: uppercase;
+}
+
 .visible {
   font-weight:600;
   overflow:hidden;
@@ -2235,6 +2374,10 @@ body div section div.video-with-caption video {
 }
 
 .hide-video {
+  display: none !important;
+}
+
+#home .hide-video {
   display: none !important;
 }
 
@@ -2384,6 +2527,23 @@ body div section div.video-with-caption video {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+#home .video-js {
+  width: 100%;
+}
+
+
+.hero-play-button {
+  position: absolute;
+  z-index: 1;
+  color: white;
+  left: 50%;
+  top: 50%;
+}
+
+.hero-video.video-js {
+  /* position: absolute; */
 }
 
 .App-header {
