@@ -18,6 +18,7 @@
 
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
+  <link href="https://vjs.zencdn.net/8.0.4/video-js.css" rel="stylesheet" />
 
   <meta name="theme-color" content="#fafafa">
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
@@ -48,6 +49,22 @@
   <div class="whole-container">
     <div id="overlay"></div>
     <div id="overlay"></div>
+    <div class="full-reel-container">
+        <div class="full-reel-wrapper">
+            <video
+                    id="my-video"
+                    class="video-js hero-video desktop"
+                    controls
+                    preload="auto"
+                    data-setup="{}"
+                >
+                    <!-- <source src="videos/jys_hero_compressed.webm" type='video/webm' /> -->
+                        <source src="videos/full_reel.mp4" type='video/mp4'/>
+            </video>
+            <img src="images/white_close.png">
+            <div class="reel-exit"></div>
+        </div>
+    </div>  
     <nav>
         <div class="container">
             <!-- <ul>
@@ -96,19 +113,28 @@
             <img src="images/close.png" alt="close"></img>
         </div>
     </div>
-    <div id="home" >
+    
+    <div id="home">
         <h1>We help you sell more and grow your customer base through digital innovation.</h1>
         <!-- <div class="hero-video vimeo-wrapper"><iframe src="https://player.vimeo.com/video/799140001?h=06c5ec6761&autoplay=1&loop=1&title=0&byline=0&controls=0&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="jys_hero_compressed.mp4"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script> -->
-      
       <div class="home-hero"></div>
+        <div class="hero-play-button video-play-button">
+            <div class="play-square">
+                <span>00:59</span>
+                <img src="images/play_home.png">
+            </div>
+            <div class="marquee-play">
+                <marquee>Play Reel 2023 — Play Reel 2023 — Play Reel 2023 — Play Reel 2023 — Play Reel 2023 — Play Reel 2023 — Play Reel 2023 — Play Reel 2023 — Play Reel 2023 — Play Reel 2023 — Play Reel 2023 — Play Reel 2023 — Play Reel 2023 — Play Reel 2023 — Play Reel 2023 — Play Reel 2023 — Play Reel 2023 — Play Reel 2023 — Play Reel 2023 — Play Reel 2023 — Play Reel 2023 — Play Reel 2023 — Play Reel 2023 — Play Reel 2023 — Play Reel 2023 — Play Reel 2023 — Play Reel 2023 — Play Reel 2023 — Play Reel 2023 Play Reel 2023 Play Reel 2023 Play Reel 2023 Play Reel 2023 Play Reel 2023 Play Reel 2023 Play Reel 2023 Play Reel 2023 Play Reel 2023 Play Reel 2023 Play Reel 2023 Play Reel 2023 Play Reel 2023 Play Reel 2023 Play Reel 2023 Play Reel 2023 Play Reel 2023 Play Reel 2023 Play Reel 2023 Play Reel 2023 Play Reel 2023 Play Reel 2023 Play Reel 2023 Play Reel 2023 Play Reel 2023 Play Reel 2023 Play Reel 2023 Play Reel 2023 Play Reel 2023 </marquee>
+            </div>
+        </div>
         <video class="hero-video desktop" className='videoTag' fetchpriority="high" autoplay loop muted playsinline>
         <!-- <source src="videos/jys_hero_compressed.webm" type='video/webm' /> -->
-        <source src="videos/jys_new.mp4" type='video/mp4'/>
-      </video>
-      <video class="hero-video mobile" className='videoTag' fetchpriority="high" autoplay loop muted playsinline>
-        <!-- <source src="videos/jys_hero_compressed.webm" type='video/webm' /> -->
-        <source src="videos/jys_new_mobile.mp4" type='video/mp4'/>
-      </video>
+            <source src="videos/jys_new.mp4" type='video/mp4'/>
+        </video>
+        <video class="hero-video mobile" className='videoTag' fetchpriority="high" autoplay loop muted playsinline>
+            <!-- <source src="videos/jys_hero_compressed.webm" type='video/webm' /> -->
+            <source src="videos/jys_new_mobile.mp4" type='video/mp4'/>
+          </video>
     </div>
     <div id="body-about">
         <div class="clients-ticker">
@@ -343,6 +369,7 @@ $(window).scroll(function() {
     }
     
 </script>
+<script src="https://vjs.zencdn.net/8.0.4/video.min.js"></script>
   <script>
     window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
     ga('create', 'UA-72695009-1', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
