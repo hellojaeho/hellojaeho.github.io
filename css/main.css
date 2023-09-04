@@ -1966,6 +1966,9 @@ section {
     transition-timing-function:cubic-bezier( 0.92, 0, 0.29, 1 );
   }
 
+  /* .full-reel-container {
+    display: none !important; } */
+
 }
 
 .lower-logo h1 {
@@ -2287,7 +2290,7 @@ h2 {
 }
 
 .hero-play-button:hover + video {
-  opacity: 0.25;
+  opacity: 0.25 !important;
   transition-duration: 0.8s;
   transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
@@ -2536,7 +2539,7 @@ body div section div.video-with-caption video {
 
 .hero-play-button {
   position: absolute;
-  z-index: 1;
+  z-index: 10;
   color: white;
   left: 50%;
   top: 50%;
