@@ -2161,6 +2161,10 @@ h2 {
   height: 80%;
 }
 
+.vjs-control-bar {
+  display: none !important;
+}
+
 .full-reel-container div {
   /* display: none; */
 
@@ -2275,13 +2279,13 @@ h2 {
   top: 50%;
   transform: translate(-50%, -50%);
   -webkit-trasnform: translate(-50%, -50%);
-  width: 20px;
+  width: 16px;
 }
 
 .marquee-play {
   width: 110px;
   overflow: hidden;
-  font-size: 17px;
+  font-size: 15px;
 }
 
 .hero-play-button:hover marquee {
@@ -2294,7 +2298,7 @@ h2 {
 }
 
 .hero-play-button:hover img {
-  width: 15px;
+  width: 12px;
   transition-duration: 1s;
   transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
@@ -2512,9 +2516,9 @@ body div section div.video-with-caption video {
 .logo-wrap {
   display: inline-block;
   position: relative;
-  width: 800px;
+  width: 400px;
   height: 101px;
-  top: 38%;
+  top: 44%;
   overflow: hidden;
 }
 
@@ -2527,12 +2531,12 @@ body div section div.video-with-caption video {
 .logo-wrap img {
   width: 100%;
   margin-top: 0;
-  transition-duration: 1s;
+  transition-duration: 3s;
   transition-timing-function:cubic-bezier( 0, 0.35, 0.01, 1 ) ;
 }
 
 .initial .logo-wrap img {
-  margin-top: 100px;
+  margin-top: 0px;
   animation-duration: 1s;
 }
 
@@ -2651,10 +2655,10 @@ body div section div.video-with-caption video {
 
 #home h1 {
   position: absolute;
-  left: 797px;
-  bottom: -6px;
-  font-size: 22px;
-  width: 512px;
+  left: 532px;
+  bottom: 0px;
+  font-size: 18px;
+  width: 382px;
   z-index: 5;
   color: white;
   mix-blend-mode: difference;
@@ -3108,13 +3112,21 @@ nav ul li {
   margin-right: 40px;
 }
 
+.hi {
+  opacity: 100%;
+}
+
 nav ul li:nth-child(3) {
   margin-right: 100px;
 }
 
 .lower-logo img {
-  width: 780px;
-  margin: 0 0 4px 7px;
+  margin: 0 0 7px 14px;
+  width: 510px;
+}
+
+.hero-logo {
+  width: 510px;
 }
 
 .success {
