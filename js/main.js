@@ -54,6 +54,10 @@ $(window).scroll(function(event){
     
   })
 
+  $('.lower-logo img').addClass('hi')
+
+
+
   $('.full-reel-wrapper img').click(function(){
     $('.full-reel-container').removeClass('show');
     if ($('.vjs-paused').length){
