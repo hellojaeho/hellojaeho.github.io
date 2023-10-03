@@ -45,12 +45,12 @@ $(window).scroll(function(event){
 
   $('.reel-exit').click(function(){
     $('.full-reel-container').removeClass('show');
-    // $('button.vjs-play-control').click();
+    $('button.vjs-play-control').click();
   })
 
   $('.full-reel-wrapper img').click(function(){
     $('.full-reel-container').removeClass('show');
-    // $('button.vjs-play-control').click();
+    $('button.vjs-play-control').click();
   })
 
   $('a').click(function(e) {
