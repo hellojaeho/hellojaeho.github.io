@@ -93,11 +93,11 @@ $(window).scroll(function(event){
 
     setTimeout(() => {
         $('.logo-wrap').addClass("close")
-    }, "1500")
+    }, "200")
 
     setTimeout(() => {
         $('#loader').delay( 800 ).addClass("away");
-    }, "1700")
+    }, "400")
 
     
     
