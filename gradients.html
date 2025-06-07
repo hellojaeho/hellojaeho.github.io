@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud-Like Gradient Waves</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+        }
+        canvas {
+            display: block;
+        }
+        .controls {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 10;
+        }
+        .controls label {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <label>
+            Color 1:
+            <input type="color" id="color1" value="#ff0000">
+        </label>
+        <label>
+            Color 2:
+            <input type="color" id="color2" value="#0000ff">
+        </label>
+        <label>
+            Color 3:
+            <input type="color" id="color3" value="#00ff00">
+        </label>
+        <label>
+            Color 4:
+            <input type="color" id="color4" value="#ffff00">
+        </label>
+        <label>
+            Speed:
+            <input type="range" id="speed" min="0.1" max="5" step="0.1" value="1">
+        </label>
+    </div>
+    <canvas id="gradientCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('gradientCanvas');
+        const ctx = canvas.getContext('2d');
+        const color1Input = document.getElementById('color1');
+        const color2Input = document.getElementById('color2');
+        const color3Input = document.getElementById('color3');
+        const color4Input = document.getElementById('color4');
+        const speedInput = document.getElementById('speed');
+
+        let width, height;
+        let gradientOffset = 0;
+        let speed = parseFloat(speedInput.value);
+
+        const noise = [];
+        const noiseLength = 200;
+
+        // Generate Perlin-like noise
+        for (let i = 0; i < noiseLength; i++) {
+            noise.push(Math.random() * 2 - 1);
+        }
+
+        function smoothNoise(x) {
+            const i = Math.floor(x) % noiseLength;
+            const f = x - Math.floor(x);
+            const a = noise[i];
+            const b = noise[(i + 1) % noiseLength];
+            return a * (1 - f) + b * f;
+        }
+
+        function resizeCanvas() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        function drawGradient() {
+            ctx.clearRect(0, 0, width, height);
+
+            const waveAmplitude = 100; // Amplitude of the wave
+            const waveFrequency = 0.005; // Frequency of the wave
+
+            for (let y = 0; y < height; y++) {
+                const offset = waveAmplitude * smoothNoise((y + gradientOffset) * waveFrequency);
+
+                const gradient = ctx.createLinearGradient(offset, y, width + offset, y);
+                gradient.addColorStop(0, color1Input.value);
+                gradient.addColorStop(0.33, color2Input.value);
+                gradient.addColorStop(0.66, color3Input.value);
+                gradient.addColorStop(1, color4Input.value);
+
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, y, width, 1);
+            }
+        }
+
+        function animate() {
+            gradientOffset += speed;
+            drawGradient();
+            requestAnimationFrame(animate);
+        }
+
+        color1Input.addEventListener('input', drawGradient);
+        color2Input.addEventListener('input', drawGradient);
+        color3Input.addEventListener('input', drawGradient);
+        color4Input.addEventListener('input', drawGradient);
+        speedInput.addEventListener('input', () => {
+            speed = parseFloat(speedInput.value);
+        });
+
+        window.addEventListener('resize', resizeCanvas);
+
+        resizeCanvas();
+        animate();
+    </script>
+</body>
+</html>
