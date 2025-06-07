@@ -2226,6 +2226,10 @@ body .info-logo {
     width: 270px !important
   }
 
+  .hero-info ul li:nth-of-type(2) span:nth-of-type(6) {
+        margin-left: 23px;
+  }
+
   div.home-hero {
     height: 500px;
   }
