@@ -3908,9 +3908,9 @@ width: 100%;
   cursor: pointer;
 }
 
-.show .d-nav-video {
-    pointer-events: none;
-}
+/* .show .d-nav-video {
+  pointer-events: none;
+} */
 
 .hero-video .d-nav-video {
   opacity: 1;
@@ -4140,6 +4140,7 @@ nav.dynamic-nav.info-open .d-nav-info {
   transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
   overflow-y: scroll;
   opacity: 1;
+  z-index: 99;
 }
 
 .d-nav-info-intro,
@@ -4396,6 +4397,11 @@ nav.dynamic-nav.info-closing .d-nav-video .d-nav-video-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between
+}
+
+.nav-menu {
+  position: relative;
+  z-index: 99;
 }
 
 nav.dynamic-nav.info-open .nav-menu {
