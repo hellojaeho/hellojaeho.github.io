@@ -1,268 +1,103 @@
-<!doctype html>
-<html class="no-js" lang="">
-
-<head>
-  <meta charset="utf-8">
-  <title>Bibi | Jae Yoon Studio | Case Study</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <meta property="og:title" content="Kaie Salon | Jae Yoon Studio | Case Study">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
-
-  <link rel="manifest" href="../site.webmanifest">
-  <link rel="apple-touch-icon" href="../icon.png">
-  <!-- Place favicon.ico in the root directory -->
-
-  <link rel="stylesheet" href="../css/normalize.css">
-  <link rel="stylesheet" href="../css/main.css">
-  <link href="https://vjs.zencdn.net/8.0.4/video-js.css" rel="stylesheet" />
-
-
-  <meta name="theme-color" content="#fafafa">
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sticksy@0.2.0/dist/sticksy.min.js"></script>
-</head>
-
-<body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
-  <script src="../js/vendor/modernizr-3.11.2.min.js"></script>
-  <script src="../js/plugins.js"></script>
-  <script src="../js/main.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.10/jquery.lazy.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.10/jquery.lazy.plugins.min.js"></script>
-  <script type="text/javascript">
-    (function() {
-        // https://dashboard.emailjs.com/admin/account
-        emailjs.init('lonraSqGkmaxqkV0K');
-    })();
+<script>
+    // Redirect to index.html with a query param
+    window.location.href = '../?open=/work/bibi.html';
   </script>
-  <div id="work-loader" class="work-load initial">
-    <!-- <div class="logo-wrap">
-        <img src="images/logo_large.png">
-    </div> -->
-  </div>
-  <div class="whole-container case-study">
-    <div id="overlay"></div>
-    <div id="overlay"></div>
-    <nav>
-        <div class="container">
-            
-            <!-- <ul>
-                <li><a href="work" data-link-alt="Work"><span> Work</span> </a></li>
-                <li><a href="capabilities" data-link-alt="Services"> <span>Services</span> </a></li>
-                <li class="toggle"><a href="" data-link-alt="About"><span> About</span></a></li>
-            </ul> -->
-            <div class="right-menu">
-                <ul>
-                    <li class="info-button"><a data-link-alt="Info" href="../info"><span>Info</span></a></li>
-                    <li class="work-button"><a data-link-alt="Work" href="../work/all"><span>Work</span></a></li>
-                </ul>
-                <button class="contact-us"><ul><li class="toggle"><span>Submit Inquiry</span></li></ul></button>
+
+<div class="blocks n-hidden blurred" data-file="/work/bibi.html">
+
+    <div class="work n-info-container">
+        <div class="n-client-info">
+            <div class="n-number"></div>
+            <h3 class="n-client-name">Bibi</h3>
+        </div>
+        <div class="n-client-project-info">
+            <p class="n-description">Translating musical diversity and personality into an identity concept.</p>
+            <div class="n-info-right">
+                <span class="n-year">/ 2023</span>
+                <div class="n-services">Identity Design, Art Direction</div>
             </div>
         </div>
-    </nav>
-    <div class="lower-logo">
-        <a href="http://www.jaeyoon.studio">
-            <img src="../images/logo_large.png">
-        </a>
     </div>
-    
-    <div id="home-contact">
-        <h2>Submit Inquiry</h2>
-        <p>Please expect 24 hours for inquiry response.</p>
-        <form id="contact-form">
-            <label>Name*</label>
-            <input type="text" name="user_name">
-            <label>Email*</label>
-            <input type="email" name="user_email">
-            <label>Budget*</label>
-            <div class="dropdown">
-                <select name="budget" id="budget">
-                    <option value="10-20k">$10,000 - $20,000</option>
-                    <option value="20-50k">$20,000 - $50,000</option>
-                    <option value="50-100k">$50,000 - $100,000</option>
-                    <option value="100k-150k">$100,000 - $150,000</option>
-                    <option value="150k+">$150,000+</option>
-                </select>
-            </div>
-            <label>Message*</label>
-            <textarea name="message"></textarea>
-            <input class="form-button" type="submit" value="Submit" />
-            <div class="success">Sent! We'll be in touch soon.</div>
-        </form>
-        <div class="contact-close">
-            <img src="../images/close.png" alt="close"></img>
-        </div>
-    </div>
-    <div id="work" class="hero nike initial">
-        <div class="work-hero initial">
-            <img src="../images/work/bibi/bibi_hero.jpg" fetchpriority="high"/>
-        </div>
-    </div>
-    <div id="work-body">
-        <div class="work-container"> 
-            <section class="work-intro">
-                <div class="work-title">
-                    <p class="work-client"><span></span>Bibi</p>
-                    <h1 class="reveal-text">Translating musical diversity and personality into an album identity concept</h1>
-                </div>
-                <ul class="work-services tile">
-                    <li>Brand Identity</li>
-                    <li>Web Design</li>
-                </ul>
+            <section class="content-block full-bleed-image ">
+                <img style="opacity:0;" class="lazy" data-src="../images/work/bibi/bibi_logo.jpg"/>
+                <div class="lazy-placeholder"></div>
             </section>
-            <div class="blocks">
-                <section class="content-block right-iso-para tile">
-                    <p>The true mark of an artist lies in their ability to channel multiple facets of their personality into their creative work, often resulting in a unique and distinct style for each album.</p>
-                    <p>As it relates to design, the challenge is to capture the dynamic range of emotions and attitudes conveyed through the music, and distill it into a cohesive and compelling identity.</p>
-                    <p>This identity concept was crafted with the intention of encapsulating the duality of Bibi's artistic vision - fierce and unapologetic, yet beautiful.</p>
-                </section>
+            <section class="content-block full-bleed-image">
+                <video class="lazy desktop-video" preload="none" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/901030801/rendition/1080p/file.mp4?loc=external&signature=20a1f96a6e7f52aea3921d122d6ee31d66f225a65bce1c7a84b43d2545ca9d4f|video/mp4"></video>
+                <video class="lazy mobile-video" preload="none" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/901030801/rendition/720p/file.mp4?loc=external&signature=5c105dddd4f8791c860af68f69423e86315d4b4094d0fe353d51b6bb98343da1|video/mp4"></video>
+                <div class="lazy-placeholder"></div>
+            </section>
+
+            
+            <section class="content-block full-bleed-image ">
+                <img style="opacity:0;" class="lazy" data-src="../images/work/bibi/billboard_1.jpg"/>
+                <div class="lazy-placeholder"></div>
+            </section>
+            <section class="content-block full-bleed-image ">
+                <img style="opacity:0;" class="lazy" data-src="../images/work/bibi/billboard_2.jpg"/>
+                <div class="lazy-placeholder"></div>
+            </section>
+            <section class="content-block full-bleed-image ">
+                <img style="opacity:0;" class="lazy" data-src="../images/work/bibi/album.jpg"/>
+                <div class="lazy-placeholder"></div>
+            </section>
+            <section class="content-block full-bleed-image ">
+                <img style="opacity:0;" class="lazy" data-src="../images/work/bibi/swag.jpg"/>
+                <div class="lazy-placeholder"></div>
+            </section>
+            <section class="content-block full-bleed-image ">
+                <img style="opacity:0;" class="lazy" data-src="../images/work/bibi/laptop.jpg"/>
+                <div class="lazy-placeholder"></div>
+            </section>
+            <section class="content-block full-bleed-image ">
+                <img style="opacity:0;" class="lazy" data-src="../images/work/bibi/posters.jpg"/>
+                <div class="lazy-placeholder"></div>
+            </section>
+            <section class="content-block full-bleed-image ">
+                <img style="opacity:0;" class="lazy" data-src="../images/work/bibi/bibi_hero.jpg"/>
+                <div class="lazy-placeholder"></div>
+            </section>
+
+            <section class="content-block credits" style="margin: 190px 0; padding-bottom: 30px;">
+                <div class="credits-list">
+                    <ul>
+                       
+                    </ul>
+                    
+                </div>
                 
-                <section class="content-block full-bleed-image tile" style="padding-bottom: 30px;">
-                    <video autoplay loop muted playsinline>
-                        <source src="../videos/work/bibi/bibi_gray.mp4" type='video/mp4' />
-                    </video>
-                </section>
-                <section class="content-block full-bleed-image tile" style="margin-top: 20px; padding-bottom: 30px;">
-                    <img src="../images/work/bibi/bibi_logo.jpg"/>
-                </section>
-                <section class="content-block full-bleed-image tile" style="margin-top: 20px; padding-bottom: 30px;">
-                    <img src="../images/work/bibi/billboard_1.jpg"/>
-                </section>
-                <section class="content-block full-bleed-image tile" style="margin-top: 20px; padding-bottom: 30px;">
-                    <img src="../images/work/bibi/posters.jpg"/>
-                </section>
-                <section class="content-block full-bleed-image tile" style="margin-top: 20px; padding-bottom: 30px;">
-                    <img src="../images/work/bibi/laptop.jpg"/>
-                </section>
-                <section class="content-block full-bleed-image tile" style="margin-top: 20px; padding-bottom: 30px;">
-                    <img src="../images/work/bibi/album.jpg"/>
-                </section>
-                <section class="content-block full-bleed-image tile" style="margin-top: 20px; padding-bottom: 30px;">
-                    <img src="../images/work/bibi/icon.jpg"/>
-                </section>
-                <section class="content-block full-bleed-image tile" style="margin-top: 20px; padding-bottom: 30px;">
-                    <img src="../images/work/bibi/billboard_2.jpg"/>
-                </section>
-                
-                <section class="content-block full-bleed-image tile" style="margin-top: 20px; padding-bottom: 30px;">
-                    <img src="../images/work/bibi/billboard_3.jpg"/>
-                </section>
-                <section class="content-block full-bleed-image tile" style="margin-top: 20px; padding-bottom: 30px;">
-                    <img src="../images/work/bibi/swag.jpg"/>
-                </section>
-            </div>
-            <div id="submit-inquiry">
-                <div class="submit-content">
-                    <h1 class="reveal-text">Next Case Study</h1>
-                    <a class="tile" href="katalyst">Katalyst</a>
-                </div>  
-            </div>
-        </div>
-    </div>
+                    
+            </section>
+    <div onclick="closeOverlay()" class="n-close-overlay"></div>
+    
 </div>
-<script>
+<!-- <script>
 
-window.addEventListener('load', function () {
-  var stickyElements = Sticksy.initializeAll('.js-sticky-widget')
-})
+    //lazyload videos with data-src
+const videos = document.querySelectorAll('video');
 
+const preloadVideo = (video) => {
+  const sources = video.querySelectorAll('source');
+  sources.forEach(source => {
+    source.src = source.dataset.src;
+  });
+  video.load(); // Triggers the video to load with new sources
+};
 
-let elementsArray = document.querySelectorAll(".tile");
-console.log(elementsArray);
-
-window.addEventListener('scroll', fadeIn ); 
-function fadeIn() {
-    for (var i = 0; i < elementsArray.length; i++) {
-        var elem = elementsArray[i]
-        var distInView = elem.getBoundingClientRect().top - window.innerHeight + 20;
-        if (distInView < 0) {
-            elem.classList.add("inView");
-        } else {
-            elem.classList.remove("inView");
-        }
+const observer = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      preloadVideo(entry.target);
+      obs.unobserve(entry.target);
     }
-}
+  });
+}, {
+  rootMargin: '200px 0px', // preload a bit before it's visible
+  threshold: 0.01
+});
 
-
-var heroImage = document.querySelector('#work img');
-
-console.log(heroImage);
-
-function loaded() {
-    $('#work-loader.work-load').addClass("away");
-    console.log('hi')
-}
-
-window.onload = setTimeout(() => {
-    loaded();
-}, "0");
-
-  
-console.log('hi')
-
-
-fadeIn();
-
-
-      
-</script>
-
-<script>
+videos.forEach(video => observer.observe(video));
+</script> -->
 
 
 
-// const skew = document.querySelector(".skew");
-// let currentPixel = window.pageYOffset
-
-// //looper keeps running and keeps track of where the new pixel is
-// const looper = function () {
-//   const newPixel = window.pageYOffset;
-//   const diff = newPixel - currentPixel
-//   const speed = diff * 0.07;
-  
-//   skew.style.transform = "skewY(" + speed + "deg)"
-  
-  
-//   currentPixel = newPixel;
-  
-//   requestAnimationFrame(looper)
-// }
-
-// looper();
-</script>
-
-  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-  <script type="text/javascript">
-    window.onload = function() {
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            // these IDs from the previous steps
-            emailjs.sendForm('service_blfhcju', 'template_x64d0y4', this)
-                .then(function() {
-                    // var message = document.getElementsByClassName("success");
-                    // message.classList.toggle("show");
-                    $('.success').addClass("show");
-                    console.log('SUCCESS!');
-
-                }, function(error) {
-                    console.log('FAILED...', error);
-                });
-        });
-    }
-</script>
-<script src="https://vjs.zencdn.net/8.0.4/video.min.js">
-</script>
-<script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-72695009-1', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
-  </script>
-  <script src="https://www.google-analytics.com/analytics.js" async></script>
-</body>
-
-</html>

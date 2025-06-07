@@ -1,323 +1,150 @@
-<!doctype html>
-<html class="no-js" lang="">
-
-<head>
-  <meta charset="utf-8">
-  <title>Caddy | Jae Yoon Studio | Case Study</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
-
-  <link rel="manifest" href="../site.webmanifest">
-  <link rel="apple-touch-icon" href="../icon.png">
-  <!-- Place favicon.ico in the root directory -->
-
-  <link rel="stylesheet" href="../css/normalize.css">
-  <link rel="stylesheet" href="../css/main.css">
-
-  <meta name="theme-color" content="#fafafa">
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sticksy@0.2.0/dist/sticksy.min.js"></script>
-</head>
-
-<body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
-  <script src="../js/vendor/modernizr-3.11.2.min.js"></script>
-  <script src="../js/plugins.js"></script>
-  <script src="../js/main.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.10/jquery.lazy.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.10/jquery.lazy.plugins.min.js"></script>
-  <script type="text/javascript">
-    (function() {
-        // https://dashboard.emailjs.com/admin/account
-        emailjs.init('lonraSqGkmaxqkV0K');
-    })();
-
+<script>
+    // Redirect to index.html with a query param
+    window.location.href = '../?open=/work/caddy.html';
   </script>
-  <div id="work-loader" class="work-load initial">
-    <!-- <div class="logo-wrap">
-        <img src="images/logo_large.png">
-    </div> -->
-  </div>
-  <div class="whole-container case-study">
-    <div id="overlay"></div>
-    <div id="overlay"></div>
-    <nav>
-        <div class="container">
-            <!-- <ul>
-                <li><a href="work" data-link-alt="Work"><span> Work</span> </a></li>
-                <li><a href="capabilities" data-link-alt="Services"> <span>Services</span> </a></li>
-                <li class="toggle"><a href="" data-link-alt="About"><span> About</span></a></li>
-            </ul> -->
-            <div class="right-menu">
-                <ul>
-                    <li class="info-button"><a data-link-alt="Info" href="../info"><span>Info</span></a></li>
-                    <li class="work-button"><a data-link-alt="Work" href="../work/all"><span>Work</span></a></li>
-                </ul>
-                <button class="contact-us"><ul><li class="toggle"><span>Submit Inquiry</span></li></ul></button>
+
+<div class="blocks n-hidden blurred" data-file="/work/caddy.html">
+
+    <div class="work n-info-container">
+        <div class="n-client-info">
+            <div class="n-number"></div>
+            <h3 class="n-client-name">Caddy</h3>
+        </div>
+        <div class="n-client-project-info">
+            <p class="n-description">Building the full design foundation for AI startup, from brand to product.</p>
+            <div class="n-info-right">
+                <span class="n-year">/ 2024</span>
+                <div class="n-services">Brand, product, web design</div>
             </div>
         </div>
-    </nav>
-    <div class="lower-logo">
-        <a href="http://www.jaeyoon.studio">
-            <img src="../images/logo_large.png">
-        </a>
     </div>
-    
-    <div id="home-contact">
-        <h2>Submit Inquiry</h2>
-        <p>Please expect 24 hours for inquiry response.</p>
-        <form id="contact-form">
-            <label>Name*</label>
-            <input type="text" name="user_name">
-            <label>Email*</label>
-            <input type="email" name="user_email">
-            <label>Budget*</label>
-            <div class="dropdown">
-                <select name="budget" id="budget">
-                    <option value="10-20k">$10,000 - $20,000</option>
-                    <option value="20-50k">$20,000 - $50,000</option>
-                    <option value="50-100k">$50,000 - $100,000</option>
-                    <option value="100k-150k">$100,000 - $150,000</option>
-                    <option value="150k+">$150,000+</option>
-                </select>
-            </div>
-            <label>Message*</label>
-            <textarea name="message"></textarea>
-            <input class="form-button" type="submit" value="Submit" />
-            <div class="success">Sent! We'll be in touch soon.</div>
-        </form>
-        <div class="contact-close">
-            <img src="../images/close.png" alt="close"></img>
-        </div>
-    </div>
-    <div id="work" class="hero nike initial">
-        <div class="work-hero initial">
-            <img src="../images/work/caddy/caddy_hero.jpg" fetchpriority="high"/>
-          </div>
-    </div>
-    <div id="work-body">
-        <div class="work-container">
-            <section class="work-intro">
-                <div class="work-title">
-                    <p class="work-client"><span></span>Deno</p>
-                    <h1 class="reveal-text">Designing an elegant and user-friendly web deployment experience.</h1>
-                </div>
-                <ul class="work-services tile">
-                    <li>Content Strategy</li>
-                    <li>UX Design</li>
-                    <li>UI Motion</li>
-                    <li>Visual Design</li>
-                    <li>Prototyping</li>
-                </ul>
-            </section>
-            <div class="blocks">
-                <section class="content-block right-iso-para tile">
-                    <p>Deno approached Jae Yoon Studio to revamp and revitalize their initial product, which lacked a professional feel and was hindered by a poor user experience, causing developers to be hestitant of using the platform.</p>
-                    <p>While Deno already had a beloved brand with whimsical dinosaur illustrations, the product and marketing website did not effectively communicate this playful personality, leading to missed opportunities.</p>
-                    <p>Jae Yoon Studio set out to showcase Deno's playful personality while also establishing them as a reliable and trustworthy deployment platform.</p>
-                </section>
-                <section class="content-block single-image">
-                    <div class="outline">
-                        <div class="outline">
-                            <img src="../images/work/deno/projects.jpg">
-                            <h5>Projects</h5>
-                        </div>
-                        <div class="outline">
-                            <img src="../images/work/deno/overview.jpg">
-                            <h5>Overview</h5>
-                        </div>
-                        <div class="outline">
-                            <img src="../images/work/deno/analytics.jpg">
-                            <h5>Analytics</h5>
-                        </div>
-                        <div class="outline">
-                            <img src="../images/work/deno/deploy.jpg">
-                            <h5>Deployment</h5>
-                        </div>
-                        <div class="outline">
-                            <img src="../images/work/deno/logs.jpg">
-                            <h5>Logs</h5>
-                        </div>
-                        <div class="outline">
-                            <img src="../images/work/deno/profile.jpg">
-                            <h5>Profile</h5>
-                        </div>
-                        <div class="outline">
-                            <img src="../images/work/deno/settings.jpg">
-                            <h5>Settings - Environment Variables</h5>
-                        </div>
-                        
-                    </div>      
-                </section>
-                <section class="content-block full-bleed-image tile ">
-                    <img src="../images/work/deno/deno_lifestyle.jpg"/>
-                </section>
-                <section class="content-block right-text-image-scroll tile mobile_mock">
-                    <div class="container">
-                        <div class="content">
-                            <main>
-                                <div class="outline nike_wires">
-                                    <img src="../images/work/deno/projects_m.jpg">
-                                    <img src="../images/work/deno/anayltics_m.jpg">
-                                    <img src="../images/work/deno/logs_m.jpg">
-                                    <img src="../images/work/deno/settings_m.jpg">  
-                                </div>
-                            </main>
-                            <aside>
-                                <div class="widget js-sticky-widget">
-                                    <h3>Ready for emergencies</h3>
-                                    <p>Although Deno Deploy is primarily intended for desktop use, we placed just as much emphasis on designing user-friendly mobile screens to accommodate developers who may be in urgent need to make updates.</p>
-                                    <!-- <p>To communicate the UX concept clearly, Jae Yoon Studio created high-fidelity interactive prototypes</p> -->
-                                </div>
-                            </aside>
-                        </div>
-                    </div>
-                </section>
-                <section class="content-block full-bleed-image tile ">
-                    <img src="../images/work/deno/deno_situ.jpg"/>
-                </section>
-                <section class="content-block left-iso-para tile">
-                    <div class="title-header">
-                        <h3>Further collaboration</h3>
-                    </div>
-                    <p>Beyond designing their dashboard product, we also helped with their marketing website, delivering content strategy, UX, and visual design to express their brand identity, while showcasing what Deno has to offer.</p>
-                </section>
-                <section class="content-block single-image">
-                    <video class="outline" className='videoTag' autoplay loop muted playsinline>
-                        <source src="../videos/work/deno/deno_marketing.webm" type='video/webm' />
-                        <source src="../videos/work/deno/deno_marketing.mp4" type='video/mp4' />
-                    </video>
-                </section>
-                
-                
-            </div>
-            <!-- <div id="testimonial" >
-                <div class="testimonial-tile tile">
-                    <p class="reveal-text">“Beyond being incredibly talented, Jae is incredibly smart and thoughtful when it comes to cracking creative problems. He was an absolute pleasure to work with, and I look forward to partnering with him in the future!”</p>
-                    <div class="testimonial-author tile">
-                        <span></span>
-                        <h4>Alex Sturtevant<div>Head of New Business, Stink Studios</div></h4>
-                    </div>
-                </div>
-                <div class="testimonial-tile tile">
-                    <p class="reveal-text">“Jae is a prolific designer, with a Swiss army set of tools under his belt. He approaches any challenge strategically, coming at the problem from both a UX and visual design perspective, and will go the extra mile (whether to put things in motion comps, or create additional screens) to make sure stakeholders have full understanding of the solution. He's a confident and engaging presenter, and would be a valuable addition to any team.”</p>
-                    <div class="testimonial-author tile">
-                        <span></span>
-                        <h4>Erica Kung<div>Managing Director, Stink Studios</div></h4>
-                    </div>
-                </div>
-            </div> -->
-            <div id="submit-inquiry">
-                <div class="submit-content">
-                    <h1 class="reveal-text">Next Case Study</h1>
-                    <a class="tile" href="current">Current</a>
-                </div>  
-            </div>
             
-        </div>
-    </div>
+            <section class="content-block full-bleed-image ">
+                <img style="opacity:0;" class="lazy" data-src="../images/work/caddy/caddy_logo.jpg"/>
+                <div class="lazy-placeholder"></div>
+            </section>
+            <section class="content-block full-bleed-image">
+                <video class="lazy desktop-video" preload="none" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1087524993/rendition/1080p/file.mp4?loc=external&signature=2011c8e9b2500dffca87579e4d4e611b1f93ca1ee404902d3050b6fa742876c5|video/mp4"></video>
+                <video class="lazy mobile-video" preload="none" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1087524993/rendition/720p/file.mp4?loc=external&signature=a48f103fc65d3418450d89c0eb620e212e32e575f8ab65225b01944d25ab77e9|video/mp4"></video>
+                <div class="lazy-placeholder"></div>
+            </section>
+            <section class="content-block full-bleed-image ">
+                <img style="opacity:0;" class="lazy" data-src="../images/work/caddy/caddy_billboard.jpg"/>
+                <div class="lazy-placeholder"></div>
+            </section>
+            
+            
+ 
+            <section class="content-block full-bleed-image ">
+                <img style="opacity:0;" class="lazy" data-src="../images/work/caddy/mobile-2.jpg"/>
+                <div class="lazy-placeholder"></div>
+            </section>
+            <section class="content-block full-bleed-image">
+                <video class="lazy desktop-video" preload="none" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/901384995/rendition/1080p/file.mp4?loc=external&signature=bcf63f153f1c8c35f1f99f4e4c1b654941c79aad52566875cfbfc3192e799ad8|video/mp4"></video>
+                <video class="lazy mobile-video" preload="none" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/901384995/rendition/720p/file.mp4?loc=external&signature=c734fcb65e685292852302b65c443dc307211fb4a33e8bee3a7887a31a6a3a45|video/mp4"></video>
+                <div class="lazy-placeholder"></div>
+            </section>
+             <section class="content-block full-bleed-image">
+                <video class="lazy desktop-video" preload="none" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/901356329/rendition/1080p/file.mp4?loc=external&signature=594d896bdfd34d999e6168bbddedd0603cddea012a65ccbd666054531b92475b|video/mp4"></video>
+                <video class="lazy mobile-video" preload="none" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/901356329/rendition/720p/file.mp4?loc=external&signature=2882284158034658fb820a6c91c302ce32d9bfd6ff2729807cf21f0ed35f48b2|video/mp4"></video>
+                <div class="lazy-placeholder"></div>
+            </section>
+            <section class="content-block full-bleed-image">
+                <video class="lazy desktop-video" preload="none" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/901361370/rendition/1080p/file.mp4?loc=external&signature=cdea5c9593fadf788dc1a487fde5e0b44d68ce41f3ef17184227c4931e6cb2af|video/mp4"></video>
+                <video class="lazy mobile-video" preload="none" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/901361370/rendition/720p/file.mp4?loc=external&signature=327327f6d0673880be9a87f3125242c5c9e34a6328b98400c64495a7980fec2c|video/mp4"></video>
+                <div class="lazy-placeholder"></div>
+            </section>
+            <section class="content-block full-bleed-image">
+                <video class="lazy desktop-video" preload="none" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1087568929/rendition/1080p/file.mp4?loc=external&signature=a8bbc6e8ad11f7fbe718ba7c9f8dde5478a423b9ec64c81220057c7d95c22695|video/mp4"></video>
+                <video class="lazy mobile-video" preload="none" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1087568929/rendition/720p/file.mp4?loc=external&signature=57964144a3e34f670de38ca1eb4864dacb17f70150ac06debfb583208e9f4940|video/mp4"></video>
+                <div class="lazy-placeholder"></div>
+            </section>
+            
+            
+
+            <section class="content-block credits" style="margin: 190px 0; padding-bottom: 30px;">
+                <div class="credits-list">
+                    <ul>
+                        <li>
+                            <h6 class="">Client</h6>
+                            <div class="">Caddy</div>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h6 class="">Founder</h6>
+                            <div class="">James Cadwallader</div>
+                        </li>
+                        <li>
+                            <h6 class="">iOS Engineer</h6>
+                            <div class="">Jeffrey Chen</div>
+                        </li>
+                        <li>
+                            <h6 class="">Machine Learning Engineer</h6>
+                            <div class="">Sam Goldstein</div>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h6 class="">Dev Lead/Consultant</h6>
+                            <div class="">Ben Priddy</div>
+                        </li>
+                        <li>
+                            <h6 class="">Front-End Developer</h6>
+                            <div class="">Francisco Javier</div>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h6 class="">Brand Design</h6>
+                            <div class="">Jae Yoon Studio</div>
+                        </li>
+                        <li>
+                            <h6 class="">Web Design</h6>
+                            <div class="">Jae Yoon Studio</div>
+                        </li>
+                        <li>
+                            <h6 class="">Product Design</h6>
+                            <div class="">Jae Yoon Studio</div>
+                        </li>
+                    </ul>
+                    <ul>
+                        <img src="../images/credits/caddy.png" class="caddy" />
+                    </ul>
+                </div>
+                
+                    
+            </section>
+    <div onclick="closeOverlay()" class="n-close-overlay"></div>
+    
 </div>
-<script>
+<!-- <script>
 
-window.addEventListener('load', function () {
-  var stickyElements = Sticksy.initializeAll('.js-sticky-widget')
-})
+    //lazyload videos with data-src
+const videos = document.querySelectorAll('video');
 
+const preloadVideo = (video) => {
+  const sources = video.querySelectorAll('source');
+  sources.forEach(source => {
+    source.src = source.dataset.src;
+  });
+  video.load(); // Triggers the video to load with new sources
+};
 
-let elementsArray = document.querySelectorAll(".tile");
-console.log(elementsArray);
-
-window.addEventListener('scroll', fadeIn ); 
-function fadeIn() {
-    for (var i = 0; i < elementsArray.length; i++) {
-        var elem = elementsArray[i]
-        var distInView = elem.getBoundingClientRect().top - window.innerHeight + 20;
-        if (distInView < 0) {
-            elem.classList.add("inView");
-        } else {
-            elem.classList.remove("inView");
-        }
+const observer = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      preloadVideo(entry.target);
+      obs.unobserve(entry.target);
     }
-}
+  });
+}, {
+  rootMargin: '200px 0px', // preload a bit before it's visible
+  threshold: 0.01
+});
 
-var heroImage = document.querySelector('#work img');
-
-console.log(heroImage);
-
-function loaded() {
-    $('#work-loader.work-load').addClass("away");
-    console.log('hi')
-}
-
-window.onload = setTimeout(() => {
-    loaded();
-}, "0");
-
-  
-console.log('hi')
+videos.forEach(video => observer.observe(video));
+</script> -->
 
 
-fadeIn();
 
-
-      
-</script>
-
-<script>
-
-
-// const skew = document.querySelector(".skew");
-// let currentPixel = window.pageYOffset
-
-// //looper keeps running and keeps track of where the new pixel is
-// const looper = function () {
-//   const newPixel = window.pageYOffset;
-//   const diff = newPixel - currentPixel
-//   const speed = diff * 0.07;
-  
-//   skew.style.transform = "skewY(" + speed + "deg)"
-  
-  
-//   currentPixel = newPixel;
-  
-//   requestAnimationFrame(looper)
-// }
-
-// looper();
-</script>
-
-  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-  <script type="text/javascript">
-    window.onload = function() {
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            // these IDs from the previous steps
-            emailjs.sendForm('service_blfhcju', 'template_x64d0y4', this)
-                .then(function() {
-                    // var message = document.getElementsByClassName("success");
-                    // message.classList.toggle("show");
-                    $('.success').addClass("show");
-                    console.log('SUCCESS!');
-
-                }, function(error) {
-                    console.log('FAILED...', error);
-                });
-        });
-    }
-</script>
-<script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-72695009-1', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
-  </script>
-  <script src="https://www.google-analytics.com/analytics.js" async></script>
-</body>
-
-</html>

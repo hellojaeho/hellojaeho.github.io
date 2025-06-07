@@ -1,0 +1,129 @@
+<script>
+    // Redirect to index.html with a query param
+    window.location.href = '../?open=/work/shoprite.html';
+  </script>
+
+<div class="blocks n-hidden blurred" data-file="/work/shoprite.html">
+
+    <div class="work n-info-container">
+        <div class="n-client-info">
+            <div class="n-number"></div>
+            <h3 class="n-client-name">Shoprite</h3>
+        </div>
+        <div class="n-client-project-info">
+            <p class="n-description">Digital innovation for the grocery shopping experience.</p>
+            <div class="n-info-right">
+                <span class="n-year">/ 2021</span>
+                <div class="n-services">AR, prototyping, visual design</div>
+            </div>
+        </div>
+    </div>
+            <section class="content-block full-bleed-image ">
+                <img style="opacity:0; filter: saturate(1.2)" class="lazy" data-src="../images/work/shoprite/title.jpg"/>
+                <div class="lazy-placeholder"></div>
+            </section>
+            <section class="content-block full-bleed-image ">
+                <img style="opacity:0;" class="lazy" data-src="../images/work/shoprite/mobile-1.jpg"/>
+                <div class="lazy-placeholder"></div>
+            </section>
+            <section class="content-block full-bleed-image ">
+                <img style="opacity:0;" class="lazy" data-src="../images/work/shoprite/brand-moment.jpg"/>
+                <div class="lazy-placeholder"></div>
+            </section>
+
+            <section class="content-block full-bleed-image">
+                <video class="lazy desktop-video" style="filter: saturate(1.2)" preload="none" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1087773989/rendition/1080p/file.mp4?loc=external&signature=ed37aac07151ab64484b3090cfb0e1e3b5f333a1ca19522929728ee476f12783|video/mp4"></video>
+                <video class="lazy mobile-video" style="filter: saturate(1.2)" preload="none" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1087773989/rendition/720p/file.mp4?loc=external&signature=fa9509f7be69e7e8dff30631b267ae1113a00fc8583162879911f50133ae3101|video/mp4"></video>
+                <div class="lazy-placeholder"></div>
+            </section>
+            <section class="content-block full-bleed-image ">
+                <img style="opacity:0;" class="lazy" data-src="../images/work/shoprite/ar.jpg"/>
+                <div class="lazy-placeholder"></div>
+            </section>
+            <section class="content-block full-bleed-image ">
+                <img style="opacity:0; filter: saturate(1.2)" class="lazy" data-src="../images/work/shoprite/more-mobile.jpg"/>
+                <div class="lazy-placeholder"></div>
+            </section>
+            <section class="content-block credits" style="margin: 190px 0; padding-bottom: 30px;">
+                <div class="credits-list">
+                    <ul>
+                        <li>
+                            <h6 class="">Client</h6>
+                            <div class="">Shoprite</div>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h6 class="">Agency</h6>
+                            <div class="">Huge</div>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h6 class="">Group Design Director</h6>
+                            <div class="">Adam Morris</div>
+                        </li>
+                        <li>
+                            <h6 class="">UX Director</h6>
+                            <div class="">Jay Barbarich</div>
+                        </li>
+                        <li>
+                            <h6 class="">Visual Designer</h6>
+                            <div class="">Keith Locke</div>
+                        </li>
+                        <li>
+                            <h6 class="">Product Designer</h6>
+                            <div class="">Renan Feltri</div>
+                        </li>
+                    </ul>
+
+                    <ul>
+                        <li>
+                            <h6 class="">Design Lead</h6>
+                            <div class="">Jae Yoon Studio</div>
+                        </li>
+                        <li>
+                            <h6 class="">Motion Design</h6>
+                            <div class="">Jae Yoon Studio</div>
+                        </li>
+                    </ul>
+                    <ul>
+                        <img src="../images/credits/shoprite.png" class="shoprite" />
+                    </ul>
+                </div>
+                
+                    
+            </section>
+    <div onclick="closeOverlay()" class="n-close-overlay"></div>
+    
+</div>
+<!-- <script>
+
+    //lazyload videos with data-src
+const videos = document.querySelectorAll('video');
+
+const preloadVideo = (video) => {
+  const sources = video.querySelectorAll('source');
+  sources.forEach(source => {
+    source.src = source.dataset.src;
+  });
+  video.load(); // Triggers the video to load with new sources
+};
+
+const observer = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      preloadVideo(entry.target);
+      obs.unobserve(entry.target);
+    }
+  });
+}, {
+  rootMargin: '200px 0px', // preload a bit before it's visible
+  threshold: 0.01
+});
+
+videos.forEach(video => observer.observe(video));
+</script> -->
+
+
+

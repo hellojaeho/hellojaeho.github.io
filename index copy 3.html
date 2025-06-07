@@ -1,0 +1,3885 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Jae Yoon Studio | Digital Experience & Branding Studio</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link href="https://vjs.zencdn.net/8.0.4/video-js.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/flickity-fade@2/flickity-fade.css">
+
+  <meta name="theme-color" content="#fafafa">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sticksy@0.2.0/dist/sticksy.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+</head>
+
+
+<body class="z z-50">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
+  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+  <!-- <script type="text/javascript" src="https://unpkg.com/flickity@2.2.1/dist/flickity.pkgd.min.js"></script> -->
+  <!-- <script src="https://unpkg.com/flickity@2.0.5/dist/flickity.pkgd.min.js"></script> -->
+
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+  <script src="https://unpkg.com/flickity-fade@1/flickity-fade.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.10/jquery.lazy.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.10/jquery.lazy.plugins.min.js"></script>
+  
+  <script type="text/javascript">
+    (function() {
+        // https://dashboard.emailjs.com/admin/account
+        emailjs.init('lonraSqGkmaxqkV0K');
+    })();
+
+    
+
+  </script>
+  <script src="js/jquery.codex.js"></script>
+  <canvas id="noise" class="noise"></canvas>
+  <div id="parallax" class="grid_bg"></div>
+  <div id="loader" class="initial">
+    <div class="logo-wrap">
+        <img src="images/logo_large.png" class="hi" alt="logo">
+    </div>
+</div>
+
+  <div class="whole-container">
+    <nav class="dynamic-nav">
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const nav = document.querySelector('.dynamic-nav');
+                const delay = 1500; // Configurable delay in milliseconds
+
+                setTimeout(() => {
+                    nav.classList.add('open');
+                }, delay);
+            });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                setTimeout(() => {
+                    const heroHero = document.getElementById('hero-hero');
+                    const nav = document.querySelector('nav');
+                    const videoContainer = document.querySelector('.d-nav-video-container');
+
+                    const observer = new IntersectionObserver(
+                        (entries) => {
+                            entries.forEach((entry) => {
+                                if (entry.isIntersecting) {
+                                    nav.classList.add('hero-video');
+                                    // videoContainer.classList.add('wide');
+                                } else {
+                                    nav.classList.remove('hero-video');
+                                    // videoContainer.classList.remove('wide');
+                                }
+                            });
+                        },
+                        {
+                            threshold: 0.9, // Adjust this value to determine "mostly in the viewport"
+                        }
+                    );
+
+                    observer.observe(heroHero);
+                }, 1800); // Delay execution by 2 seconds
+            });
+            
+        </script>
+        
+        <div class="dynamic-nav-container">
+            <div class="d-nav-main">
+                <div class="nav-menu">
+                    <ul>
+                        <li>Work</li>
+                        <li>Info+</li>
+                    </ul>
+                </div>
+                <div class="d-nav-logo">
+                    <div class="d-nav-logo-main">
+                        <span>Jae</span><span>Yoon</span><span>Studio</span>
+                    </div>
+                   
+                    <div class="d-nav-logo-est">
+                        <span>Est.</span><img src="img/signature.png"><span>(</span><span class="year">2021</span><span>)</span>
+                    </div>
+                </div>
+                <div class="d-nav-slogan">
+                    <span>A</span> <span>digital innovation lab</span> <span>for visionary</span> <span>teams and</span> <span>leaders</span>
+                </div>
+            </div>
+            <div class="d-nav-video">
+                <div class="d-nav-video-container wide">
+                    <video preload="none" autoplay loop muted playsinline width="318" data-src="https://player.vimeo.com/progressive_redirect/playback/917008165/rendition/720p/file.mp4?loc=external&signature=456576a5c1b623eaec69427e4f841e52d50b5e36f61ef846cee9014ee1a26b03|video/mp4"></video>
+                    <div class="d-nav-video-ui">
+                        <div class="d-nav-video-ui-btn">
+                            <img src="img/play_btn.png" alt="play">
+                            <span>Play</span><span>Reel</span>
+                        </div>
+                        <div class="d-nav-video-ui-info">
+                            <ul>
+                                <li>[1:24]</li>
+                                <li>/ 2025</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-nav-case-study">
+                
+                <h3 class="n-client-name"></h3>  
+                <div class="n-nav-cs-desc">
+                    <p class="n-description"></p>
+                    <div class="n-services"></div>
+                </div>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const carouselRows = document.querySelectorAll('.carousel-row');
+                        const clientName = document.querySelector('.n-client-name');
+                        const description = document.querySelector('.n-description');
+                        const services = document.querySelector('.n-services');
+
+                        carouselRows.forEach(row => {
+                            row.addEventListener('click', () => {
+                                const newClientName = row.querySelector('.n-client-name')?.textContent;
+                                const newDescription = row.querySelector('.n-description')?.textContent;
+                                const newServices = row.querySelector('.n-services')?.innerHTML;
+
+                                if (newClientName) clientName.innerHTML = `<em>${newClientName}</em>`;
+                                if (newDescription) description.innerHTML = `<em>${newDescription}</em>`;
+                                if (newServices) services.innerHTML = `<em>${newServices}</em>`;
+                            });
+                        });
+                    });
+                </script>
+                <div onclick="closeOverlay()" class="d-case-study-close">Close</div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const dynamicNav = document.querySelector('.dynamic-nav');
+                        const animateWords = (element) => {
+                            const words = element.textContent.split(' ').map(word => {
+                                const span = document.createElement('em');
+                                span.textContent = word + ' ';
+                                span.style.opacity = 0;
+                                span.style.visibility = 'hidden'; // Ensure words are not visible initially
+                                return span;
+                            });
+                            element.innerHTML = '';
+                            words.forEach(wordSpan => element.appendChild(wordSpan));
+                            setTimeout(() => {
+                                const revealRandomWord = () => {
+                                    const hiddenWords = words.filter(word => word.style.opacity == 0);
+                                    if (hiddenWords.length > 0) {
+                                        const randomIndex = Math.floor(Math.random() * hiddenWords.length);
+                                        const wordToReveal = hiddenWords[randomIndex];
+                                        wordToReveal.style.visibility = 'visible'; // Make word visible when animating
+                                        wordToReveal.style.opacity = 1;
+                                        setTimeout(revealRandomWord, 50); // Adjust speed here
+                                    }
+                                };
+
+                                revealRandomWord();
+                            }, 600); // Delay of 0.6 seconds before revealing random words
+                        };
+
+                        const observer = new MutationObserver((mutations) => {
+                            mutations.forEach((mutation) => {
+                                if (mutation.attributeName === 'class' && dynamicNav.classList.contains('case-study')) {
+                                    const description = document.querySelector('.n-description');
+                                    const services = document.querySelector('.n-services');
+                                    const clientName = document.querySelector('.n-client-name');
+                                    const closeButton = document.querySelector('.d-case-study-close');
+                                    if (description) setTimeout(() => animateWords(description));
+                                    if (services) setTimeout(() => animateWords(services));
+                                    if (clientName) setTimeout(() => animateWords(clientName));
+                                    // if (closeButton) setTimeout(() => animateWords(closeButton));
+                                }
+                            });
+                        });
+
+                        observer.observe(dynamicNav, { attributes: true });
+                    });
+                </script>
+                <!-- <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const dynamicNav = document.querySelector('.dynamic-nav');
+                        const decryptAnimation = (element) => {
+                            const originalText = element.textContent;
+                            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                            let interval = setInterval(() => {
+                                element.textContent = originalText
+                                    .split('')
+                                    .map(char => (char === ' ' ? ' ' : characters[Math.floor(Math.random() * characters.length)]))
+                                    .join('');
+                            }, 50);
+
+                            setTimeout(() => {
+                                clearInterval(interval);
+                                element.textContent = originalText;
+                            }, 1000);
+                        };
+
+                        const observer = new MutationObserver((mutations) => {
+                            mutations.forEach((mutation) => {
+                                if (mutation.attributeName === 'class' && dynamicNav.classList.contains('case-study')) {
+                                    const wordsToAnimate = document.querySelectorAll('.n-client-name, .n-description, .n-services');
+                                    wordsToAnimate.forEach(word => decryptAnimation(word));
+                                }
+                            });
+                        });
+
+                        observer.observe(dynamicNav, { attributes: true });
+                    });
+                </script> -->
+                
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const navContainer = document.querySelector('.dynamic-nav-container');
+                const spans = navContainer.querySelectorAll('span');
+
+                const revealSpansRandomly = () => {
+                    const shuffledSpans = Array.from(spans).sort(() => Math.random() - 0.5);
+                    shuffledSpans.forEach((span, index) => {
+                        setTimeout(() => {
+                            span.style.opacity = 1;
+                            span.style.transform = 'translateY(0)';
+                        }, index * 30); // Adjust delay between spans
+                    });
+                };
+
+                const observer = new MutationObserver((mutations) => {
+                    mutations.forEach((mutation) => {
+                        if (mutation.target.classList.contains('open')) {
+                            revealSpansRandomly();
+                        }
+                    });
+                });
+
+                observer.observe(document.querySelector('.dynamic-nav'), {
+                    attributes: true,
+                    attributeFilter: ['class']
+                });
+
+                // Initial styles for spans
+                spans.forEach(span => {
+                    span.style.opacity = 0;
+                    span.style.transform = 'translateY(20px)';
+                    span.style.transition = 'opacity 0s ease, transform 0s ease';
+                });
+            });
+        </script>
+    </nav>
+
+    <div id="home-contact">
+        <h2>SUBMIT INQUIRY</h2>
+        <p>Please expect 24 hours for inquiry response.</p>
+        <form id="contact-form">
+            <label>Name*</label>
+            <input type="text" name="user_name">
+            <label>Email*</label>
+            <input type="email" name="user_email">
+            <label>Budget*</label>
+            <div class="dropdown">
+                <select name="budget" id="budget">
+                    <option value="10-20k">$10,000 - $20,000</option>
+                    <option value="20-50k">$20,000 - $50,000</option>
+                    <option value="50-100k">$50,000 - $100,000</option>
+                    <option value="100k-150k">$100,000 - $150,000</option>
+                    <option value="150k+">$150,000+</option>
+                </select>
+            </div>
+            <label>Message*</label>
+            <textarea name="message"></textarea>
+            <input class="form-button" type="submit" value="Submit" />
+            <div class="success">Sent! We'll be in touch soon.</div>
+        </form>
+        <div class="contact-close">
+            <img src="images/close.png" alt="close"></img>
+        </div>
+    </div>
+            
+    <section class="katalyst carousel-template down">
+        <div class="zoom-carousel">
+            <div class="slide">
+                <!-- <video preload="none" autoplay loop muted playsinline width="280"  data-src="https://player.vimeo.com/progressive_redirect/playback/901397062/rendition/1440p/file.mp4?loc=external&signature=bda080df1228e5abbb031659f86bfed5e97dd7cae734d382f6cc725ca6f81f23|video/mp4"></video> -->
+
+                <!-- <video preload="none" autoplay loop muted playsinline>
+                    <source type="video/mp4"src="https://player.vimeo.com/progressive_redirect/playback/891672128/rendition/540p/file.mp4?loc=external&signature=7e8b888f4dedb0771b96a01d53f42f1a4839d56335fa4d8bd026fa622bb9cf67">
+                </video> -->
+                <video preload="none" loading="lazy" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/891672128/rendition/540p/file.mp4?loc=external&signature=7e8b888f4dedb0771b96a01d53f42f1a4839d56335fa4d8bd026fa622bb9cf67|video/mp4"></video>  
+            </div>
+            <div class="slide">
+                <video preload="none" loading="lazy" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/891672145/rendition/720p/file.mp4?loc=external&signature=3784aba809bf09fb2777ea2f23fbdfcd2c61f0ec312ce5049d2265feed68a021|video/mp4"></video>
+            </div>  
+            <div class="slide">
+
+                <video preload="none" loading="lazy" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/891672056/rendition/720p/file.mp4?loc=external&signature=c95a0d5cdbb73fa3ffb943d8849bd5ff848adf62a1ddb4e0eabc1bebb1d80d6e|video/mp4"></video>
+
+            </div>
+            
+            <div class="slide" >
+                <img data-flickity-lazyload="images/work/katalyst/layout_cropped.jpg" loading="lazy">
+            </div>
+            <div class="slide">
+
+                <video preload="none" loading="lazy" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/891672163/rendition/1080p/file.mp4?loc=external&signature=374bc71ed2493bba1c8a10c215e5d0d1ad1c212851a5d98030c0d7cb5c378791|video/mp4"></video>
+            </div>
+            <div class="slide" >
+                <img data-flickity-lazyload="images/work/katalyst/mobile_screens.jpg">
+            </div>
+            <div class="slide">
+
+                <video preload="none" loading="lazy" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/891672098/rendition/720p/file.mp4?loc=external&signature=d0c461e4de12640c5d6f8a39b3f57c5f7482b3b6b356d8e68ec0251c0d2848d7|video/mp4"></video>
+            </div>
+            <div class="slide" >
+                <img data-flickity-lazyload="images/work/katalyst/katalyst_business_cards.jpg">
+            </div>
+            <div class="slide" >
+                <img  data-flickity-lazyload="images/work/katalyst/desktops.jpg">
+            </div>
+            <div class="slide">
+                <img  data-flickity-lazyload="images/work/katalyst/katalyst_billboard.jpg">
+            </div>
+        </div>
+        <div class="close-overlay"><img src="images/pixel_close.png"></div>
+    </section>
+    <section class="nike carousel-template down">
+        <div class="zoom-carousel">
+            <div class="slide">
+                <img class="lazy"  data-src="images/work/nike/nike_hp-1.png">
+            </div>
+            <div class="slide">
+                <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/891711891/rendition/720p/file.mp4?loc=external&signature=f1c7f8ac387907890a60fbde24b26898ae1e9526a5ec1fa24fb5781a4aeb7cdb|video/mp4"></video>
+
+            </div>
+            <div class="slide">
+                <img  class="lazy" data-src="images/work/nike/nike_hp-7.png">
+            </div>
+            <div class="slide">
+                <img  class="lazy" data-src="images/work/nike/nike_hp-2.png">
+            </div>
+            <div class="slide">
+                <img  class="lazy"  data-src="images/work/nike/nike_hp-4.png">
+            </div>
+            <div class="slide">
+                <img  class="lazy" data-src="images/work/nike/nike_hp-10.png">
+            </div>
+            <div class="slide">
+                <img  class="lazy" data-src="images/work/nike/nike_hp-9.png">
+            </div>
+        </div>
+        <div class="close-overlay"><img src="images/pixel_close.png"></div>
+    </section>
+    <section class="rco carousel-template down">
+        <div class="zoom-carousel">
+            <div class="slide" >
+                <img class="lazy" data-src="images/zoom/rco/hp1.jpg">
+            </div>
+            <div class="slide no-mobile">
+                <video preload="none" style="filter: saturate(1.1)" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/902531692/rendition/540p/file.mp4?loc=external&signature=fa77232163cb051c76e304eaec67293638889e49999ce3c20663f6e4e6d682fa|video/mp4"></video>
+            </div>
+            <div class="slide" >
+                <img class="lazy" data-src="images/zoom/rco/hp2.jpg">
+            </div>
+            
+            <div class="slide">
+
+                <video preload="none" style="filter: saturate(1.1)" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/902527813/rendition/540p/file.mp4?loc=external&signature=8f1576078574f62803fe45bdcf0b16e5a39338bb2862a91b4b7cafa021efba58|video/mp4"></video>
+
+            </div>
+            
+            <div class="slide">
+                <video preload="none" style="filter: saturate(1.1)" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/902527231/rendition/540p/file.mp4?loc=external&signature=7e4b01b9613b24f833e7448c90096bb55e1426eef046868e786d487e35f2a93d|video/mp4"></video>
+
+            </div>
+            <div class="slide no-mobile">
+
+                <video preload="none" style="filter: saturate(1.1)" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/902537176/rendition/720p/file.mp4?loc=external&signature=e3f4afec7fcfe8718d61d7a9673a21cafae4dd91650bbfc60a1c77f347bac43c|video/mp4"></video>
+            </div>
+        </div>
+        <div class="close-overlay"><img src="images/pixel_close.png"></div>
+    </section>
+    <section class="rsr carousel-template down">
+        <div class="zoom-carousel">
+            <div class="slide no-mobile">
+                <video preload="none" style="filter: saturate(1.13)" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/907283672/rendition/540p/file.mp4?loc=external&signature=87c507de344cb547088821b58f7b38b5962bda03d4ea57a8cfd690aa1bca93ab|video/mp4"></video>
+            </div>
+            
+            <div class="slide" >
+                <img class="lazy" data-src="images/zoom/readysetrocket/hp1.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" data-src="images/zoom/readysetrocket/hp2.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" data-src="images/zoom/readysetrocket/hp3.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" data-src="images/zoom/readysetrocket/hp4.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" data-src="images/zoom/readysetrocket/hp5.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" data-src="images/zoom/readysetrocket/hp6.jpg">
+            </div>
+        </div>
+        <div class="close-overlay"><img src="images/pixel_close.png"></div>
+    </section>
+    <section class="deem carousel-template down">
+        <div class="zoom-carousel">
+            <div class="slide" >
+                <img class="lazy"  data-src="images/zoom/deem/hp4.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy"data-src="images/zoom/deem/hp5.jpg">
+            </div>
+            <div class="slide no-mobile">
+                <video preload="none" style="filter: saturate(1.43)" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/902500974/rendition/1080p/file.mp4?loc=external&signature=893a45158d8601add4bade333fe3109d97c3dafce454f189f1dca78948338263|video/mp4"></video>
+            </div>
+            
+            <div class="slide" >
+                <img class="lazy" data-src="images/zoom/deem/hp7.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" data-src="images/zoom/deem/hp6.jpg">
+            </div>
+
+            <div class="slide" >
+                <img class="lazy" data-src="images/zoom/deem/hp1.jpg">
+            </div>
+            
+            <div class="slide" >
+                <img class="lazy" data-src="images/zoom/deem/hp3.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" data-src="images/zoom/deem/hp2.jpg">
+            </div>
+
+        </div>
+        <div class="close-overlay"><img src="images/pixel_close.png"></div>
+    </section>
+    <section class="bibi carousel-template down">
+        <div class="zoom-carousel">
+            <div class="slide" >
+                <img class="lazy" data-src="images/zoom/bibi/hp1.jpg">
+            </div>
+            
+            
+            <div class="slide">
+                <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/901030801/rendition/540p/file.mp4?loc=external&signature=6a2ceff0de4da5755e42228f210f8a92255f00bfef975430e816ee1990d2c79e|video/mp4"></video>
+            </div>
+            <div class="slide">
+                <img class="lazy" data-src="images/zoom/bibi/hp4.jpg">
+            </div>
+            <div class="slide">
+                <img class="lazy"  data-src="images/zoom/bibi/hp3.jpg">
+            </div>
+            <div class="slide">
+                <img class="lazy" data-src="images/zoom/bibi/hp9.jpg">
+            </div>
+           
+            <div class="slide">
+                <img class="lazy"  data-src="images/zoom/bibi/hp6.jpg">
+            </div>
+            <div class="slide">
+                <img class="lazy" data-src="images/zoom/bibi/hp8.jpg">
+            </div>
+            <div class="slide">
+                <img class="lazy"  data-src="images/zoom/bibi/hp7.jpg">
+            </div>
+            <div class="slide">
+                <img class="lazy"  data-src="images/zoom/bibi/hp2.jpg">
+            </div>
+            <div class="slide">
+                <img class="lazy"  data-src="images/zoom/bibi/hp5.jpg">
+            </div>
+
+        </div>
+        <div class="close-overlay"><img src="images/pixel_close.png"></div>
+    </section>
+    <section class="shoprite carousel-template down">
+        <div class="zoom-carousel">
+            <div class="slide" >
+                <img class="lazy"data-src="images/zoom/shoprite/hp4.jpg">
+            </div>
+            <div class="slide">
+                <video preload="none" style="filter: saturate(1.13)" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/907304159/rendition/1080p/file.mp4?loc=external&signature=4ab6cfd4ae20b0502b327344586d286cccd47cb1c8d6d62fe006e6bbe42db14b|video/mp4"></video>
+            </div>
+            
+            <div class="slide" >
+                <img class="lazy" data-src="images/zoom/shoprite/hp5.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" data-src="images/zoom/shoprite/hp6.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" data-src="images/zoom/shoprite/hp7.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" data-src="images/zoom/shoprite/hp2.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" data-src="images/zoom/shoprite/hp3.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" data-src="images/zoom/shoprite/hp1.jpg">
+            </div>
+        </div>
+        <div class="close-overlay"><img src="images/pixel_close.png"></div>
+    </section>
+    <section class="muir carousel-template down">
+        <div class="zoom-carousel">
+            <div class="slide" >
+                <img class="lazy" loading="lazy"  data-src="images/zoom/muir_dao/hp1.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/muir_dao/hp2.jpg">
+            </div>
+            
+            <div class="slide" >
+                <img class="lazy" loading="lazy"  data-src="images/zoom/muir_dao/hp4.jpg">
+            </div>
+            
+            <div class="slide">
+                <!-- <video preload="none" autoplay loop muted playsinline width="560">
+                    <source type="video/mp4" 
+                    src="https://player.vimeo.com/progressive_redirect/playback/891871218/rendition/720p/file.mp4?loc=external&signature=f7634723feb1a2e4695b93940096a7ad2996bbe91150fb95361b984ee8c6b291">
+                </video> -->
+                <video preload="none" style="filter: saturate(1.1)"autoplay loop muted playsinline  data-src="https://player.vimeo.com/progressive_redirect/playback/891871218/rendition/540p/file.mp4?loc=external&signature=401471ffb0f2777deeb21602da90832790d29392f0b64ac9e7fda8f33884815e|video/mp4"></video>
+
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy"  data-src="images/zoom/muir_dao/hp6.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy"  data-src="images/zoom/muir_dao/hp7.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/muir_dao/hp8.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy"  data-src="images/zoom/muir_dao/hp3.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/muir_dao/hp11.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/muir_dao/hp10.jpg">
+            </div>
+            
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/muir_dao/hp5.jpg">
+            </div>
+            
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/muir_dao/hp9.jpg">
+            </div>
+        </div>
+        <div class="close-overlay"><img src="images/pixel_close.png"></div>
+    </section>
+    <section class="bmt carousel-template down">
+        <div class="zoom-carousel">
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/betterment/hp1.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy"  data-src="images/zoom/betterment/hp2.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy"  data-src="images/zoom/betterment/hp6.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy"  data-src="images/zoom/betterment/hp3.jpg">
+            </div>
+            
+            <div class="slide" >
+                <img class="lazy" loading="lazy"  data-src="images/zoom/betterment/hp4.jpg">
+            </div>
+            
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/betterment/hp5.jpg">
+            </div>
+        </div>
+        <div class="close-overlay"><img src="images/pixel_close.png"></div>
+    </section>
+    <section class="cns carousel-template down">
+        <div class="zoom-carousel">
+            <div class="slide no-mobile">
+                <!-- <video preload="none" autoplay loop muted playsinline width="498" preload="auto">
+                    <source src="https://player.vimeo.com/progressive_redirect/playback/901394930/rendition/1080p/file.mp4?loc=external&signature=02286172cdc2c2afb78c40880865e99ec2a7e9c1c84abb29949b22e53ee26b82" type ="video/mp4" >
+                </video> -->
+                <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/901394930/rendition/1080p/file.mp4?loc=external&signature=02286172cdc2c2afb78c40880865e99ec2a7e9c1c84abb29949b22e53ee26b82|video/mp4"></video>
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy"  data-src="images/zoom/cns/hp4.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/cns/hp5.jpg">
+            </div>
+            <div class="slide no-mobile">
+                <video preload="none" autoplay loop muted playsinline  data-src="https://player.vimeo.com/progressive_redirect/playback/901397062/rendition/1440p/file.mp4?loc=external&signature=bda080df1228e5abbb031659f86bfed5e97dd7cae734d382f6cc725ca6f81f23|video/mp4"></video>
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy"  data-src="images/zoom/cns/hp1.jpg">
+            </div>
+            <div class="slide">
+                <img class="lazy" loading="lazy" data-src="images/zoom/cns/hp3.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/cns/hp2.jpg">
+            </div>
+            <div class="slide ">
+                <!-- <video preload="none" autoplay loop muted playsinline width="350">
+                    <source src="https://player.vimeo.com/progressive_redirect/playback/901397185/rendition/1080p/file.mp4?loc=external&signature=b2c2eea7be003de445c223d41b2ec39f7d57b777a48b932b070dc1dac7478ee3" type="video/mp4">
+                </video> -->
+                <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/901397185/rendition/540p/file.mp4?loc=external&signature=ebbbefb2b067a297f68b9599a1d6288a474d3739239fce887528ec582d7372da|video/mp4"></video>
+            </div>
+        </div>
+        <div class="close-overlay"><img src="images/pixel_close.png"></div>
+    </section>
+    <section class="ambush carousel-template down">
+        <div class="zoom-carousel">
+            <div class="slide">
+                <img class="lazy"  loading="lazy"  data-src="images/zoom/ambush/hp4.jpg">
+            </div>
+            <div class="slide">
+                <img loading="lazy" class="lazy" data-src="images/zoom/ambush/hp3.jpg">
+            </div>
+            <div class="slide">
+                <img  class="lazy" loading="lazy"   data-src="images/zoom/ambush/hp2.jpg">
+            </div>
+            
+            
+            <div class="slide">
+                <img  class="lazy" loading="lazy"  data-src="images/zoom/ambush/hp6.jpg">
+            </div>
+            
+        
+            <div class="slide">
+                <img  class="lazy" loading="lazy"  data-src="images/zoom/ambush/hp7.jpg">
+            </div>
+
+            <div class="slide">
+                <img  class="lazy"loading="lazy"   data-src="images/zoom/ambush/hp5.jpg">
+            </div>
+        </div>
+        <div class="close-overlay"><img src="images/pixel_close.png"></div>
+    </section>
+    <section class="caddy carousel-template down">
+        <div class="zoom-carousel">
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/caddy/hp1.jpg">
+            </div>
+            
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/caddy/hp2.jpg">
+            </div>
+            <div class="slide">
+                <video preload="none" style="filter: saturate(1.17)"  autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/901366225/rendition/720p/file.mp4?loc=external&signature=da0335a087dfa719ee54bb434ae1c0871957869d5ebc48a569260b50dddb2223|video/mp4"></video>
+            </div>
+            <div class="slide">
+
+                <video preload="none" style="filter: saturate(1.17)"  autoplay loop muted playsinline  data-src="https://player.vimeo.com/progressive_redirect/playback/901384995/rendition/1080p/file.mp4?loc=external&signature=bcf63f153f1c8c35f1f99f4e4c1b654941c79aad52566875cfbfc3192e799ad8|video/mp4"></video>
+
+            </div>
+            <div class="slide no-mobile">
+                <video preload="none" style="filter: saturate(1.17)"  autoplay loop muted playsinline  data-src="https://player.vimeo.com/progressive_redirect/playback/901387131/rendition/1080p/file.mp4?loc=external&signature=8a2aeb008a85b4f34c95b3d121ce8d0f0c3783f2ee0e892ec9de41bf7d614695|video/mp4"></video>
+
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/caddy/hp4.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/caddy/hp3.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/caddy/hp5.jpg">
+            </div>
+        </div>
+        <div class="close-overlay"><img src="images/pixel_close.png"></div>
+    </section>
+    <section class="inhouse carousel-template down">
+        <div class="zoom-carousel">
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/inhouse/hp6.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/inhouse/hp3.jpg">
+            </div>
+            <div class="slide">
+
+                <video class="no-mobile" preload="none" style="filter: saturate(1.2)" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/904681864/rendition/540p/file.mp4?loc=external&signature=4da7f51936a0f35c4024d061142d8f53492a39ed6d18ee10245f5d1e55164555|video/mp4"></video>
+            </div>
+           
+
+            <div class="slide" >
+                <img class="lazy"  loading="lazy" data-src="images/zoom/inhouse/hp1.jpg">
+            </div>
+           
+            
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/inhouse/hp2.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/inhouse/hp4.jpg">
+            </div>
+           
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/inhouse/hp5.jpg">
+            </div>
+        </div>
+        <div class="close-overlay"><img src="images/pixel_close.png"></div>
+    </section>
+    <section class="wish carousel-template down">
+        <div class="zoom-carousel">
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/wish/hp1.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" style="filter: saturate(1.2)" data-src="images/zoom/wish/hp2.jpg">
+            </div>
+            <div class="slide no-mobile">
+                <video preload="none" autoplay loop muted playsinline style="filter: saturate(1.3)" data-src="https://player.vimeo.com/progressive_redirect/playback/901435304/rendition/1080p/file.mp4?loc=external&signature=ee8e90c956882bb91d619befe64d58b203b06f0f01d3b1bb23da9101cfb4de88|video/mp4"></video>
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/wish/hp3.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/wish/hp5.jpg">
+            </div>
+            <div class="slide">
+                <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/901437347/rendition/1080p/file.mp4?loc=external&signature=5681fd2d35cb7a1290ae3c8499fad8aa078772ebd24b403630bd15d0a10b999a|video/mp4"></video>
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/wish/hp4.jpg">
+            </div>
+        </div>
+        <div class="close-overlay"><img src="images/pixel_close.png"></div>
+    </section>
+    <section class="current carousel-template down">
+        <div class="zoom-carousel">
+            <div class="slide">
+                <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/901478859/rendition/540p/file.mp4?loc=external&signature=27d416adcbec8a34d7bece9caf2a689430c7fc55234268c05a094542016655db|video/mp4"></video>
+            </div>
+            <div class="slide">
+
+                <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/901478835/rendition/540p/file.mp4?loc=external&signature=d86bd74d32a125eef2af86a48e6cd0c656487771f6697bc8f8cc7e06652bfe2b|video/mp4"></video>
+            </div>
+            
+            <div class="slide no-mobile">
+
+                <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/901481907/rendition/720p/file.mp4?loc=external&signature=149c1a3c8cdbff06164ffafb5c2178486e79a5b49076c1de7237039efe7e0173|video/mp4"></video>
+            </div>
+            <div class="slide no-mobile">
+
+                <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/901487210/rendition/720p/file.mp4?loc=external&signature=e1e4ca78937d129b458750797752214b2b758d1e0d06be8e4e7381f097e811be|video/mp4"></video>
+            </div>
+            <div class="slide">
+                <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/901479067/rendition/540p/file.mp4?loc=external&signature=50bbdaa6c522dbca9f328ec73fedc1b7028b34064b5eac29b993a8bb80f22a8f|video/mp4"></video>
+            </div>
+            <div class="slide no-mobile">
+                <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/901482336/rendition/720p/file.mp4?loc=external&signature=976fccd99970f6923641daeca907205c43f345afd02d6cb79981cb0a63ab09ee|video/mp4"></video>
+            </div>
+        </div>
+        <div class="close-overlay"><img src="images/pixel_close.png"></div>
+    </section>
+    <section class="celtics carousel-template down">
+        <div class="zoom-carousel">
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/celtics/hp1.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/celtics/hp4.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/celtics/hp5.jpg">
+            </div>
+            <div class="slide">
+
+                <video preload="none" style="filter: saturate(1.43)" autoplay loop muted playsinline width="412" data-src="https://player.vimeo.com/progressive_redirect/playback/902467800/rendition/540p/file.mp4?loc=external&signature=c4877491138a3fa4f0c5fbe6c8d38ce430ad34e5d88b728143415a37f599161a|video/mp4"></video>
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/celtics/hp6.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/celtics/hp3.jpg">
+            </div>
+            <!-- <div class="slide" >
+                <img style="width: 380px;" src="images/work/celtics/hp2.jpg">
+            </div> -->
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/celtics/hp7.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/celtics/hp8.jpg">
+            </div>
+        </div>
+        <div class="close-overlay"><img src="images/pixel_close.png"></div>
+    </section>
+    <section class="kaie carousel-template down">
+        <div class="zoom-carousel">
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/kaie/hp5.jpg">
+            </div>
+            <div class="slide">
+
+                <video preload="none" style="filter: saturate(1.15)" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/902514098/rendition/540p/file.mp4?loc=external&signature=aa8da16ff82ded2d3f15fbd4e5d248654c7159f0b92822b3831529bb4f3565bb|video/mp4"></video>
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/kaie/hp2.jpg">
+            </div>
+            
+            <!-- <div class="slide" >
+                <img style="width: 434px;" src="images/work/kaie/hp3.jpg">
+            </div> -->
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/kaie/hp6.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/kaie/hp4.jpg">
+            </div>
+            
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/kaie/hp8.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/kaie/hp7.jpg">
+            </div>
+            
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/kaie/hp9.jpg">
+            </div>
+        </div>
+        <div class="close-overlay"><img src="images/pixel_close.png"></div>
+    </section>
+    <section class="wyndham carousel-template down">
+        <div class="zoom-carousel">
+            <div class="slide">
+                <video preload="none" style="filter: saturate(1.15)" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/902520952/rendition/540p/file.mp4?loc=external&signature=bb6ff64b3a0cab39cd10d7c1768f198e2bb93981ef043ea642aef36e8654229e|video/mp4"></video>
+            </div>
+
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/wyndham/hp1.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/wyndham/hp2.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/wyndham/hp3.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/wyndham/hp4.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/wyndham/hp5.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/wyndham/hp6.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/wyndham/hp7.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/wyndham/hp8.jpg">
+            </div>
+        </div>
+        <div class="close-overlay"><img src="images/pixel_close.png"></div>
+    </section>
+    <section class="fekkai carousel-template down">
+        <div class="zoom-carousel">
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/fekkai/hp3.jpg">
+            </div>
+            <div class="slide">
+                <video class="no-mobile" preload="none" style="filter: saturate(1.15)" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/904692750/rendition/540p/file.mp4?loc=external&signature=f71c9fb67740c11b29f3bbcf432357bec2c32355990d796b4efb9b322550e81b|video/mp4"></video>
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/fekkai/hp1.jpg">
+            </div>
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/fekkai/hp6.jpg">
+            </div>
+            
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/fekkai/hp4.jpg">
+            </div>
+            
+            <div class="slide">
+                <video class="no-mobile" preload="none" style="filter: saturate(1.15)" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/904692763/rendition/540p/file.mp4?loc=external&signature=f5348a2fc1fe8c05b03c916cb439ff0020f09b723cc223ae162300284e96146e|video/mp4"></video>
+            </div>
+           
+            <div class="slide" >
+                <img class="lazy" loading="lazy" data-src="images/zoom/fekkai/hp5.jpg">
+            </div>
+            <div class="slide">
+                <video preload="none" style="filter: saturate(1.15)" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/904692757/rendition/540p/file.mp4?loc=external&signature=a1e31a947869616f2b28bcb3a893502ca6fdaf1ff7dbae83da3d8949f3dc777c|video/mp4"></video>
+            </div>
+        </div>
+        <div class="close-overlay"><img src="images/pixel_close.png"></div>
+    </section>
+    <section class="cns2 carousel-template down">
+        <div class="zoom-carousel">
+            <div class="slide">
+                <img class="lazy" loading="lazy" data-src="images/zoom/cns2/hp1.jpg">
+            </div>
+            <div class="slide">
+                <img class="lazy" loading="lazy" data-src="images/zoom/cns2/hp2.jpg">
+            </div>
+            <div class="slide">
+                <img class="lazy" loading="lazy" data-src="images/zoom/cns2/hp3.jpg">
+            </div>
+            <div class="slide">
+                <img class="lazy" loading="lazy" data-src="images/zoom/cns2/hp4.jpg">
+            </div>
+            <div class="slide">
+                <img class="lazy" loading="lazy" data-src="images/zoom/cns2/hp5.jpg">
+            </div>
+            <div class="slide">
+                <img class="lazy" loading="lazy" data-src="images/zoom/cns2/hp6.jpg">
+            </div>
+            <div class="slide">
+                <img class="lazy" loading="lazy" data-src="images/zoom/cns2/hp7.jpg">
+            </div>
+        </div>
+        <div class="close-overlay"><img src="images/pixel_close.png"></div>
+    </section>
+    <section class="red carousel-template down">
+        <div class="zoom-carousel">
+            <div class="slide">
+                <img class="lazy" loading="lazy" data-src="images/zoom/red/hp1.jpg">
+            </div>
+            <div class="slide">
+                <video class="no-mobile" preload="none" style="filter: saturate(1.15)" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/907322753/rendition/540p/file.mp4?loc=external&signature=f8f993509504b7c28f38dab1ce76693fe3c1009fc755cf878e1d35f4d57bb8ef|video/mp4"></video>
+            </div>
+            <div class="slide">
+                <img class="lazy" loading="lazy" data-src="images/zoom/red/hp2.jpg">
+            </div>
+            <div class="slide">
+                <img class="lazy" loading="lazy" data-src="images/zoom/red/hp3.jpg">
+            </div>
+            <div class="slide">
+                <img class="lazy" loading="lazy" data-src="images/zoom/red/hp4.jpg">
+            </div>
+            <div class="slide">
+                <img class="lazy" loading="lazy" data-src="images/zoom/red/hp5.jpg">
+            </div>
+            <div class="slide">
+                <img class="lazy" loading="lazy" data-src="images/zoom/red/hp6.jpg">
+            </div>
+        </div>
+        <div class="close-overlay"><img src="images/pixel_close.png"></div>
+    </section>
+    <section class="red carousel-template down">
+        <div class="zoom-carousel">
+            <div class="slide">
+                <img class="lazy" loading="lazy" data-src="images/zoom/red/hp1.jpg">
+            </div>
+            <div class="slide">
+                <video class="no-mobile" preload="none" style="filter: saturate(1.15)" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/907322753/rendition/540p/file.mp4?loc=external&signature=f8f993509504b7c28f38dab1ce76693fe3c1009fc755cf878e1d35f4d57bb8ef|video/mp4"></video>
+            </div>
+            <div class="slide">
+                <img class="lazy" loading="lazy" data-src="images/zoom/red/hp2.jpg">
+            </div>
+            <div class="slide">
+                <img class="lazy" loading="lazy" data-src="images/zoom/red/hp3.jpg">
+            </div>
+            <div class="slide">
+                <img class="lazy" loading="lazy" data-src="images/zoom/red/hp4.jpg">
+            </div>
+            <div class="slide">
+                <img class="lazy" loading="lazy" data-src="images/zoom/red/hp5.jpg">
+            </div>
+            <div class="slide">
+                <img class="lazy" loading="lazy" data-src="images/zoom/red/hp6.jpg">
+            </div>
+        </div>
+        <div class="close-overlay"><img src="images/pixel_close.png"></div>
+    </section>
+    <section class="deno carousel-template down">
+        <div class="zoom-carousel">
+            <div class="slide">
+                <img  class="lazy" loading="lazy" data-src="images/zoom/deno/hp1.jpg">
+            </div>
+            <div class="slide no-mobile">
+                <!-- <video preload="none" autoplay loop muted playsinline width="497">
+                    <source type="video/mp4" 
+                    data-src="https://player.vimeo.com/progressive_redirect/playback/892101327/rendition/720p/file.mp4?loc=external&signature=d40ca0147b3b51284266bf52282d59d4bca4d9cb1d844b21b1058b9284f84512">
+                </video> -->
+                <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/892101327/rendition/720p/file.mp4?loc=external&signature=d40ca0147b3b51284266bf52282d59d4bca4d9cb1d844b21b1058b9284f84512|video/mp4"></video>
+            </div>
+            
+            <div class="slide">
+                <img  class="lazy" loading="lazy" data-src="images/zoom/deno/hp3.jpg">
+            </div>
+            <div class="slide">
+                <img  class="lazy" loading="lazy" data-src="images/zoom/deno/hp2.jpg">
+            </div>
+            
+            <div class="slide no-mobile">
+
+                <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/892106590/rendition/540p/file.mp4?loc=external&signature=35ed27653079e678a97c6a50b9a6c5e048274b5f7616cbad20ef699cf644433b|video/mp4"></video>
+            </div>
+            
+            <div class="slide">
+                <img  class="lazy" loading="lazy" data-src="images/zoom/deno/hp4.jpg">
+            </div>
+    
+            <div class="slide">
+                <img  class="lazy" loading="lazy" data-src="images/zoom/deno/hp5.jpg">
+            </div>
+            
+            <div class="slide">
+                <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/892101315/rendition/720p/file.mp4?loc=external&signature=a5a89ccaa7bda5eb2ca85fbd26d52cf85f8f733855ebab54f0fdb13f439eceff|video/mp4"></video>
+            </div>
+            <div class="slide">
+                <img  class="lazy" loading="lazy" data-src="images/zoom/deno/hp7.jpg">
+            </div>
+            <div class="slide">
+                <img  class="lazy" loading="lazy" data-src="images/zoom/deno/hp6.jpg">
+            </div>
+        </div>
+        <div class="close-overlay"><img src="images/pixel_close.png"></div>
+    </section>
+
+<!-- end of zoom carousel -->
+
+        <div id="hero-hero">
+            <div class="number-decor">
+                <ul class="top">
+                    <li>01</li>
+                    <li>02</li>
+                    <li>03</li>
+                    <li>04</li>
+                    <li>05</li>
+                </ul>
+                <ul class="bottom">
+                    <li>01</li>
+                    <li>02</li>
+                    <li>03</li>
+                    <li>04</li>
+                    <li>05</li>
+                </ul>
+            </div>
+            <div class="hero-info">
+                <ul>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const animateText = (selector) => {
+                                const container = document.querySelector(selector);
+                                if (!container) return;
+
+                                const listItems = Array.from(container.querySelectorAll('li'));
+                                let currentIndex = 0;
+
+                                // Ensure text is hidden initially
+                                listItems.forEach(item => {
+                                    const words = item.textContent.split(' ').map(word => {
+                                        const span = document.createElement('span');
+                                        span.textContent = word + ' ';
+                                        span.style.opacity = 0;
+                                        span.style.visibility = 'hidden'; // Hide text to prevent flash
+                                        return span;
+                                    });
+                                    item.innerHTML = '';
+                                    words.forEach(wordSpan => item.appendChild(wordSpan));
+                                });
+
+                                const showNextWord = () => {
+                                    if (currentIndex < listItems.length) {
+                                        const words = Array.from(listItems[currentIndex].querySelectorAll('span'));
+                                        const randomOrder = words.map((_, i) => i).sort(() => Math.random() - 0.5);
+                                        let wordIndex = 0;
+
+                                        const revealWord = () => {
+                                            if (wordIndex < randomOrder.length) {
+                                                const word = words[randomOrder[wordIndex]];
+                                                word.style.visibility = 'visible'; // Make text visible when animating
+                                                word.style.opacity = 1;
+                                                wordIndex++;
+                                                setTimeout(revealWord, 100); // Adjust delay between words
+                                            } else {
+                                                currentIndex++;
+                                                setTimeout(showNextWord, 0); // Adjust delay between lines
+                                            }
+                                        };
+
+                                        revealWord();
+                                    }
+                                };
+
+                                showNextWord();
+                            };
+
+                            // Call the function for the desired container
+                            animateText('.hero-info ul');
+                            animateText('.d-nav-case-study');
+
+                            // Observe for class changes on .dynamic-nav
+                            const dynamicNav = document.querySelector('.dynamic-nav');
+                            if (dynamicNav) {
+                                const observer = new MutationObserver((mutations) => {
+                                    mutations.forEach((mutation) => {
+                                        if (mutation.attributeName === 'class' && dynamicNav.classList.contains('case-study')) {
+                                           
+                                            animateText('.d-nav-case-study .n-description');
+                                            console.log('run')
+                                        }
+                                    });
+                                });
+
+                                observer.observe(dynamicNav, { attributes: true });
+                            }
+                        });
+                    
+                    </script>
+                    <li><span>A Digital Innovation </span><span>& </span><span>Creative Lab</span></li>
+                    <li><span>Beauty Grounded in </span><span>Strategy, Functionality </span><span>and </span><span>Product-Market Fit.</span></li>
+                    <li><span>info@jaeyoon.studio</span></li>
+                </ul>
+            </div>
+            <div class="hero-hero-container">
+                <script>
+                    
+                </script>
+                <div class="type-container">
+                    <div class="top">
+                        <span class="t-one decrypt" data-text="JY.S"></span>
+                        <span class="t-two decrypt" data-text="2025"></span>
+                        <span class="t-three blinking-span">:</span>
+                        <span class="t-four decrypt" data-text="INT'L."></span>
+                        <span class="t-five decrypt" data-text="DSGN"></span>
+                    </div>
+                    <div class="bottom">
+                        <span class="t-one decrypt" data-text="UX/"></span>
+                        <span class="t-two decrypt" data-text="BRAND"></span>
+                        <span class="t-three decrypt" data-text="MOTION"></span>
+                    </div>
+                    
+                </div>
+                
+                <script>
+                    function LoadingDecrypt() {
+                        const decryptElements = document.querySelectorAll('.decrypt');
+                        decryptElements.forEach(el => {
+                            const text = el.getAttribute('data-text');
+                            let decryptedText = '';
+                            let i = 0;
+                            const randomIndices = Array.from({ length: text.length }, (_, index) => index).sort(() => Math.random() - 0.5);
+                            const interval = setInterval(() => {
+                                const randomChar = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+                                decryptedText += randomChar;
+                                el.textContent = decryptedText;
+                                i++;
+                                if (i >= text.length) {
+                                    clearInterval(interval);
+                                    randomIndices.forEach((index, j) => {
+                                        setTimeout(() => {
+                                            decryptedText = decryptedText.substring(0, index) + text[index] + decryptedText.substring(index + 1);
+                                            el.textContent = decryptedText;
+                                        }, j * 100);
+                                    });
+                                }
+                            }, 100);
+                        });
+                    }
+
+                    document.addEventListener('DOMContentLoaded', LoadingDecrypt);
+
+                    
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const spans = document.querySelectorAll('.type-container span:not(.t-three)');
+                        const originalTexts = Array.from(spans).map(span => span.getAttribute('data-text'));
+
+                        setInterval(() => {
+                            spans.forEach((span, index) => {
+                                if (span.textContent !== originalTexts[index]) {
+                                    span.textContent = originalTexts[index];
+                                }
+                            });
+                        }, 5000);
+                    });
+
+                    let isAnimating = false;
+                    function animateDecrypt() {
+                        setInterval(() => {
+                            if (isAnimating) {
+                                isAnimating = false; // Reset isAnimating to allow the next loop
+                                return; // Skip this loop
+                            }
+                            isAnimating = true;
+
+                            const typeContainer = document.querySelector('.type-container');
+                            const spans = typeContainer.querySelectorAll('span');
+                            const randomSpan = spans[Math.floor(Math.random() * spans.length)];
+                            const originalText = randomSpan.getAttribute('data-text');
+                            let decryptedText = '';
+                            let i = 0;
+                            const randomIndices = Array.from({ length: originalText.length }, (_, index) => index).sort(() => Math.random() - 0.5);
+                            const interval = setInterval(() => {
+                                const randomChar = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+                                decryptedText += randomChar;
+                                randomSpan.textContent = decryptedText;
+                                i++;
+                                if (i >= originalText.length) {
+                                    clearInterval(interval);
+                                    randomIndices.forEach((index, j) => {
+                                        setTimeout(() => {
+                                            decryptedText = decryptedText.substring(0, index) + originalText[index] + decryptedText.substring(index + 1);
+                                            randomSpan.textContent = decryptedText;
+                                            if (j === randomIndices.length - 1) {
+                                                isAnimating = false; // Mark animation as done
+                                                randomSpan.textContent = originalText; // Ensure original text is restored
+                                                console.log("reset")
+                                            }
+                                        }, j * 100);
+                                    });
+                                }
+                            }, 50);
+                        }, 4000);
+                    }
+
+                    animateDecrypt(); // Call the function to start the animation
+
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const fonts = ['font2', 'font3', 'font4', 'font5', 'font7', 'font8', 'font11', 'font12', 'font13'];
+                        let isFontAnimating = false;
+                        let activeDecryptSpan = null; // Track the span being animated by animateDecrypt()
+
+                        setInterval(() => {
+                            if (isFontAnimating) return; // Skip if another animation is running
+                            isFontAnimating = true;
+
+                            const spans = document.querySelectorAll('.type-container span');
+                            if (spans.length > 0) {
+                                const eligibleSpans = Array.from(spans).filter(span => span !== activeDecryptSpan); // Exclude the active decrypt span
+                                if (eligibleSpans.length === 0) {
+                                    isFontAnimating = false; // No eligible spans, mark as done
+                                    return;
+                                }
+
+                                const randomSpan = eligibleSpans[Math.floor(Math.random() * eligibleSpans.length)];
+                                const originalText = randomSpan.textContent;
+                                const charArray = originalText.split('');
+                                const validIndices = charArray
+                                    .map((char, index) => (/[a-zA-Z]/.test(char) ? index : -1))
+                                    .filter(index => index !== -1);
+
+                                if (validIndices.length > 0) {
+                                    const randomIndex = validIndices[Math.floor(Math.random() * validIndices.length)];
+                                    const fontSequence = [
+                                        fonts[Math.floor(Math.random() * fonts.length)],
+                                        fonts[Math.floor(Math.random() * fonts.length)],
+                                        fonts[Math.floor(Math.random() * fonts.length)]
+                                    ];
+
+                                    const tempSpan = document.createElement('span');
+                                    tempSpan.textContent = charArray[randomIndex];
+
+                                    const applyFont = (font, duration, callback) => {
+                                        tempSpan.className = font;
+                                        charArray[randomIndex] = tempSpan.outerHTML;
+                                        randomSpan.innerHTML = charArray.join('');
+                                        setTimeout(callback, duration);
+                                    };
+
+                                    applyFont(fontSequence[0], 100, () => {
+                                        applyFont(fontSequence[1], 500, () => {
+                                            setTimeout(() => {
+                                                applyFont(fontSequence[2], 100, () => {
+                                                    randomSpan.textContent = originalText;
+                                                    isFontAnimating = false; // Mark animation as done
+                                                    if (randomSpan.textContent !== originalText) {
+                                                        randomSpan.textContent = originalText; // Reset to original text
+                                                    }
+                                                });
+                                            }, 0); // Ensure proper chaining
+                                        });
+                                    });
+                                } else {
+                                    isFontAnimating = false; // No valid indices, mark as done
+                                }
+                            } else {
+                                isFontAnimating = false; // No spans, mark as done
+                            }
+                        }, 2500); // Trigger every 4 seconds
+
+                        // Listen for animateDecrypt() to track the active span
+                        document.addEventListener('animateDecryptStart', (event) => {
+                            activeDecryptSpan = event.detail.span;
+                        });
+
+                        document.addEventListener('animateDecryptEnd', () => {
+                            activeDecryptSpan = null;
+                        });
+                  
+                    });
+
+                    
+                </script>
+                
+            
+            
+        </div>
+
+
+        
+        <div class="circle-container">
+            <script>
+                document.addEventListener('mousemove', (event) => {
+                    const circleContainer = document.querySelector('.circle-container');
+                    const mouseX = event.clientX;
+                    const mouseY = event.clientY;
+                    const windowWidth = window.innerWidth;
+                    const windowHeight = window.innerHeight;
+
+                    const offsetX = (mouseX / windowWidth - 0.5) * 40; // Adjust the multiplier for more or less movement
+                    const offsetY = (mouseY / windowHeight - 0.5) * 40;
+
+                    circleContainer.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+                });
+            </script>
+            <div class="circle blink"></div>
+            <div class="circle blink"></div>
+            <div class="circle blink"></div>
+            <div class="circle blink"></div>
+            <div class="circle blink"></div>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const circles = document.querySelectorAll('.circle');
+                circles.forEach(circle => {
+                    circle.classList.toggle('active');
+                });
+                setInterval(() => {
+                    circles.forEach(circle => {
+                        circle.classList.toggle('active');
+                    });
+                }, 5000);
+
+            });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+            const circles = document.querySelectorAll('.circle');
+            circles.forEach((circle, index) => {
+                setTimeout(() => {
+                circle.classList.add('blink');
+                setTimeout(() => {
+                    circle.classList.remove('blink');
+                }, 500);
+                }, index * 100);
+            });
+            setInterval(() => {
+                circles.forEach((circle, index) => {
+                setTimeout(() => {
+                    circle.classList.add('blink');
+                    setTimeout(() => {
+                    circle.classList.remove('blink');
+                    }, 500);
+                }, index * 100);
+                });
+            }, 4000);
+            });
+        </script>
+        <style>
+            .circle.blink {
+                opacity: 0 !important;
+            }
+        </style>
+        </div>
+
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const carouselRows = document.querySelectorAll('.carousels-container .carousel-row');
+            carouselRows.forEach((row, index) => {
+                const nNumberElement = row.querySelector('.n-number');
+                if (nNumberElement) {
+                    nNumberElement.textContent = String(index + 1).padStart(3, '0');
+                }
+            });
+
+            carouselRows.forEach((row, index) => {
+                const slides = row.querySelectorAll('.slide');
+                slides.forEach(slide => {
+                    slide.setAttribute('data-index', `[ ${String(index + 1).padStart(3, '0')} ]`);
+                });
+            });
+
+            const style = document.createElement('style');
+            style.textContent = `
+                .slide::before {
+                    content: attr(data-index);
+
+                }
+            `;
+            document.head.appendChild(style);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const carouselRows = document.querySelectorAll('.carousel-row');
+
+            carouselRows.forEach(row => {
+                const slides = row.querySelectorAll('.slide');
+                slides.forEach((slide, index) => {
+                    const nthLetter = String.fromCharCode(65 + index); // Convert index to letter (A, B, C, etc.)
+                    slide.setAttribute('data-after', nthLetter);
+                });
+            });
+
+            const style = document.createElement('style');
+            style.textContent = `
+                .slide::after {
+                    content: attr(data-after);
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+
+    <div id="home-work-carousels">
+        <div class="carousels-container">
+            <!-- <script>
+               
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const carouselRows = document.querySelectorAll('.carousel-row');
+
+                        const observer = new IntersectionObserver((entries) => {
+                            entries.forEach((entry) => {
+                                if (entry.isIntersecting || Math.abs(entry.boundingClientRect.top) <= 1000) {
+                                    entry.target.style.visibility = 'visible';
+                                    entry.target.style.opacity = '1';
+                               
+                                    
+                                   
+                                } else {
+                                    entry.target.style.visibility = 'hidden';
+                                    entry.target.style.opacity = '0';
+                                  
+                                }
+                            });
+                        }, {
+                            root: null,
+                            rootMargin: '1000px',
+                            threshold: 0 // Trigger as soon as it enters the viewport
+                        });
+
+                        const updateVisibility = () => {
+                            carouselRows.forEach((row) => {
+                                observer.observe(row);
+                            });
+                        };
+
+                        window.addEventListener('scroll', updateVisibility);
+                        updateVisibility();
+                    });
+                </script> -->
+            </script>
+            <div class="carousel-row load-overlay" data-file="work/nike-maxs-lab.html">
+                <div class="carousel-row-container">
+                    <div class="n-info-container">
+                        <div class="n-client-info">
+                            <div class="n-number"></div>
+                            <h3 class="n-client-name">Nike</h3>
+                        </div>
+                        <div class="n-client-project-info">
+                            <p class="n-description">Crafting a Brand Identity and Design System for New AI Startup.</p>
+                            <div class="n-info-right">
+                                <span class="n-year">/ 2023</span>
+                                <div class="n-services">Visual Design, Web Design, UX</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-row-slider load-overlay" data-file="work/nike-maxs-lab.html">
+                    <div class="carousel-slider slideshow js-slideshow n-lowpoly">
+                        
+                        <div class="slide">
+                            <video preload="none" autoplay loop muted playsinline width="520" data-src="https://player.vimeo.com/progressive_redirect/playback/891672128/rendition/540p/file.mp4?loc=external&signature=7e8b888f4dedb0771b96a01d53f42f1a4839d56335fa4d8bd026fa622bb9cf67|video/mp4"></video>
+                            <!-- <video preload="none" autoplay loop muted playsinline width="520">
+                                <source type="video/mp4"src="https://player.vimeo.com/progressive_redirect/playback/891672128/rendition/1080p/file.mp4?loc=external&signature=a4579de953fad6fa3e95a357b3727bf819b51596fff89d2347ea7eb442ab2257">
+                            </video> -->
+                        </div>
+                        
+                        <div class="slide">
+                            <video preload="none" autoplay loop muted playsinline width="220" data-src="https://player.vimeo.com/progressive_redirect/playback/891672145/rendition/540p/file.mp4?loc=external&signature=e8a8084f38b881cb0d5f9492fa0a8d30da2c18ed79c7af214966e87413d1161e|video/mp4"></video>
+
+                        </div>  
+                        <div class="slide-block"></div>
+                        <div class="slide no-mobile">
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="420" data-src="https://player.vimeo.com/progressive_redirect/playback/891672056/rendition/720p/file.mp4?loc=external&signature=c95a0d5cdbb73fa3ffb943d8849bd5ff848adf62a1ddb4e0eabc1bebb1d80d6e|video/mp4"></video>
+
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 250px;" data-src="images/work/katalyst/layout_cropped.jpg">
+                        </div>
+                        <div class="slide">
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="520" data-src="https://player.vimeo.com/progressive_redirect/playback/891672163/rendition/540p/file.mp4?loc=external&signature=a312ca11616da74bbf660912fda147d7b22a3185d86c31c27486ae7dcdd4c911|video/mp4"></video>
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 480px;" data-src="images/work/katalyst/mobile_screens.jpg">
+                        </div>
+                        <div class="slide no-mobile">
+                            <video preload="none" autoplay loop muted playsinline width="320" data-src="https://player.vimeo.com/progressive_redirect/playback/891672098/rendition/720p/file.mp4?loc=external&signature=d0c461e4de12640c5d6f8a39b3f57c5f7482b3b6b356d8e68ec0251c0d2848d7|video/mp4"></video>
+
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 420px;" data-src="images/work/katalyst/katalyst_business_cards.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 420px;" data-src="images/work/katalyst/desktops.jpg">
+                        </div>
+                        <div class="slide">
+                            <img class="lazy" style="width: 420px;" data-src="images/work/katalyst/katalyst_billboard_.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-row load-overlay" data-file="work/nike-air-max-day.html">
+                <div class="carousel-row-container">
+                    <div class="n-info-container">
+                        <div class="n-client-info">
+                            <div class="n-number"></div>
+                            <h3 class="n-client-name">Balenciaga</h3>
+                        </div>
+                        <div class="n-client-project-info">
+                            <p class="n-description">Crafting a Brand Identity and Design System for New AI Startup.</p>
+                            <div class="n-info-right">
+                                <span class="n-year">/ 2023</span>
+                                <div class="n-services">Visual Design, Web Design, UX</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="markings">
+                    <span>                     
+                    </span>
+
+                    <span><em>2023</em></span>
+                    <span><img src="images/circle_cross.png">
+                        <div class="a-section-marquee-box">
+                            <h5 class="marquee-text">nike</h2>
+                            <h5 class="marquee-text">nike</h2>
+                          </div>
+                        <img src="images/two_crosses.png"></span>
+                    <!-- <div class="dashed-line"></div> -->
+                </div>
+                <div class="carousel-row-slider">
+                    <div class="carousel-slider slideshow js-slideshow nike">
+                        <div class="slide">
+                            <img class="lazy" style="width: 433px;" data-src="images/work/nike/nike_hp-1.png">
+                        </div>
+                        <div class="slide">
+
+                            <video preload="none" autoplay loop muted playsinline width="385" data-src="https://player.vimeo.com/progressive_redirect/playback/891711891/rendition/720p/file.mp4?loc=external&signature=f1c7f8ac387907890a60fbde24b26898ae1e9526a5ec1fa24fb5781a4aeb7cdb|video/mp4"></video>
+
+                        </div>
+                        <div class="slide-block"></div>
+                        <div class="slide">
+                            <img  class="lazy" style="width: 460px;" data-src="images/work/nike/nike_hp-7.png">
+                        </div>
+                        <div class="slide">
+                            <img  class="lazy" style="width: 430px;" data-src="images/work/nike/nike_hp-2.png">
+                        </div>
+                        <div class="slide">
+                            <img  class="lazy" style="width: 430px;" data-src="images/work/nike/nike_hp-4.png">
+                        </div>
+                        <div class="slide">
+                            <img  class="lazy" style="width: 510px;" data-src="images/work/nike/nike_hp-10.png">
+                        </div>
+                        <div class="slide-block"></div>
+                        <div class="slide">
+                            <img  class="lazy" style="width: 410px;" data-src="images/work/nike/nike_hp-9.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-row">
+                <div class="carousel-row-container">
+                    <div class="n-info-container">
+                        <div class="n-client-info">
+                            <div class="n-number"></div>
+                            <h3 class="n-client-name">Nike</h3>
+                        </div>
+                        <div class="n-client-project-info">
+                            <p class="n-description">Crafting a Brand Identity and Design System for New AI Startup.</p>
+                            <div class="n-info-right">
+                                <span class="n-year">/ 2023</span>
+                                <div class="n-services">Visual Design, Web Design, UX</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="markings">
+                    <span>
+                       
+                    </span>
+
+                    <span><em>2023</em></span>
+                    <span><img src="images/circle_cross.png">
+                        <div class="a-section-marquee-box">
+                            <h5 class="marquee-text">deem</h2>
+                            <h5 class="marquee-text">deem</h2>
+                          </div>
+                        <img src="images/two_crosses.png"></span>
+                    <!-- <div class="dashed-line"></div> -->
+                </div>
+                <div class="carousel-row-slider">
+                    <div class="carousel-slider slideshow js-slideshow deem">
+
+                        <div class="slide" >
+                            <img class="lazy" style="width: 289px;" data-src="images/work/deem/hp4.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 402px;" data-src="images/work/deem/hp5.jpg">
+                        </div>
+                        <div class="slide no-mobile">
+                            <video preload="none" style="filter: saturate(1.43)" autoplay loop muted playsinline width="264" data-src="https://player.vimeo.com/progressive_redirect/playback/902500974/rendition/1080p/file.mp4?loc=external&signature=893a45158d8601add4bade333fe3109d97c3dafce454f189f1dca78948338263|video/mp4"></video>
+                        </div>
+                        
+                        <div class="slide" >
+                            <img class="lazy" style="width: 289px;" data-src="images/work/deem/hp7.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 333px;" data-src="images/work/deem/hp6.jpg">
+                        </div>
+
+                        <div class="slide" >
+                            <img class="lazy" style="width: 426px;" data-src="images/work/deem/hp1.jpg">
+                        </div>
+                        
+                        <div class="slide" >
+                            <img class="lazy" style="width: 448px;" data-src="images/work/deem/hp3.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 331px;" data-src="images/work/deem/hp2.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-row">
+                <span class="row-line"></span>
+                <div class="carousel-row-container">
+                    <div class="c-row c-row-left">
+                        <ul class="carousel-row-services">
+                            <span>[  Services  ]</span>
+                            <li>Product /</li>
+                            <li>Web Design /</li>
+                            <li>Concepting</li>
+                        </ul>
+                    </div>
+                    <div class="c-row c-row-middle">
+                        <div>
+                            <h2 class="apple"><span>A</span><em>pple</em></h2>
+                            <span class="number">(<div>04</div>)</span>
+                        </div>
+                    </div>
+                    <div class="c-row c-row-right">
+                        <span class="line"></span>
+                        <p><span>Designing innovation concepts for undisclosed projects.</span></p>
+                        <a href=""><img src="images/two_chevrons.png">More Detail</a>
+                    </div>
+                </div>
+                <div class="markings">
+                    <span>
+                       
+                    </span>
+
+                    <span><em>2023</em></span>
+                    <span><img src="images/circle_cross.png">
+                        <div class="a-section-marquee-box">
+                            <h5 class="marquee-text">apple</h2>
+                            <h5 class="marquee-text">apple</h2>
+                          </div>
+                        <img src="images/two_crosses.png"></span>
+                    <!-- <div class="dashed-line"></div> -->
+                </div>
+                <div class="carousel-row-slider">
+                    <div class="carousel-slider slideshow js-slideshow">
+                        
+                        <div class="slide" >
+                            <img class="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-row">
+                <span class="row-line"></span>
+                <div class="carousel-row-container">
+                    <div class="c-row c-row-left">
+                        <ul class="carousel-row-services">
+                            <span>[  Services  ]</span>
+                            <li>Visual Identity /</li>
+                            <li>Web Design</li>
+                        </ul>
+                    </div>
+                    <div class="c-row c-row-middle">
+                        <div>
+                            <h2 class="ambush"><span>A</span><em>mbush</em></h2>
+                            <span class="number">(<div>05</div>)</span>
+                        </div>
+                    </div>
+                    <div class="c-row c-row-right">
+                        <span class="line"></span>
+                        <p><span>Crafting a distinctive campaign concept for leading fashion brand.</span></p>
+                        <a href=""><img src="images/two_chevrons.png">More Detail</a>
+                    </div>
+                </div>
+                <div class="markings">
+                    <span>
+                       
+                    </span>
+
+                    <span><em>2023</em></span>
+                    <span><img src="images/circle_cross.png">
+                        <div class="a-section-marquee-box">
+                            <h5 class="marquee-text">ambush</h2>
+                            <h5 class="marquee-text">ambush</h2>
+                          </div>
+                        <img src="images/two_crosses.png"></span>
+                    <!-- <div class="dashed-line"></div> -->
+                </div>
+                <div class="carousel-row-slider">
+                    <div class="carousel-slider slideshow js-slideshow ambush">
+
+                        <!-- <div class="carousel-slider slideshow js-slideshow" data-flickity='{"prevNextButtons": false, "pageDots": false, "autoPlay": false, "draggable": true, "wrapAround": true, "selectedAttraction": 0.015, "friction": 0.25}'> -->
+                            <div class="slide">
+                                <img class="lazy"  style="width: 555px;" data-src="images/work/ambush/hp4.jpg">
+                            </div>
+                            <div class="slide">
+                                <img loading="lazy" class="lazy" style="width: 489px;" data-src="images/work/ambush/hp3.jpg">
+                            </div>
+                        <div class="slide">
+                            <img  class="lazy" style="width: 580px;" data-src="images/work/ambush/hp2.jpg">
+                        </div>
+                        
+                        
+                        <div class="slide">
+                            <img  class="lazy" style="width: 300px;" data-src="images/work/ambush/hp6.jpg">
+                        </div>
+                        
+                       
+                        <div class="slide">
+                            <img  class="lazy" style="width: 500px;" data-src="images/work/ambush/hp7.jpg">
+                        </div>
+    
+                        <div class="slide">
+                            <img  class="lazy" style="width: 577px;" data-src="images/work/ambush/hp5.jpg">
+                        </div>
+                        
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-row">
+                <span class="row-line"></span>
+                <div class="carousel-row-container">
+                    <div class="c-row c-row-left">
+                        <ul class="carousel-row-services">
+                            <span>[  Services  ]</span>
+                            <li>Product Design /</li>
+                            <li>UX</li>
+                        </ul>
+                    </div>
+                    <div class="c-row c-row-middle">
+                        <div>
+                            <h2 class="bmt"><span>B</span><em>etterment</em></h2>
+                            <span class="number">(<div>06</div>)</span>
+                        </div>
+                    </div>
+                    <div class="c-row c-row-right">
+                        <span class="line"></span>
+                        <p><span>Growing Assets Under Management for financial advisors using Betterment.</span></p>
+                        <a href=""><img src="images/two_chevrons.png">More Detail</a>
+                    </div>
+                </div>
+                <div class="markings">
+                    <span>
+                       
+                    </span>
+
+                    <span><em>2023</em></span>
+                    <span><img src="images/circle_cross.png">
+                        <div class="a-section-marquee-box">
+                            <h5 class="marquee-text">betterment</h2>
+                            <h5 class="marquee-text">betterment</h2>
+                          </div>
+                        <img src="images/two_crosses.png"></span>
+                    <!-- <div class="dashed-line"></div> -->
+                </div>
+                <div class="carousel-row-slider">
+                    <div class="bmt carousel-slider slideshow js-slideshow">
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 392px;" data-src="images/work/betterment/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 382px;" data-src="images/work/betterment/hp2.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 350px;" data-src="images/work/betterment/hp6.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="images/work/betterment/hp3.jpg">
+                        </div>
+                        
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 450px;" data-src="images/work/betterment/hp4.jpg">
+                        </div>
+                        
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="images/work/betterment/hp5.jpg">
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-row">
+                <span class="row-line"></span>
+                <div class="carousel-row-container">
+                    <div class="c-row c-row-left">
+                        <ul class="carousel-row-services">
+                            <span>[  Services  ]</span>
+                            <li>Brand Identity /</li>
+                            <li>Web Design /</li>
+                            <li>UX /</li>
+                            <li>Motion</li>
+                        </ul>
+                    </div>
+                    <div class="c-row c-row-middle">
+                        <div>
+                            <h2 class="rsr"><span>R</span><em>SR</em></h2>
+                            <span class="number">(<div>07</div>)</span>
+                        </div>
+                    </div>
+                    <div class="c-row c-row-right">
+                        <span class="line"></span>
+                        <p><span>Attracting new leads for digital agency with a complete website redesign.</span></p>
+                        <a href=""><img src="images/two_chevrons.png">More Detail</a>
+                    </div>
+                </div>
+                <div class="markings">
+                    <span>
+                       
+                    </span>
+
+                    <span><em>2023</em></span>
+                    <span><img src="images/circle_cross.png">
+                        <div class="a-section-marquee-box">
+                            <h5 class="marquee-text">rsr</h2>
+                            <h5 class="marquee-text">rsr</h2>
+                          </div>
+                        <img src="images/two_crosses.png"></span>
+                    <!-- <div class="dashed-line"></div> -->
+                </div>
+                <div class="carousel-row-slider">
+     
+                    <div class="carousel-slider slideshow js-slideshow rsr">
+                        <div class="slide no-mobile">
+                            <video preload="none" style="filter: saturate(1.13)" autoplay loop muted playsinline width="516" data-src="https://player.vimeo.com/progressive_redirect/playback/907283672/rendition/540p/file.mp4?loc=external&signature=87c507de344cb547088821b58f7b38b5962bda03d4ea57a8cfd690aa1bca93ab|video/mp4"></video>
+                        </div>
+                        
+                        <div class="slide" >
+                            <img class="lazy" style="width: 382px;" data-src="images/work/readysetrocket/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 429px;" data-src="images/work/readysetrocket/hp2.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 232px;" data-src="images/work/readysetrocket/hp3.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 429px;" data-src="images/work/readysetrocket/hp4.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 398px;" data-src="images/work/readysetrocket/hp5.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 429px;" data-src="images/work/readysetrocket/hp6.jpg">
+                        </div>
+                        
+                        
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-row">
+                <span class="row-line"></span>
+                <div class="carousel-row-container">
+                    <div class="c-row c-row-left">
+                        <ul class="carousel-row-services">
+                            <span>[  Services  ]</span>
+                            <li>Visual Identity /</li>
+                            <li>Brand Design</li>
+                        </ul>
+                    </div>
+                    <div class="c-row c-row-middle">
+                        <div>
+                            <h2 class="bibi"><span>B</span><em>ibi</em></h2>
+                            <span class="number">(<div>08</div>)</span>
+                        </div>
+                    </div>
+                    <div class="c-row c-row-right">
+                        <span class="line"></span>
+                        <p><span>Translating musical diversity and personality into an album identity concept.</span></p>
+                        <a href=""><img src="images/two_chevrons.png">More Detail</a>
+                    </div>
+                </div>
+                <div class="markings">
+                    <span>
+                       
+                    </span>
+
+                    <span><em>2023</em></span>
+                    <span><img src="images/circle_cross.png">
+                        <div class="a-section-marquee-box">
+                            <h5 class="marquee-text">bibi</h2>
+                            <h5 class="marquee-text">bibi</h2>
+                          </div>
+                        <img src="images/two_crosses.png"></span>
+                    <!-- <div class="dashed-line"></div> -->
+                </div>
+                <div class="carousel-row-slider">
+                    <div class="carousel-slider slideshow js-slideshow bibi">
+
+                        <div class="slide" >
+                            <img class="lazy" style="width: 446px;" data-src="images/work/bibi/hp1.jpg">
+                        </div>
+                        
+                        
+                        <div class="slide">
+                            <video preload="none" autoplay loop muted playsinline width="452" data-src="https://player.vimeo.com/progressive_redirect/playback/901030801/rendition/540p/file.mp4?loc=external&signature=6a2ceff0de4da5755e42228f210f8a92255f00bfef975430e816ee1990d2c79e|video/mp4"></video>
+                        </div>
+                        <div class="slide">
+                            <img class="lazy" style="width: 200px;" data-src="images/work/bibi/hp4.jpg">
+                        </div>
+                        <div class="slide">
+                            <img class="lazy" style="width: 510px;" data-src="images/work/bibi/hp3.jpg">
+                        </div>
+                        <div class="slide">
+                            <img class="lazy" style="width: 370px;" data-src="images/work/bibi/hp9.jpg">
+                        </div>
+                       
+                        <div class="slide">
+                            <img class="lazy" style="width: 408px;" data-src="images/work/bibi/hp6.jpg">
+                        </div>
+                        <div class="slide">
+                            <img class="lazy" style="width: 336px;" data-src="images/work/bibi/hp8.jpg">
+                        </div>
+                        <div class="slide">
+                            <img class="lazy" style="width: 440px;" data-src="images/work/bibi/hp7.jpg">
+                        </div>
+                        <div class="slide">
+                            <img class="lazy" style="width: 300px;" data-src="images/work/bibi/hp2.jpg">
+                        </div>
+                        <div class="slide">
+                            <img class="lazy" style="width: 425px;" data-src="images/work/bibi/hp5.jpg">
+                        </div>
+                        
+                     
+                        
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-row">
+                <span class="row-line"></span>
+                <div class="carousel-row-container">
+                    <div class="c-row c-row-left">
+                        <ul class="carousel-row-services">
+                            <span>[  Services  ]</span>
+                            <li>Product Innovation</li>
+                        </ul>
+                    </div>
+                    <div class="c-row c-row-middle">
+                        <div>
+                            <h2 class="google"><span>G</span><em>oogle</em></h2>
+                            <span class="number">(<div>09</div>)</span>
+                        </div>
+                    </div>
+                    <div class="c-row c-row-right">
+                        <span class="line"></span>
+                        <p><span>Revamping the Google Shopping product to increase conversion rates.</span></p>
+                        <a href=""><img src="images/two_chevrons.png">More Detail</a>
+                    </div>
+                </div>
+                <div class="markings">
+                    <span>
+                       
+                    </span>
+
+                    <span><em>2023</em></span>
+                    <span><img src="images/circle_cross.png">
+                        <div class="a-section-marquee-box">
+                            <h5 class="marquee-text">google</h2>
+                            <h5 class="marquee-text">google</h2>
+                          </div>
+                        <img src="images/two_crosses.png"></span>
+                    <!-- <div class="dashed-line"></div> -->
+                </div>
+                <div class="carousel-row-slider">
+                    <div class="carousel-slider slideshow js-slideshow">
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-row">
+                <span class="row-line"></span>
+                <div class="carousel-row-container">
+                    <div class="c-row c-row-left">
+                        <ul class="carousel-row-services">
+                            <span>[  Services  ]</span>
+                            <li>Content Strategy /</li>
+                            <li>UX /</li>
+                            <li>Web Design /</li>
+                            <li>Motion</li>
+                        </ul>
+                    </div>
+                    <div class="c-row c-row-middle">
+                        <div>
+                            <h2 class="current"><span>C</span><em>urrent</em></h2>
+                            <span class="number current">(<div>10</div>)</span>
+                        </div>
+                    </div>
+                    <div class="c-row c-row-right">
+                        <span class="line"></span>
+                        <p><span>Driving an increase in app downloads with a complete website redesign.
+                            </span></p>
+                        <a href=""><img src="images/two_chevrons.png">More Detail</a>
+                    </div>
+                </div>
+                <div class="markings">
+                    <span>
+                       
+                    </span>
+
+                    <span><em>2023</em></span>
+                    <span><img src="images/circle_cross.png">
+                        <div class="a-section-marquee-box">
+                            <h5 class="marquee-text">current</h2>
+                            <h5 class="marquee-text">current</h2>
+                          </div>
+                        <img src="images/two_crosses.png"></span>
+                    <!-- <div class="dashed-line"></div> -->
+                </div>
+                <div class="carousel-row-slider">
+                    <div class="carousel-slider slideshow js-slideshow current">
+                        <div class="slide">
+                            <video preload="none" autoplay loop muted playsinline width="510" data-src="https://player.vimeo.com/progressive_redirect/playback/901478859/rendition/540p/file.mp4?loc=external&signature=27d416adcbec8a34d7bece9caf2a689430c7fc55234268c05a094542016655db|video/mp4"></video>
+                        </div>
+                        <div class="slide">
+
+                            <video preload="none" autoplay loop muted playsinline width="510" data-src="https://player.vimeo.com/progressive_redirect/playback/901478835/rendition/540p/file.mp4?loc=external&signature=d86bd74d32a125eef2af86a48e6cd0c656487771f6697bc8f8cc7e06652bfe2b|video/mp4"></video>
+                        </div>
+                        
+                        <div class="slide no-mobile">
+
+                            <video preload="none" autoplay loop muted playsinline width="510" data-src="https://player.vimeo.com/progressive_redirect/playback/901481907/rendition/720p/file.mp4?loc=external&signature=149c1a3c8cdbff06164ffafb5c2178486e79a5b49076c1de7237039efe7e0173|video/mp4"></video>
+                        </div>
+                        <div class="slide no-mobile">
+
+                            <video preload="none" autoplay loop muted playsinline width="580" data-src="https://player.vimeo.com/progressive_redirect/playback/901487210/rendition/720p/file.mp4?loc=external&signature=e1e4ca78937d129b458750797752214b2b758d1e0d06be8e4e7381f097e811be|video/mp4"></video>
+                        </div>
+                        <div class="slide">
+                            <video preload="none" autoplay loop muted playsinline width="580" data-src="https://player.vimeo.com/progressive_redirect/playback/901479067/rendition/540p/file.mp4?loc=external&signature=50bbdaa6c522dbca9f328ec73fedc1b7028b34064b5eac29b993a8bb80f22a8f|video/mp4"></video>
+                        </div>
+                        <div class="slide no-mobile">
+                            <video preload="none" autoplay loop muted playsinline width="510" data-src="https://player.vimeo.com/progressive_redirect/playback/901482336/rendition/720p/file.mp4?loc=external&signature=976fccd99970f6923641daeca907205c43f345afd02d6cb79981cb0a63ab09ee|video/mp4"></video>
+                        </div>
+                       
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-row">
+                <span class="row-line"></span>
+                <div class="carousel-row-container">
+                    <div class="c-row c-row-left">
+                        <ul class="carousel-row-services">
+                            <span>[  Services  ]</span>
+                            <li>Web Design /</li>
+                            <li>Motion</li>
+                        </ul>
+                    </div>
+                    <div class="c-row c-row-middle">
+                        <div>
+                            <h2 class="rco"><span>R</span><em>+Co</em></h2>
+                            <span class="number">(<div>11</div>)</span>
+                        </div>
+                    </div>
+                    <div class="c-row c-row-right">
+                        <span class="line"></span>
+                        <p><span>Increasing checkout conversion rates with a complete website redesign.</span></p>
+                        <a href=""><img src="images/two_chevrons.png">More Detail</a>
+                    </div>
+                </div>
+                <div class="markings">
+                    <span>
+                       
+                    </span>
+
+                    <span><em>2023</em></span>
+                    <span><img src="images/circle_cross.png">
+                        <div class="a-section-marquee-box">
+                            <h5 class="marquee-text">randco</h2>
+                            <h5 class="marquee-text">randco</h2>
+                          </div>
+                        <img src="images/two_crosses.png"></span>
+                    <!-- <div class="dashed-line"></div> -->
+                </div>
+                <div class="carousel-row-slider">
+     
+                    <div class="carousel-slider slideshow js-slideshow rco">
+                        
+                        <div class="slide" >
+                            <img class="lazy" style="width: 434px;" data-src="images/work/rco/hp1.jpg">
+                        </div>
+                        <div class="slide no-mobile">
+                            <video preload="none" style="filter: saturate(1.1)" autoplay loop muted playsinline width="324" data-src="https://player.vimeo.com/progressive_redirect/playback/902531692/rendition/540p/file.mp4?loc=external&signature=fa77232163cb051c76e304eaec67293638889e49999ce3c20663f6e4e6d682fa|video/mp4"></video>
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 434px;" data-src="images/work/rco/hp2.jpg">
+                        </div>
+                        
+                        <div class="slide">
+
+                            <video preload="none" style="filter: saturate(1.1)" autoplay loop muted playsinline width="450" data-src="https://player.vimeo.com/progressive_redirect/playback/902527813/rendition/540p/file.mp4?loc=external&signature=8f1576078574f62803fe45bdcf0b16e5a39338bb2862a91b4b7cafa021efba58|video/mp4"></video>
+
+                        </div>
+                        
+                        <div class="slide">
+                            <video preload="none" style="filter: saturate(1.1)" autoplay loop muted playsinline width="464" data-src="https://player.vimeo.com/progressive_redirect/playback/902527231/rendition/540p/file.mp4?loc=external&signature=7e4b01b9613b24f833e7448c90096bb55e1426eef046868e786d487e35f2a93d|video/mp4"></video>
+
+                        </div>
+                        <div class="slide no-mobile">
+
+                            <video preload="none" style="filter: saturate(1.1)" autoplay loop muted playsinline width="446" data-src="https://player.vimeo.com/progressive_redirect/playback/902537176/rendition/720p/file.mp4?loc=external&signature=e3f4afec7fcfe8718d61d7a9673a21cafae4dd91650bbfc60a1c77f347bac43c|video/mp4"></video>
+                        </div>
+                        
+                        
+                        
+                       
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            <div class="carousel-row">
+                <span class="row-line"></span>
+                <div class="carousel-row-container">
+                    <div class="c-row c-row-left">
+                        <ul class="carousel-row-services">
+                            <span>[  Services  ]</span>
+                            <li>Identity /</li>
+                            <li>UX /</li>
+                            <li>Product Design /</li>
+                            <li>Motion</li>
+                        </ul>
+                    </div>
+                    <div class="c-row c-row-middle">
+                        <div>
+                            <h2 class="muir"><span>M</span><em>uir DAO</em></h2>
+                            <span class="number">(<div>12</div>)</span>
+                        </div>
+                    </div>
+                    <div class="c-row c-row-right">
+                        <span class="line"></span>
+                        <p><span>Creating a community and product to collectively reduce carbon-emission.</span></p>
+                        <a href=""><img src="images/two_chevrons.png">More Detail</a>
+                    </div>
+                </div>
+                <div class="markings">
+                    <span>
+                       
+                    </span>
+
+                    <span><em>2023</em></span>
+                    <span><img src="images/circle_cross.png">
+                        <div class="a-section-marquee-box">
+                            <h5 class="marquee-text">katalyst</h2>
+                            <h5 class="marquee-text">katalyst</h2>
+                          </div>
+                        <img src="images/two_crosses.png"></span>
+                    <!-- <div class="dashed-line"></div> -->
+                </div>
+                <div class="carousel-row-slider">
+                    <div class="muir carousel-slider slideshow js-slideshow">
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 410px;" data-src="images/work/muir_dao/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 300px;" data-src="images/work/muir_dao/hp2.jpg">
+                        </div>
+                        
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 331px;" data-src="images/work/muir_dao/hp4.jpg">
+                        </div>
+                        
+                        <div class="slide">
+                            <!-- <video preload="none" autoplay loop muted playsinline width="560">
+                                <source type="video/mp4" 
+                                src="https://player.vimeo.com/progressive_redirect/playback/891871218/rendition/720p/file.mp4?loc=external&signature=f7634723feb1a2e4695b93940096a7ad2996bbe91150fb95361b984ee8c6b291">
+                            </video> -->
+                            <video preload="none" style="filter: saturate(1.1)"autoplay loop muted playsinline width="560" data-src="https://player.vimeo.com/progressive_redirect/playback/891871218/rendition/540p/file.mp4?loc=external&signature=401471ffb0f2777deeb21602da90832790d29392f0b64ac9e7fda8f33884815e|video/mp4"></video>
+
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 304px;" data-src="images/work/muir_dao/hp6.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 305px;" data-src="images/work/muir_dao/hp7.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 274px;" data-src="images/work/muir_dao/hp8.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 500px;" data-src="images/work/muir_dao/hp3.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 457px;" data-src="images/work/muir_dao/hp11.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 300px;" data-src="images/work/muir_dao/hp10.jpg">
+                        </div>
+                        
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 260px;" data-src="images/work/muir_dao/hp5.jpg">
+                        </div>
+                        
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 420px;" data-src="images/work/muir_dao/hp9.jpg">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-row">
+                <span class="row-line"></span>
+                <div class="carousel-row-container">
+                    <div class="c-row c-row-left">
+                        <ul class="carousel-row-services">
+                            <span>[  Services  ]</span>
+                            <li>Strategy /</li>
+                            <li>UX /</li>
+                            <li>Product Design</li>
+                        </ul>
+                    </div>
+                    <div class="c-row c-row-middle">
+                        <div>
+                            <h2 class="coinbase"><span>C</span><em>oinbase</em></h2>
+                            <span class="number">(<div>13</div>)</span>
+                        </div>
+                    </div>
+                    <div class="c-row c-row-right">
+                        <span class="line"></span>
+                        <p><span>Increasing investment amount in cryptocurrency with innovative concepts.</span></p>
+                        <a href=""><img src="images/two_chevrons.png">More Detail</a>
+                    </div>
+                </div>
+                <div class="markings">
+                    <span>
+                       
+                    </span>
+
+                    <span><em>2023</em></span>
+                    <span><img src="images/circle_cross.png">
+                        <div class="a-section-marquee-box">
+                            <h5 class="marquee-text">coinbase</h2>
+                            <h5 class="marquee-text">coinbase</h2>
+                          </div>
+                        <img src="images/two_crosses.png"></span>
+                    <!-- <div class="dashed-line"></div> -->
+                </div>
+                <div class="carousel-row-slider">
+                    <div class="carousel-slider slideshow js-slideshow">
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-row">
+                <span class="row-line"></span>
+                <div class="carousel-row-container">
+                    <div class="c-row c-row-left">
+                        <ul class="carousel-row-services">
+                            <span>[  Services  ]</span>
+                            <li>Identity /</li>
+                            <li>UX /</li>
+                            <li>Web Design</li>
+                        </ul>
+                    </div>
+                    <div class="c-row c-row-middle">
+                        <div>
+                            <h2 class="cns1"><span>C</span><em>+S</em></h2>
+                            <span class="number cns1">(<div>14</div>)</span>
+                        </div>
+                    </div>
+                    <div class="c-row c-row-right">
+                        <span class="line"></span>
+                        <p><span>Inceasing checkout rates with a complete website redesign.
+                            </span></p>
+                        
+                        <div class="hangeul"><span>셋</span></div>
+                        <a href=""><img src="images/two_chevrons.png">More Detail</a>
+                    </div>
+                </div>
+                <div class="markings">
+                    <span>
+                       
+                    </span>
+
+                    <span><em>2023</em></span>
+                    <span><img src="images/circle_cross.png">
+                        <div class="a-section-marquee-box">
+                            <h5 class="marquee-text">carrot</h2>
+                            <h5 class="marquee-text">carrot</h2>
+                          </div>
+                        <img src="images/two_crosses.png"></span>
+                    <!-- <div class="dashed-line"></div> -->
+                </div>
+                <div class="carousel-row-slider">
+                    <div class="carousel-slider slideshow js-slideshow cns">
+                        
+                        <div class="slide no-mobile">
+                            <!-- <video preload="none" autoplay loop muted playsinline width="498" preload="auto">
+                                <source src="https://player.vimeo.com/progressive_redirect/playback/901394930/rendition/1080p/file.mp4?loc=external&signature=02286172cdc2c2afb78c40880865e99ec2a7e9c1c84abb29949b22e53ee26b82" type ="video/mp4" >
+                            </video> -->
+                            <video preload="none" autoplay loop muted playsinline width="498"  data-src="https://player.vimeo.com/progressive_redirect/playback/901394930/rendition/1080p/file.mp4?loc=external&signature=02286172cdc2c2afb78c40880865e99ec2a7e9c1c84abb29949b22e53ee26b82|video/mp4"></video>
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 382px;" data-src="images/work/cns/hp4.jpg">
+                        </div>
+                        
+                        
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 436px;" data-src="images/work/cns/hp5.jpg">
+                        </div>
+                        <div class="slide no-mobile">
+                            <video preload="none" autoplay loop muted playsinline width="280"  data-src="https://player.vimeo.com/progressive_redirect/playback/901397062/rendition/1440p/file.mp4?loc=external&signature=bda080df1228e5abbb031659f86bfed5e97dd7cae734d382f6cc725ca6f81f23|video/mp4"></video>
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 508px;" data-src="images/work/cns/hp1.jpg">
+                        </div>
+                        
+                        <div class="slide">
+                            <img class="lazy" loading="lazy" style="width: 446px;" data-src="images/work/cns/hp3.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 446px;" data-src="images/work/cns/hp2.jpg">
+                        </div>
+                        <div class="slide ">
+                            <!-- <video preload="none" autoplay loop muted playsinline width="350">
+                                <source src="https://player.vimeo.com/progressive_redirect/playback/901397185/rendition/1080p/file.mp4?loc=external&signature=b2c2eea7be003de445c223d41b2ec39f7d57b777a48b932b070dc1dac7478ee3" type="video/mp4">
+                            </video> -->
+                            <video preload="none" autoplay loop muted playsinline width="350"  data-src="https://player.vimeo.com/progressive_redirect/playback/901397185/rendition/540p/file.mp4?loc=external&signature=ebbbefb2b067a297f68b9599a1d6288a474d3739239fce887528ec582d7372da|video/mp4"></video>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+            
+     
+            <div class="carousel-row">
+                <span class="row-line"></span>
+                <div class="carousel-row-container">
+                    <div class="c-row c-row-left">
+                        <ul class="carousel-row-services">
+                            <span>[  Services  ]</span>
+                            <li>Identity /</li>
+                            <li>Web Design /</li>
+                            <li>Product /</li>
+                            <li>Motion</li>
+                        </ul>
+                    </div>
+                    <div class="c-row c-row-middle">
+                        <div>
+                            <h2 class="caddy"><span>C</span><em>addy</em></h2>
+                            <span class="number">(<div>15</div>)</span>
+                        </div>
+                    </div>
+                    <div class="c-row c-row-right">
+                        <span class="line"></span>
+                        <p><span>Complete design partner for AI city discovery startup.</span></p>
+                        <a href=""><img src="images/two_chevrons.png">More Detail</a>
+                    </div>
+                </div>
+                <div class="markings">
+                    <span>
+                       
+                    </span>
+
+                    <span><em>2023</em></span>
+                    <span><img src="images/circle_cross.png">
+                        <div class="a-section-marquee-box">
+                            <h5 class="marquee-text">caddy</h2>
+                            <h5 class="marquee-text">caddy</h2>
+                          </div>
+                        <img src="images/two_crosses.png"></span>
+                    <!-- <div class="dashed-line"></div> -->
+                </div>
+                <div class="carousel-row-slider">
+                    <div class="carousel-slider slideshow js-slideshow caddy">
+                       
+
+                        <div class="slide" >
+                            <img class="lazy" style="width: 450px;" data-src="images/work/caddy/hp1.jpg">
+                        </div>
+                        
+                        <div class="slide" >
+                            <img class="lazy" style="width: 446px;" data-src="images/work/caddy/hp2.jpg">
+                        </div>
+                        <div class="slide">
+                            <video preload="none" style="filter: saturate(1.17)"  autoplay loop muted playsinline width="270"  data-src="https://player.vimeo.com/progressive_redirect/playback/901366225/rendition/720p/file.mp4?loc=external&signature=da0335a087dfa719ee54bb434ae1c0871957869d5ebc48a569260b50dddb2223|video/mp4"></video>
+                        </div>
+                        <div class="slide">
+
+                            <video preload="none" style="filter: saturate(1.17)"  autoplay loop muted playsinline width="413"  data-src="https://player.vimeo.com/progressive_redirect/playback/901384995/rendition/1080p/file.mp4?loc=external&signature=bcf63f153f1c8c35f1f99f4e4c1b654941c79aad52566875cfbfc3192e799ad8|video/mp4"></video>
+
+                        </div>
+                        <div class="slide no-mobile">
+                            <video preload="none" style="filter: saturate(1.17)"  autoplay loop muted playsinline width="338"  data-src="https://player.vimeo.com/progressive_redirect/playback/901387131/rendition/1080p/file.mp4?loc=external&signature=8a2aeb008a85b4f34c95b3d121ce8d0f0c3783f2ee0e892ec9de41bf7d614695|video/mp4"></video>
+
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 446px;" data-src="images/work/caddy/hp4.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 338px;" data-src="images/work/caddy/hp3.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 200px;" data-src="images/work/caddy/hp5.jpg">
+                        </div>
+                        
+                      
+                     
+                        
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-row">
+                <span class="row-line"></span>
+                <div class="carousel-row-container">
+                    <div class="c-row c-row-left">
+                        <ul class="carousel-row-services">
+                            <span>[  Services  ]</span>
+                            <li>UX /</li>
+                            <li>Web Design</li>
+                        </ul>
+                    </div>
+                    <div class="c-row c-row-middle">
+                        <div>
+                            <h2 class="inhouse"><span>I</span><em>nhouse</em></h2>
+                            <span class="number">(<div>16</div>)</span>
+                        </div>
+                    </div>
+                    <div class="c-row c-row-right">
+                        <span class="line"></span>
+                        <p><span>Designing the ultimate shopping platform for Airbnb hosts.</span></p>
+                        <a href=""><img src="images/two_chevrons.png">More Detail</a>
+                    </div>
+                </div>
+                <div class="markings">
+                    <span>
+                       
+                    </span>
+
+                    <span><em>2023</em></span>
+                    <span><img src="images/circle_cross.png">
+                        <div class="a-section-marquee-box">
+                            <h5 class="marquee-text">inhouse</h2>
+                            <h5 class="marquee-text">inhouse</h2>
+                          </div>
+                        <img src="images/two_crosses.png"></span>
+                    <!-- <div class="dashed-line"></div> -->
+                </div>
+                <div class="carousel-row-slider">
+                    <div class="carousel-slider slideshow js-slideshow inhouse">
+                        <!-- <div class="slide" >
+                            <img style="width: 434px;" src="images/work/kaie/hp1.jpg">
+                        </div> -->
+                        
+                        <div class="slide" >
+                            <img class="lazy" style="width: 426px;" data-src="images/work/inhouse/hp6.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 339px;" data-src="images/work/inhouse/hp3.jpg">
+                        </div>
+                        <div class="slide">
+
+                            <video class="no-mobile" preload="none" style="filter: saturate(1.2)" autoplay loop muted playsinline width="448" data-src="https://player.vimeo.com/progressive_redirect/playback/904681864/rendition/540p/file.mp4?loc=external&signature=4da7f51936a0f35c4024d061142d8f53492a39ed6d18ee10245f5d1e55164555|video/mp4"></video>
+                        </div>
+                       
+
+                        <div class="slide" >
+                            <img class="lazy" style="width: 382px;" data-src="images/work/inhouse/hp1.jpg">
+                        </div>
+                       
+                        
+                        <div class="slide" >
+                            <img class="lazy" style="width: 426px;" data-src="images/work/inhouse/hp2.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 321px;" data-src="images/work/inhouse/hp4.jpg">
+                        </div>
+                       
+                        <div class="slide" >
+                            <img class="lazy" style="width: 382px;" data-src="images/work/inhouse/hp5.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="carousel-row">
+                <span class="row-line"></span>
+                <div class="carousel-row-container">
+                    <div class="c-row c-row-left">
+                        <ul class="carousel-row-services">
+                            <span>[  Services  ]</span>
+                            <li>Brand Design /</li>
+                            <li>Product / UX /</li>
+                            <li>Motion</li>
+                        </ul>
+                    </div>
+                    <div class="c-row c-row-middle">
+                        <div>
+                            <h2 class="shoprite"><span>S</span><em>hoprite</em></h2>
+                            <span class="number">(<div>17</div>)</span>
+                        </div>
+                    </div>
+                    <div class="c-row c-row-right">
+                        <span class="line"></span>
+                        <p><span>Revolutionizing the grocery shopping experience.</span></p>
+                        <a href=""><img src="images/two_chevrons.png">More Detail</a>
+                    </div>
+                </div>
+                <div class="markings">
+                    <span>
+                       
+                    </span>
+
+                    <span><em>2023</em></span>
+                    <span><img src="images/circle_cross.png">
+                        <div class="a-section-marquee-box">
+                            <h5 class="marquee-text">shoprite</h2>
+                            <h5 class="marquee-text">shoprite</h2>
+                          </div>
+                        <img src="images/two_crosses.png"></span>
+                    <!-- <div class="dashed-line"></div> -->
+                </div>
+                <div class="carousel-row-slider">
+                    <div class="carousel-slider slideshow js-slideshow shoprite">
+                        
+                        <div class="slide" >
+                            <img class="lazy" style="width: 451px;" data-src="images/work/shoprite/hp4.jpg">
+                        </div>
+                        <div class="slide">
+                            <video preload="none" style="filter: saturate(1.13)" autoplay loop muted playsinline width="322" data-src="https://player.vimeo.com/progressive_redirect/playback/907304159/rendition/540p/file.mp4?loc=external&signature=f9b47168b573cd2dab683a392b95c295c535879f078435e3f4b34260d0df4e34|video/mp4"></video>
+                        </div>
+                        
+                        <div class="slide" >
+                            <img class="lazy" style="width: 470px;" data-src="images/work/shoprite/hp5.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 427px;" data-src="images/work/shoprite/hp6.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 391px;" data-src="images/work/shoprite/hp7.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 432px;" data-src="images/work/shoprite/hp2.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 335px;" data-src="images/work/shoprite/hp3.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 426px;" data-src="images/work/shoprite/hp1.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-row">
+                <span class="row-line"></span>
+                <div class="carousel-row-container">
+                    <div class="c-row c-row-left">
+                        <ul class="carousel-row-services">
+                            <span>[  Services  ]</span>
+                            <li>Strategy /</li>
+                            <li>UX /</li>
+                            <li>Product Design / </li>
+                            <li>Motion</li>
+                        </ul>
+                    </div>
+                    <div class="c-row c-row-middle">
+                        <div>
+                            <h2 class="wish"><span>W</span><em>ish</em></h2>
+                            <span class="number">(<div>18</div>)</span>
+                        </div>
+                    </div>
+                    <div class="c-row c-row-right">
+                        <span class="line"></span>
+                        <p><span>Boosting customer retention by redesigning the loyalty program.</span></p>
+                        <a href=""><img src="images/two_chevrons.png">More Detail</a>
+                    </div>
+                </div>
+                <div class="markings">
+                    <span>
+                       
+                    </span>
+
+                    <span><em>2023</em></span>
+                    <span><img src="images/circle_cross.png">
+                        <div class="a-section-marquee-box">
+                            <h5 class="marquee-text">wish</h2>
+                            <h5 class="marquee-text">wish</h2>
+                          </div>
+                        <img src="images/two_crosses.png"></span>
+                    <!-- <div class="dashed-line"></div> -->
+                </div>
+                <div class="carousel-row-slider">
+                    <div class="carousel-slider slideshow js-slideshow wish">
+                       
+                       
+                        <div class="slide" >
+                            <img class="lazy" style="width: 446px;" data-src="images/work/wish/hp1.jpg">
+                        </div>
+                        
+                        <div class="slide" >
+                            <img class="lazy" style="width: 455px; filter: saturate(1.2)" data-src="images/work/wish/hp2.jpg">
+                        </div>
+                        
+                        
+                        <div class="slide no-mobile">
+                            <video preload="none" autoplay loop muted playsinline width="320" style="filter: saturate(1.3)" data-src="https://player.vimeo.com/progressive_redirect/playback/901435304/rendition/1080p/file.mp4?loc=external&signature=ee8e90c956882bb91d619befe64d58b203b06f0f01d3b1bb23da9101cfb4de88|video/mp4"></video>
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 295px;" data-src="images/work/wish/hp3.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 446px;" data-src="images/work/wish/hp5.jpg">
+                        </div>
+                       
+                        
+                        
+                        <div class="slide">
+                            <video preload="none" autoplay loop muted playsinline width="280" data-src="https://player.vimeo.com/progressive_redirect/playback/901437347/rendition/1080p/file.mp4?loc=external&signature=5681fd2d35cb7a1290ae3c8499fad8aa078772ebd24b403630bd15d0a10b999a|video/mp4"></video>
+                        </div>
+                        
+                        <div class="slide" >
+                            <img class="lazy" style="width: 446px;" data-src="images/work/wish/hp4.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-row">
+                <span class="row-line"></span>
+                <div class="carousel-row-container">
+                    <div class="c-row c-row-left">
+                        <ul class="carousel-row-services">
+                            <span>[  Services  ]</span>
+                            <li>Identity / </li>
+                            <li>UX /</li>
+                            <li>Product Design</li>
+                        </ul>
+                    </div>
+                    <div class="c-row c-row-middle">
+                        <div>
+                            <h2 class="caddy"><span>C</span><em>eltics</em></h2>
+                            <span class="number">(<div>19</div>)</span>
+                        </div>
+                    </div>
+                    <div class="c-row c-row-right">
+                        <span class="line"></span>
+                        <p><span>Converting casual fans into avid fans with a fresh product concept.</span></p>
+                        <a href=""><img src="images/two_chevrons.png">More Detail</a>
+                    </div>
+                </div>
+                <div class="markings">
+                    <span>
+                       
+                    </span>
+
+                    <span><em>2023</em></span>
+                    <span><img src="images/circle_cross.png">
+                        <div class="a-section-marquee-box">
+                            <h5 class="marquee-text">celtics</h2>
+                            <h5 class="marquee-text">celtics</h2>
+                          </div>
+                        <img src="images/two_crosses.png"></span>
+                    <!-- <div class="dashed-line"></div> -->
+                </div>
+                <div class="carousel-row-slider">
+                    <div class="carousel-slider slideshow js-slideshow celtics">
+
+                        <div class="slide" >
+                            <img class="lazy" style="width: 434px;" data-src="images/work/celtics/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 448px;" data-src="images/work/celtics/hp4.jpg">
+                        </div>
+                      
+                       
+                        
+                        
+                      
+                        
+                        <div class="slide" >
+                            <img class="lazy" style="width: 505px;" data-src="images/work/celtics/hp5.jpg">
+                        </div>
+                        <div class="slide">
+
+                            <video preload="none" style="filter: saturate(1.43)" autoplay loop muted playsinline width="412" data-src="https://player.vimeo.com/progressive_redirect/playback/902467800/rendition/540p/file.mp4?loc=external&signature=c4877491138a3fa4f0c5fbe6c8d38ce430ad34e5d88b728143415a37f599161a|video/mp4"></video>
+                        </div>
+                        
+                        
+                        <div class="slide" >
+                            <img class="lazy" style="width: 434px;" data-src="images/work/celtics/hp6.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 512px;" data-src="images/work/celtics/hp3.jpg">
+                        </div>
+                        <!-- <div class="slide" >
+                            <img style="width: 380px;" src="images/work/celtics/hp2.jpg">
+                        </div> -->
+                        <div class="slide" >
+                            <img class="lazy" style="width: 500px;" data-src="images/work/celtics/hp7.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 434px;" data-src="images/work/celtics/hp8.jpg">
+                        </div>
+                       
+                       
+
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-row">
+                <span class="row-line"></span>
+                <div class="carousel-row-container">
+                    <div class="c-row c-row-left">
+                        <ul class="carousel-row-services">
+                            <span>[  Services  ]</span>
+                            <li>Visual Identity /</li>
+                            <li>Brand Design</li>
+                        </ul>
+                    </div>
+                    <div class="c-row c-row-middle">
+                        <div>
+                            <h2 class="kaie"><span>K</span><em>aie</em></h2>
+                            <span class="number">(<div>20</div>)</span>
+                        </div>
+                    </div>
+                    <div class="c-row c-row-right">
+                        <span class="line"></span>
+                        <p><span>Breathing life into a new hair salon launch.</span></p>
+                        <a href=""><img src="images/two_chevrons.png">More Detail</a>
+                    </div>
+                </div>
+                <div class="markings">
+                    <span>
+                       
+                    </span>
+
+                    <span><em>2023</em></span>
+                    <span><img src="images/circle_cross.png">
+                        <div class="a-section-marquee-box">
+                            <h5 class="marquee-text">kaie</h2>
+                            <h5 class="marquee-text">kaie</h2>
+                          </div>
+                        <img src="images/two_crosses.png"></span>
+                    <!-- <div class="dashed-line"></div> -->
+                </div>
+                <div class="carousel-row-slider">
+                    <div class="carousel-slider slideshow js-slideshow kaie">
+                        <!-- <div class="slide" >
+                            <img style="width: 434px;" src="images/work/kaie/hp1.jpg">
+                        </div> -->
+
+                        <div class="slide" >
+                            <img class="lazy" style="width: 497px;" data-src="images/work/kaie/hp5.jpg">
+                        </div>
+                        <div class="slide">
+
+                            <video preload="none" style="filter: saturate(1.15)" autoplay loop muted playsinline width="403" data-src="https://player.vimeo.com/progressive_redirect/playback/902514098/rendition/540p/file.mp4?loc=external&signature=aa8da16ff82ded2d3f15fbd4e5d248654c7159f0b92822b3831529bb4f3565bb|video/mp4"></video>
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 446px;" data-src="images/work/kaie/hp2.jpg">
+                        </div>
+                        
+                        <!-- <div class="slide" >
+                            <img style="width: 434px;" src="images/work/kaie/hp3.jpg">
+                        </div> -->
+                        <div class="slide" >
+                            <img class="lazy" style="width: 434px;" data-src="images/work/kaie/hp6.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 434px;" data-src="images/work/kaie/hp4.jpg">
+                        </div>
+                        
+                        <div class="slide" >
+                            <img class="lazy" style="width: 434px;" data-src="images/work/kaie/hp8.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 434px;" data-src="images/work/kaie/hp7.jpg">
+                        </div>
+                        
+                        <div class="slide" >
+                            <img class="lazy" style="width: 434px;" data-src="images/work/kaie/hp9.jpg">
+                        </div>
+                        
+                        
+                     
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-row">
+                <span class="row-line"></span>
+                <div class="carousel-row-container">
+                    <div class="c-row c-row-left">
+                        <ul class="carousel-row-services">
+                            <span>[  Services  ]</span>
+                            <li>UX /</li>
+                            <li>Product Design</li>
+                        </ul>
+                    </div>
+                    <div class="c-row c-row-middle">
+                        <div>
+                            <h2 class="wyndham"><span>W</span><em>yndham</em></h2>
+                            <span class="number">(<div>21</div>)</span>
+                        </div>
+                    </div>
+                    <div class="c-row c-row-right">
+                        <span class="line"></span>
+                        <p><span>Increasing booking conversion rates for leading hotel chain.</span></p>
+                        <a href=""><img src="images/two_chevrons.png">More Detail</a>
+                    </div>
+                </div>
+                <div class="markings">
+                    <span>
+                       
+                    </span>
+
+                    <span><em>2023</em></span>
+                    <span><img src="images/circle_cross.png">
+                        <div class="a-section-marquee-box">
+                            <h5 class="marquee-text">wyndham</h2>
+                            <h5 class="marquee-text">wyndham</h2>
+                          </div>
+                        <img src="images/two_crosses.png"></span>
+                    <!-- <div class="dashed-line"></div> -->
+                </div>
+                <div class="carousel-row-slider">
+                    <div class="carousel-slider slideshow js-slideshow wyndham">
+                        <!-- <div class="slide" >
+                            <img style="width: 434px;" src="images/work/kaie/hp1.jpg">
+                        </div> -->
+                        
+                        <div class="slide">
+
+                            <video preload="none" style="filter: saturate(1.15)" autoplay loop muted playsinline width="508" data-src="https://player.vimeo.com/progressive_redirect/playback/902520952/rendition/540p/file.mp4?loc=external&signature=bb6ff64b3a0cab39cd10d7c1768f198e2bb93981ef043ea642aef36e8654229e|video/mp4"></video>
+                        </div>
+
+                        <div class="slide" >
+                            <img class="lazy" style="width: 494px;" data-src="images/work/wyndham/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 450px;" data-src="images/work/wyndham/hp2.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 434px;" data-src="images/work/wyndham/hp3.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 434px;" data-src="images/work/wyndham/hp4.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 280px;" data-src="images/work/wyndham/hp5.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 506px;" data-src="images/work/wyndham/hp6.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 434px;" data-src="images/work/wyndham/hp7.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 450px;" data-src="images/work/wyndham/hp8.jpg">
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-row">
+                <span class="row-line"></span>
+                <div class="carousel-row-container">
+                    <div class="c-row c-row-left">
+                        <ul class="carousel-row-services">
+                            <span>[  Services  ]</span>
+                            <li>Strategy /</li>
+                            <li>UX / </li>
+                            <li>Product Design</li>
+                        </ul>
+                    </div>
+                    <div class="c-row c-row-middle">
+                        <div>
+                            <h2 class="twitter"><span>T</span><em>witter</em></h2>
+                            <span class="number">(<div>22</div>)</span>
+                        </div>
+                    </div>
+                    <div class="c-row c-row-right">
+                        <span class="line"></span>
+                        <p><span>Creating new revenue streams with innovative product concepts.</span></p>
+                        <a href=""><img src="images/two_chevrons.png">More Detail</a>
+                    </div>
+                </div>
+                <div class="markings">
+                    <span>
+                       
+                    </span>
+
+                    <span><em>2023</em></span>
+                    <span><img src="images/circle_cross.png">
+                        <div class="a-section-marquee-box">
+                            <h5 class="marquee-text">twitter</h2>
+                            <h5 class="marquee-text">twitter</h2>
+                          </div>
+                        <img src="images/two_crosses.png"></span>
+                    <!-- <div class="dashed-line"></div> -->
+                </div>
+                <div class="carousel-row-slider">
+                    <div class="carousel-slider slideshow js-slideshow">
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="images/work/apple/hp1.jpg">
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-row">
+                <span class="row-line"></span>
+                <div class="carousel-row-container">
+                    <div class="c-row c-row-left">
+                        <ul class="carousel-row-services">
+                            <span>[  Services  ]</span>
+                            <li>Identity /</li>
+                            <li>Web Design /</li>
+                            <li>Motion</li>
+                        </ul>
+                    </div>
+                    <div class="c-row c-row-middle">
+                        <div>
+                            <h2 class="fekkai"><span>F</span><em>ekkai</em></h2>
+                            <span class="number">(<div>23</div>)</span>
+                        </div>
+                    </div>
+                    <div class="c-row c-row-right">
+                        <span class="line"></span>
+                        <p><span>Attracting a new target audience with a website redesign.</span></p>
+                        <a href=""><img src="images/two_chevrons.png">More Detail</a>
+                    </div>
+                </div>
+                <div class="markings">
+                    <span>
+                       
+                    </span>
+
+                    <span><em>2023</em></span>
+                    <span><img src="images/circle_cross.png">
+                        <div class="a-section-marquee-box">
+                            <h5 class="marquee-text">fekkai</h2>
+                            <h5 class="marquee-text">fekkai</h2>
+                          </div>
+                        <img src="images/two_crosses.png"></span>
+                    <!-- <div class="dashed-line"></div> -->
+                </div>
+                <div class="carousel-row-slider">
+                    <div class="carousel-slider slideshow js-slideshow fekkai">
+
+                        <div class="slide" >
+                            <img class="lazy" style="width: 488px;" data-src="images/work/fekkai/hp3.jpg">
+                        </div>
+                        <div class="slide">
+                            <video class="no-mobile" preload="none" style="filter: saturate(1.15)" autoplay loop muted playsinline width="287" data-src="https://player.vimeo.com/progressive_redirect/playback/904692750/rendition/540p/file.mp4?loc=external&signature=f71c9fb67740c11b29f3bbcf432357bec2c32355990d796b4efb9b322550e81b|video/mp4"></video>
+                        </div>
+                        
+                        
+                        <div class="slide" >
+                            <img class="lazy" style="width: 426px;" data-src="images/work/fekkai/hp1.jpg">
+                        </div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 421px;" data-src="images/work/fekkai/hp6.jpg">
+                        </div>
+                        
+                        <div class="slide" >
+                            <img class="lazy" style="width: 460px;" data-src="images/work/fekkai/hp4.jpg">
+                        </div>
+                        
+                        <div class="slide">
+                            <video class="no-mobile" preload="none" style="filter: saturate(1.15)" autoplay loop muted playsinline width="508" data-src="https://player.vimeo.com/progressive_redirect/playback/904692763/rendition/540p/file.mp4?loc=external&signature=f5348a2fc1fe8c05b03c916cb439ff0020f09b723cc223ae162300284e96146e|video/mp4"></video>
+                        </div>
+                       
+                        <div class="slide" >
+                            <img class="lazy" style="width: 293px;" data-src="images/work/fekkai/hp5.jpg">
+                        </div>
+                        <div class="slide">
+                            <video preload="none" style="filter: saturate(1.15)" autoplay loop muted playsinline width="487" data-src="https://player.vimeo.com/progressive_redirect/playback/904692757/rendition/540p/file.mp4?loc=external&signature=a1e31a947869616f2b28bcb3a893502ca6fdaf1ff7dbae83da3d8949f3dc777c|video/mp4"></video>
+                        </div>
+                        
+                        
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-row">
+                <span class="row-line"></span>
+                <div class="carousel-row-container">
+                    <div class="c-row c-row-left">
+                        <ul class="carousel-row-services">
+                            <span>[  Services  ]</span>
+                            <li>Web Design /</li>
+                            <li>UX</li>
+                        </ul>
+                    </div>
+                    <div class="c-row c-row-middle">
+                        <div>
+                            <h2 class="cns2"><span>C</span><em>+S</em></h2>
+                            <span class="number">(<div>24</div>)</span>
+                        </div>
+                    </div>
+                    <div class="c-row c-row-right">
+                        <span class="line"></span>
+                        <p><span>Inceasing checkout rates with a complete website redesign.</span></p>
+
+                        <a href=""><img src="images/two_chevrons.png">More Detail</a>
+                    </div>
+                </div>
+                <div class="markings">
+                    <span>
+                       
+                    </span>
+
+                    <span><em>2023</em></span>
+                    <span><img src="images/circle_cross.png">
+                        <div class="a-section-marquee-box">
+                            <h5 class="marquee-text">carrot</h2>
+                            <h5 class="marquee-text">carrot</h2>
+                          </div>
+                        <img src="images/two_crosses.png"></span>
+                    <!-- <div class="dashed-line"></div> -->
+                </div>
+                <div class="carousel-row-slider">
+                    <div class="carousel-slider slideshow js-slideshow cns2">
+                        <div class="slide">
+                            <img class="lazy" loading="lazy" style="width: 382px;" data-src="images/work/cns2/hp1.jpg">
+                        </div>
+                        <div class="slide">
+                            <img class="lazy" loading="lazy" style="width: 426px;" data-src="images/work/cns2/hp2.jpg">
+                        </div>
+                        <div class="slide">
+                            <img class="lazy" loading="lazy" style="width: 450px;" data-src="images/work/cns2/hp3.jpg">
+                        </div>
+                        <div class="slide">
+                            <img class="lazy" loading="lazy" style="width: 476px;" data-src="images/work/cns2/hp4.jpg">
+                        </div>
+                        <div class="slide">
+                            <img class="lazy" loading="lazy" style="width: 354px;" data-src="images/work/cns2/hp5.jpg">
+                        </div>
+                        <div class="slide">
+                            <img class="lazy" loading="lazy" style="width: 426px;" data-src="images/work/cns2/hp6.jpg">
+                        </div>
+                        <div class="slide">
+                            <img class="lazy" loading="lazy" style="width: 388px;" data-src="images/work/cns2/hp7.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-row">
+                <span class="row-line"></span>
+                <div class="carousel-row-container">
+                    <div class="c-row c-row-left">
+                        <ul class="carousel-row-services">
+                            <span>[  Services  ]</span>
+                            <li>Web Design</li>
+                        </ul>
+                    </div>
+                    <div class="c-row c-row-middle">
+                        <div>
+                            <h2 class="red"><em>(Red)</em></h2>
+                            <span class="number">(<div>25</div>)</span>
+                        </div>
+                    </div>
+                    <div class="c-row c-row-right">
+                        <span class="line"></span>
+                        <p><span>Raising awareness for the fight against AIDS with a complete website redesign.</span></p>
+                        <a href=""><img src="images/two_chevrons.png">More Detail</a>
+                    </div>
+                </div>
+                <div class="markings">
+                    <span>
+                       
+                    </span>
+
+                    <span><em>2023</em></span>
+                    <span><img src="images/circle_cross.png">
+                        <div class="a-section-marquee-box">
+                            <h5 class="marquee-text">red</h2>
+                            <h5 class="marquee-text">red</h2>
+                          </div>
+                        <img src="images/two_crosses.png"></span>
+                    <!-- <div class="dashed-line"></div> -->
+                </div>
+                <div class="carousel-row-slider">
+                    <div class="carousel-slider slideshow js-slideshow red">
+                        <div class="slide">
+                            <img class="lazy" loading="lazy" style="width: 432px;" data-src="images/work/red/hp1.jpg">
+                        </div>
+                        <div class="slide">
+                            <video class="no-mobile" preload="none" style="filter: saturate(1.15)" autoplay loop muted playsinline width="531" data-src="https://player.vimeo.com/progressive_redirect/playback/907322753/rendition/540p/file.mp4?loc=external&signature=f8f993509504b7c28f38dab1ce76693fe3c1009fc755cf878e1d35f4d57bb8ef|video/mp4"></video>
+                        </div>
+                        <div class="slide">
+                            <img class="lazy" loading="lazy" style="width: 382px;" data-src="images/work/red/hp2.jpg">
+                        </div>
+                        <div class="slide">
+                            <img class="lazy" loading="lazy" style="width: 432px;" data-src="images/work/red/hp3.jpg">
+                        </div>
+                        <div class="slide">
+                            <img class="lazy" loading="lazy" style="width: 362px;" data-src="images/work/red/hp4.jpg">
+                        </div>
+                        <div class="slide">
+                            <img class="lazy" loading="lazy" style="width: 335px;" data-src="images/work/red/hp5.jpg">
+                        </div>
+                        <div class="slide">
+                            <img class="lazy" loading="lazy" style="width: 432px;" data-src="images/work/red/hp6.jpg">
+                        </div>
+                        
+                    
+                       
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-row">
+                <span class="row-line"></span>
+                <div class="carousel-row-container">
+                    <div class="c-row c-row-left">
+                        <ul class="carousel-row-services">
+                            <span>[  Services  ]</span>
+                            <li>UX /</li>
+                            <li>Product Design /</li>
+                            <li>Web Design</li>
+                        </ul>
+                    </div>
+                    <div class="c-row c-row-middle">
+                        <div>
+                            <h2 class="deno"><span>D</span><em>eno</em></h2>
+                            <span class="number">(<div>26</div>)</span>
+                        </div>
+                    </div>
+                    <div class="c-row c-row-right">
+                        <span class="line"></span>
+                        <p><span>Legitimizing the development product with a design overhaul.</span></p>
+                        <a href=""><img src="images/two_chevrons.png">More Detail</a>
+                    </div>
+                </div>
+                <div class="markings">
+                    <span>
+                       
+                    </span>
+
+                    <span><em>2023</em></span>
+                    <span><img src="images/circle_cross.png">
+                        <div class="a-section-marquee-box">
+                            <h5 class="marquee-text">deno</h2>
+                            <h5 class="marquee-text">deno</h2>
+                          </div>
+                        <img src="images/two_crosses.png"></span>
+                    <!-- <div class="dashed-line"></div> -->
+                </div>
+                <div class="carousel-row-slider">
+                    <div class="carousel-slider slideshow js-slideshow deno">
+
+                        <!-- <div class="carousel-slider slideshow js-slideshow" data-flickity='{"prevNextButtons": false, "pageDots": false, "autoPlay": false, "draggable": true, "wrapAround": true, "selectedAttraction": 0.015, "friction": 0.25}'> -->
+                        <div class="slide">
+                            <img  class="lazy" style="width: 568px;" data-src="images/work/deno/hp1.jpg">
+                        </div>
+                        <div class="slide no-mobile">
+                            <!-- <video preload="none" autoplay loop muted playsinline width="497">
+                                <source type="video/mp4" 
+                                data-src="https://player.vimeo.com/progressive_redirect/playback/892101327/rendition/720p/file.mp4?loc=external&signature=d40ca0147b3b51284266bf52282d59d4bca4d9cb1d844b21b1058b9284f84512">
+                            </video> -->
+                            <video preload="none" autoplay loop muted playsinline width="497" data-src="https://player.vimeo.com/progressive_redirect/playback/892101327/rendition/720p/file.mp4?loc=external&signature=d40ca0147b3b51284266bf52282d59d4bca4d9cb1d844b21b1058b9284f84512|video/mp4"></video>
+                        </div>
+                        
+                        <div class="slide">
+                            <img  class="lazy" style="width: 500px;" data-src="images/work/deno/hp3.jpg">
+                        </div>
+                        <div class="slide">
+                            <img  class="lazy" style="width: 280px;" data-src="images/work/deno/hp2.jpg">
+                        </div>
+                        
+                        <div class="slide no-mobile">
+
+                            <video preload="none" autoplay loop muted playsinline width="300" data-src="https://player.vimeo.com/progressive_redirect/playback/892106590/rendition/540p/file.mp4?loc=external&signature=35ed27653079e678a97c6a50b9a6c5e048274b5f7616cbad20ef699cf644433b|video/mp4"></video>
+                        </div>
+                        
+                        <div class="slide">
+                            <img  class="lazy" style="width: 540px;" data-src="images/work/deno/hp4.jpg">
+                        </div>
+                
+                        <div class="slide">
+                            <img  class="lazy" style="width: 600px;" data-src="images/work/deno/hp5.jpg">
+                        </div>
+                        
+                        <div class="slide">
+                            <video preload="none" autoplay loop muted playsinline width="497" data-src="https://player.vimeo.com/progressive_redirect/playback/892101315/rendition/720p/file.mp4?loc=external&signature=a5a89ccaa7bda5eb2ca85fbd26d52cf85f8f733855ebab54f0fdb13f439eceff|video/mp4"></video>
+                        </div>
+                        <div class="slide">
+                            <img  class="lazy" style="width: 594px;" data-src="images/work/deno/hp7.jpg">
+                        </div>
+                        <div class="slide">
+                            <img  class="lazy" style="width: 490px;" data-src="images/work/deno/hp6.jpg">
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+
+</div>
+
+<div id="overlay" style="  display: none;">
+    <div id="overlay-content"></div>
+  </div>
+
+<script>
+
+
+
+
+    let elementsArray = document.querySelectorAll(".tile");
+console.log(elementsArray);
+window.addEventListener('scroll', fadeIn ); 
+function fadeIn() {
+    for (var i = 0; i < elementsArray.length; i++) {
+        var elem = elementsArray[i]
+        var distInView = elem.getBoundingClientRect().top - window.innerHeight + 20;
+        if (distInView < 0) {
+            elem.classList.add("inView");
+        } else {
+            elem.classList.remove("inView");
+        }
+    }
+}
+
+fadeIn();
+
+</script>
+
+<script>
+
+
+// const skew = document.querySelector(".skew");
+// let currentPixel = window.pageYOffset
+
+// //looper keeps running and keeps track of where the new pixel is
+// const looper = function () {
+//   const newPixel = window.pageYOffset;
+//   const diff = newPixel - currentPixel
+//   const speed = diff * 0.07;
+  
+//   skew.style.transform = "skewY(" + speed + "deg)"
+  
+  
+//   currentPixel = newPixel;
+  
+//   requestAnimationFrame(looper)
+// }
+
+// looper();
+
+// $(window).scroll(function() {
+//             var scroll = $(window).scrollTop();
+
+//             if (scroll > 1) {
+//                 $(".lower-logo h1").addClass("away");
+//             }
+
+//             if (scroll < 1) {
+//                 $(".lower-logo h1").removeClass("away");
+//             }
+
+//             if ((scroll >= ($('#testimonial').offset().top)-400)) {
+//             $('#home').addClass("white");
+//             $('#body-work').addClass("white");
+//             $('#testimonial').addClass("white");
+//             $('#submit-inquiry').addClass("white");
+//             }
+
+//             if ((scroll >= ($('#submit-inquiry').offset().top)-500)) {
+//             $('#home').removeClass("white");
+//             $('#body-work').removeClass("white");
+//             $('#testimonial').removeClass("white");
+//             $('#submit-inquiry').removeClass("white");
+//             }
+
+//             if ((scroll <= ($('#testimonial').offset().top)-300)) {
+//             $('#home').removeClass("white");
+//             $('#body-work').removeClass("white");
+//             $('#testimonial').removeClass("white");
+//             $('#submit-inquiry').removeClass("white");
+//             }
+
+//             // else {
+//             //   $('#home').removeClass("white");
+//             //   $('#body-work').removeClass("white");
+//             //   $('#testimonial').removeClass("white");
+//             //   $('#submit-inquiry').removeClass("white");
+//             // }
+//         });
+</script>
+
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script type="text/javascript">
+
+// var width = $(window).width();
+//     if (width < 800){
+//         var logoHeight = 
+//         $(".lower-logo img").height();
+
+//     console.log(logoHeight);
+
+//     var bottomAmount = (logoHeight);
+
+//     $(".lower-logo h1").css("bottom", bottomAmount);
+//     }
+
+//     $(window).resize(function() {
+//     var width = $(window).width();
+//     if (width < 800){
+//         var logoHeight = 
+//         $(".lower-logo img").height();
+
+//     console.log(logoHeight);
+
+//     var bottomAmount = (logoHeight);
+
+//     $(".lower-logo h1").css("bottom", bottomAmount);
+//     }
+
+//     else {
+//         $(".lower-logo h1").css("bottom", -6);
+//     }
+
+//     });
+
+   
+
+
+    window.onload = function() {
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // these IDs from the previous steps
+            emailjs.sendForm('service_blfhcju', 'template_x64d0y4', this)
+                .then(function() {
+                    // var message = document.getElementsByClassName("success");
+                    // message.classList.toggle("show");
+                    $('.success').addClass("show");
+                    console.log('SUCCESS!');
+
+                }, function(error) {
+                    console.log('FAILED...', error);
+                });
+        });
+    }
+    
+//
+//   Variables
+//
+//////////////////////////////////////////////////////////////////////
+
+// Play with this value to change the speed
+let tickerSpeed = .3;
+
+let isPaused = false;
+const slideshowEl = document.querySelectorAll('.js-slideshow');
+
+
+//
+//   Functions
+//
+//////////////////////////////////////////////////////////////////////
+
+
+
+//
+//   Create Flickity
+//
+//////////////////////////////////////////////////////////////////////
+
+// flickity = new Flickity(slideshowEl, {
+//   autoPlay: false,
+//   prevNextButtons: false,
+//   pageDots: false,
+//   draggable: true,
+//   wrapAround: true,
+//   selectedAttraction: 0.015,
+//   friction: 0.25
+// });
+
+// $(".carousel-slider .slide").each(function(){
+//     $(this).clone().appendTo($(this).parent());
+//   })
+
+if ($(window).width() < 800) {
+
+$('.carousel-slider .slide video').each(function(){
+    const width = $(this).css('width');
+    const smallWidth = (parseFloat(width)/1.75)
+    $(this).css("width", smallWidth);
+    $(this).addClass('halved');
+  })
+
+  $('.carousel-slider .slide img').each(function(){
+    const width = $(this).css('width');
+    const smallWidth = (parseFloat(width)/1.75)
+    $(this).css("width", smallWidth)
+    $(this).addClass('halved');
+  })
+
+}
+
+$(window).resize(function() { 
+
+if ($(window).width() < 800) {
+
+$('.carousel-slider .slide video').each(function(){
+    if (!$(this).hasClass("halved")) {
+        const width = $(this).css('width');
+        const smallWidth = (parseFloat(width)/1.75)
+        $(this).css("width", smallWidth);
+        $(this).addClass('halved');
+    }
+  })
+
+  $('.carousel-slider .slide img').each(function(){
+
+  if (!$(this).hasClass("halved")) {
+    
+        const width = $(this).css('width');
+        const smallWidth = (parseFloat(width)/1.75)
+        $(this).css("width", smallWidth)
+        $(this).addClass('halved');
+    }
+    })
+  
+}
+else {
+    $('.carousel-slider .slide video').each(function(){
+    if ($(this).hasClass("halved")) {
+        const width = $(this).css('width');
+        const smallWidth = (parseFloat(width)*1.75)
+        $(this).css("width", smallWidth);
+        $(this).removeClass('halved');
+    }
+  })
+
+  $('.carousel-slider .slide img').each(function(){
+
+  if ($(this).hasClass("halved")) {
+    
+        const width = $(this).css('width');
+        const smallWidth = (parseFloat(width)*1.75)
+        $(this).css("width", smallWidth)
+        $(this).removeClass('halved');
+    }
+    })
+
+}
+})
+
+
+
+
+for ( var i=0, len = slideshowEl.length; i < len; i++ ) {
+
+
+    let flickity = null;
+const update = () => {
+  if (isPaused) return;
+  if (flickity.slides) {
+    flickity.x = (flickity.x - tickerSpeed) % flickity.slideableWidth;
+    flickity.selectedIndex = flickity.dragEndRestingSelect();
+    flickity.updateSelectedSlide();
+    flickity.settle(flickity.x);
+  }
+  window.requestAnimationFrame(update);
+};
+
+const pause = () => {
+  isPaused = true;
+};
+
+const play = () => {
+  if (isPaused) {
+    isPaused = false;
+    window.requestAnimationFrame(update);
+  }
+};
+
+  var galleryElem = slideshowEl[i];
+  flickity = new Flickity( galleryElem, {
+    autoPlay: false,
+  prevNextButtons: false,
+  dragThreshold: 20,
+  pageDots: false,
+  draggable: true,
+  wrapAround: true,
+  selectedAttraction: 0.9005,
+  friction: 0.00005,
+  bgLazyLoad: true,
+  freeScroll: true,
+  freeScrollFriction: 1,
+//   cellAlign: 'left'
+ 
+//   freeScroll: true,
+  });
+
+flickity.x = 0;
+
+flickity.on('dragStart', () => {
+  isPaused = false;
+});
+update();
+
+
+flickity.on('dragStart', () => flickity.slider.childNodes.forEach(slide => slide.style.pointerEvents = "none") );
+flickity.on('dragEnd', () => flickity.slider.childNodes.forEach(slide => slide.style.pointerEvents = "all") );
+
+
+
+}
+
+
+
+
+
+
+// $('.zoom-carousel').flickity({
+//     // options
+
+//     setGallerySize: false,
+//     pageDots: false,
+//     adaptiveHeight: true,
+//     fade: true,
+//     wrapAround: true,
+    
+//   });
+
+// jQuery(function($) {
+//   $('.js-slideshow').flickity({
+//     autoPlay: false,
+//     prevNextButtons: false,
+//     pageDots: false,
+//     draggable: true,
+//     wrapAround: true,
+//     selectedAttraction: 0.015,
+//     friction: 0.25
+//   })
+// });
+
+
+
+
+
+//
+//   Add Event Listeners
+//
+//////////////////////////////////////////////////////////////////////
+
+// slideshowEl.addEventListener('mouseenter', pause, false);
+// slideshowEl.addEventListener('focusin', pause, false);
+// slideshowEl.addEventListener('mouseleave', play, false);
+// slideshowEl.addEventListener('focusout', play, false);
+
+
+//
+//   Start Ticker
+//
+//////////////////////////////////////////////////////////////////////
+
+const noise = () => {
+  let canvas, ctx;
+
+  let wWidth, wHeight;
+
+  let noiseData = [];
+  let frame = 0;
+
+  let loopTimeout;
+
+
+  // Create Noise
+  const createNoise = () => {
+      const idata = ctx.createImageData(wWidth, wHeight);
+      const buffer32 = new Uint32Array(idata.data.buffer);
+      const len = buffer32.length;
+
+      for (let i = 0; i < len; i++) {
+          if (Math.random() < 0.5) {
+              buffer32[i] = 0xff000000;
+          }
+      }
+
+      noiseData.push(idata);
+  };
+
+
+  // Play Noise
+  const paintNoise = () => {
+      if (frame === 9) {
+          frame = 0;
+      } else {
+          frame++;
+      }
+
+      ctx.putImageData(noiseData[frame], 0, 0);
+  };
+
+
+  // Loop
+  const loop = () => {
+      paintNoise(frame);
+
+      loopTimeout = window.setTimeout(() => {
+          window.requestAnimationFrame(loop);
+      }, (1000 /17));
+      //originally 1000/25
+  };
+
+
+  // Setup
+  const setup = () => {
+      wWidth = window.innerWidth;
+      wHeight = window.innerHeight;
+
+      canvas.width = wWidth;
+      canvas.height = wHeight;
+
+      for (let i = 0; i < 10; i++) {
+          createNoise();
+      }
+
+      loop();
+  };
+
+
+  // Reset
+  let resizeThrottle;
+  const reset = () => {
+      window.addEventListener('resize', () => {
+          window.clearTimeout(resizeThrottle);
+
+          resizeThrottle = window.setTimeout(() => {
+              window.clearTimeout(loopTimeout);
+              setup();
+          }, 200);
+      }, false);
+  };
+
+
+  // Init
+  const init = (() => {
+      canvas = document.getElementById('noise');
+      ctx = canvas.getContext('2d');
+
+      setup();
+  })();
+};
+
+noise();
+
+const parallax = document.getElementById("parallax");
+
+// Parallax Effect for DIV 1
+window.addEventListener("scroll", function () {
+  let offset = window.pageYOffset;
+  parallax.style.backgroundPositionY = offset * -0.3 + "px";
+  // DIV 1 background will move slower than other elements on scroll.
+});
+
+
+// var ul = document.getElementById("test-list")
+// for (var i = ul.children.length; i >= 0; i--) {
+//     ul.appendChild(ul.children[Math.random() * i | 0]);
+// }
+
+// function playPauseVideo() {
+//     let videos = document.querySelectorAll("video");
+//     videos.forEach((video) => {
+//         // We can only control playback without insteraction if video is mute
+//         video.muted = true;
+//         // Play is a promise so we need to check we have it
+//         let playPromise = video.play();
+//         if (playPromise !== undefined) {
+//             playPromise.then((_) => {
+//                 let observer = new IntersectionObserver(
+//                     (entries) => {
+//                         entries.forEach((entry) => {
+//                             if (
+//                                 entry.intersectionRatio !== 1 &&
+//                                 !video.paused
+//                             ) {
+//                                 video.pause();
+//                             } else if (video.paused) {
+//                                 video.play();
+//                             }
+//                         });
+//                     },
+//                     { threshold: 0.2 }
+//                 );
+//                 observer.observe(video);
+//             });
+//         }
+//     });
+// }
+
+// playPauseVideo();
+
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+
+
+<script src="https://vjs.zencdn.net/8.0.4/video.min.js"></script>
+  <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-72695009-1', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async></script>
+</body>
+
+</html>
