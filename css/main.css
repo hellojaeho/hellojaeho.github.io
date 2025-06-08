@@ -4902,6 +4902,7 @@ nav.dynamic-nav .d-nav-case-study {
 
 nav.dynamic-nav.case-study .d-nav-case-study {
   display: flex;
+  z-index: 999;
 }
 
 .d-nav-case-study em {
