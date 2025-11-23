@@ -3956,9 +3956,9 @@ display: flex;
   text-shadow: 0px .3px 8px #0c0c3e1a;
 }
 
-.d-nav-logo, .nav-menu ul, div.d-nav-testimonials ul li, div.d-nav-info-intro p:first-of-type, div.d-nav-info-1a, div.d-nav-info-1b {
+/* .d-nav-logo, .nav-menu ul, div.d-nav-testimonials ul li, div.d-nav-info-intro p:first-of-type, div.d-nav-info-1a, div.d-nav-info-1b {
   filter: blur(.25px);
-}
+} */
 
 h3.top-info,
 .n-number,
@@ -3975,7 +3975,7 @@ h3.top-info,
   /* text-transform: uppercase; */
   margin: 0;
     text-shadow: 0px .3px 8px #0c0c3e21;
-    /* -webkit-font-smoothing: antialiased; */
+    -webkit-font-smoothing: antialiased;
 }
 
 #simple-hero {
@@ -5704,7 +5704,7 @@ display: flex
 ;
     border-top: 1px solid #000;
     justify-content: left;
-    filter: blur(.2px);
+    /* filter: blur(.2px); */
 }
 
 .carousel-row-services {
