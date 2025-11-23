@@ -3655,7 +3655,8 @@ body div nav.dynamic-nav.info-closing {
   }
 
   nav .d-nav-logo {
-    bottom: -95px;
+         bottom: -87px;
+        right: 23px;
     transition-duration: 0.4s;
     transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
   }
@@ -3724,11 +3725,21 @@ body div nav.dynamic-nav.info-closing {
     width:80%;
   }
 
+  section .hero-center-container {
+        display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   section .simple-hero-video-container  {
-        width: 66%;
-        height: 58%;
+        width: 71%;
+        /* height: 58%; */
         margin-bottom: 10px;
   }
+
+  /* #simple-hero {
+    height: initial !important;
+  } */
   
   section h3.top-info {
     flex-grow: 1;
