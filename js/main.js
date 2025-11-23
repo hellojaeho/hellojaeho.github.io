@@ -565,6 +565,7 @@ setTimeout(() => {
       $('body').addClass('n2-fixed'); // Add n-fixed class to body
       dynamicNav.addClass('info-open');
       $('#home-work-carousels').addClass('blurred');
+      $('#simple-hero').addClass('blurred');
       $('#hero-hero').addClass('blurred');
     });
 
@@ -573,6 +574,7 @@ setTimeout(() => {
       $('body').removeClass('n2-fixed'); // Remove n-fixed class when closing
       $('#home-work-carousels').removeClass('blurred');
       $('#hero-hero').removeClass('blurred');
+      $('#simple-hero').removeClass('blurred');
       dynamicNav.addClass('info-closing'); // Changed toggle to remove
       setTimeout(function () {
         dynamicNav.removeClass('info-closing');
@@ -587,6 +589,7 @@ setTimeout(() => {
       $('body').removeClass('n2-fixed'); // Remove n-fixed class when closing
       $('#home-work-carousels').removeClass('blurred');
       $('#hero-hero').removeClass('blurred');
+      $('#simple-hero').removeClass('blurred');
     }
   });
 

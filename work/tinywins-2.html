@@ -1,0 +1,107 @@
+<script>
+    // Redirect to index.html with a query param
+    window.location.href = '../?open=/work/tinywins-2.html';
+  </script>
+
+<div class="blocks n-hidden blurred" data-file="/work/tinywins-2.html">
+
+    <div class="work n-info-container">
+        <div class="n-client-info">
+            <div class="n-number"></div>
+            <h3 class="n-client-name">Tinywins</h3>
+        </div>
+        <div class="n-client-project-info">
+            <p class="n-description">Revamping the digital agency's brand through website redesign.</p>
+            <div class="n-info-right">
+                <span class="n-year">/ 2024</span>
+                <div class="n-services">Brand Design, Web Design, Motion</div>
+            </div>
+        </div>
+    </div>
+
+
+            <section class="content-block full-bleed-image">
+                <video class="lazy desktop-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1135116869/rendition/720p/file.mp4?loc=external&signature=b0b7dc567d9f4e4412ce34df324e7fbc0b28edd72695cc31bbfed0f322ee92ea|video/mp4"></video>
+                <video class="lazy mobile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1135116869/rendition/360p/file.mp4?loc=external&signature=b010c437fc0c591cd5a515dc34f548233f612bb2d72b6bad6df13d9c203cae94|video/mp4"></video>
+                <div class="lazy-placeholder"></div>
+            </section>
+            <section class="content-block full-bleed-image">
+                <video class="lazy desktop-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1135113632/rendition/720p/file.mp4%20%28720p%29.mp4?loc=external&signature=8304b4c4b47473f8749c49fa3ca672c0ff094faab4e7e768a5722aa551859b83|video/mp4"></video>
+                <video class="lazy mobile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1135113632/rendition/360p/file.mp4%20%28360p%29.mp4?loc=external&signature=e36f583c2e5917e188ba21655d593fbe6a82bf88ecee41e9bcf20ab992471373|video/mp4"></video>
+                <div class="lazy-placeholder"></div>
+            </section>
+            <section class="content-block full-bleed-image">
+                <video class="lazy desktop-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1135115280/rendition/720p/file.mp4%20%28720p%29.mp4?loc=external&signature=9cc8d81c3632edaef42e233ee0728adb0429cdd7d6b1b681c94730a27368225d|video/mp4"></video>
+                <video class="lazy mobile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1135115280/rendition/360p/file.mp4%20%28360p%29.mp4?loc=external&signature=4b9002e61602f8253c218ba56d6dc332440e771c38ff94c3bc9db817679ab113|video/mp4"></video>
+                <div class="lazy-placeholder"></div>
+            </section>
+
+            
+            <section class="content-block credits" style="margin: 190px 0; padding-bottom: 30px;">
+                <div class="credits-list">
+                    <ul>
+                        <li>
+                            <h6 class="">Client</h6>
+                            <div class="">Tinywins</div>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h6 class="">Co-Founder</h6>
+                            <div class="">Matty Ayers</div>
+                        </li>
+                        <li>
+                            <h6 class="">Chief Executive Officer</h6>
+                            <div class="">Alwyn De Gallegos</div>
+                        </li>
+                        <li>
+                            <h6 class="">Executive Creative Director</h6>
+                            <div class="">Justin Rands</div>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h6 class="">Brand & Experience Design</h6>
+                            <div class="">Jae Yoon Studio</div>
+                        </li>
+                    </ul>
+                    <ul>
+                        <img src="../images/credits/tinywins.png" class="tinywins" />
+                    </ul>
+                </div>
+                
+                    
+            </section>
+    <div onclick="closeOverlay()" class="n-close-overlay"></div>
+    
+</div>
+<!-- <script>
+
+    //lazyload videos with data-src
+const videos = document.querySelectorAll('video');
+
+const preloadVideo = (video) => {
+  const sources = video.querySelectorAll('source');
+  sources.forEach(source => {
+    source.src = source.dataset.src;
+  });
+  video.load(); // Triggers the video to load with new sources
+};
+
+const observer = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      preloadVideo(entry.target);
+      obs.unobserve(entry.target);
+    }
+  });
+}, {
+  rootMargin: '200px 0px', // preload a bit before it's visible
+  threshold: 0.01
+});
+
+videos.forEach(video => observer.observe(video));
+</script> -->
+
+
+

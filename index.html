@@ -63,7 +63,19 @@
 
     
 
+    
+
   </script>
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Define your desktop breakpoint (adjust as needed)
+  const isDesktop = window.matchMedia('(min-width: 1025px)').matches;
+
+  if (isDesktop) {
+    document.querySelectorAll('.mobile-work-spotlight').forEach(el => el.remove());
+  }
+});
+</script>
   <script src="js/jquery.codex.js"></script>
   <canvas id="noise" class="noise"></canvas>
   <!-- <div id="parallax" class="grid_bg"></div> -->
@@ -97,7 +109,7 @@
         <script>
             document.addEventListener('DOMContentLoaded', () => {
                 const nav = document.querySelector('.dynamic-nav');
-                const delay = 1500; // Configurable delay in milliseconds
+                const delay = 600; // Configurable delay in milliseconds
 
                 setTimeout(() => {
                     nav.classList.add('open');
@@ -164,19 +176,25 @@
                     <div class="d-nav-logo-main">
                         <span>Jae</span><span>Yoon</span><span>Studio</span>
                     </div>
-                   
-                    <div class="d-nav-logo-est">
-                        <span>Est.</span><img src="img/signature.png"><span>(</span><span class="year">2021</span><span>)</span>
+                    <div class="d-nav-paint">
+                        <img src="images/nav_paint.png" alt="paint">
                     </div>
-                </div>
-                <div class="d-nav-slogan">
-                    <span>A</span> <span>creative powerhouse</span> <span>for visionary</span> <span>teams and</span> <span>leaders</span>
+                    <div class="d-nav-logo-additional">
+                        <ul>
+                            <li>Worldwide Services</li>
+                            <li>LLC, S-Corp since 2021</li>
+                            <li>82.8628° S, 135.0000° E</li>
+                        </ul>
+                    </div>
+                    <div class="d-nav-logo-email">
+                        <a href="mailto:info@jaeyoon.studio">info@jaeyoon.studio</a>
+                    </div>
                 </div>
             </div>
             <div class="d-nav-video">
                 <div class="d-nav-video-container wide">
                     <!-- <video class="behind" preload="none" autoplay loop muted playsinline width="618" data-src="https://player.vimeo.com/progressive_redirect/playback/923212688/rendition/360p/file.mp4?loc=external&signature=4c26a452f1c0660b9caa161baab885a45aa583cecdc10a21ae2189be6716abf9|video/mp4"></video> -->
-                    <video class="front" preload="none" autoplay loop muted playsinline width="618" data-src="https://player.vimeo.com/progressive_redirect/playback/1090111722/rendition/360p/file.mp4?loc=external&signature=4ac180f863d3bbbd519f3aa77b27bfc4e16e7f365f4105e7681133b44ab5974a|video/mp4"></video>
+                    <!-- <video class="front" preload="none" autoplay loop muted playsinline width="618" data-src="https://player.vimeo.com/progressive_redirect/playback/1090111722/rendition/360p/file.mp4?loc=external&signature=4ac180f863d3bbbd519f3aa77b27bfc4e16e7f365f4105e7681133b44ab5974a|video/mp4"></video> -->
                     <div class="d-nav-video-ui">
                         <div class="d-nav-video-ui-btn">
                             <img src="img/play_btn.png" alt="play">
@@ -201,12 +219,12 @@
                     </div>
                     <div class="d-nav-info-intro">
                         <div class="d-nav-info-right">
-                            <p><span></span>Jae Yoon Studio is a design and motion practice transforming visionary ideas into iconic visual systems. We are a storytelling powerhouse combining aesthetic excellence with strategic depth to empower visionaries defining what's next.</p>
+                            <p>JAE <span></span>YOON <span></span>STUDIO is a design and motion practice transforming visionary ideas into iconic visual systems. We are a storytelling powerhouse combining aesthetic excellence with strategic depth to empower visionaries defining what's next.</p>
                         </div>
                     </div>
                     <div class="d-nav-info-1a">
                         <div class="d-nav-info-left">
-                            <h4>[  &nbsp; Previous Engagements  &nbsp; ]</h4>
+                            <h4>Previous Engagements</h4>
                             <div class="info-number">1A</div>
                         </div>
                         <div class="d-nav-info-right">
@@ -259,7 +277,7 @@
                     </div>
                     <div class="d-nav-info-1b">
                         <div class="d-nav-info-left">
-                            <h4>[ &nbsp; Capabilities &nbsp; ]</h4>
+                            <h4>Capabilities</h4>
                             <div class="info-number">1B</div>
                         </div>
                         <div class="d-nav-info-right">
@@ -286,7 +304,7 @@
                     </div>
                     <div class="d-nav-info-2a">
                         <div class="d-nav-info-left">
-                            <h4>[ &nbsp; Answers &nbsp;  ]</h4>
+                            <h4>Answers</h4>
                             <div class="info-number">2A</div>
                         </div>
                         <script>
@@ -371,7 +389,7 @@
                     </div>
                     <div class="d-nav-info-3a">
                         <div class="d-nav-info-left">
-                            <h4>[ &nbsp; Testimonials &nbsp; ]</h4>
+                            <h4>Testimonials</h4>
                             <div class="info-number">2B</div>
                         </div>
                         <div class="d-nav-info-full">
@@ -391,9 +409,9 @@
                                         <p><span></span>“Jae is a prolific designer, with a Swiss army set of tools under his belt. He approaches any challenge strategically, coming at the problem from both a UX and visual design perspective to make sure stakeholders have full understanding of the solution.”</p>
                                         <div class="d-nav-testimonials-from">
                                             <div class="d-nav-t-name">Erica Kung</div>
-                                            <div class="d-nav-t-position">Managing Director</div>
+                                            <div class="d-nav-t-position">Managing Director,</div>
                                             <div class="d-nav-t-logo">
-                                                <img class="stink" src="images/testimonial/stink_studios.png">
+                                                Stink Studios
                                             </div>
                                         </div>
                                     </li>
@@ -401,9 +419,9 @@
                                         <p><span></span>"Jae is a best in class creative professional. I’ve worked with Jae on problems that required deep visual and UX thinking and he was able to think through the interaction details with great precision. On top of that, his motion and video skills are excellent!"</p>
                                         <div class="d-nav-testimonials-from">
                                             <div class="d-nav-t-name">Megan Mitchell</div>
-                                            <div class="d-nav-t-position">Senior Art Director</div>
+                                            <div class="d-nav-t-position">Senior Art Director,</div>
                                             <div class="d-nav-t-logo">
-                                                <img class="apple" src="images/testimonial/apple.png">
+                                                Apple
                                             </div>
                                         </div>
                                     </li>
@@ -414,9 +432,9 @@
                                         <p><span></span>"Jae was an absolute pleasure to work with. He was able to flex far beyond traditional product design into design of completely novel metaverse experiences, and helped us go from idea to prototype to production. His drive and speed of execution are amazing, and we'd definitely work with him again."</p>
                                         <div class="d-nav-testimonials-from">
                                             <div class="d-nav-t-name">Phillip Wang</div>
-                                            <div class="d-nav-t-position">CEO</div>
+                                            <div class="d-nav-t-position">CEO,</div>
                                             <div class="d-nav-t-logo">
-                                                <img class="gather" src="images/testimonial/gather.png">
+                                                Gather
                                             </div>
                                         </div>
                                     </li>
@@ -428,9 +446,9 @@
                             In addition to his design skills he is an absolute pro. He handles himself well under pressure and is great and managing complex client relationships. I can’t recommend him enough.”</p>
                                         <div class="d-nav-testimonials-from">
                                             <div class="d-nav-t-name">Adam Perlis</div>
-                                            <div class="d-nav-t-position">CEO</div>
+                                            <div class="d-nav-t-position">CEO,</div>
                                             <div class="d-nav-t-logo">
-                                                <img class="academy" src="images/testimonial/academy.png">
+                                                Academy
                                             </div>
                                         </div>
                                     </li>
@@ -439,9 +457,9 @@
                                         <p><span></span>"Jae is a thoughtful designer with an exceptional eye for creating visually striking experiences. His clients benefit from a rare combination of skills: he’s fast, flexible, and responsive. These skills make him a great collaborator and a human cheat-code for taking your product and brand to the next level."</p>
                                         <div class="d-nav-testimonials-from">
                                             <div class="d-nav-t-name">Gabriel Valdivia</div>
-                                            <div class="d-nav-t-position">Principal</div>
+                                            <div class="d-nav-t-position">Principal,</div>
                                             <div class="d-nav-t-logo">
-                                                <img class="valdivia" src="images/testimonial/valdivia_works.png">
+                                                Valdivia Works
                                             </div>
                                         </div>
                                     </li>
@@ -454,9 +472,9 @@
                             Jae is also extremely fast & takes in feedback very well. I remember the design team wanting to learn from Jae and work closely with him because his work can help inspire other designers to try new ways of interactions, micro-animations, transitions and visual design. For any small startups or smaller companies, if you are looking to hire a designer to help you with concepts, you just need one or two strong designers like Jae Yoon. I highly recommend Jae.”</p>
                                         <div class="d-nav-testimonials-from">
                                             <div class="d-nav-t-name">Jan Sundar</div>
-                                            <div class="d-nav-t-position">Head of Design</div>
+                                            <div class="d-nav-t-position">Head of Design,</div>
                                             <div class="d-nav-t-logo">
-                                                <img class="wish" src="images/testimonial/wish.png">
+                                                Wish
                                             </div>
                                         </div>
                                     </li>
@@ -465,9 +483,9 @@
                                         <p><span></span>“Beyond being incredibly talented, Jae is incredibly smart and thoughtful when it comes to cracking creative problems. He was an absolute pleasure to work with, and I look forward to partnering with him in the future!”</p>
                                         <div class="d-nav-testimonials-from">
                                             <div class="d-nav-t-name">Alex Sturtevant</div>
-                                            <div class="d-nav-t-position">Head of New Business</div>
+                                            <div class="d-nav-t-position">Head of New Business,</div>
                                             <div class="d-nav-t-logo">
-                                                <img class="stink" src="images/testimonial/stink_studios.png">
+                                                Stink Studios
                                             </div>
                                         </div>
                                     </li>
@@ -478,9 +496,9 @@
                             website and design system. Thank you.”</p>
                                         <div class="d-nav-testimonials-from">
                                             <div class="d-nav-t-name">Steve Peck</div>
-                                            <div class="d-nav-t-position">Head of Brand</div>
+                                            <div class="d-nav-t-position">Head of Brand,</div>
                                             <div class="d-nav-t-logo">
-                                                <img class="current" src="images/testimonial/current.png">
+                                            Current
                                             </div>
                                         </div>
                                     </li>
@@ -498,9 +516,9 @@
                             over the next few months.”</p>
                                         <div class="d-nav-testimonials-from">
                                             <div class="d-nav-t-name">Samuel Francis</div>
-                                            <div class="d-nav-t-position">CEO</div>
+                                            <div class="d-nav-t-position">CEO,</div>
                                             <div class="d-nav-t-logo">
-                                                <img class="carrot" src="images/testimonial/carrot_stick.png">
+                                                Carrot & Stick
                                             </div>
                                         </div>
                                     </li>
@@ -509,9 +527,9 @@
                                         <p><span></span>“You did the branding, the UX and the visual design for this project. You are the best designer we've ever worked with.”</p>
                                         <div class="d-nav-testimonials-from">
                                             <div class="d-nav-t-name">Patrick Kim</div>
-                                            <div class="d-nav-t-position">CEO</div>
+                                            <div class="d-nav-t-position">CEO,</div>
                                             <div class="d-nav-t-logo">
-                                                <img class="audeo" src="images/testimonial/audeo_labs.png">
+                                                Audeo Labs
                                             </div>
                                         </div>
                                     </li>
@@ -519,9 +537,9 @@
                                         <p><span></span>“I worked with Jae on an initiative to uncover new revenue driving product opportunities for Twitter’s enterprise business. He was a great, positive and detail oriented design collaborator and together we unlocked some big opportunities for that side of the business.”</p>
                                         <div class="d-nav-testimonials-from">
                                             <div class="d-nav-t-name">Dave Snyder</div>
-                                            <div class="d-nav-t-position">Product Design Director</div>
+                                            <div class="d-nav-t-position">Product Design Director,</div>
                                             <div class="d-nav-t-logo">
-                                                <img class="twitter" src="images/testimonial/twitter.png">
+                                                Twitter
                                             </div>
                                         </div>
                                     </li>
@@ -532,9 +550,9 @@
                                         <p><span></span>“Jae played a critical role in several redesign initiatives, where he skillfully translated business and user goals into beautifully executed design concepts. His exceptional visual & motion work was a constant source of inspiration for the entire team. Besides being a talented designer, he’s humble, open-minded, and an excellent team player.”</p>
                                         <div class="d-nav-testimonials-from">
                                             <div class="d-nav-t-name">Yiran Ma</div>
-                                            <div class="d-nav-t-position">Design Manager</div>
+                                            <div class="d-nav-t-position">Design Manager,</div>
                                             <div class="d-nav-t-logo">
-                                                <img class="wish" src="images/testimonial/wish.png">
+                                                Wish
                                             </div>
                                         </div>
                                     </li>
@@ -546,9 +564,9 @@
                             for the hard work on this.”</p>
                                         <div class="d-nav-testimonials-from">
                                             <div class="d-nav-t-name">Michael Schafler</div>
-                                            <div class="d-nav-t-position">Co-Founder</div>
+                                            <div class="d-nav-t-position">Co-Founder,</div>
                                             <div class="d-nav-t-logo">
-                                                <img class="inhouse" src="images/testimonial/inhouse.png">
+                                                InHouse
                                             </div>
                                         </div>
                                     </li>
@@ -556,9 +574,9 @@
                                         <p><span></span>“Jae's energy and inquisitive nature allowed him to adapt his processes and work to meet project demands. When given a problem set, he was very thorough in his investigations and was diligent in looking to established frameworks, whether through brand standards or other applicable web conventions. Jae was very collaborative, sharing his work and design perspective among the different stages of exploration. I will always remember the joy he brought to the work and the team around him, and know that he'll continue to bring that charge to whatever project he pursues.”</p>
                                         <div class="d-nav-testimonials-from">
                                             <div class="d-nav-t-name">Billy Reano</div>
-                                            <div class="d-nav-t-position">Art Director</div>
+                                            <div class="d-nav-t-position">Art Director,</div>
                                             <div class="d-nav-t-logo">
-                                                <img class="apple" src="images/testimonial/apple.png">
+                                                Apple
                                             </div>
                                         </div>
                                     </li>
@@ -1283,18 +1301,17 @@ function animateWords(element) {
     <script>
        document.addEventListener('DOMContentLoaded', () => {
     const carouselRows = document.querySelectorAll('.carousels-container .carousel-row');
-
     carouselRows.forEach((row, rowIndex) => {
         const nNumberElement = row.querySelector('.n-number');
         if (nNumberElement) {
-            nNumberElement.textContent = String(rowIndex + 1).padStart(3, '0');
+            nNumberElement.textContent = "N." + (rowIndex + 1);
         }
 
-        // select both .slide and .single-spotlight-container
+        // select both .slide and .single-spotlight-container  
         const slides = row.querySelectorAll('.slide, .single-spotlight-container');
 
         slides.forEach(slide => {
-            slide.setAttribute('data-index', `[ ${String(rowIndex + 1).padStart(3, '0')} ]`);
+            slide.setAttribute('data-index', `[ no.${rowIndex + 1}. ]`);
         });
     });
 
@@ -1337,10 +1354,221 @@ function animateWords(element) {
             }
         });
     });
+
+    // dim all other slides when one is hovered
+    // document.addEventListener('DOMContentLoaded', () => {
+    //     // Get all carousel sliders
+    //     const carouselSliders = document.querySelectorAll('.carousel-slider');
+
+    //     carouselSliders.forEach(slider => {
+    //         const slides = slider.querySelectorAll('.slide');
+
+    //         // Add transition style to all slides
+    //         slides.forEach(slide => {
+    //             slide.style.transition = 'opacity 250ms, filter 250ms'; // Add filter transition
+    //         });
+
+    //         slides.forEach(slide => {
+    //             // On mouse enter
+    //             slide.addEventListener('mouseenter', () => {
+    //                 // Set opacity and blur for other slides in same carousel
+    //                 slides.forEach(otherSlide => {
+    //                     if (otherSlide !== slide) {
+    //                         otherSlide.style.opacity = '0.2';
+    //                         otherSlide.style.filter = 'blur(2px)'; // Add blur effect
+    //                     }
+    //                 });
+    //             });
+
+    //             // On mouse leave
+    //             slide.addEventListener('mouseleave', () => {
+    //                 // Reset opacity and blur for all slides
+    //                 slides.forEach(otherSlide => {
+    //                     otherSlide.style.opacity = '1';
+    //                     otherSlide.style.filter = 'blur(0)'; // Remove blur
+    //                 });
+    //             });
+    //         });
+    //     });
+    // });
+
+    // document.addEventListener('DOMContentLoaded', () => {
+    //     const heroImage = document.getElementById('hero-image');
+    //     let flickerCount = 0;
+    //     const flickerInterval = 80; // Equal interval in milliseconds
+
+    //     function flicker() {
+    //         if (flickerCount >= 20) {
+    //             heroImage.style.display = 'none';
+    //             return;
+    //         }
+
+    //         // Use requestAnimationFrame for more precise timing
+    //         requestAnimationFrame(() => {
+    //             heroImage.style.opacity = flickerCount % 2 === 0 ? '0' : '1';
+    //             flickerCount++;
+    //             setTimeout(flicker, flickerInterval);
+    //         });
+    //     }
+
+    //     setTimeout(() => {
+    //         heroImage.style.transition = `opacity ${flickerInterval/2}ms`;
+    //         flicker();
+    //     }, 500);
+    // });
+
+
+
+    
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const heroImage = document.getElementById('hero-image');
+        
+        // Show image initially
+        setTimeout(() => {
+            heroImage.style.opacity = '1';
+        }, 500);
+        heroImage.style.transition = 'opacity 0s ease';
+
+        // After 5 seconds, start flicker sequence
+        setTimeout(() => {
+            // First flicker
+            heroImage.style.opacity = '0';
+            setTimeout(() => {
+                heroImage.style.opacity = '1';
+                setTimeout(() => {
+                    // Second flicker
+                    heroImage.style.opacity = '0';
+                    setTimeout(() => {
+                        heroImage.style.opacity = '1';
+                        // Final fadeout
+                        setTimeout(() => {
+                            heroImage.style.opacity = '0';
+                            // Remove from DOM after fade completes
+                            setTimeout(() => {
+                                heroImage.style.display = 'none';
+                            }, 1000);
+                        }, 100);
+                    }, 100);
+                }, 100);
+            }, 100);
+        }, 2000);
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const initialBg = document.querySelector('.initial-bg');
+        if (!initialBg) return;
+
+        // ensure smooth fade transition even if CSS doesn't define one
+        initialBg.style.transition = initialBg.style.transition || 'opacity .5s ease, visibility .5s';
+
+        // wait 5s then fade out and remove after transition completes
+        setTimeout(() => {
+            initialBg.style.opacity = '0';
+            initialBg.style.visibility = 'hidden';
+            // remove from DOM after transition (1s) to avoid blocking interactions
+            setTimeout(() => {
+                if (initialBg.parentNode) initialBg.parentNode.removeChild(initialBg);
+            }, 1000);
+        }, 2500);
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const heroImage = document.getElementById('hero-image');
+        const initialBg = document.querySelector('.initial-bg');
+
+        if (!heroImage) return;
+
+        const fadeOutElement = (el, duration = 600) => {
+            if (!el || el.classList.contains('fading-out')) return;
+            el.classList.add('fading-out');
+            // ensure there's a transition
+            el.style.transition = el.style.transition || `opacity ${duration}ms ease, visibility ${duration}ms ease`;
+            // kick off paint then change styles to trigger transition
+            requestAnimationFrame(() => {
+                el.style.opacity = '0';
+                el.style.visibility = 'hidden';
+            });
+            // remove from flow after transition completes
+            setTimeout(() => {
+                if (el && el.parentNode) el.style.display = 'none';
+            }, duration + 40);
+        };
+
+        heroImage.addEventListener('click', () => {
+            fadeOutElement(heroImage, 600);
+            fadeOutElement(initialBg, 600);
+        }, { passive: true });
+    });
+
+
+
+
+    // document.addEventListener('DOMContentLoaded', () => {
+    //     setTimeout(() => {
+    //         const container = document.querySelector('.carousels-container');
+    //         if (container) {
+    //             container.style.opacity = '1';
+    //         }
+    //     }, 3000);
+    // });
+
     </script>
 
+    <section id="simple-hero">
+        <h3 class="top-info"><span>JAE</span><span>YOON</span><span>STUDIO</span>  is a strategy, design and motion practice empowering visionary leaders and teams define what’s next.</h3>
+        <div class="hero-center-container">
+            <div class="simple-hero-video-container">
+                <video id="hero-video" preload="auto" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1139857766/rendition/540p/file.mp4?loc=external&signature=3e0a46adf20c57439ac9c78a96c11ed6a6e5a3cf7cacab635e77853c4cb2a39a|video/mp4"></video>
+                <!-- <script>
+                (function(){
+                    const v = document.getElementById('hero-video');
+                    const container = document.querySelector('.simple-hero-video-container');
+                    if (!v || !container) return;
+
+                    const markExpanded = () => container.classList.add('expanded');
+
+                    // If video becomes playable
+                    v.addEventListener('canplay', markExpanded, { once: true });
+                    v.addEventListener('loadeddata', markExpanded, { once: true });
+
+                    // In case a lazy loader sets the src later, observe attribute changes
+                    const mo = new MutationObserver(() => {
+                        if ((v.currentSrc || v.src) && !container.classList.contains('expanded')) {
+                            if (v.readyState >= 3) { // HAVE_FUTURE_DATA / can play
+                                markExpanded();
+                            } else {
+                                v.addEventListener('canplay', markExpanded, { once: true });
+                            }
+                        }
+                    });
+                    mo.observe(v, { attributes: true, attributeFilter: ['src', 'data-src'] });
+
+                    // If already ready
+                    if ((v.readyState || 0) >= 3) markExpanded();
+                })();
+                </script> -->
+            </div>
+            <div class="top-bottom-info">
+                <h5>Inquiries</h5>
+            <a href="mailto:info@jaeyoon.studio">info@jaeyoon.studio</a>
+        </div>
+        </div>
+        
+        <div id="hero-image">
+            <img src="/images/large_hero.png" alt="hero image"  fetchpriority="high" decoding="async" loading="eager" ></img>
+        </div>
+
+        <section class="initial-bg">
+
+        </section>
+
+    </section>
     <div id="home-work-carousels">
+        
         <div class="carousels-container">
+           
+            
             <div class="carousel-row load-overlay" data-file="/work/nike-maxs-lab.html">
                 <div class="carousel-row-container">
                     <div class="n-info-container">
@@ -1364,25 +1592,22 @@ function animateWords(element) {
 
 
                 
-                <div class="carousel-row-slider">
+                <div class="carousel-row-slider" style="height: 170px">
                     <div class="carousel-slider slideshow js-slideshow n-lowpoly">
                         
                      
                         
-                        <div class="slide">
-                            <video preload="none" preload="none" autoplay loop muted playsinline width="440" data-src="https://player.vimeo.com/progressive_redirect/playback/1083321716/rendition/720p/file.mp4?loc=external&signature=d6be38071a9e1d5011d69e0c59eb8c368f3182bb65cdd5cdfbdeff1c3a82f962|video/mp4"></video>
-
-                        </div>
+                        
                         <div class="slide" >
-                            <img class="lazy" style="width: 440px;" data-src="/images/work/nike_maxs_lab/error-states_comp.jpg">
+                            <img class="lazy" style="width: 232px;" data-src="/images/work/nike_maxs_lab/error-states_comp.jpg">
                         </div>
-                      <div class="slide-block"></div>
+                      <!-- <div class="slide-block"></div> -->
                         <div class="slide" >
-                            <img class="lazy" style="width: 440px;" data-src="/images/work/nike_maxs_lab/mobile_comp.jpg">
+                            <img class="lazy" style="width: 232px;" data-src="/images/work/nike_maxs_lab/mobile_comp.jpg">
                         </div>
                          <div class="slide-block"></div>
                         <div class="slide">
-                            <video preload="none" preload="none" autoplay loop muted playsinline width="440" data-src="https://player.vimeo.com/progressive_redirect/playback/1083321740/rendition/720p/file.mp4?loc=external&signature=4411ab4ed8e261353131fdfa59464890efdcfcf0143bfcb863b236adcbed904d|video/mp4"></video>
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/1083321740/rendition/240p/file.mp4?loc=external&signature=b099ba5e9696b5185f8e92b5a7f256ddf49b3bbe09126ef122830bd9bcb25f9b|video/mp4"></video>
                         </div>
                         
                         
@@ -1390,7 +1615,7 @@ function animateWords(element) {
                         
                         
                         <div class="slide">
-                            <video preload="none" preload="none" autoplay loop muted playsinline width="440" data-src="https://player.vimeo.com/progressive_redirect/playback/1083321703/rendition/720p/file.mp4?loc=external&signature=6a0245c836741d3ddbb8fcf94148c7aaf24e2daed74172099876d65b9a7a2362|video/mp4"></video>
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/1083321703/rendition/240p/file.mp4%20%28240p%29.mp4?loc=external&signature=04d9961ed2d5ea8d7d3ed026819854bfff561dd3f1102e0eb73dfe5fb2d91aa9|video/mp4"></video>
 
                         </div>
                         <!-- <div class="slide" >
@@ -1406,10 +1631,13 @@ function animateWords(element) {
                         
                          <div class="slide-block"></div>
                         <div class="slide">
-                            <img class="lazy" style="width: 440px;" data-src="/images/work/nike_maxs_lab/wireframes_comp.jpg">
+                            <img class="lazy" style="width: 232px;" data-src="/images/work/nike_maxs_lab/wireframes_comp.jpg">
                         </div>
                         <div class="slide-block"></div>
-                        
+                        <div class="slide">
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/1083321716/rendition/240p/file.mp4?loc=external&signature=4139df1368bdb1448f4fcbcd09d25b06b82d0c58a332ced1753e6590c16646a3|video/mp4"></video>
+
+                        </div>
                         
                     </div>
                 </div>
@@ -1434,34 +1662,38 @@ function animateWords(element) {
                     <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/901479067/rendition/360p/file.mp4?loc=external&signature=08c81aa44edda8890a989945a585bf43e4d590e957f14c24eaaa5956b8a37139|video/mp4"></video>
                     <p class="n-description-mobile"></p>
                 </div>
-                <div class="carousel-row-slider">
+                <div class="carousel-row-slider" style="height: 155px;">
                     <div class="carousel-slider slideshow js-slideshow current">
                         
                         <div class="slide">
-                            <video preload="none" autoplay loop muted playsinline width="510" data-src="https://player.vimeo.com/progressive_redirect/playback/901478859/rendition/540p/file.mp4?loc=external&signature=27d416adcbec8a34d7bece9caf2a689430c7fc55234268c05a094542016655db|video/mp4"></video>
+                            <video preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/901478859/rendition/240p/file.mp4?loc=external&signature=e861076ae9704a82992d9b0f8dd61385100c1b56b908834d571f17bca37ba3a0|video/mp4"></video>
                         </div>
+                        <!-- <div class="slide-block"></div> -->
                         <div class="slide">
-                            <video preload="none" autoplay loop muted playsinline width="510" data-src="https://player.vimeo.com/progressive_redirect/playback/901478835/rendition/540p/file.mp4?loc=external&signature=d86bd74d32a125eef2af86a48e6cd0c656487771f6697bc8f8cc7e06652bfe2b|video/mp4"></video>
+                            <video preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/901478835/rendition/240p/file.mp4?loc=external&signature=6d01e92fe2f2f03900f06450a7b7082b286bbd8d440df09cd91522d425987124|video/mp4"></video>
                         </div>
                         
                         <div class="slide no-mobile">
-                            <video preload="none" autoplay loop muted playsinline width="508" data-src="https://player.vimeo.com/progressive_redirect/playback/901481907/rendition/540p/file.mp4?loc=external&signature=6977ee0ed9a9b1699ac1dc4b4538718d027505d9886274bedfb6d0bde1131a2c|video/mp4"></video>
+                            <video preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/901481907/rendition/240p/file.mp4?loc=external&signature=cc3ac1ff3e3c0025589da8c33bc2cf704a538ac9f0ec239671d97901a3586690|video/mp4"></video>
                         </div>
                         <div class="slide-block"></div>
                         <div class="slide no-mobile">
 
-                            <video preload="none" autoplay loop muted playsinline width="500" data-src="https://player.vimeo.com/progressive_redirect/playback/901487210/rendition/540p/file.mp4?loc=external&signature=d547fdab921c7c219070edca09191a912f4a2ff97ff8bd39773edf02ff09b804|video/mp4"></video>
+                            <video preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/901487210/rendition/240p/file.mp4?loc=external&signature=a6ddaad44616b11d1b032c13637c8b0852e04fde3991de4e5531751067feddce|video/mp4"></video>
                         </div>
                         <div class="slide no-mobile">
-                            <video preload="none" autoplay loop muted playsinline width="510" data-src="https://player.vimeo.com/progressive_redirect/playback/901482336/rendition/540p/file.mp4?loc=external&signature=488d7ae8dad1fb631010c36936c4f5505072c026604348172b5fc8b8f57266c4|video/mp4"></video>
+                            <video preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/901482336/rendition/240p/file.mp4?loc=external&signature=96749ff70008e08dbdd733096d16af975fe03bdccc9f9de038bc1c9f08658c3b|video/mp4"></video>
                         </div>
                         <div class="slide">
-                            <video preload="none" autoplay loop muted playsinline width="505" data-src="https://player.vimeo.com/progressive_redirect/playback/901479067/rendition/540p/file.mp4?loc=external&signature=50bbdaa6c522dbca9f328ec73fedc1b7028b34064b5eac29b993a8bb80f22a8f|video/mp4"></video>
+                            <video preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/901479067/rendition/240p/file.mp4%20%28240p%29.mp4?loc=external&signature=6004cf4baa8ccfd41f1d9c721b805e17f58d1f2945bdcb08279538d17fb7c63d|video/mp4"></video>
                         </div>
                         <div class="slide-block"></div>
                     </div>
                 </div>
             </div>
+
+            
+            
             <div class="carousel-row load-overlay" data-file="/work/tekken.html">
                 <div class="carousel-row-container">
                     <div class="n-info-container">
@@ -1482,27 +1714,31 @@ function animateWords(element) {
                     <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1085299008/rendition/540p/file.mp4?loc=external&signature=724c5baa479f1594200e40655bae37fc7ec79ef1e078ef6050150a36bb6608e6|video/mp4"></video>
                     <p class="n-description-mobile"></p>
                 </div>
-                <div class="carousel-row-slider">
+                <div class="carousel-row-slider" style="height:170px">
                     <div class="carousel-slider slideshow js-slideshow">
+                        <!-- <div class="slide-block"></div> -->
+                       
+                        <div class="slide">
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/1085298870/rendition/240p/file.mp4?loc=external&signature=53b809da41f58d54e55a255ccb29093ba00b9024ce3b5c9fe28017868361f1e3|video/mp4"></video>
+                        </div>
                         <div class="slide-block"></div>
-                        <div class="slide">
-                            <video preload="none" preload="none" autoplay loop muted playsinline width="440" data-src="https://player.vimeo.com/progressive_redirect/playback/1085299008/rendition/720p/file.mp4?loc=external&signature=94299f6d850802af003de01a20fffaaeb4c5a7869da034f2689d402f0dffb912|video/mp4"></video>
+                         <div class="slide">
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/1085299008/rendition/240p/file.mp4?loc=external&signature=188fd5105a19e6740074662059c4b1737d1aa46ba88ad0c41cb7c96c702c8904|video/mp4"></video>
                         </div>
+                        <!-- <div class="slide-block"></div> -->
                         <div class="slide">
-                            <video preload="none" preload="none" autoplay loop muted playsinline width="440" data-src="https://player.vimeo.com/progressive_redirect/playback/1085298870/rendition/720p/file.mp4?loc=external&signature=757b23e91d07017cde79143770c430e932b9a5f5b3f0ee8b714fa5891ef57f79|video/mp4"></video>
-                        </div>
-                        <div class="slide">
-                            <video preload="none" preload="none" autoplay loop muted playsinline width="440" data-src="https://player.vimeo.com/progressive_redirect/playback/1085298920/rendition/720p/file.mp4?loc=external&signature=0f818a5447ba85466b298dc24a483f8f109f29f35026874c6deba7dfe9e40bc4|video/mp4"></video>
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/1085298920/rendition/240p/file.mp4?loc=external&signature=4ff6ee6c8c4e805250783bedf671f585d6ff3541470d25df4cdb652e8ea3d5e7|video/mp4"></video>
                         </div>
                        
+                                <div class="slide-block"></div>
                         
-                        
-                        <div class="slide-block"></div>
+                
                         <div class="slide">
-                            <video preload="none" preload="none" autoplay loop muted playsinline width="440" data-src="https://player.vimeo.com/progressive_redirect/playback/1085298735/rendition/720p/file.mp4?loc=external&signature=471015ce224aabad0d2db5d355a6e8eede5777e5292c85f0b9954edd8a5288f7|video/mp4"></video>
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/1085298735/rendition/240p/file.mp4?loc=external&signature=a27883ba8b0de89da5eafbb9887c1d81b7c7ad8b05242e9e0c557ffe2b71acbd|video/mp4"></video>
                         </div>
+                
                         <div class="slide">
-                            <img class="lazy" style="width: 440px;" data-src="/images/work/tekken/shoe-still.jpg">
+                            <img class="lazy" style="width: 232px;" data-src="/images/work/tekken/shoe-still-compressed.jpg">
                         </div>
                         
                         
@@ -1511,10 +1747,10 @@ function animateWords(element) {
                        
                         
                         <div class="slide">
-                            <video preload="none" preload="none" autoplay loop muted playsinline width="440" data-src="https://player.vimeo.com/progressive_redirect/playback/1085304408/rendition/720p/file.mp4?loc=external&signature=318d7e4e762405c12747344ca65878b5d5a6673c88eb58553895aa94ad2116d6|video/mp4"></video>
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/1085304408/rendition/240p/file.mp4?loc=external&signature=71f3430814786eb690630e8cadecd7a0a94e9ea64870e2cb280efcf6aa4d4422|video/mp4"></video>
                         </div>
                         <div class="slide">
-                            <img class="lazy" style="width: 440px;" data-src="/images/work/tekken/website-2.jpg">
+                            <img class="lazy" style="width: 232px;" data-src="/images/work/tekken/website-2-compressed.jpg">
                         </div>
                        
                      
@@ -1522,32 +1758,87 @@ function animateWords(element) {
                     </div>
                 </div>
             </div>
-                                    <div class="carousel-row load-overlay" data-file="/work/nike-air-max-day.html">
+            <div class="carousel-row load-overlay" data-file="/work/balenciaga.html" style="min-height: 500px">
                 <div class="carousel-row-container">
                     <div class="n-info-container">
                         <div class="n-client-info">
                             <div class="n-number"></div>
-                            <h3 class="n-client-name">Nike X Air Max Day</h3>
+                            <h3 class="n-client-name">Balenciaga</h3>
                         </div>
                         <div class="n-client-project-info">
-                            <p class="n-description">Nike's first-ever digital celebration of Air Max Day Worldwide.</p>
+                            <p class="n-description">Internal R&D visual concepts and experiments.</p>
                             <div class="n-info-right">
                                 <span class="n-year">/ 2022</span>
-                                <div class="n-services">Concepts, Prototyping, UX</div>
+                                <div class="n-services">Art Direction, Motion, 3D</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="mobile-work-spotlight">
-                    <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/891774797/rendition/540p/file.mp4?loc=external&signature=460905c9156acf085f0ef3d4e8de9b55cdfa52e6acbd5330c75706278433daaa|video/mp4"></video>
+                    <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1130834272/rendition/360p/file.mp4?loc=external&signature=d7db1ca70cc00759f616c85f0ba670b13ede4b0cc289c834ea03d481554816b7|video/mp4"></video>
                     <p class="n-description-mobile"></p>
                 </div>
                 <div class="carousel-row-slider single-spotlight">
                     <div class="single-spotlight-container">
-                        <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/891774797/rendition/720p/file.mp4?loc=external&signature=fcf0e9058f5bf93ad822a82bccb3c8434a198645a9cfc7f62af6011d8b74a80d|video/mp4"></video>
+                        <video preload="none" width="880" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1130834272/rendition/360p/file.mp4?loc=external&signature=d7db1ca70cc00759f616c85f0ba670b13ede4b0cc289c834ea03d481554816b7|video/mp4"></video>
                     </div>
                 </div>
             </div>
+            
+            <div class="carousel-row load-overlay" data-file="/work/yu-gi-oh.html" style="min-height: 500px">
+                <div class="carousel-row-container">
+                    <div class="n-info-container">
+                        <div class="n-client-info">
+                            <div class="n-number"></div>
+                            <h3 class="n-client-name">Nike X Yu-Gi-Oh!</h3>
+                        </div>
+                        <div class="n-client-project-info">
+                            <p class="n-description">Bringing the collaboration onto digital and billboard.</p>
+                            <div class="n-info-right">
+                                <span class="n-year">/ 2022</span>
+                                <div class="n-services">Art Direction, Web Design, Motion, Editing</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-work-spotlight">
+                    <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1130829220/rendition/540p/file.mp4%20%28540p%29.mp4?loc=external&signature=1cb8d3891bc1babebe838d06fc2c0213cf558192a9185c6f2136775b1fed6456|video/mp4"></video>
+                    <p class="n-description-mobile"></p>
+                </div>
+                <div class="carousel-row-slider single-spotlight">
+                    <div class="single-spotlight-container">
+                        <video preload="none" width="600px" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1130829220/rendition/540p/file.mp4%20%28540p%29.mp4?loc=external&signature=1cb8d3891bc1babebe838d06fc2c0213cf558192a9185c6f2136775b1fed6456|video/mp4"></video>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-row load-overlay" data-file="/work/atlas.html">
+                <div class="carousel-row-container">
+                    <div class="n-info-container">
+                        <div class="n-client-info">
+                            <div class="n-number"></div>
+                            <h3 class="n-client-name">Atlas</h3>
+                        </div>
+                        <div class="n-client-project-info">
+                            <p class="n-description">Strategic design partnership shaping the product vision and experience.</p>
+                            <div class="n-info-right">
+                                <span class="n-year">/ 2022</span>
+                                <div class="n-services">Product Strategy, Product Design, UX</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-work-spotlight">
+                    <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1134874006/rendition/360p/file.mp4?loc=external&signature=35f36debcdd5966aa4a067e44f80141d4f97b1bda6c572e081e75980da8f6c21|video/mp4"></video>
+                    <p class="n-description-mobile"></p>
+                </div>
+                <div class="carousel-row-slider single-spotlight">
+                    <div class="single-spotlight-container">
+                        <video preload="none" width="730px" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1134874006/rendition/720p/file.mp4?loc=external&signature=783b10aa9b0a1b03a02ae00da529407ef00535435e37c643d71d8807b964dacd|video/mp4"></video>
+                    </div>
+                </div>
+            </div>
+            
             
             
             <div class="carousel-row load-overlay" data-file="/work/tinywins.html">
@@ -1570,34 +1861,124 @@ function animateWords(element) {
                     <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1083300533/rendition/540p/file.mp4?loc=external&signature=f66b8bfda1cab5b8d3dc9cf21798b4958f0468b04edf688d61fd1548152271fc|video/mp4"></video>
                     <p class="n-description-mobile"></p>
                 </div>
-                <div class="carousel-row-slider">
+                <div class="carousel-row-slider" style="height: 167px;">
                     <div class="carousel-slider slideshow js-slideshow">
                         <div class="slide">
-                            <video preload="none" preload="none" autoplay loop muted playsinline width="422" data-src="https://player.vimeo.com/progressive_redirect/playback/1083300533/rendition/720p/file.mp4?loc=external&signature=eb3518d854627f917e9be8a8af2061c6de007677c81da75b3900051d0904618a|video/mp4"></video>
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="227" data-src="https://player.vimeo.com/progressive_redirect/playback/1083300533/rendition/240p/file.mp4?loc=external&signature=6064f60ceda04091590e769fbc518f693e34627b9ff0a71b349fdb0588a16ec6|video/mp4"></video>
                         </div>
+                        <div class="slide-block"></div>
                         <div class="slide">
-                            <img class="lazy" style="width: 440px;" data-src="/images/work/tinywins/mobile-2.jpg">
+                            <img class="lazy" style="width: 232px;" data-src="/images/work/tinywins/mobile-2.jpg">
                         </div>
+                        
                         <div class="slide">
-                            <video preload="none" preload="none" autoplay loop muted playsinline width="440" data-src="https://player.vimeo.com/progressive_redirect/playback/1083300568/rendition/720p/file.mp4?loc=external&signature=683cc09b4ea94d1244a7c914d2fb03cfb223e97952e8830c59343a9185fc88ff|video/mp4"></video>
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/1083300568/rendition/240p/file.mp4?loc=external&signature=d82e22365969f21f5257a955ce4cc9a90921bff7397238631939b4d640331b0d|video/mp4"></video>
                         </div>
                         
                         <div class="slide-block"></div>
                         <div class="slide">
-                            <img class="lazy" style="width: 440px;" data-src="/images/work/tinywins/mobile-1.jpg">
+                            <img class="lazy" style="width: 232px;" data-src="/images/work/tinywins/mobile-1.jpg">
                         </div>
+                        <div class="slide-block"></div>
                         <div class="slide">
-                            <video preload="none" preload="none" autoplay loop muted playsinline width="422" data-src="https://player.vimeo.com/progressive_redirect/playback/1083300551/rendition/720p/file.mp4?loc=external&signature=7dc6d28429075dbcb8cc048dfdc3a2dc97c5010d8eb653c1b57abdc761125f5c|video/mp4"></video>
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="225" data-src="https://player.vimeo.com/progressive_redirect/playback/1083300551/rendition/240p/file.mp4%20%28240p%29.mp4?loc=external&signature=36f1771990e8b0e358bd525612aae3175fd6cee1c5a1e7705df650d44d119610|video/mp4"></video>
                         </div>
                       
                         
                         <div class="slide">
-                            <video preload="none" preload="none" autoplay loop muted playsinline width="440" data-src="https://player.vimeo.com/progressive_redirect/playback/1083300513/rendition/720p/file.mp4?loc=external&signature=ad85c45ac1c18e1f5310db56c77d95dd4e5687d382f72c7a535fefb80460562e|video/mp4"></video>
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/1083300513/rendition/240p/file.mp4?loc=external&signature=121405a592621d0dd8ca01403763b664f266967dc79e4c382512464fd092624f|video/mp4"></video>
                         </div>
                         
                         <div class="slide-block"></div>
                         
                     </div>
+                </div>
+            </div><script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const animateElements = document.querySelectorAll('.animate-on-scroll');
+                        
+                        const observer = new IntersectionObserver((entries) => {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting) {
+                                    const words = Array.from(entry.target.querySelectorAll('.word'));
+                                    // Create array of indices and shuffle them
+                                    const indices = words.map((_, i) => i);
+                                    for (let i = indices.length - 1; i > 0; i--) {
+                                        const j = Math.floor(Math.random() * (i + 1));
+                                        [indices[i], indices[j]] = [indices[j], indices[i]];
+                                    }
+                                    
+                                    // Animate words in random order using shuffled indices
+                                    indices.forEach((originalIndex, randomIndex) => {
+                                        setTimeout(() => {
+                                            words[originalIndex].style.visibility = 'visible';
+                                            words[originalIndex].style.opacity = '1';
+                                        }, randomIndex * 100);
+                                    });
+                                    
+                                    observer.unobserve(entry.target);
+                                }
+                            });
+                        }, {
+                            threshold: 0.5
+                        });
+
+                        animateElements.forEach(element => observer.observe(element));
+                    });
+                    </script>
+             <div class="carousel-row load-overlay" data-file="/work/yu-gi-oh.html">
+                <div class="carousel-row-container">
+                    <div class="n-info-container">
+                        <div class="n-client-info">
+                            <div class="n-number"></div>
+                            <h3 class="n-client-name">Quote</h3>
+                        </div>
+                        <div class="n-client-project-info">
+                            <p class="n-description n-quote">Testimonial received after Apple project</p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="large-quote">
+                    <h4>
+                        <div class="upper animate-on-scroll">
+                            <span class="word">"</span>
+                            <span class="word">Best</span>
+                            <span class="word">In</span>
+                            <span class="word">Class</span>
+                            <span class="word">Creative</span>
+                            <span class="word">"</span>
+                        </div>
+                        <div class="lower animate-on-scroll">
+                            <span class="word">AD,</span>
+                            <span class="word">Apple</span>
+                        </div>
+                        <div class="lower-quote animate-on-scroll">
+                            <span class="word">2022</span>
+                        </div>
+                    </h4>
+
+                    
+
+                    <style>
+                    .word {
+                        opacity: 0;
+                        visibility: hidden;
+                        transition: opacity 0s ease;
+                        display: inline-block;
+                    }
+                    </style>
+                    <div class="quote-background">
+                        <p>Jae is a best in class creative professional. I’ve worked with Jae on problems that required deep visual and UX thinking and he was able to think through the interaction details with great precision. On top of that, his motion and video skills are excellent!</p>
+                        <p>Jae is a best in class creative professional. I’ve worked with Jae on problems that required deep visual and UX thinking and he was able to think through the interaction details with great precision. On top of that, his motion and video skills are excellent!</p>
+                        <p>Jae is a best in class creative professional. I’ve worked with Jae on problems that required deep visual and UX thinking and he was able to think through the interaction details with great precision. On top of that, his motion and video skills are excellent!</p>
+                        <p>Jae is a best in class creative professional. I’ve worked with Jae on problems that required deep visual and UX thinking and he was able to think through the interaction details with great precision. On top of that, his motion and video skills are excellent!</p>
+                        <!-- <p>Jae is a best in class creative professional. I’ve worked with Jae on problems that required deep visual and UX thinking and he was able to think through the interaction details with great precision. On top of that, his motion and video skills are excellent!</p> -->
+                        <p class="quote-name">Megan Mitchell</p>
+                        <p>Jae is a best in class creative professional. I’ve worked with Jae on problems that required deep visual and UX thinking and he was able to think through the interaction details with great precision. On top of that, his motion and video skills are excellent!</p>
+                    </div>
+
                 </div>
             </div>
             <div class="carousel-row load-overlay" data-file="/work/bibi.html">
@@ -1609,7 +1990,7 @@ function animateWords(element) {
                             <h3 class="n-client-name">Bibi</h3>
                         </div>
                         <div class="n-client-project-info">
-                            <p class="n-description">Translating musical diversity and personality into an identity concept.</p>
+                            <p class="n-description">Translating music and personality into an identity concept.</p>
                             <div class="n-info-right">
                                 <span class="n-year">/ 2023</span>
                                 <div class="n-services">Identity Design, Art Direction</div>
@@ -1621,46 +2002,129 @@ function animateWords(element) {
                     <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/901030801/rendition/540p/file.mp4?loc=external&signature=6a2ceff0de4da5755e42228f210f8a92255f00bfef975430e816ee1990d2c79e|video/mp4"></video>
                     <p class="n-description-mobile"></p>
                 </div>
-                <div class="carousel-row-slider">
+                <div class="carousel-row-slider" style="height: 177px">
                     <div class="carousel-slider slideshow js-slideshow">
 
                         <div class="slide" >
-                            <img class="lazy" style="width: 446px;" data-src="/images/work/bibi/hp1.jpg">
+                            <img class="lazy" style="width: 232px;" data-src="/images/work/bibi/hp1.jpg">
                         </div>
                         
                         
                         <div class="slide">
-                            <video preload="none" autoplay loop muted playsinline width="447" data-src="https://player.vimeo.com/progressive_redirect/playback/901030801/rendition/540p/file.mp4?loc=external&signature=6a2ceff0de4da5755e42228f210f8a92255f00bfef975430e816ee1990d2c79e|video/mp4"></video>
+                            <video preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/901030801/rendition/240p/file.mp4?loc=external&signature=bd9b6f245907cc829ad8c78e7d4a62369a10e9e6b2fc35f90fdb3a5f75d67285|video/mp4"></video>
                         </div>
                         <div class="slide">
-                            <img class="lazy" style="width: 504px;" data-src="/images/work/bibi/hp3.jpg">
+                            <img class="lazy" style="width: 208px;" data-src="/images/work/bibi/hp6.jpg">
+                        </div>
+                        <div class="slide">
+                            <img class="lazy" style="width: 262px;" data-src="/images/work/bibi/hp3.jpg">
                         </div>
                         <div class="slide-block"></div>
                         <div class="slide">
-                            <img class="lazy" style="width: 460px;" data-src="/images/work/bibi/hp9.jpg">
+                            <img class="lazy" style="width: 242px;" data-src="/images/work/bibi/hp9.jpg">
                         </div>
                        
+                        
+                        <div class="slide-block"></div>
                         <div class="slide">
-                            <img class="lazy" style="width: 403px;" data-src="/images/work/bibi/hp6.jpg">
-                        </div>
-                        <div class="slide">
-                            <img class="lazy" style="width: 448px;" data-src="/images/work/bibi/hp8.jpg">
+                            <img class="lazy" style="width: 235px;" data-src="/images/work/bibi/hp8.jpg">
                         </div>
                         <div class="slide-block"></div>
                         <div class="slide">
-                            <img class="lazy" style="width: 434px;" data-src="/images/work/bibi/hp7.jpg">
+                            <img class="lazy" style="width: 228px;" data-src="/images/work/bibi/hp7.jpg">
                         </div>
                         <div class="slide">
-                            <img class="lazy" style="width: 388px;" data-src="/images/work/bibi/hp2.jpg">
+                            <img class="lazy" style="width: 203px;" data-src="/images/work/bibi/hp2.jpg">
                         </div>
+                        <div class="slide-block"></div>
                         <div class="slide">
-                            <img class="lazy" style="width: 425px;" data-src="/images/work/bibi/hp5.jpg">
+                            <img class="lazy" style="width: 225px;" data-src="/images/work/bibi/hp5.jpg">
                         </div>   
                         <div class="slide-block"></div>
                     </div>
                 </div>
             </div>
+            <div class="carousel-row load-overlay" data-file="/work/nike-air-max-day.html">
+                <div class="carousel-row-container">
+                    <div class="n-info-container">
+                        <div class="n-client-info">
+                            <div class="n-number"></div>
+                            <h3 class="n-client-name">Nike X Air Max Day</h3>
+                        </div>
+                        <div class="n-client-project-info">
+                            <p class="n-description">Nike's first-ever digital celebration of Air Max Day Worldwide.</p>
+                            <div class="n-info-right">
+                                <span class="n-year">/ 2022</span>
+                                <div class="n-services">Concepts, Prototyping, UX</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-work-spotlight">
+                    <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/891774797/rendition/540p/file.mp4?loc=external&signature=460905c9156acf085f0ef3d4e8de9b55cdfa52e6acbd5330c75706278433daaa|video/mp4"></video>
+                    <p class="n-description-mobile"></p>
+                </div>
+                <div class="carousel-row-slider single-spotlight">
+                    <div class="single-spotlight-container">
+                        <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/891774797/rendition/540p/file.mp4?loc=external&signature=460905c9156acf085f0ef3d4e8de9b55cdfa52e6acbd5330c75706278433daaa|video/mp4"></video>
+                    </div>
+                </div>
+            </div>
+            
 
+            
+            <div class="carousel-row load-overlay" data-file="/work/1099-policy.html">
+                <div class="carousel-row-container">
+                    <div class="n-info-container">
+                        <div class="n-client-info">
+                            <div class="n-number"></div>
+                            <h3 class="n-client-name">1099 Policy</h3>
+                        </div>
+                        <div class="n-client-project-info">
+                            <p class="n-description">Complete brand and website redesign.</p>
+                            <div class="n-info-right">
+                                <span class="n-year">/ 2023</span>
+                                <div class="n-services">Identity design, brand design, web design, motion</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-work-spotlight">
+                    <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1133539983/rendition/360p/file.mp4?loc=external&signature=5463e2986a92a46d95125437ee8542d0f7c6c773d0ccec7b2577f1d578aacf96|video/mp4"></video>
+                    <p class="n-description-mobile"></p>
+                </div>
+                <div class="carousel-row-slider single-spotlight">
+                    <div class="single-spotlight-container">
+                        <video preload="none" width="500px" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1133539983/rendition/720p/file.mp4?loc=external&signature=0d43312eb3a02d5cad78233ab11a23b7782cf99e3f1db30446f5d9084388542a|video/mp4"></video>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-row load-overlay" data-file="/work/experiments.html">
+                <div class="carousel-row-container">
+                    <div class="n-info-container">
+                        <div class="n-client-info">
+                            <div class="n-number"></div>
+                            <h3 class="n-client-name">Experiments / Index</h3>
+                        </div>
+                        <div class="n-client-project-info">
+                            <p class="n-description">Collection of visual experiments and prototypes</p>
+                            <div class="n-info-right">
+                                <span class="n-year">/ 2022</span>
+                                <div class="n-services">Art Direction, Prototyping, 3D, Motion, UX</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-work-spotlight">
+                    <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1133896841/rendition/360p/file.mp4%20%28360p%29.mp4?loc=external&signature=bd65a469344c667628c231935547163bd0deb86f223d58e17d2ea14d46f4094d|video/mp4"></video>
+                    <p class="n-description-mobile"></p>
+                </div>
+                <div class="carousel-row-slider single-spotlight">
+                    <div class="single-spotlight-container">
+                        <video style="max-width: 1100px" width="1200px" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1133896841/rendition/720p/file.mp4?loc=external&signature=e9b0a91caa4d5a2f4c8a8973a56f1124515dc2f136476131bca3c61d5647908c|video/mp4"></video>
+                    </div>
+                </div>
+            </div>
             <div class="carousel-row load-overlay" data-file="/work/capstone.html">
                 <div class="carousel-row-container">
                     <div class="n-info-container">
@@ -1682,43 +2146,71 @@ function animateWords(element) {
                     <p class="n-description-mobile"></p>
                 </div>
    
-                <div class="carousel-row-slider">
+                <div class="carousel-row-slider" style="height: 172px">
                     <div class="carousel-slider slideshow js-slideshow n-lowpoly">
                         
-                        
+                        <div class="slide-block"></div>
                         <div class="slide" >
-                            <video preload="none" preload="none" autoplay loop muted playsinline width="424" data-src="https://player.vimeo.com/progressive_redirect/playback/1083780219/rendition/720p/file.mp4?loc=external&signature=949b141a299ed55e5c77b68db914e1552065067efb7d10829d3f820a8ab27ac5|video/mp4"></video>
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/1083780219/rendition/240p/file.mp4?loc=external&signature=1ae2779cff3982d2955497a7130343b1e1bbbe2af563ba61eb43afadd42bad24|video/mp4"></video>
                         </div>
                         
                         <div class="slide" >
-                            <img class="lazy" style="width: 440px;" data-src="/images/work/capstone/billboard.jpg">
+                            <img class="lazy" style="width: 240px;" data-src="/images/work/capstone/billboard.jpg">
                         </div>
                         <div class="slide-block"></div>
                         <div class="slide" >
-                            <video preload="none" preload="none" autoplay loop muted playsinline width="440" data-src="https://player.vimeo.com/progressive_redirect/playback/1083780240/rendition/720p/file.mp4?loc=external&signature=ec178049e37908edd8a6e96d005ec372f07ba2e1be13c2024136b1ca81bf54bf|video/mp4"></video>
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/1083780240/rendition/240p/file.mp4?loc=external&signature=e5bdd478c49ab09c328f5e2e024462364199cd06cc6fdf15838b405d230cfde8|video/mp4"></video>
                         </div>
                         
                         <div class="slide" >
-                            <img class="lazy" style="width: 440px;" data-src="/images/work/capstone/posters.jpg">
+                            <img class="lazy" style="width: 232px;" data-src="/images/work/capstone/posters.jpg">
                         </div>
                         <div class="slide">
-                            <video preload="none" preload="none" autoplay loop muted playsinline width="440" data-src="https://player.vimeo.com/progressive_redirect/playback/1083432054/rendition/720p/file.mp4?loc=external&signature=0c7e0e49ab7a0f5dd4401d180f323fb6fed50023b11f67912e883db18cad07d1|video/mp4"></video>
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/1083432054/rendition/240p/file.mp4%20%28240p%29.mp4?loc=external&signature=698fcb7b7db25478ad6826d91928ea4ab08434ef8c90ef72fafa065e6235eae1|video/mp4"></video>
                         </div>
+                        <div class="slide-block"></div>
                         
                         <div class="slide">
-                            <img class="lazy" style="width: 440px;" data-src="/images/work/capstone/business-cards.jpg">
+                            <img class="lazy" style="width: 232px;" data-src="/images/work/capstone/business-cards.jpg">
                         </div>
+                        <div class="slide-block"></div>
                         <div class="slide" >
-                            <video preload="none" preload="none" autoplay loop muted playsinline width="440" data-src="https://player.vimeo.com/progressive_redirect/playback/1083780260/rendition/720p/file.mp4?loc=external&signature=3e43590f429bf1e926958cefab0b6795672401aa12e212024370164e81a75cff|video/mp4"></video>
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/1083780260/rendition/240p/file.mp4?loc=external&signature=b328a40db40ab9bf16b92af941931ae554b326a316d28df411b599fa1e26bd00|video/mp4"></video>
 
                         </div>
-                        <div class="slide-block"></div>
+                        
                         
                         <div class="slide">
-                            <video style="filter: saturate(1.3)" preload="none" preload="none" autoplay loop muted playsinline width="440" data-src="https://player.vimeo.com/progressive_redirect/playback/1083770861/rendition/720p/file.mp4?loc=external&signature=84c78bd8d98a47e312273c38cabb898a5058535baf3b52afae59f3aaaf26e87a|video/mp4"></video>
+                            <video style="filter: saturate(1.3)" preload="none" preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/1083770861/rendition/240p/file.mp4?loc=external&signature=b2c283660e3c8074b40a9059449f6cf10301a2f65115db13020d4fc1053cb011|video/mp4"></video>
                         </div>
                        
                         
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-row load-overlay" data-file="/work/tinywins-2.html">
+                <div class="carousel-row-container">
+                    <div class="n-info-container">
+                        <div class="n-client-info">
+                            <div class="n-number"></div>
+                            <h3 class="n-client-name">Tinywins</h3>
+                        </div>
+                        <div class="n-client-project-info">
+                            <p class="n-description">R&D explorations for the digital agency. </p>
+                            <div class="n-info-right">
+                                <span class="n-year">/ 2024</span>
+                                <div class="n-services">Brand design, motion, web design</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-work-spotlight">
+                    <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1131288286/rendition/540p/file.mp4?loc=external&signature=d22f0b8f5b443ef16a9caa6a710771705612626a752f025dce5065ae732580a0|video/mp4"></video>
+                    <p class="n-description-mobile"></p>
+                </div>
+                <div class="carousel-row-slider single-spotlight">
+                    <div class="single-spotlight-container">
+                        <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1131288286/rendition/540p/file.mp4?loc=external&signature=d22f0b8f5b443ef16a9caa6a710771705612626a752f025dce5065ae732580a0|video/mp4"></video>
                     </div>
                 </div>
             </div>
@@ -1748,38 +2240,8 @@ function animateWords(element) {
                         <img  class="lazy" data-src="/images/work/ambush/ambush_mock.jpg">
                     </div>
                 </div>
-                <!-- <div class="carousel-row-slider">
-                    <div class="carousel-slider slideshow js-slideshow ambush">
-
-                            <div class="slide">
-                                <img class="lazy"  style="width: 480px;" data-src="/images/work/ambush/hp4.jpg">
-                            </div>
-                            <div class="slide-block"></div>
-                            <div class="slide">
-                                <img loading="lazy" class="lazy" style="width: 570px;" data-src="images/work/ambush/hp3.jpg">
-                            </div>
-                        <div class="slide">
-                            <img  class="lazy" style="width: 500px;" data-src="/images/work/ambush/hp2.jpg">
-                        </div>
-                        
-                        
-                        <div class="slide">
-                            <img  class="lazy" style="width: 440px;" data-src="/images/work/ambush/hp6.jpg">
-                        </div>
-                        <div class="slide-block"></div>
-                       
-                        <div class="slide">
-                            <img  class="lazy" style="width: 496px;" data-src="/images/work/ambush/hp7.jpg">
-                        </div>
-    
-                        <div class="slide">
-                            <img  class="lazy" style="width: 500px;" data-src="/images/work/ambush/hp5.jpg">
-                        </div>
-                        
-                        
-                        
-                    </div> -->
-                </div>
+            </div>
+            
            
             
    <div class="carousel-row load-overlay" data-file="/work/eafc.html">
@@ -1802,32 +2264,29 @@ function animateWords(element) {
                     <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1085492487/rendition/540p/file.mp4?loc=external&signature=ce5fc49cd4749375f4ea1392697baa470596239a6e33a9b1462f07a51038a5c0|video/mp4"></video>
                     <p class="n-description-mobile"></p>
                 </div>
-                <div class="carousel-row-slider">
+                <div class="carousel-row-slider" style="height: 172px">
                     <div class="carousel-slider slideshow js-slideshow">
                         <div class="slide">
-                            <video preload="none" preload="none" autoplay loop muted playsinline width="418" data-src="https://player.vimeo.com/progressive_redirect/playback/1085492487/rendition/720p/file.mp4?loc=external&signature=1257a6358f15db310fc245347e4bdd653f3a93f38d39961fc4ed801100617804|video/mp4"></video>
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="224" data-src="https://player.vimeo.com/progressive_redirect/playback/1085492487/rendition/240p/file.mp4?loc=external&signature=416152a24f7029a7479fb9f902b80496e78e05ae2cc2a920d72ce335744ca67c|video/mp4"></video>
                         </div>
                         <div class="slide">
-                            <video preload="none" preload="none" autoplay loop muted playsinline width="480" data-src="https://player.vimeo.com/progressive_redirect/playback/1085491703/rendition/720p/file.mp4?loc=external&signature=c41638d27910df93812f178c87eac06ffe36019a5af96853a0166dc3b59858f9|video/mp4"></video>
-                        </div>
-                        <div class="slide">
-                            <video preload="none" preload="none" autoplay loop muted playsinline width="396" data-src="https://player.vimeo.com/progressive_redirect/playback/1085493775/rendition/720p/file.mp4?loc=external&signature=8a648acf8a224f46d8e0b4a2353400ce14244cf828048801d043c31e1f6d7292|video/mp4"></video>
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="257" data-src="https://player.vimeo.com/progressive_redirect/playback/1085491703/rendition/240p/file.mp4?loc=external&signature=ddf6092710eccc37ebc72c95494715137e1a5320f000782b1ae1b8e523617a98|video/mp4"></video>
                         </div>
                         <div class="slide-block"></div>
                         <div class="slide">
-                            <video preload="none" preload="none" autoplay loop muted playsinline width="440" data-src="https://player.vimeo.com/progressive_redirect/playback/1085492131/rendition/720p/file.mp4?loc=external&signature=c4c11d991649d61c0c4923de04f9594f582d658fa8b989cab1c5d7e7c2d87c66|video/mp4"></video>
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="216" data-src="https://player.vimeo.com/progressive_redirect/playback/1085493775/rendition/240p/file.mp4%20%28240p%29.mp4?loc=external&signature=b040dc52c7dde0268a2f6730746db289601983dd6aca420578b5f3eb96021314|video/mp4"></video>
+                        </div>
+                        <div class="slide-block"></div>
+                        <div class="slide">
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/1085492131/rendition/240p/file.mp4?loc=external&signature=c793a0a40e43aaee952ec64eff460b863f1fd283feee8fad7ef04626a0d58365|video/mp4"></video>
+                        </div>
+
+                        <div class="slide">
+                            <img class="lazy" style="width: 232px;" data-src="/images/work/eafc/article.jpg">
                         </div>
                         
-                        
-                        
-                      
-                       
-                        
                         <div class="slide">
-                            <img class="lazy" style="width: 440px;" data-src="/images/work/eafc/article.jpg">
-                        </div>
-                        <div class="slide">
-                            <video preload="none" preload="none" autoplay loop muted playsinline width="440" data-src="https://player.vimeo.com/progressive_redirect/playback/1085491869/rendition/720p/file.mp4?loc=external&signature=f55051775e4a39f9b1d93d8417c5aabab6502a27e299d278bbd822f2c7f2b6d3|video/mp4"></video>
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/1085491869/rendition/240p/file.mp4?loc=external&signature=71e8d8fe0375fd37fbc9cd50ea12b0ee430e613b3af4d118a60fbf4e96c48261|video/mp4"></video>
                         </div>
                         
                         
@@ -1838,8 +2297,63 @@ function animateWords(element) {
                     </div>
                 </div>
             </div>
+            <div class="carousel-row load-overlay" data-file="/work/yu-gi-oh.html">
+                <div class="carousel-row-container">
+                    <div class="n-info-container">
+                        <div class="n-client-info">
+                            <div class="n-number"></div>
+                            <h3 class="n-client-name">Quote</h3>
+                        </div>
+                        <div class="n-client-project-info">
+                            <p class="n-description n-quote">Testimonial received after Apple project</p>
 
-            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="large-quote">
+                    <h4>
+                        <div class="upper animate-on-scroll">
+                            <span class="word">"</span>
+                            <span class="word">Warp</span>
+                            <span class="word">Speed</span>
+                            <span class="word">with</span>
+                            <span class="word">quality</span>
+                            <span class="word">"</span>
+                        </div>
+                        <div class="lower animate-on-scroll">
+                            <span class="word">Senior Director,</span>
+                            <span class="word">Nike</span>
+                        </div>
+                        <div class="lower-quote animate-on-scroll">
+                            <span class="word">2025</span>
+                        </div>
+                    </h4>
+
+                    
+
+                    <style>
+                    .word {
+                        opacity: 0;
+                        visibility: hidden;
+                        transition: opacity 0s ease;
+                        display: inline-block;
+                    }
+                    </style>
+                    <div class="quote-background">
+                        <p>Amazing work on that Nike.Net hype video. You're driving progress at warp speed and at such quality! Amazing!</p>
+                        <p>Amazing work on that Nike.Net hype video. You're driving progress at warp speed and at such quality! Amazing!</p>
+                        <p>Amazing work on that Nike.Net hype video. You're driving progress at warp speed and at such quality! Amazing!</p>
+                        <p>Amazing work on that Nike.Net hype video. You're driving progress at warp speed and at such quality! Amazing!</p>
+                        <p>Amazing work on that Nike.Net hype video. You're driving progress at warp speed and at such quality! Amazing!</p>
+                        <p>Amazing work on that Nike.Net hype video. You're driving progress at warp speed and at such quality! Amazing!</p>
+                        <!-- <p>Jae is a best in class creative professional. I’ve worked with Jae on problems that required deep visual and UX thinking and he was able to think through the interaction details with great precision. On top of that, his motion and video skills are excellent!</p> -->
+                        <p class="quote-name">Scott Norton</p>
+                        <p>Amazing work on that Nike.Net hype video. You're driving progress at warp speed and at such quality! Amazing!</p>
+                    </div>
+
+                </div>
+            </div>
             <div class="carousel-row load-overlay" data-file="/work/tottenham.html">
                 <div class="carousel-row-container">
                     <div class="n-info-container">
@@ -1860,38 +2374,39 @@ function animateWords(element) {
                     <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1083848765/rendition/540p/file.mp4?loc=external&signature=a517143cdfe8c4fb3ee0deb5a5dda6f68c301feca1bc6d408fa1467098840f26|video/mp4"></video>
                     <p class="n-description-mobile"></p>
                 </div>
-                <div class="carousel-row-slider">
+                <div class="carousel-row-slider" style="height: 163px">
                     <div class="carousel-slider slideshow js-slideshow">
-                        <div class="slide">
-                            <img class="lazy" style="width: 440px;" data-src="/images/work/tottenham/OOH_1_comp.jpg">
+                         <div class="slide">
+                            <img class="lazy" style="width: 232px;" data-src="/images/work/tottenham/flags_comp.jpg">
                         </div>
                         <div class="slide">
-                            <video preload="none" preload="none" autoplay loop muted playsinline width="440" data-src="https://player.vimeo.com/progressive_redirect/playback/1083848765/rendition/720p/file.mp4?loc=external&signature=e4c9aa990e2972568f5b1a1d8cf83e809eefa117c01bd4f314ca10798111c586|video/mp4"></video>
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/1083848765/rendition/240p/file.mp4?loc=external&signature=54cd4c61cb11bf7b62ff2ceb3511ae3bbc9acf299184dec4c9fea9b871ac064b|video/mp4"></video>
                         </div>
                         
                         
                         
                         <div class="slide-block"></div>
                         <!-- <div class="slide">
-                            <video preload="none" preload="none" autoplay loop muted playsinline width="440" data-src="https://player.vimeo.com/progressive_redirect/playback/1083848532/rendition/720p/file.mp4?loc=external&signature=f001b1a8d4eec135b1f5d33f0926fab588e37d6c310cff1118ddcc45cdec5539|video/mp4"></video>
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/1083848532/rendition/720p/file.mp4?loc=external&signature=f001b1a8d4eec135b1f5d33f0926fab588e37d6c310cff1118ddcc45cdec5539|video/mp4"></video>
                         </div> -->
                         
                         <div class="slide">
-                            <video preload="none" preload="none" autoplay loop muted playsinline width="440" data-src="https://player.vimeo.com/progressive_redirect/playback/1083848693/rendition/720p/file.mp4?loc=external&signature=1c8712a2b8a4a9418873ab71c5645e8f5ed398697474de07287d3080d7d101bc|video/mp4"></video>
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/1083848693/rendition/240p/file.mp4?loc=external&signature=5473f0ae93b21e92ed73d1938efd4cfc9929b4a00fddfe47b0a7b0aaa990d93c|video/mp4"></video>
                         </div>
                         <div class="slide">
-                            <img class="lazy" style="width: 440px;" data-src="/images/work/tottenham/stadium_comp.jpg">
+                            <img class="lazy" style="width: 232px;" data-src="/images/work/tottenham/stadium_comp.jpg">
                         </div>
                         <div class="slide">
-                            <video preload="none" preload="none" autoplay loop muted playsinline width="440" data-src="https://player.vimeo.com/progressive_redirect/playback/1083848532/rendition/720p/file.mp4?loc=external&signature=f001b1a8d4eec135b1f5d33f0926fab588e37d6c310cff1118ddcc45cdec5539|video/mp4"></video>
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/1083848532/rendition/240p/file.mp4?loc=external&signature=3ac7847668c64b69e5d5c924619dade7b313c1fec68fbf54a4a65e3c301499fb|video/mp4"></video>
                         </div>
+                        <div class="slide-block"></div>
                         <div class="slide">
-                            <img class="lazy" style="width: 440px;" data-src="/images/work/tottenham/jacket_comp.jpg">
+                            <img class="lazy" style="width: 232px;" data-src="/images/work/tottenham/jacket_comp.jpg">
                         </div>
                       
                         
                         <div class="slide">
-                            <img class="lazy" style="width: 440px;" data-src="/images/work/tottenham/schedule_comp.jpg">
+                            <img class="lazy" style="width: 232px;" data-src="/images/work/tottenham/schedule_comp.jpg">
                         </div>  
                         
                 
@@ -1899,20 +2414,46 @@ function animateWords(element) {
                         <div class="slide-block"></div>
                         
                         <div class="slide">
-                            <img class="lazy" style="width: 440px;" data-src="/images/work/tottenham/match_day_comp.jpg">
+                            <img class="lazy" style="width: 232px;" data-src="/images/work/tottenham/match_day_comp.jpg">
                         </div>
                         
                         <div class="slide">
-                            <img class="lazy" style="width: 412px;" data-src="/images/work/tottenham/website_comp.jpg">
+                            <img class="lazy" style="width: 217px;" data-src="/images/work/tottenham/website_comp.jpg">
                         </div>
                   
                         <div class="slide-block"></div>
-                        <div class="slide">
-                            <img class="lazy" style="width: 440px;" data-src="/images/work/tottenham/flags_comp.jpg">
-                        </div>
                        
-                     
+                       
+                     <div class="slide">
+                            <img class="lazy" style="width: 232px;" data-src="/images/work/tottenham/OOH_1_comp.jpg">
+                        </div>
                         
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-row load-overlay" data-file="/work/gather.html">
+                <div class="carousel-row-container">
+                    <div class="n-info-container">
+                        <div class="n-client-info">
+                            <div class="n-number"></div>
+                            <h3 class="n-client-name">Gather</h3>
+                        </div>
+                        <div class="n-client-project-info">
+                            <p class="n-description">R&D interaction explorations for the metaverse.</p>
+                            <div class="n-info-right">
+                                <span class="n-year">/ 2024</span>
+                                <div class="n-services">Product design, prototyping, motion</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-work-spotlight">
+                    <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1133740519/rendition/360p/file.mp4?loc=external&signature=4e3067907b936b0ac87d52cea42cbc6d488e54748da9fdbe41368861394ad384|video/mp4"></video>
+                    <p class="n-description-mobile"></p>
+                </div>
+                <div class="carousel-row-slider single-spotlight">
+                    <div class="single-spotlight-container">
+                        <video preload="none" width="700px" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1133740519/rendition/720p/file.mp4?loc=external&signature=537acc8a6c178bff252480f85be39af939ae03e8f83e04ec02a0aa0717eb5f10|video/mp4"></video>
                     </div>
                 </div>
             </div>
@@ -1936,33 +2477,35 @@ function animateWords(element) {
                     <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/902527231/rendition/540p/file.mp4?loc=external&signature=7e4b01b9613b24f833e7448c90096bb55e1426eef046868e786d487e35f2a93d|video/mp4"></video>
                     <p class="n-description-mobile"></p>
                 </div>
-                <div class="carousel-row-slider">
+                <div class="carousel-row-slider" style="height: 170px">
      
                     <div class="carousel-slider slideshow js-slideshow rco">
                         
-                        <div class="slide" >
-                            <img class="lazy" style="width: 434px;" data-src="/images/work/rco/hp1.jpg">
-                        </div>
+                        
                         <div class="slide no-mobile">
-                            <video preload="none" style="filter: saturate(1.1)" autoplay loop muted playsinline width="280" data-src="https://player.vimeo.com/progressive_redirect/playback/902531692/rendition/540p/file.mp4?loc=external&signature=fa77232163cb051c76e304eaec67293638889e49999ce3c20663f6e4e6d682fa|video/mp4"></video>
+                            <video preload="none" style="filter: saturate(1.1)" autoplay loop muted playsinline width="146" data-src="https://player.vimeo.com/progressive_redirect/playback/902531692/rendition/240p/file.mp4%20%28240p%29.mp4?loc=external&signature=0c174b83ec4a4c821b9a7dca7fdccb7004ad49eafa806e8f047fa550bb2bc5d0|video/mp4"></video>
                         </div>
                         <div class="slide" >
-                            <img class="lazy" style="width: 434px;" data-src="/images/work/rco/hp2.jpg">
+                            <img class="lazy" style="width: 227px;" data-src="/images/work/rco/hp1.jpg">
+                        </div>
+                        <div class="slide-block"></div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 227px;" data-src="/images/work/rco/hp2.jpg">
                         </div>
                         <div class="slide-block"></div>
                         <div class="slide">
 
-                            <video preload="none" style="filter: saturate(1.1)" autoplay loop muted playsinline width="450" data-src="https://player.vimeo.com/progressive_redirect/playback/902527813/rendition/540p/file.mp4?loc=external&signature=8f1576078574f62803fe45bdcf0b16e5a39338bb2862a91b4b7cafa021efba58|video/mp4"></video>
+                            <video preload="none" style="filter: saturate(1.1)" autoplay loop muted playsinline width="233" data-src="https://player.vimeo.com/progressive_redirect/playback/902527813/rendition/240p/file.mp4%20%28240p%29.mp4?loc=external&signature=37e313c25948f5db060477bdf1e920554258979a5318d75a6c7bde7f8ca51781|video/mp4"></video>
 
                         </div>
                         
                         <div class="slide">
-                            <video preload="none" style="filter: saturate(1.1)" autoplay loop muted playsinline width="465" data-src="https://player.vimeo.com/progressive_redirect/playback/902527231/rendition/540p/file.mp4?loc=external&signature=7e4b01b9613b24f833e7448c90096bb55e1426eef046868e786d487e35f2a93d|video/mp4"></video>
+                            <video preload="none" style="filter: saturate(1.1)" autoplay loop muted playsinline width="241" data-src="https://player.vimeo.com/progressive_redirect/playback/902527231/rendition/240p/file.mp4?loc=external&signature=1bcc14b7d715522c64fd7e9321dd2f908d3f2dac995edb26dc03fe84912a44a9|video/mp4"></video>
 
                         </div>
                         <div class="slide no-mobile">
 
-                            <video preload="none" style="filter: saturate(1.1)" autoplay loop muted playsinline width="447" data-src="https://player.vimeo.com/progressive_redirect/playback/902537176/rendition/720p/file.mp4?loc=external&signature=e3f4afec7fcfe8718d61d7a9673a21cafae4dd91650bbfc60a1c77f347bac43c|video/mp4"></video>
+                            <video preload="none" style="filter: saturate(1.1)" autoplay loop muted playsinline width="233" data-src="https://player.vimeo.com/progressive_redirect/playback/902537176/rendition/240p/file.mp4?loc=external&signature=272a5cf8a4a455a0f11d52334bdb38a3a0992d0af12e9ba211c89db4bc0f105a|video/mp4"></video>
                         </div>
                         <div class="slide-block"></div>
                         
@@ -1971,6 +2514,33 @@ function animateWords(element) {
                     </div>
                 </div>
             </div>
+            <div class="carousel-row load-overlay" data-file="/work/graphics.html">
+                <div class="carousel-row-container">
+                    <div class="n-info-container">
+                        <div class="n-client-info">
+                            <div class="n-number"></div>
+                            <h3 class="n-client-name">Logo / Graphics</h3>
+                        </div>
+                        <div class="n-client-project-info">
+                            <p class="n-description">Unused graphic explorations</p>
+                            <div class="n-info-right">
+                                <span class="n-year">/ 2023</span>
+                                <div class="n-services">Graphic Design, Logo Design</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-work-spotlight">
+                    <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1131679071/rendition/360p/file.mp4?loc=external&signature=c9fd1dee017a0bcfe360a6a36537b7d66c55d35ebcb950fe584f31d1faf56e29|video/mp4"></video>
+                    <p class="n-description-mobile"></p>
+                </div>
+                <div class="carousel-row-slider single-spotlight">
+                    <div class="single-spotlight-container">
+                        <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1131679071/rendition/540p/file.mp4?loc=external&signature=bb9bfc8c97ea0a65ff87e2b912207dd3c84a3857ab524940678843d3df65594a|video/mp4"></video>
+                    </div>
+                </div>
+            </div>
+           
             <div class="carousel-row load-overlay" data-file="/work/tw3.html">
                 <div class="carousel-row-container">
                     <div class="n-info-container">
@@ -1988,15 +2558,16 @@ function animateWords(element) {
                     </div>
                 </div>
                 <div class="mobile-work-spotlight">
-                    <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1085343670/rendition/720p/file.mp4?loc=external&signature=622237785edb3b4efe1ac4e61d83bc6504592c07e74401f5a805d2c93f5da474|video/mp4"></video>
+                    <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1085393405/rendition/360p/file.mp4?loc=external&signature=f558e2d98fafdf112d37daf713684f669c9688ffec9836bc989618f4b67a686e|video/mp4"></video>
                     <p class="n-description-mobile"></p>
                 </div>
                 <div class="carousel-row-slider single-spotlight">
                     <div class="single-spotlight-container">
-                        <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1085393405/rendition/720p/file.mp4?loc=external&signature=914858ea5e46b81aab1c1b50837116dfd6ef7efe4fe2bee19440b3ff0afeef22|video/mp4"></video>
+                        <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1085393405/rendition/540p/file.mp4?loc=external&signature=49fd6bf545c2407a64192a8763c978b6d75f8e9d40867fa6043c5ceaae8ce8bb|video/mp4"></video>
                     </div>
                 </div>
             </div>
+             
 
             <div class="carousel-row load-overlay" data-file="/work/boston-celtics.html">
               
@@ -2019,39 +2590,41 @@ function animateWords(element) {
                     <img  class="lazy" src="/images/work/celtics/hp1.jpg">
                     <p class="n-description-mobile"></p>
                 </div>
-                <div class="carousel-row-slider">
+                <div class="carousel-row-slider" style="height:173px">
                     <div class="carousel-slider slideshow js-slideshow celtics">
                         <div class="slide-block"></div>
                         <div class="slide" >
-                            <img class="lazy" style="width: 434px;" data-src="/images/work/celtics/hp1.jpg">
+                            <img class="lazy" style="width: 228px;" data-src="/images/work/celtics/hp1.jpg">
                         </div>
                         <div class="slide" >
-                            <img class="lazy" style="width: 448px;" data-src="/images/work/celtics/hp4.jpg">
+                            <img class="lazy" style="width: 236px;" data-src="/images/work/celtics/hp4.jpg">
                         </div>
                       
                         <div class="slide" >
-                            <img class="lazy" style="width: 445px;" data-src="/images/work/celtics/hp5.jpg">
+                            <img class="lazy" style="width: 236px;" data-src="/images/work/celtics/hp5.jpg">
                         </div>
+                        <div class="slide-block"></div>
                         <div class="slide">
 
-                            <video preload="none" style="filter: saturate(1.43)" autoplay loop muted playsinline width="362" data-src="https://player.vimeo.com/progressive_redirect/playback/902467800/rendition/540p/file.mp4?loc=external&signature=c4877491138a3fa4f0c5fbe6c8d38ce430ad34e5d88b728143415a37f599161a|video/mp4"></video>
+                            <video preload="none" style="filter: saturate(1.43)" autoplay loop muted playsinline width="192" data-src="https://player.vimeo.com/progressive_redirect/playback/902467800/rendition/240p/file.mp4?loc=external&signature=e8365f056770b7db39c261e66db4e5c81c316a880104e6cbf4680870d009c531|video/mp4"></video>
                         </div>
                         <div class="slide-block"></div>
                         
                         <div class="slide" >
-                            <img class="lazy" style="width: 434px;" data-src="/images/work/celtics/hp6.jpg">
+                            <img class="lazy" style="width: 228px;" data-src="/images/work/celtics/hp6.jpg">
                         </div>
                         <div class="slide" >
-                            <img class="lazy" style="width: 515px;" data-src="/images/work/celtics/hp3.jpg">
+                            <img class="lazy" style="width: 268px;" data-src="/images/work/celtics/hp3.jpg">
                         </div>
                         <!-- <div class="slide" >
                             <img style="width: 380px;" src="/images/work/celtics/hp2.jpg">
                         </div> -->
+                        <div class="slide-block"></div>
                         <div class="slide" >
-                            <img class="lazy" style="width: 435px;" data-src="/images/work/celtics/hp7.jpg">
+                            <img class="lazy" style="width: 227px;" data-src="/images/work/celtics/hp7.jpg">
                         </div>
                         <div class="slide" >
-                            <img class="lazy" style="width: 434px;" data-src="/images/work/celtics/hp8.jpg">
+                            <img class="lazy" style="width: 228px;" data-src="/images/work/celtics/hp8.jpg">
                         </div>
                        
                        
@@ -2080,31 +2653,31 @@ function animateWords(element) {
                     <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/907283672/rendition/540p/file.mp4?loc=external&signature=87c507de344cb547088821b58f7b38b5962bda03d4ea57a8cfd690aa1bca93ab|video/mp4"></video>
                     <p class="n-description-mobile"></p>
                 </div>
-                <div class="carousel-row-slider">
+                <div class="carousel-row-slider" style="height: 176px">
      
                     <div class="carousel-slider slideshow js-slideshow rsr">
                         <div class="slide no-mobile">
-                            <video preload="none" style="filter: saturate(1.13)" autoplay loop muted playsinline width="516" data-src="https://player.vimeo.com/progressive_redirect/playback/907283672/rendition/540p/file.mp4?loc=external&signature=87c507de344cb547088821b58f7b38b5962bda03d4ea57a8cfd690aa1bca93ab|video/mp4"></video>
+                            <video preload="none" style="filter: saturate(1.13)" autoplay loop muted playsinline width="270" data-src="https://player.vimeo.com/progressive_redirect/playback/907283672/rendition/240p/file.mp4?loc=external&signature=b31e9fb38b38c0eda9e19c123ca30cf7bd4f2cb15e08080768b4df0c2ffc6bc0|video/mp4"></video>
                         </div>
                         
                         <div class="slide" >
-                            <img class="lazy" style="width: 334px;" data-src="/images/work/readysetrocket/hp1.jpg">
+                            <img class="lazy" style="width: 175px;" data-src="/images/work/readysetrocket/hp1.jpg">
                         </div>
                         <div class="slide-block"></div>
                         <div class="slide" >
-                            <img class="lazy" style="width: 429px;" data-src="/images/work/readysetrocket/hp2.jpg">
+                            <img class="lazy" style="width: 226px;" data-src="/images/work/readysetrocket/hp2.jpg">
                         </div>
                        
                         <div class="slide" >
-                            <img class="lazy" style="width: 429px;" data-src="/images/work/readysetrocket/hp4.jpg">
+                            <img class="lazy" style="width: 226px;" data-src="/images/work/readysetrocket/hp4.jpg">
                         </div>
                      
                         <div class="slide" >
-                            <img class="lazy" style="width: 347px;" data-src="/images/work/readysetrocket/hp5.jpg">
+                            <img class="lazy" style="width: 183px;" data-src="/images/work/readysetrocket/hp5.jpg">
                         </div>
                         <div class="slide-block"></div>
                         <div class="slide" >
-                            <img class="lazy" style="width: 429px;" data-src="/images/work/readysetrocket/hp6.jpg">
+                            <img class="lazy" style="width: 226px;" data-src="/images/work/readysetrocket/hp6.jpg">
                         </div>
                    
                         
@@ -2121,7 +2694,7 @@ function animateWords(element) {
                             <h3 class="n-client-name">Caddy</h3>
                         </div>
                         <div class="n-client-project-info">
-                            <p class="n-description">Building the full design foundation for AI startup, from brand to product.</p>
+                            <p class="n-description">Building the full design foundation for AI startup.</p>
                             <div class="n-info-right">
                                 <span class="n-year">/ 2024</span>
                                 <div class="n-services">Brand, product, web design</div>
@@ -2130,12 +2703,12 @@ function animateWords(element) {
                     </div>
                 </div>
                <div class="mobile-work-spotlight">
-                    <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1087568929/rendition/540p/file.mp4?loc=external&signature=5af267d61ee2419a405c78004568fe8ec970f57fd47536d5b03084a654aa0487|video/mp4"></video>
+                    <video preload="none"  autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1087568929/rendition/540p/file.mp4?loc=external&signature=5af267d61ee2419a405c78004568fe8ec970f57fd47536d5b03084a654aa0487|video/mp4"></video>
                     <p class="n-description-mobile"></p>
                 </div>
                 <div class="carousel-row-slider single-spotlight">
                     <div class="single-spotlight-container">
-                        <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1087568929/rendition/720p/file.mp4?loc=external&signature=57964144a3e34f670de38ca1eb4864dacb17f70150ac06debfb583208e9f4940|video/mp4"></video>
+                        <video width="800" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1087568929/rendition/540p/file.mp4?loc=external&signature=5af267d61ee2419a405c78004568fe8ec970f57fd47536d5b03084a654aa0487|video/mp4"></video>
                     </div>
                 </div>
                 <!-- <div class="carousel-row-slider">
@@ -2193,6 +2766,7 @@ function animateWords(element) {
                     </div> 
                 </div> -->
             </div>
+            
             <div class="carousel-row load-overlay" data-file="/work/katalyst.html">
                 <div class="carousel-row-container">
                     <div class="n-info-container">
@@ -2213,50 +2787,50 @@ function animateWords(element) {
                     <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/891672128/rendition/540p/file.mp4?loc=external&signature=7e8b888f4dedb0771b96a01d53f42f1a4839d56335fa4d8bd026fa622bb9cf67|video/mp4"></video>
                     <p class="n-description-mobile"></p>
                 </div>
-                <div class="carousel-row-slider">
+                <div class="carousel-row-slider" style="height: 159px">
                     <div class="carousel-slider slideshow js-slideshow n-lowpoly">
                         <div class="slide-block"></div>
                         <div class="slide">
-                            <video preload="none" autoplay loop muted playsinline width="470" data-src="https://player.vimeo.com/progressive_redirect/playback/891672128/rendition/540p/file.mp4?loc=external&signature=7e8b888f4dedb0771b96a01d53f42f1a4839d56335fa4d8bd026fa622bb9cf67|video/mp4"></video>
+                            <video preload="none" autoplay loop muted playsinline width="258" data-src="https://player.vimeo.com/progressive_redirect/playback/891672128/rendition/240p/file.mp4?loc=external&signature=fa76e55dc7c9a6f7c8d4c2fcdb261e03854d5f55e7b71b9988179a150f165a3a|video/mp4"></video>
                             <!-- <video preload="none" autoplay loop muted playsinline width="520">
                                 <source type="video/mp4"src="https://player.vimeo.com/progressive_redirect/playback/891672128/rendition/1080p/file.mp4?loc=external&signature=a4579de953fad6fa3e95a357b3727bf819b51596fff89d2347ea7eb442ab2257">
                             </video> -->
                         </div>
                         <div class="slide">
-                            <video preload="none" preload="none" autoplay loop muted playsinline width="420" data-src="https://player.vimeo.com/progressive_redirect/playback/891672163/rendition/540p/file.mp4?loc=external&signature=a312ca11616da74bbf660912fda147d7b22a3185d86c31c27486ae7dcdd4c911|video/mp4"></video>
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/891672163/rendition/240p/file.mp4%20%28240p%29.mp4?loc=external&signature=3d527ff5289a634254d7da7215a483dabd4710af3fb91762a61f5bdde7f5d561|video/mp4"></video>
                         </div>
                         
                         <div class="slide" >
-                            <img class="lazy" style="width: 299px;" data-src="/images/work/katalyst/layout_cropped.jpg">
+                            <img class="lazy" style="width: 166px;" data-src="/images/work/katalyst/layout_cropped.jpg">
                         </div>
                          
                         <div class="slide-block"></div>
                         <div class="slide no-mobile">
-                            <video preload="none" preload="none" autoplay loop muted playsinline width="420" data-src="https://player.vimeo.com/progressive_redirect/playback/891672056/rendition/720p/file.mp4?loc=external&signature=c95a0d5cdbb73fa3ffb943d8849bd5ff848adf62a1ddb4e0eabc1bebb1d80d6e|video/mp4"></video>
+                            <video preload="none" preload="none" autoplay loop muted playsinline width="233" data-src="https://player.vimeo.com/progressive_redirect/playback/891672056/rendition/240p/file.mp4%20%28240p%29.mp4?loc=external&signature=87ac275fe0cc67aac6cab48cada82340b93a2c7a27d2b1d82e64fa03b9318fba|video/mp4"></video>
 
                         </div>
                         
                         
                         <div class="slide" >
-                            <img class="lazy" style="width: 420px;" data-src="/images/work/katalyst/mobile_screens.jpg">
+                            <img class="lazy" style="width: 232px;" data-src="/images/work/katalyst/mobile_screens.jpg">
                         </div>
                         
                         <div class="slide no-mobile">
-                            <video preload="none" autoplay loop muted playsinline width="420" data-src="https://player.vimeo.com/progressive_redirect/playback/891672098/rendition/720p/file.mp4?loc=external&signature=d0c461e4de12640c5d6f8a39b3f57c5f7482b3b6b356d8e68ec0251c0d2848d7|video/mp4"></video>
+                            <video preload="none" autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/891672098/rendition/240p/file.mp4?loc=external&signature=02c8dbbea7ccdacbfbf14e7913731a8172cc9a6cf8f4aea04cbf3ab8741c09e2|video/mp4"></video>
                         </div>
                         <div class="slide-block"></div>
                         <div class="slide" >
-                            <img class="lazy" style="width: 420px;" data-src="/images/work/katalyst/desktops.jpg">
+                            <img class="lazy" style="width: 232px;" data-src="/images/work/katalyst/desktops.jpg">
                         </div>
                         
                         <div class="slide" >
-                            <img class="lazy" style="width: 420px;" data-src="/images/work/katalyst/katalyst_business_cards.jpg">
+                            <img class="lazy" style="width: 232px;" data-src="/images/work/katalyst/katalyst_business_cards.jpg">
                         </div>
                         
                         
                         
                         <div class="slide">
-                            <img class="lazy" style="width: 420px;" data-src="/images/work/katalyst/katalyst_billboard_.jpg">
+                            <img class="lazy" style="width: 232px;" data-src="/images/work/katalyst/katalyst_billboard_.jpg">
                         </div>
                     </div>
                 </div>
@@ -2287,36 +2861,37 @@ function animateWords(element) {
                     <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/901397185/rendition/540p/file.mp4?loc=external&signature=ebbbefb2b067a297f68b9599a1d6288a474d3739239fce887528ec582d7372da|video/mp4"></video>
                     <p class="n-description-mobile"></p>
                 </div>
-                <div class="carousel-row-slider">
+                <div class="carousel-row-slider" style="height: 180px">
                     <div class="carousel-slider slideshow js-slideshow cns">
                         
                         <div class="slide no-mobile">
                             <!-- <video preload="none" autoplay loop muted playsinline width="498" preload="auto">
                                 <source src="https://player.vimeo.com/progressive_redirect/playback/901394930/rendition/1080p/file.mp4?loc=external&signature=02286172cdc2c2afb78c40880865e99ec2a7e9c1c84abb29949b22e53ee26b82" type ="video/mp4" >
                             </video> -->
-                            <video preload="none" autoplay loop muted playsinline width="499"  data-src="https://player.vimeo.com/progressive_redirect/playback/901394930/rendition/1080p/file.mp4?loc=external&signature=02286172cdc2c2afb78c40880865e99ec2a7e9c1c84abb29949b22e53ee26b82|video/mp4"></video>
+                            <video preload="none" autoplay loop muted playsinline width="257"  data-src="https://player.vimeo.com/progressive_redirect/playback/901394930/rendition/240p/file.mp4%20%28240p%29.mp4?loc=external&signature=506949d2b515164449d4031c789788650896e7247328df2fa6e5ec248fe9ff34|video/mp4"></video>
                         </div>
                         <div class="slide-block"></div>
                         <div class="slide" >
-                            <img class="lazy" loading="lazy" style="width: 334px;" data-src="/images/work/cns/hp4.jpg">
+                            <img class="lazy" loading="lazy" style="width: 172px;" data-src="/images/work/cns/hp4.jpg">
                         </div>
                         
                         
                         <div class="slide" >
-                            <img class="lazy" loading="lazy" style="width: 437px;" data-src="/images/work/cns/hp5.jpg">
+                            <img class="lazy" loading="lazy" style="width: 228px;" data-src="/images/work/cns/hp5.jpg">
                         </div>
                         <div class="slide no-mobile">
-                            <video preload="none" autoplay loop muted playsinline width="282"  data-src="https://player.vimeo.com/progressive_redirect/playback/901397062/rendition/1440p/file.mp4?loc=external&signature=bda080df1228e5abbb031659f86bfed5e97dd7cae734d382f6cc725ca6f81f23|video/mp4"></video>
+                            <video preload="none" autoplay loop muted playsinline width="147"  data-src="https://player.vimeo.com/progressive_redirect/playback/901397062/rendition/240p/file.mp4%20%28240p%29.mp4?loc=external&signature=a119ce47102f83bb35ec9311842e6edd484d6e33236e50391fef3c2e5f7ed903|video/mp4"></video>
                         </div>
                         <div class="slide-block"></div>
                         <div class="slide" >
-                            <img class="lazy" loading="lazy" style="width: 454px;" data-src="/images/work/cns/hp1.jpg">
+                            <img class="lazy" loading="lazy" style="width: 234px;" data-src="/images/work/cns/hp1.jpg">
                         </div>
+                        <div class="slide-block"></div>
                         <div class="slide" >
-                            <img class="lazy" loading="lazy" style="width: 450px;" data-src="/images/work/cns/hp2.jpg">
+                            <img class="lazy" loading="lazy" style="width: 232px;" data-src="/images/work/cns/hp2.jpg">
                         </div>
                         <div class="slide">
-                            <img class="lazy" loading="lazy" style="width: 449px;" data-src="/images/work/cns/hp3.jpg">
+                            <img class="lazy" loading="lazy" style="width: 232px;" data-src="/images/work/cns/hp3.jpg">
                         </div>
                         
                         <div class="slide-block"></div>
@@ -2420,20 +2995,20 @@ function animateWords(element) {
                     <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/891871218/rendition/540p/file.mp4?loc=external&signature=401471ffb0f2777deeb21602da90832790d29392f0b64ac9e7fda8f33884815e|video/mp4"></video>
                     <p class="n-description-mobile"></p>
                 </div>
-                <div class="carousel-row-slider">
+                <div class="carousel-row-slider" style="height: 164px">
                     <div class="muir carousel-slider slideshow js-slideshow">
                         
                         <div class="slide">
 
-                            <video preload="none" style="filter: saturate(1.1)"autoplay loop muted playsinline width="465" data-src="https://player.vimeo.com/progressive_redirect/playback/1087404150/rendition/720p/file.mp4?loc=external&signature=91ac58c9ec23fab635ecaa2f3890c70c96dc7d6db9f8805c3392e7f102c5785d|video/mp4"></video>
+                            <video preload="none" style="filter: saturate(1.1)"autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/1087404150/rendition/240p/file.mp4?loc=external&signature=37d954309c5a2e9a6a03b72fe6d7b54118b88a8bdbb98f85a8683045fd1f1649|video/mp4"></video>
 
                         </div>
                         <div class="slide" >
-                            <img class="lazy" loading="lazy" style="width: 464px;" data-src="/images/work/muir_dao/all-mobile.jpg">
+                            <img class="lazy" loading="lazy" style="width: 232px;" data-src="/images/work/muir_dao/all-mobile.jpg">
                         </div>
                         
                         <div class="slide" >
-                            <img class="lazy" loading="lazy" style="width: 460px;" data-src="/images/work/muir_dao/hp3.jpg">
+                            <img class="lazy" loading="lazy" style="width: 230px;" data-src="/images/work/muir_dao/hp3.jpg">
                         </div>
                         
                         
@@ -2442,31 +3017,31 @@ function animateWords(element) {
                         
                         <div class="slide">
 
-                            <video preload="none" style="filter: saturate(1.1)"autoplay loop muted playsinline width="516" data-src="https://player.vimeo.com/progressive_redirect/playback/891871218/rendition/540p/file.mp4?loc=external&signature=401471ffb0f2777deeb21602da90832790d29392f0b64ac9e7fda8f33884815e|video/mp4"></video>
+                            <video preload="none" style="filter: saturate(1.1)"autoplay loop muted playsinline width="256" data-src="https://player.vimeo.com/progressive_redirect/playback/891871218/rendition/240p/file.mp4?loc=external&signature=33bfe0dea6271c69d8e6e46a4d61285d80f614cb62815263fdfc8733c0622a06|video/mp4"></video>
 
                         </div>
                         <div class="slide" >
-                            <video preload="none" style="filter: saturate(1.1)"autoplay loop muted playsinline width="464" data-src="https://player.vimeo.com/progressive_redirect/playback/1087408005/rendition/720p/file.mp4?loc=external&signature=d23f85e6d5588aa9066780310e2e28e3056f3610fcb20f6d71ae5fd4ce75e290|video/mp4"></video>
+                            <video preload="none" style="filter: saturate(1.1)"autoplay loop muted playsinline width="232" data-src="https://player.vimeo.com/progressive_redirect/playback/1087408005/rendition/240p/file.mp4%20%28240p%29.mp4?loc=external&signature=02c9b3aa12c9163e12f84c90d3b9ce7c71ce7bce797f390ba15220b6ce6dbcff|video/mp4"></video>
                         </div>
                         
 
                         
                         <div class="slide" >
-                            <img class="lazy" loading="lazy" style="width: 464px;" data-src="/images/work/muir_dao/mobile-2.jpg">
+                            <img class="lazy" loading="lazy" style="width: 233px;" data-src="/images/work/muir_dao/mobile-2.jpg">
                         </div>
                      
-                       
+                       <div class="slide-block"></div>
                         <div class="slide">
 
-                            <video preload="none" style="filter: saturate(1.1)"autoplay loop muted playsinline width="516" data-src="https://player.vimeo.com/progressive_redirect/playback/1087403763/rendition/720p/file.mp4?loc=external&signature=0621c1d5d6553dcf4b0aff83edb37ce773f7bf5384fb77741415be35816dc9ce|video/mp4"></video>
+                            <video preload="none" style="filter: saturate(1.1)"autoplay loop muted playsinline width="258" data-src="https://player.vimeo.com/progressive_redirect/playback/1087403763/rendition/240p/file.mp4?loc=external&signature=dad04b4c5a2bf309864279833c3f5a3917a0a75cf7c128f90ebf6bbd487f2fb4|video/mp4"></video>
 
                         </div>
                         <div class="slide-block"></div>
                         <div class="slide" >
-                            <img class="lazy" loading="lazy" style="width: 464px;" data-src="/images/work/muir_dao/mobile-screens.jpg">
+                            <img class="lazy" loading="lazy" style="width: 232px;" data-src="/images/work/muir_dao/mobile-screens.jpg">
                         </div>
                         <div class="slide" >
-                            <img class="lazy" loading="lazy" style="width: 464px;" data-src="/images/work/muir_dao/nav.jpg">
+                            <img class="lazy" loading="lazy" style="width: 232px;" data-src="/images/work/muir_dao/nav.jpg">
                         </div>
                         <div class="slide-block"></div>
                     </div>
@@ -2479,8 +3054,33 @@ function animateWords(element) {
             
           
             
-            
             <div class="carousel-row load-overlay" data-file="/work/shoprite.html">
+                <div class="carousel-row-container">
+                    <div class="n-info-container">
+                        <div class="n-client-info">
+                            <div class="n-number"></div>
+                            <h3 class="n-client-name">Shoprite</h3>
+                        </div>
+                        <div class="n-client-project-info">
+                            <p class="n-description">Brand enhancement for the web3 company.</p>
+                            <div class="n-info-right">
+                                <span class="n-year">/ 2023</span>
+                                <div class="n-services">Brand design, motion, web design</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-work-spotlight">
+                    <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1133457906/rendition/360p/file.mp4%20%28360p%29.mp4?loc=external&signature=6976371ddf22d52f45ca53e67433e0061bb55d28eb5b90d6f526af2bf7f29567|video/mp4"></video>
+                    <p class="n-description-mobile"></p>
+                </div>
+                <div class="carousel-row-slider single-spotlight">
+                    <div class="single-spotlight-container">
+                        <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1133457906/rendition/720p/file.mp4%20%28720p%29.mp4?loc=external&signature=3838fb169b621df18f784ed9436d42c5653a325e253e0bd62432e8e7755131c4|video/mp4"></video>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="carousel-row load-overlay" data-file="/work/shoprite.html">
                 <div class="carousel-row-container">
                     <div class="n-info-container">
                         <div class="n-client-info">
@@ -2500,40 +3100,40 @@ function animateWords(element) {
                     <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1087773989/rendition/540p/file.mp4?loc=external&signature=2d55c761412530dadcafe70c5a2fda3aa7151da0a1437aac98b88bfd76495bf5|video/mp4"></video>
                     <p class="n-description-mobile"></p>
                 </div>
-                <div class="carousel-row-slider">
+                <div class="carousel-row-slider" style="height: 160px">
                     <div class="carousel-slider slideshow js-slideshow shoprite">
                         <div class="slide-block"></div>
                         <div class="slide" >
-                            <img class="lazy" style="width: 451px; filter: saturate(1.2)" data-src="/images/work/shoprite/title.jpg">
+                            <img class="lazy" style="width: 227px; filter: saturate(1.2)" data-src="/images/work/shoprite/title.jpg">
                         </div>
                         <div class="slide" >
-                            <img class="lazy" style="width: 449px;" data-src="/images/work/shoprite/ar.jpg">
+                            <img class="lazy" style="width: 227px;" data-src="/images/work/shoprite/ar.jpg">
                         </div>
 
                         
                         
                         <div class="slide">
-                            <video preload="none" style="filter: saturate(1.2)" autoplay loop muted playsinline width="449" data-src="https://player.vimeo.com/progressive_redirect/playback/1087773989/rendition/720p/file.mp4?loc=external&signature=fa9509f7be69e7e8dff30631b267ae1113a00fc8583162879911f50133ae3101|video/mp4"></video>
+                            <video preload="none" style="filter: saturate(1.2)" autoplay loop muted playsinline width="228" data-src="https://player.vimeo.com/progressive_redirect/playback/1087773989/rendition/240p/file.mp4?loc=external&signature=ae39b1fdeae8d6abfd9056ced972f4265ed799a788a04c3ee1907e982ef0c3e2|video/mp4"></video>
                         </div>
                         <div class="slide-block"></div>
 
                         
                         <div class="slide" >
-                            <img class="lazy" style="width: 432px;" data-src="/images/work/shoprite/hp2.jpg">
+                            <img class="lazy" style="width: 217px;" data-src="/images/work/shoprite/hp2.jpg">
                         </div>
                         <div class="slide-block"></div>
                         <div class="slide" >
-                            <img class="lazy" style="width: 410px;" data-src="/images/work/shoprite/hp5.jpg">
+                            <img class="lazy" style="width: 207px;" data-src="/images/work/shoprite/hp5.jpg">
                         </div>
                         
                         
                         <div class="slide" >
-                            <img class="lazy" style="width: 450px; filter: saturate(1.2)" data-src="/images/work/shoprite/more-mobile.jpg">
+                            <img class="lazy" style="width: 226px; filter: saturate(1.2)" data-src="/images/work/shoprite/more-mobile.jpg">
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- <div class="carousel-row load-overlay" data-file="/work/wish.html">
+            </div> -->
+            <div class="carousel-row load-overlay" data-file="/work/wish.html">
 
                 <div class="carousel-row-container">
                     <div class="n-info-container">
@@ -2542,10 +3142,10 @@ function animateWords(element) {
                             <h3 class="n-client-name">Wish</h3>
                         </div>
                         <div class="n-client-project-info">
-                            <p class="n-description">Crafting a Brand Identity and Design System for New AI Startup.</p>
+                            <p class="n-description">Loyalty program redesign for 20+ million users</p>
                             <div class="n-info-right">
                                 <span class="n-year">/ 2023</span>
-                                <div class="n-services">Visual Design, Web Design, UX</div>
+                                <div class="n-services">Product Strategy, Visual Design, UX</div>
                             </div>
                         </div>
                     </div>
@@ -2555,48 +3155,48 @@ function animateWords(element) {
                     <p class="n-description-mobile"></p>
                 </div>
                 
-                <div class="carousel-row-slider">
+                <div class="carousel-row-slider" style="height:158px">
                     <div class="carousel-slider slideshow js-slideshow wish">
                        
                        
                         <div class="slide" >
-                            <img class="lazy" style="width: 450px;" data-src="/images/work/wish/title.jpg">
+                            <img class="lazy" style="width: 226px;" data-src="/images/work/wish/title.jpg">
                         </div>
                         <div class="slide">
-                            <video preload="none" autoplay loop muted playsinline width="280" data-src="https://player.vimeo.com/progressive_redirect/playback/901437347/rendition/1080p/file.mp4?loc=external&signature=5681fd2d35cb7a1290ae3c8499fad8aa078772ebd24b403630bd15d0a10b999a|video/mp4"></video>
+                            <video preload="none" autoplay loop muted playsinline width="140" data-src="https://player.vimeo.com/progressive_redirect/playback/901437347/rendition/1080p/file.mp4?loc=external&signature=5681fd2d35cb7a1290ae3c8499fad8aa078772ebd24b403630bd15d0a10b999a|video/mp4"></video>
                         </div>
                         <div class="slide" >
-                            <img class="lazy" style="width: 449px; filter: saturate(1.2)" data-src="/images/work/wish/notification.jpg">
+                            <img class="lazy" style="width: 225px; filter: saturate(1.2)" data-src="/images/work/wish/notification.jpg">
                         </div>
 
 
                         <div class="slide-block"></div>
                         <div class="slide no-mobile">
-                            <video preload="none" autoplay loop muted playsinline width="446" style="filter: saturate(1.3)" data-src="https://player.vimeo.com/progressive_redirect/playback/1087807367/rendition/720p/file.mp4?loc=external&signature=b1931e4785fdd31310bfcc3bbd798ff315432f3f43dc105ecf6887e42a4cebff|video/mp4"></video>
+                            <video preload="none" autoplay loop muted playsinline width="223" style="filter: saturate(1.3)" data-src="https://player.vimeo.com/progressive_redirect/playback/1087807367/rendition/720p/file.mp4?loc=external&signature=b1931e4785fdd31310bfcc3bbd798ff315432f3f43dc105ecf6887e42a4cebff|video/mp4"></video>
                         </div>
                         <div class="slide no-mobile">
-                            <video preload="none" autoplay loop muted playsinline width="280" style="filter: saturate(1.3)" data-src="https://player.vimeo.com/progressive_redirect/playback/901435304/rendition/1080p/file.mp4?loc=external&signature=ee8e90c956882bb91d619befe64d58b203b06f0f01d3b1bb23da9101cfb4de88|video/mp4"></video>
+                            <video preload="none" autoplay loop muted playsinline width="140" style="filter: saturate(1.3)" data-src="https://player.vimeo.com/progressive_redirect/playback/901435304/rendition/1080p/file.mp4?loc=external&signature=ee8e90c956882bb91d619befe64d58b203b06f0f01d3b1bb23da9101cfb4de88|video/mp4"></video>
                         </div>
                         <div class="slide" >
-                            <img class="lazy" style="width: 448px;" data-src="/images/work/wish/hp5.jpg">
+                            <img class="lazy" style="width: 224px;" data-src="/images/work/wish/hp5.jpg">
                         </div>
                        
                         
                         <div class="slide" >
-                            <img class="lazy" style="width: 448px;" data-src="/images/work/wish/bts.jpg">
+                            <img class="lazy" style="width: 224px;" data-src="/images/work/wish/bts.jpg">
                         </div>
 
                         <div class="slide-block"></div>
                         
                        
                         <div class="slide" >
-                            <img class="lazy" style="width: 442px;" data-src="/images/work/wish/hp4.jpg">
+                            <img class="lazy" style="width: 221px;" data-src="/images/work/wish/hp4.jpg">
                         </div>
                         <div class="slide-block"></div>
                     </div>
                 </div>
             </div>
-             -->
+            
             
             <!-- <div class="carousel-row">
                 <div class="carousel-row-container">
@@ -2666,74 +3266,67 @@ function animateWords(element) {
                     </div>
                 </div>
             </div> -->
-            <!-- <div class="carousel-row">
+            <div class="carousel-row load-overlay" data-file="/work/wyndham.html">
                 <div class="carousel-row-container">
                     <div class="n-info-container">
                         <div class="n-client-info">
                             <div class="n-number"></div>
-                            <h3 class="n-client-name">Nike</h3>
+                            <h3 class="n-client-name">Wyndham Rewards</h3>
                         </div>
                         <div class="n-client-project-info">
-                            <p class="n-description">Crafting a Brand Identity and Design System for New AI Startup.</p>
+                            <p class="n-description">Creating the design system for the Wyndham Hotels ecosystem.</p>
                             <div class="n-info-right">
-                                <span class="n-year">/ 2023</span>
+                                <span class="n-year">/ 2019</span>
                                 <div class="n-services">Visual Design, Web Design, UX</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="markings">
-                    <span>
-                       
-                    </span>
-
-                    <span><em>2023</em></span>
-                    <span><img src="images/circle_cross.png">
-                        <div class="a-section-marquee-box">
-                            <h5 class="marquee-text">wyndham</h2>
-                            <h5 class="marquee-text">wyndham</h2>
-                          </div>
-                        <img src="images/two_crosses.png"></span>
-    
+                <div class="mobile-work-spotlight">
+                    <img  class="lazy" src="/images/work/wyndham/hp5.jpg">
+                    <p class="n-description-mobile"></p>
                 </div>
-                <div class="carousel-row-slider">
+                <div class="carousel-row-slider" style="height:158px">
                     <div class="carousel-slider slideshow js-slideshow wyndham">
          
-                        
+                        <div class="slide-block"></div>
                         <div class="slide">
 
-                            <video preload="none" style="filter: saturate(1.15)" autoplay loop muted playsinline width="508" data-src="https://player.vimeo.com/progressive_redirect/playback/902520952/rendition/540p/file.mp4?loc=external&signature=bb6ff64b3a0cab39cd10d7c1768f198e2bb93981ef043ea642aef36e8654229e|video/mp4"></video>
+                            <video preload="none" style="filter: saturate(1.15)" autoplay loop muted playsinline width="227" data-src="https://player.vimeo.com/progressive_redirect/playback/902520952/rendition/240p/file.mp4%20%28240p%29.mp4?loc=external&signature=5e644d9a494711ac8823270d435d6db43a38655c55db09210f26fae683576a70|video/mp4"></video>
                         </div>
 
                         <div class="slide" >
-                            <img class="lazy" style="width: 494px;" data-src="/images/work/wyndham/hp1.jpg">
+                            <img class="lazy" style="width: 219px;" data-src="/images/work/wyndham/hp1.jpg">
                         </div>
                         <div class="slide" >
-                            <img class="lazy" style="width: 450px;" data-src="/images/work/wyndham/hp2.jpg">
+                            <img class="lazy" style="width: 225px;" data-src="/images/work/wyndham/hp2.jpg">
+                        </div>
+                        <div class="slide-block"></div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 217px;" data-src="/images/work/wyndham/hp3.jpg">
+                        </div>
+                        <div class="slide-block"></div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 217px;" data-src="/images/work/wyndham/hp4.jpg">
                         </div>
                         <div class="slide" >
-                            <img class="lazy" style="width: 434px;" data-src="/images/work/wyndham/hp3.jpg">
+                            <img class="lazy" style="width: 140px;" data-src="/images/work/wyndham/hp5.jpg">
+                        </div>
+                        <div class="slide-block"></div>
+                        <div class="slide" >
+                            <img class="lazy" style="width: 223px;" data-src="/images/work/wyndham/hp6.jpg">
                         </div>
                         <div class="slide" >
-                            <img class="lazy" style="width: 434px;" data-src="/images/work/wyndham/hp4.jpg">
+                            <img class="lazy" style="width: 217px;" data-src="/images/work/wyndham/hp7.jpg">
                         </div>
                         <div class="slide" >
-                            <img class="lazy" style="width: 280px;" data-src="/images/work/wyndham/hp5.jpg">
-                        </div>
-                        <div class="slide" >
-                            <img class="lazy" style="width: 506px;" data-src="/images/work/wyndham/hp6.jpg">
-                        </div>
-                        <div class="slide" >
-                            <img class="lazy" style="width: 434px;" data-src="/images/work/wyndham/hp7.jpg">
-                        </div>
-                        <div class="slide" >
-                            <img class="lazy" style="width: 450px;" data-src="/images/work/wyndham/hp8.jpg">
+                            <img class="lazy" style="width: 225px;" data-src="/images/work/wyndham/hp8.jpg">
                         </div>
                        
                     </div>
                 </div>
-            </div> -->
-            <div class="carousel-row">
+            </div>
+            <!-- <div class="carousel-row">
                 <div class="carousel-row-container">
                     <div class="n-info-container">
                         <div class="n-client-info">
@@ -2750,37 +3343,37 @@ function animateWords(element) {
                     </div>
                 </div>
 
-                <div class="carousel-row-slider">
+                <div class="carousel-row-slider" style="height:158px">
                     <div class="carousel-slider slideshow js-slideshow">
                         <div class="slide" >
-                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="/images/work/apple/hp1.jpg">
+                            <img class="lazy" loading="lazy" style="width: 225px;" data-src="/images/work/apple/hp1.jpg">
                         </div>
                         <div class="slide" >
-                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="/images/work/apple/hp1.jpg">
+                            <img class="lazy" loading="lazy" style="width: 225px;" data-src="/images/work/apple/hp1.jpg">
                         </div>
                         <div class="slide" >
-                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="/images/work/apple/hp1.jpg">
+                            <img class="lazy" loading="lazy" style="width: 225px;" data-src="/images/work/apple/hp1.jpg">
                         </div>
                         <div class="slide" >
-                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="/images/work/apple/hp1.jpg">
+                            <img class="lazy" loading="lazy" style="width: 225px;" data-src="/images/work/apple/hp1.jpg">
                         </div>
                         <div class="slide" >
-                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="/images/work/apple/hp1.jpg">
+                            <img class="lazy" loading="lazy" style="width: 225px;" data-src="/images/work/apple/hp1.jpg">
                         </div>
                         <div class="slide" >
-                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="/images/work/apple/hp1.jpg">
+                            <img class="lazy" loading="lazy" style="width: 225px;" data-src="/images/work/apple/hp1.jpg">
                         </div>
                         <div class="slide" >
-                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="/images/work/apple/hp1.jpg">
+                            <img class="lazy" loading="lazy" style="width: 225px;" data-src="/images/work/apple/hp1.jpg">
                         </div>
                         <div class="slide" >
-                            <img class="lazy" loading="lazy" style="width: 429px;" data-src="/images/work/apple/hp1.jpg">
+                            <img class="lazy" loading="lazy" style="width: 225px;" data-src="/images/work/apple/hp1.jpg">
                         </div>
 
                         
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- <div class="carousel-row">
                 <div class="carousel-row-container">
                     <div class="n-info-container">
@@ -2909,16 +3502,43 @@ function animateWords(element) {
                        
                     </div>
                 </div>
-            </div>
-            <div class="carousel-row">
+            </div> -->
+            <div class="carousel-row load-overlay" data-file="/work/carrot-and-stick-2.html">
+                
                 <div class="carousel-row-container">
                     <div class="n-info-container">
                         <div class="n-client-info">
                             <div class="n-number"></div>
-                            <h3 class="n-client-name">Nike</h3>
+                            <h3 class="n-client-name">Carrot and Stick</h3>
                         </div>
                         <div class="n-client-project-info">
-                            <p class="n-description">Crafting a Brand Identity and Design System for New AI Startup.</p>
+                            <p class="n-description">Crafting a distinctive campaign concept for leading fashion brand.</p>
+                            <div class="n-info-right">
+                                <span class="n-year">/ 2023</span>
+                                <div class="n-services">Identity Design, Brand Design</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-work-spotlight">
+                    <video preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1133598750/rendition/360p/file.mp4?loc=external&signature=975e59b5dd885c7a0a32fae72c33c41adef1c0348dffd495924207615e6b4b93|video/mp4"></video>
+                    <p class="n-description-mobile"></p>
+                </div>
+                <div class="carousel-row-slider single-spotlight">
+                    <div class="single-spotlight-container">
+                        <video preload="none" width="600px" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1133598750/rendition/540p/file.mp4?loc=external&signature=8d68f4b922bbe7c90ad059979531b0ff4bbe3602d5684eae583197b0fc2e42ae|video/mp4"></video>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-row load-overlay" data-file="/work/deno.html">
+                <div class="carousel-row-container">
+                    <div class="n-info-container">
+                        <div class="n-client-info">
+                            <div class="n-number"></div>
+                            <h3 class="n-client-name">Deno</h3>
+                        </div>
+                        <div class="n-client-project-info">
+                            <p class="n-description">Overhaul of the backend design system for web developers.</p>
                             <div class="n-info-right">
                                 <span class="n-year">/ 2023</span>
                                 <div class="n-services">Visual Design, Web Design, UX</div>
@@ -2926,66 +3546,52 @@ function animateWords(element) {
                         </div>
                     </div>
                 </div>
-                <div class="markings">
-                    <span>
-                       
-                    </span>
-
-                    <span><em>2023</em></span>
-                    <span><img src="images/circle_cross.png">
-                        <div class="a-section-marquee-box">
-                            <h5 class="marquee-text">deno</h2>
-                            <h5 class="marquee-text">deno</h2>
-                          </div>
-                        <img src="images/two_crosses.png"></span>
-                  <div class="dashed-line"></div>
+                <div class="mobile-work-spotlight">
+                    <img  class="lazy" src="/images/work/deno/hp3.jpg">
+                    <p class="n-description-mobile"></p>
                 </div>
-                <div class="carousel-row-slider">
+                <div class="carousel-row-slider" style="height:158px">
                     <div class="carousel-slider slideshow js-slideshow deno">
 
                       
                         <div class="slide">
-                            <img  class="lazy" style="width: 568px;" data-src="/images/work/deno/hp1.jpg">
+                            <img  class="lazy" style="width: 270px;" data-src="/images/work/deno/hp1.jpg">
                         </div>
-                        <div class="slide no-mobile">
-                
-                            <video preload="none" autoplay loop muted playsinline width="497" data-src="https://player.vimeo.com/progressive_redirect/playback/892101327/rendition/720p/file.mp4?loc=external&signature=d40ca0147b3b51284266bf52282d59d4bca4d9cb1d844b21b1058b9284f84512|video/mp4"></video>
-                        </div>
-                        
-                        <div class="slide">
-                            <img  class="lazy" style="width: 500px;" data-src="/images/work/deno/hp3.jpg">
-                        </div>
-                        <div class="slide">
-                            <img  class="lazy" style="width: 280px;" data-src="/images/work/deno/hp2.jpg">
-                        </div>
-                        
-                        <div class="slide no-mobile">
 
-                            <video preload="none" autoplay loop muted playsinline width="300" data-src="https://player.vimeo.com/progressive_redirect/playback/892106590/rendition/540p/file.mp4?loc=external&signature=35ed27653079e678a97c6a50b9a6c5e048274b5f7616cbad20ef699cf644433b|video/mp4"></video>
+                        
+                        <div class="slide">
+                            <img  class="lazy" style="width: 250px;" data-src="/images/work/deno/hp3.jpg">
+                        </div>
+               
+                        <div class="slide-block"></div>
+
+                        
+                        <div class="slide">
+                            <img  class="lazy" style="width: 230px;" data-src="/images/work/deno/logs.jpg">
                         </div>
                         
                         <div class="slide">
-                            <img  class="lazy" style="width: 540px;" data-src="/images/work/deno/hp4.jpg">
+                            <img  class="lazy" style="width: 275px;" data-src="/images/work/deno/deno-components.jpg">
                         </div>
-                
+                        <div class="slide-block"></div>
                         <div class="slide">
-                            <img  class="lazy" style="width: 600px;" data-src="/images/work/deno/hp5.jpg">
+                            <img  class="lazy" style="width: 275px;" data-src="/images/work/deno/hp5.jpg">
+                        </div>
+                        <div class="slide">
+                            <img  class="lazy" style="width: 226px;" data-src="/images/work/deno/deno-initial.jpg">
+                        </div>
+                        <div class="slide-block"></div>
+
+                        <div class="slide">
+                            <img  class="lazy" style="width: 266px;" data-src="/images/work/deno/hp7.jpg">
                         </div>
                         
-                        <div class="slide">
-                            <video preload="none" autoplay loop muted playsinline width="497" data-src="https://player.vimeo.com/progressive_redirect/playback/892101315/rendition/720p/file.mp4?loc=external&signature=a5a89ccaa7bda5eb2ca85fbd26d52cf85f8f733855ebab54f0fdb13f439eceff|video/mp4"></video>
-                        </div>
-                        <div class="slide">
-                            <img  class="lazy" style="width: 594px;" data-src="/images/work/deno/hp7.jpg">
-                        </div>
-                        <div class="slide">
-                            <img  class="lazy" style="width: 490px;" data-src="/images/work/deno/hp6.jpg">
-                        </div>
+
                         
                         
                     </div>
                 </div>
-            </div> -->
+            </div>
             
         </div>
     </div>
@@ -3501,9 +4107,9 @@ else {
 
 
 
-//beginning of gpt code
 
-const tickerSpeed = 0.2; // Adjust as needed
+// const tickerSpeed = 0.059; // Adjust as needed
+const tickerSpeed = 0.09;
 const slideshowEls = document.querySelectorAll('.js-slideshow');
 
 
@@ -3524,7 +4130,7 @@ slideshowEls.forEach((galleryElem) => {
     freeScrollFriction: 1
   });
 
-  flickity.x = 0;
+//   flickity.x = 0;
 
   const update = () => {
     if (isPaused) return;
@@ -3707,6 +4313,8 @@ const noise = () => {
   };
 
 
+  
+
   // Loop
   const loop = () => {
       paintNoise(frame);
@@ -3719,19 +4327,19 @@ const noise = () => {
 
 
   // Setup
-  const setup = () => {
-      wWidth = window.innerWidth;
-      wHeight = window.innerHeight;
+//   const setup = () => {
+//       wWidth = window.innerWidth;
+//       wHeight = window.innerHeight;
 
-      canvas.width = wWidth;
-      canvas.height = wHeight;
+//       canvas.width = wWidth;
+//       canvas.height = wHeight;
 
-      for (let i = 0; i < 10; i++) {
-          createNoise();
-      }
+//       for (let i = 0; i < 10; i++) {
+//           createNoise();
+//       }
 
-      loop();
-  };
+//       loop();
+//   };
 
 
   // Reset
