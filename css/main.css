@@ -3734,7 +3734,7 @@ margin: 13px 0 0 0;
   section .hero-center-container {
         display: flex;
     flex-direction: column;
-    margin-top: 31px;
+    margin-top: 16px;
   }
 
   section .simple-hero-video-container  {
@@ -3745,7 +3745,11 @@ width: 100%;
   }
 
   #simple-hero {
-    height: 75vh !important
+    height: 65vh !important
+  }
+
+  #simple-hero h3 span:first-of-type {
+    margin-left: 15px !important;
   }
   
   section h3.top-info {
@@ -3888,7 +3892,7 @@ width: 100%;
   section .top-bottom-info {
     text-align: left;
     padding: 0 9px;
-    margin-top: 16px;
+    margin-top: 10px;
   }
 
   section h3.top-info {
@@ -3928,6 +3932,14 @@ width: 100%;
   section #hero-image ul span:last-of-type{
     margin-right: 0;
   }
+
+  section #hero-image {
+
+  top: 80%;
+  transform: translate(-50%,-80%);
+  /* height: 100vh; */
+
+}
 
 }
 
@@ -6714,8 +6726,8 @@ h2.nike span {
     z-index: 999;
     text-align: center;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    top: 80%;
+    transform: translate(-50%, -80%);
 }
 
 #hero-hero {
