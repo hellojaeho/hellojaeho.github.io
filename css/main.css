@@ -3343,6 +3343,9 @@ nav.dynamic-nav.info-open .d-nav-info-1a .d-nav-info-right .d-nav-info-1a-list u
   margin-bottom: 0;
   margin-top: 10px !important
 }
+.d-nav-info-1a-list ul:nth-of-type(3) {
+  margin-top: 10px !important
+}
 
 nav .d-nav-info-1a {
   margin-bottom: 80px;
@@ -3445,7 +3448,8 @@ margin: 13px 0 0 0;
   div .n-description {
     font-size: 13px;
     margin-top: 0px;
-    line-height: 14px;;
+    line-height: 14px;
+    width: 246px;
   }
 
   .content-block.credits h6, .content-block.credits div {
@@ -3714,7 +3718,7 @@ margin: 13px 0 0 0;
 
   section h3.top-info {
     font-size: 15px !important;
-    width: 84% !important;
+    width: 340px !important;
   }
 
   .carousel-row-slider.single-spotlight video {
@@ -3722,7 +3726,8 @@ margin: 13px 0 0 0;
     margin-bottom: 10px;
   }
 
-  .mobile-work-spotlight video {
+  .mobile-work-spotlight video,
+  .mobile-work-spotlight img {
     width: 67% !important;
     margin: 28px 0 0;
   }
@@ -3734,7 +3739,7 @@ margin: 13px 0 0 0;
   section .hero-center-container {
         display: flex;
     flex-direction: column;
-    margin-top: 16px;
+    margin-top: 11px;
   }
 
   section .simple-hero-video-container  {
@@ -3747,10 +3752,10 @@ width: 100%;
   #simple-hero {
     height: 65vh !important
   }
-
+/* 
   #simple-hero h3 span:first-of-type {
     margin-left: 15px !important;
-  }
+  } */
   
   section h3.top-info {
     flex-grow: 0;
@@ -3892,11 +3897,11 @@ width: 100%;
   section .top-bottom-info {
     text-align: left;
     padding: 0 9px;
-    margin-top: 10px;
+    margin-top: 3px;
   }
 
   section h3.top-info {
-    padding: 9px;
+    padding: 7px 9px 9px 9px; 
   }
 
   .simple-hero-video-container video {
@@ -3935,8 +3940,8 @@ width: 100%;
 
   section #hero-image {
 
-  top: 80%;
-  transform: translate(-50%,-80%);
+  top: 67%;
+  transform: translate(-50%,-50%);
   /* height: 100vh; */
 
 }
