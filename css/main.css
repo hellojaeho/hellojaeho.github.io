@@ -3429,8 +3429,9 @@ body div nav.dynamic-nav.info-closing {
   }
 
   div .n-services {
-        margin: 8px 0 3px 0px;
-    font-size: 12px;
+margin: 13px 0 0 0;
+        font-size: 13px;
+        font-style: italic;
   }
 
   /* div .n-services {
@@ -3442,7 +3443,7 @@ body div nav.dynamic-nav.info-closing {
   } */
 
   div .n-description {
-    font-size: 12px;
+    font-size: 13px;
     margin-top: 0px;
     line-height: 14px;;
   }
@@ -3494,7 +3495,7 @@ body div nav.dynamic-nav.info-closing {
 
   
   .n-client-name {
-    font-size: 13px !important
+    font-size: 14px !important
   }
 
   body #hero-hero .hero-hero-container {
@@ -3713,12 +3714,17 @@ body div nav.dynamic-nav.info-closing {
 
   section h3.top-info {
     font-size: 15px !important;
-    width: 94% !important;
+    width: 84% !important;
   }
 
   .carousel-row-slider.single-spotlight video {
     width: 100% !important;
     margin-bottom: 10px;
+  }
+
+  .mobile-work-spotlight video {
+    width: 67% !important;
+    margin: 28px 0 0;
   }
 
   section #hero-image img {
@@ -3728,21 +3734,25 @@ body div nav.dynamic-nav.info-closing {
   section .hero-center-container {
         display: flex;
     flex-direction: column;
-    justify-content: center;
+    margin-top: 12px;
   }
 
   section .simple-hero-video-container  {
-        width: 71%;
+width: 100%;
+        padding: 0 9px;
         /* height: 58%; */
-        margin-bottom: 10px;
+        margin-bottom: 5px;
   }
 
-  /* #simple-hero {
-    height: initial !important;
-  } */
+  #simple-hero {
+    height: 75vh !important
+  }
   
   section h3.top-info {
-    flex-grow: 1;
+    flex-grow: 0;
+            flex-grow: 0;
+        text-align: left;
+        margin: 0;
   }
 
   nav.hero-video .d-nav-video-container {
@@ -3777,6 +3787,7 @@ body div nav.dynamic-nav.info-closing {
 
   #home-work-carousels .mobile-work-spotlight {
     display: block;
+    text-align: center;
   }
 
   #home-work-carousels .n-client-info {
@@ -3874,10 +3885,20 @@ body div nav.dynamic-nav.info-closing {
   .content-block.credits {
         margin-bottom: 350px !important;
   }
+  section .top-bottom-info {
+    text-align: left;
+    padding: 0 9px;
+    margin-top: 16px;
+  }
+
+  section h3.top-info {
+    padding: 9px;
+  }
 
   .simple-hero-video-container video {
     min-height: 100%;
     width: 100%;
+    margin-bottom: 0 !important
   }
 
   section #hero-image ul li:first-of-type {
@@ -3940,9 +3961,8 @@ body div nav.dynamic-nav.info-closing {
 }
 
 .mobile-work-spotlight video{
-width: 100%;
-    height: 234px;
-    object-fit: cover;
+  width: 100%;
+  object-fit: cover;
 }
 
 .mobile-work-spotlight img{
