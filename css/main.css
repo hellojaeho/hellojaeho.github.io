@@ -393,7 +393,9 @@ em {
 }
 
 .carousel-row-slider video,
-.mobile-work-spotlight video {
+.mobile-work-spotlight video,
+.mobile-work-spotlight img,
+.carousel-row-slider img {
   border-radius: 3px;
   opacity: 0;
   transition-duration: .5s;
@@ -4718,7 +4720,7 @@ div.d-nav-t-name {
 }
 
 .large-quote h4 {
-font-size: 88px;
+font-size: 82px;
     letter-spacing: -0.8px;
   text-align: center;
   position: absolute;
