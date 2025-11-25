@@ -3416,8 +3416,21 @@ body div nav.dynamic-nav.info-closing {
 
 @media (max-width: 800px) {
 
+  div .large-quote .upper span:first-of-type {
+    margin-right: -10px;
+  }
+
+  div .quote-background p:nth-of-type(3),
+  div .quote-background p:nth-of-type(4) {
+    display: none;
+  }
+
+  div .large-quote .upper span:last-of-type {
+    margin-left: -10px;
+  }
+
   div .large-quote h4 {
-    font-size: 58px;
+    font-size: 47px;
   }
 
   div .quote-background {
@@ -3426,7 +3439,7 @@ body div nav.dynamic-nav.info-closing {
 
   div .large-quote .upper,
   .large-quote .lower {
-    line-height: 55px;
+    line-height: 48px;
   }
 
   nav.dynamic-nav .d-nav-case-study h3 {
