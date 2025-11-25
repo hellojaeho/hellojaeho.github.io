@@ -20,48 +20,46 @@ window.addEventListener('scroll', () => {
 
 
 // Handle deep links (e.g., index.html?open=work/nike-air-max-day.html)
-// window.addEventListener('DOMContentLoaded', () => {
-//   setTimeout(() => {
-//     const params = new URLSearchParams(window.location.search);
-//     const fileToOpen = params.get('open');
-//     if (fileToOpen) {
-//       loadOverlay(fileToOpen);
-//       console.log('deep ran');
-//     }
-//     console.log('Deep link file:', fileToOpen);
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    const params = new URLSearchParams(window.location.search);
+    const fileToOpen = params.get('open');
 
-//     $('#overlay').css('display', 'flex');
+    // Only run if the URL contains an open= parameter
+    if (!fileToOpen) return;
 
-//     setTimeout(() => {
-//       $('#overlay').addClass('n-show');
-//       $('#overlay, #overlay-content').addClass('active');
-//     }, 300);
+    const heroImage = document.querySelector('.hero-image');
+    if (heroImage) {
+      heroImage.click();
+    }
 
-//       $('nav.dynamic-nav').addClass('case-study');
-//       $('body').addClass('n-fixed');
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
 
-//             setTimeout(() => {
-//         $('.d-case-study-close').addClass('show');
-//         $('.blocks').removeClass('n-hidden blurred');
-//         detectDominantBlock();
-//       }, 200);
+    
+    loadOverlay(fileToOpen);
+    console.log('deep ran');
+    console.log('Deep link file:', fileToOpen);
 
-//     // if (file) {
-//     //   loadOverlay(file, globalSlideIndex);
+    $('#overlay').css('display', 'flex');
 
-//     //   $('nav.dynamic-nav').addClass('case-study');
-//     //   $('body').addClass('n-fixed');
+    setTimeout(() => {
+      $('#overlay').addClass('n-show');
+      $('#overlay, #overlay-content').addClass('active');
+    }, 300);
 
-//     //   setTimeout(() => {
-//     //     $('.d-case-study-close').addClass('show');
-//     //     $('.blocks').removeClass('n-hidden blurred');
-//     //     detectDominantBlock();
-//     //   }, 200);
-//     // } else {
-//     //   console.warn('Missing data-file on clicked element.');
-//     // }
-//   }, 2000);
-// });
+    $('nav.dynamic-nav').addClass('case-study');
+    $('body').addClass('n-fixed');
+
+    setTimeout(() => {
+      $('.d-case-study-close').addClass('show');
+      $('.blocks').removeClass('n-hidden blurred');
+      detectDominantBlock();
+    }, 200);
+  }, 2500);
+});
 
 
 

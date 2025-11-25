@@ -4051,6 +4051,7 @@ h3.top-info,
     text-align: center;
     display: flex;
     flex-direction: column;
+    /* z-index: 2; */
 }
 
 h3.top-info {
@@ -8605,6 +8606,7 @@ form {
 }
 
 #overlay.active.n-show {
+  /* z-index: 999; */
   opacity: 1;
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);

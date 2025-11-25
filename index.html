@@ -1677,7 +1677,7 @@ function animateWords(element) {
                     </div>
                 </div>
                 <div class="mobile-work-spotlight">
-                    <img  class="lazy" src="/images/work/wyndham/hp5.jpg">
+                    <img  class="lazy" data-src="/images/work/wyndham/hp5.jpg">
                     <p class="n-description-mobile"></p>
                 </div>
                 <div class="carousel-row-slider" style="height:158px">
@@ -1769,7 +1769,7 @@ function animateWords(element) {
                     </div>
                 </div>
                 <div class="mobile-work-spotlight">
-                    <img  class="lazy"  src="/images/work/atlas/atlas-thumbnail.jpg">
+                    <img  class="lazy"  data-src="/images/work/atlas/atlas-thumbnail.jpg">
                     <p class="n-description-mobile"></p>
                 </div>
                 <div class="carousel-row-slider single-spotlight">
@@ -1987,7 +1987,7 @@ function animateWords(element) {
                     </div>
                 </div>
                 <div class="mobile-work-spotlight">
-                    <img  class="lazy" src="/images/work/wish/wish_thumbnail.jpg">
+                    <img  class="lazy" data-src="/images/work/wish/wish_thumbnail.jpg">
                     <p class="n-description-mobile"></p>
                 </div>
                 <div class="carousel-row-slider single-spotlight">
@@ -2132,7 +2132,7 @@ function animateWords(element) {
                     </div>
                 </div>
                 <div class="mobile-work-spotlight">
-                    <img  class="lazy"  src="/images/work/deno/deno_lifestyle_cropped.jpg">
+                    <img  class="lazy" data-src="/images/work/deno/deno_lifestyle_cropped.jpg">
                     <p class="n-description-mobile"></p>
                 </div>
                 <div class="carousel-row-slider single-spotlight">
@@ -2597,7 +2597,7 @@ function animateWords(element) {
                     </div>
                 </div>
                 <div class="mobile-work-spotlight">
-                    <img  class="lazy" src="/images/work/ambush/hp2.jpg">
+                    <img  class="lazy" data-src="/images/work/ambush/hp2.jpg">
                     <p class="n-description-mobile"></p>
                 </div>
                 <div class="carousel-row-slider single-spotlight">
@@ -2877,7 +2877,7 @@ function animateWords(element) {
                     </div>
                 </div>
                 <div class="mobile-work-spotlight">
-                    <img  class="lazy" src="/images/work/celtics/hp1.jpg">
+                    <img  class="lazy" data-src="/images/work/celtics/hp1.jpg">
                     <p class="n-description-mobile"></p>
                 </div>
                 <div class="carousel-row-slider" style="height:173px">
@@ -4609,35 +4609,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // this is to stimulate a click on the first slide, image or video of the carousel when there is a redirect
 
-window.addEventListener('DOMContentLoaded', () => {
-  setTimeout(() => {
-    const params = new URLSearchParams(window.location.search);
-    const projectFile = params.get('open'); // grabs "work/nike-maxs-lab.html"
+// window.addEventListener('DOMContentLoaded', () => {
+//   setTimeout(() => {
+//     const params = new URLSearchParams(window.location.search);
+//     const projectFile = params.get('open'); // grabs "work/nike-maxs-lab.html"
 
-    console.log('Project file from URL:', projectFile);
+//     console.log('Project file from URL:', projectFile);
 
-    if (projectFile) {
-      const targetOverlay = document.querySelector(`.carousel-row.load-overlay[data-file="${projectFile}"]`);
+//     if (projectFile) {
+//       const targetOverlay = document.querySelector(`.carousel-row.load-overlay[data-file="${projectFile}"]`);
 
-    console.log('Target overlay:', targetOverlay);
+//     console.log('Target overlay:', targetOverlay);
 
-      if (targetOverlay) {
-        // Smoothly scroll to the project
-        // targetOverlay.scrollIntoView({ behavior: 'smooth', block: 'center' });
+//       if (targetOverlay) {
+//         // Smoothly scroll to the project
+//         // targetOverlay.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-        const firstSlide = targetOverlay.querySelector('.carousel-row-slider video, .carousel-row-slider img');
+//         const firstSlide = targetOverlay.querySelector('.carousel-row-slider video, .carousel-row-slider img');
 
-        if (firstSlide) {
-          setTimeout(() => {
-            firstSlide.click();
-            // window.history.replaceState({}, document.title, '/');
-          }, 300); // small delay before clicking
-          console.log('Clicking first slide:', firstSlide);
-        }
-      }
-    }
-  }, 1000); // <-- Initial page delay after DOMContentLoaded
-});
+//         if (firstSlide) {
+//           setTimeout(() => {
+//             firstSlide.click();
+//             // window.history.replaceState({}, document.title, '/');
+//           }, 300); // small delay before clicking
+//           console.log('Clicking first slide:', firstSlide);
+//         }
+//       }
+//     }
+//   }, 5000); // <-- Initial page delay after DOMContentLoaded
+// });
 
 const overlay = document.getElementById('videoOverlay-videoModal');
 const container = document.getElementById('videoContainer-videoModal');
