@@ -340,7 +340,10 @@ $(document).ready(function() {
   // When user clicks an image or video to open the overlay
   $('.load-overlay img, .load-overlay video').click(function() {
 
-
+    // If the clicked .load-overlay also has .nda, do nothing
+    if ($(this).closest('.load-overlay').hasClass('nda')) {
+      return;
+    }
 
 
   // Get the current carousel row
