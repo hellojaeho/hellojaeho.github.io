@@ -1,3 +1,23 @@
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+};
+
+//show filter and side-top after scrolling past hero
+window.addEventListener('scroll', () => {
+  const hero = document.querySelector('#hero-hero');
+  const filter = document.querySelector('#filter');
+  const sideTop = document.querySelector('#side-top');
+  let scrollPosition = window.scrollY || window.pageYOffset;
+
+  let heroHeight = hero ? hero.offsetHeight : 0;
+  if (scrollPosition > heroHeight + 400) {
+    filter && filter.classList.remove('before-scroll');
+    sideTop && sideTop.classList.remove('before-scroll');
+  } else {
+    filter && filter.classList.add('before-scroll');
+    sideTop && sideTop.classList.add('before-scroll');
+  }
+});
 
 
 
@@ -290,6 +310,70 @@ newBlocks.setAttribute('data-file', normalizedFile);
 
 
 document.addEventListener('DOMContentLoaded', () => {
+
+
+const projects = document.querySelectorAll('.carousel-row');
+  const filterGroups = document.querySelectorAll('.filter-group');
+
+const activeFilters = {
+  service: 'all',
+  industry: 'all'
+};
+function applyFilters() {
+  const selectedService = activeFilters.service;
+  const selectedIndustry = activeFilters.industry;
+
+  projects.forEach(project => {
+    const services = project.dataset.services.toLowerCase().split(',').map(s => s.trim());
+    const industries = project.dataset.industry.toLowerCase().split(',').map(i => i.trim());
+
+    const serviceMatches  = selectedService === 'all'  || services.includes(selectedService);
+    const industryMatches = selectedIndustry === 'all' || industries.includes(selectedIndustry);
+
+    const shouldShow = serviceMatches && industryMatches;
+    project.style.display = shouldShow ? '' : 'none';
+  });
+
+  // tell Lazy to re-evaluate only visible items
+  if (window.carouselLazy) {
+    carouselLazy.update(true);
+  }
+}
+
+// click handling
+filterGroups.forEach(group => {
+  group.addEventListener('click', (e) => {
+    const pill = e.target.closest('.filter-pill');
+    if (!pill) return;
+
+    e.preventDefault();
+
+    const type = group.dataset.filterType;    // "service" or "industry"
+    const value = pill.dataset.value.toLowerCase();
+
+    group.querySelectorAll('.filter-pill').forEach(btn => {
+      btn.classList.toggle('is-active', btn === pill);
+    });
+
+    activeFilters[type] = value;
+    applyFilters();
+  });
+});
+
+applyFilters()
+
+
+
+
+
+
+
+
+
+
+
+
+
   const el = document.querySelector('.back-blur');
 
   if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
@@ -568,6 +652,8 @@ setTimeout(() => {
       $('#home-work-carousels').addClass('blurred');
       $('#simple-hero').addClass('blurred');
       $('#hero-hero').addClass('blurred');
+      $('#filter').addClass('blurred');
+      $('#side-top').addClass('blurred');
     });
 
     closeMenu.on('click', function () {
@@ -576,6 +662,8 @@ setTimeout(() => {
       $('#home-work-carousels').removeClass('blurred');
       $('#hero-hero').removeClass('blurred');
       $('#simple-hero').removeClass('blurred');
+            $('#filter').removeClass('blurred');
+      $('#side-top').removeClass('blurred');
       dynamicNav.addClass('info-closing'); // Changed toggle to remove
       setTimeout(function () {
         dynamicNav.removeClass('info-closing');
@@ -591,6 +679,8 @@ setTimeout(() => {
       $('#home-work-carousels').removeClass('blurred');
       $('#hero-hero').removeClass('blurred');
       $('#simple-hero').removeClass('blurred');
+       $('#filter').removeClass('blurred');
+      $('#side-top').removeClass('blurred');
     }
   });
 
@@ -1176,6 +1266,9 @@ if ($(window).width() < 500) {
 
   $(function($) {
     $(".carousel-row img").Lazy({
+      chainable: false,          // so it returns the instance
+    visibleOnly: true,         // 👈 respect visibility (display:none etc.)
+    threshold: 200,
       enableThrottle: true,
       throttle: 100,
     //   effect: 'fadeIn',
@@ -1193,6 +1286,9 @@ if ($(window).width() < 500) {
 
 jQuery(function($) {
   $("video").lazy({
+    chainable: false,          // so it returns the instance
+    visibleOnly: true,         // 👈 respect visibility (display:none etc.)
+    threshold: 200,
     enableThrottle: true,
     throttle: 100,
     afterLoad: function(element) {

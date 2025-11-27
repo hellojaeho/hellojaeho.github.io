@@ -2209,6 +2209,22 @@ body .info-logo {
 
 @media (max-width: 800px) {
 
+  .filters .filter-group:nth-of-type(2) {
+    display: none;
+  }
+
+  .side-info {
+    display: none;
+  }
+
+  #side-top {
+    right: 0 !important;
+  }
+
+  #side-top .side-clock {
+    margin-right: 50px !important
+  }
+
   .nda .single-spotlight-container {
   content: "";
   position: absolute;
@@ -4053,13 +4069,145 @@ width: 100%;
 
   section #hero-image {
 
-  top: 67%;
+  top: 50%;
   transform: translate(-50%,-50%);
   /* height: 100vh; */
 
 }
 
 }
+
+
+
+.filter-pill.is-active {
+  position: relative;
+  /* left: -8px; */
+}
+
+.filter-pill.is-active::before {
+  content: "[ ";
+  position: relative;
+  top:-1px;
+}
+
+.filter-pill.is-active::after {
+  content: " ]";
+  position: relative;
+  top:-1px;
+}
+
+/* Top fixed progressive blur overlay */
+.top-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;                          /* how tall the blur zone is */
+  pointer-events: none;                   /* don't block anything */
+  z-index: 998;                           /* make sure it's on top */
+
+  /* blur the content behind it */
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+
+  /* fade downward */
+  mask-image: linear-gradient(to bottom,
+    black 0%,
+    black 35%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(to bottom,
+    black 0%,
+    black 35%,
+    transparent 100%
+  );
+
+  /* optional tint for glass feel — delete if not wanted */
+    background: linear-gradient(to bottom, rgb(239 239 244 / 15%), rgb(239 239 244 / 0%));
+}
+
+#filter, #side-top {
+  transition-duration: .6s;
+  transition-timing-function:cubic-bezier(0,.84,.34,1);
+  z-index: 10000 !important;
+}
+
+#filter.before-scroll,
+#side-top.before-scroll {
+  top:-105px;
+  transition-duration: .6s;
+  transition-timing-function:cubic-bezier(0,.84,.34,1);
+}
+
+#filter {
+  position: fixed;
+  top: 7px;
+  left: 9px;
+  z-index: 999;
+  font-family: arial;
+      /* mix-blend-mode: difference; */
+}
+
+#side-top {
+  position: fixed;
+  top: 7px;
+  right: 110px;
+  display: flex; 
+  flex-direction: row-reverse;
+  z-index: 999;
+}
+
+#side-top .side-clock {
+  margin-right: 110px;
+}
+
+
+.filter-group {
+  display: flex;
+  flex-direction: row;
+  width: 260px;
+}
+
+.filter-options {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.filter-options button {
+  text-align: left;
+ background: transparent;
+  border: none;
+  appearance: none;
+  border: none;
+  margin-bottom: -1px;
+  cursor: pointer
+}
+
+.filters {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.filter-heading {
+  margin-right: 12px;
+}
+
+
+.filter-options button,
+.filter-heading,
+#side-top div,
+#side-top time  {
+  font-family: arial;
+  font-weight: bold;
+  letter-spacing: -0.3px;
+  font-size: 14px;
+  color: black
+        /* mix-blend-mode: difference; */
+
+}
+
 
 #hero-hero .circle-container {
   margin-left: -67px;
@@ -4162,7 +4310,7 @@ h3.top-info,
     text-align: center;
     display: flex;
     flex-direction: column;
-    /* z-index: 2; */
+    z-index:9999;
 }
 
 h3.top-info {
@@ -4523,6 +4671,7 @@ nav.dynamic-nav.hero-video {
 }
 
 nav.dynamic-nav.open {
+  z-index: 10002;
   will-change: width, height, transform;
   transform: translateZ(0); /* GPU hack */
   backface-visibility: hidden;
@@ -6765,14 +6914,14 @@ h2.nike span {
 } */
 
 #hero-image {
+  position: fixed;
   opacity: 0;
-  position: absolute;
+  /* position: absolute; */
   z-index: 1000;
   width: 100%;
   left: 50%;
   top: 50%;
   transform: translate(-50%,-50%);
-  /* height: 100vh; */
 
 }
 
@@ -6831,7 +6980,7 @@ h2.nike span {
 
 .initial-bg {
   height: 100vh;
-    position: absolute;
+    position: fixed;
     width: 100vw;
     background: #efeff499;
     z-index: 999;
@@ -8718,7 +8867,7 @@ form {
 }
 
 #overlay.active.n-show {
-  /* z-index: 999; */
+  z-index: 10001;
   opacity: 1;
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
