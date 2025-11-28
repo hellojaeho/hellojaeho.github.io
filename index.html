@@ -1631,8 +1631,8 @@ function animateWords(element) {
           const tz = now.toLocaleTimeString('en-US', {
             timeZone: 'America/New_York', timeZoneName: 'short'
           }).split(' ').pop();
-        //   el.textContent = `${time} ${tz}`;
-          el.textContent = `${time}`;
+          el.textContent = `${time} ${tz}`;
+        //   el.textContent = `${time}`;
           // keep machine-readable value in datetime (UTC equivalent)
           const nyString = now.toLocaleString('en-US', { timeZone: 'America/New_York' });
           const nyDate = new Date(nyString);
