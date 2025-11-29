@@ -1163,7 +1163,7 @@ body.fadeout {
 .content-block.credits {
   text-align: center;
 }
-
+ 
 .content-block.credits h6,
 .content-block.credits div,
 .content-block.credits li {
@@ -1179,11 +1179,11 @@ body.fadeout {
 
 .content-block.credits h6,
 .content-block.credits div{
-  width: 50%;
+  width: 28%;
 }
 
 .content-block.credits h6 {
-    text-align: right;
+    text-align: left;
     /* border-bottom: 1px solid #000; */
     margin-right: 14px;
     margin-top: 0px;
@@ -1197,7 +1197,27 @@ body.fadeout {
   margin-left: 11px;
 }
 
+.content-block.text-only {
+      display: flex;
+    justify-content: center;
+}
 
+.content-block.full-bleed-image.text-only p {
+line-height: 18px;
+    max-width: 720px;
+    text-align: left;
+    margin: 260px 0;
+    font-size: 17px;
+}
+
+.text-only p {
+    font-family: arial;
+  font-weight: bold;
+  letter-spacing: -0.2px;
+  font-size: 13px;
+  color: black;
+  text-transform: none;
+}
 
 .credits-list {
   display: inline-block;
