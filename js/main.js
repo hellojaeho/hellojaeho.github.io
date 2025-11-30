@@ -1,3 +1,19 @@
+// document.addEventListener('DOMContentLoaded', function () {
+//   // ensure delegated handler so dynamically added buttons also work
+//   $(document).on('click', '.filter-options button', function () {
+//     const $container = $('.carousels-container');
+//     if (!$container.length) return;
+
+//     // immediately hide (no transition)
+//     $container.stop(true, true).css('opacity', 0);
+
+//     // ensure the immediate change is painted, then animate fade in
+//     requestAnimationFrame(function () {
+//       $container.animate({ opacity: 1 }, 400);
+//     });
+//   });
+// });
+
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 };

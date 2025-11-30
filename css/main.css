@@ -1209,7 +1209,13 @@ body.fadeout {
     max-width: 840px;
     text-align: justify;
     /* margin: 260px 0; */
-    margin-top: 93px;
+margin-top: 0px;
+margin-bottom: 17px;
+}
+
+.content-block .project-services p {
+  text-align: center !important;
+  margin-bottom: 30px !important;
 }
 
 .content-block.two-up {
@@ -1236,13 +1242,13 @@ body.fadeout {
 }
 
 .text-only>div {
-    margin: 142px 0 169px;
+    margin: 92px 0 98px;
 }
 
 .text-only div>span {
-text-align: left;
+text-align: center;
     display: block;
-    margin: 16px 0 0 17px;
+    margin: 16px 0 0 0;
 }
 
 .text-only p,
@@ -1251,7 +1257,7 @@ text-align: left;
     font-family: arial;
   font-weight: bold;
   letter-spacing: -0.2px;
-  font-size: 15px;
+  font-size: 14px;
   color: black;
   text-transform: none;
 }
@@ -1263,7 +1269,7 @@ text-align: left;
 
 .text-only h2 {
   text-transform: uppercase;
-  line-height: 27px;
+  line-height: 24px;
   margin: 0;;
 }
 
@@ -1448,7 +1454,7 @@ h3 {
 .content-block.full-bleed-image {
   text-align: center;
   padding: 0 !important;
-  margin: 0 auto 10px;
+  margin: 0 auto 8px;
   line-height: 0;
   width: 85%;
 }
@@ -8950,8 +8956,8 @@ form {
 #overlay.active.n-show {
   z-index: 10001;
   opacity: 1;
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(13px);
+  backdrop-filter: blur(13px);
     transition: .2s;
     animation-timing-function: cubic-bezier(0.65, 0, 0.05, 1);
 }
