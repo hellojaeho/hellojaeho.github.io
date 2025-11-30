@@ -153,14 +153,25 @@ function loadOverlay(file, clickedIndex = 0) {
       }
 
       const credits = blocks.querySelector('section.content-block.credits');
+      const projectDescription = blocks.querySelector('section.project-description');
 
       // ✅ Find the project info div
       const projectInfo = tempDiv.querySelector('.work.n-info-container');
 
       // ✅ Build section list WITHOUT the credits section
-      const sections = Array.from(blocks.querySelectorAll('section')).filter(section => {
-        return !section.classList.contains('credits');
-      });
+      const sections = Array.from(blocks.querySelectorAll('section'))
+        .filter(section => !section.classList.contains('credits') && !section.classList.contains('project-description'))
+        .reduce((acc, section) => {
+          if (section.classList.contains('two-up')) {
+        // Count a "two-up" section as two slices
+        acc.push(section, section);
+          } else {
+        acc.push(section);
+          }
+          return acc;
+        }, []);
+
+
 
       // ✅ Create new .blocks wrapper
       const newBlocks = document.createElement('div');
@@ -180,6 +191,9 @@ newBlocks.setAttribute('data-file', normalizedFile);
         ...sections.slice(0, clickedIndex)
       ];
 
+      // Deduplicate any repeated section nodes (e.g., .two-up was pushed twice)
+      orderedSections.splice(0, orderedSections.length, ...Array.from(new Set(orderedSections)));
+
       orderedSections.forEach(section => {
         newBlocks.appendChild(section.cloneNode(true));
       });
@@ -187,6 +201,16 @@ newBlocks.setAttribute('data-file', normalizedFile);
       // ✅ Append credits at end if it exists
       if (credits) {
         newBlocks.appendChild(credits.cloneNode(true));
+      }
+
+      if (projectDescription) {
+        const cloneDesc = projectDescription.cloneNode(true);
+        const insertIndex = 2; // third position (0-based)
+        if (newBlocks.children.length > insertIndex) {
+          newBlocks.insertBefore(cloneDesc, newBlocks.children[insertIndex]);
+        } else {
+          newBlocks.appendChild(cloneDesc);
+        }
       }
 
       // ✅ Finally append the .blocks into overlay-content

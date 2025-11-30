@@ -1700,17 +1700,17 @@ function animateWords(element) {
                         </div>
                       
                         
-                        <div class="slide">
-                            <img class="lazy" style="width: 232px;" data-src="/images/work/tottenham/schedule_comp.jpg">
-                        </div>  
-                        
-                
-                        
-                        <div class="slide-block"></div>
+                         
                         
                         <div class="slide">
                             <img class="lazy" style="width: 232px;" data-src="/images/work/tottenham/match_day_comp.jpg">
                         </div>
+                <div class="slide">
+                            <img class="lazy" style="width: 232px;" data-src="/images/work/tottenham/schedule_comp.jpg">
+                        </div> 
+                        
+                        <div class="slide-block"></div>
+                        
                         
                         <div class="slide">
                             <img class="lazy" style="width: 217px;" data-src="/images/work/tottenham/website_comp.jpg">
@@ -4444,22 +4444,22 @@ fadeIn();
    
 
 
-    window.onload = function() {
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            // these IDs from the previous steps
-            emailjs.sendForm('service_blfhcju', 'template_x64d0y4', this)
-                .then(function() {
-                    // var message = document.getElementsByClassName("success");
-                    // message.classList.toggle("show");
-                    $('.success').addClass("show");
-                    console.log('SUCCESS!');
+    // window.onload = function() {
+    //     document.getElementById('contact-form').addEventListener('submit', function(event) {
+    //         event.preventDefault();
+    //         // these IDs from the previous steps
+    //         emailjs.sendForm('service_blfhcju', 'template_x64d0y4', this)
+    //             .then(function() {
+    //                 // var message = document.getElementsByClassName("success");
+    //                 // message.classList.toggle("show");
+    //                 $('.success').addClass("show");
+    //                 console.log('SUCCESS!');
 
-                }, function(error) {
-                    console.log('FAILED...', error);
-                });
-        });
-    }
+    //             }, function(error) {
+    //                 console.log('FAILED...', error);
+    //             });
+    //     });
+    // }
     
 //
 //   Variables

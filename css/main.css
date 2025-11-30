@@ -1198,25 +1198,77 @@ body.fadeout {
 }
 
 .content-block.text-only {
-      display: flex;
+    display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .content-block.full-bleed-image.text-only p {
-line-height: 18px;
-    max-width: 720px;
-    text-align: left;
-    margin: 260px 0;
-    font-size: 17px;
+    line-height: 15px;
+    max-width: 840px;
+    text-align: justify;
+    /* margin: 260px 0; */
+    margin-top: 93px;
 }
 
-.text-only p {
+.content-block.two-up {
+    display: flex;
+    gap: 8px;
+    width: 85%;
+    margin: 0 auto;
+    height: 78vh;
+}
+
+.content-block.two-up .media-item {
+  flex: 1 1 50%;
+  position: relative;
+  overflow: hidden;    /* hides the cropped parts */
+}
+
+/* Make video/img fill and crop */
+.content-block.two-up .media-item video,
+.content-block.two-up .media-item img {
+  width: 100%;
+  height: 100% !important;
+  object-fit: cover;   /* this is the crop */
+  display: block;
+}
+
+.text-only>div {
+    margin: 142px 0 169px;
+}
+
+.text-only div>span {
+text-align: left;
+    display: block;
+    margin: 16px 0 0 17px;
+}
+
+.text-only p,
+.text-only h2,
+.text-only span {
     font-family: arial;
   font-weight: bold;
   letter-spacing: -0.2px;
-  font-size: 13px;
+  font-size: 15px;
   color: black;
   text-transform: none;
+}
+
+.text-only p,
+.text-only span {
+  font-size: 14px !important
+}
+
+.text-only h2 {
+  text-transform: uppercase;
+  line-height: 27px;
+  margin: 0;;
+}
+
+.text-only h2 span {
+  display: block;
 }
 
 .credits-list {
@@ -1403,7 +1455,7 @@ h3 {
 
 .full-bleed-image img{
   height: 0;
-  width: 98%;
+  width: 100%;
   border-radius: 0;
   transition-duration: 1s;
   transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -2228,6 +2280,15 @@ body .info-logo {
 }
 
 @media (max-width: 800px) {
+
+    .content-block.two-up {
+    flex-direction: column;
+    height: 1000px;      /* let each piece set its own height */
+  }
+
+  .content-block.two-up .media-item {
+    height: 50vh;      /* optional – set a nice height for each */
+  }
 
   .filters .filter-group:nth-of-type(2) {
     display: none;
@@ -7212,7 +7273,7 @@ h2.nike span {
 }
 
 .full-bleed-image video {
-  width: 98%;
+  width: 100%;
   margin: 0 auto 0;
   height: 0;
 }
