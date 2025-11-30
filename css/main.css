@@ -1257,7 +1257,7 @@ text-align: left;
 }
 
 .text-only p,
-.text-only span {
+.text-only div > span {
   font-size: 14px !important
 }
 
