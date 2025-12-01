@@ -4333,7 +4333,9 @@ width: 100%;
 .lazy-placeholder {
   width: 98%;
   height: 78vh;
-  background-color: #202020;
+  background-color: #9799a035;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
   margin: 0 auto;
   border-radius: 3px;
   display: block;
