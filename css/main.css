@@ -1242,7 +1242,7 @@ margin-bottom: 17px;
 }
 
 .text-only>div {
-    margin: 92px 0 98px;
+  margin: 26px 0 26px;
 }
 
 .text-only div>span {
@@ -2286,6 +2286,26 @@ body .info-logo {
 }
 
 @media (max-width: 800px) {
+
+  #overlay-content.active {
+    padding-top: 5px !important;
+  }
+
+  .text-only>div {
+    margin: 0px 0 8px !important;
+  }
+
+  .text-only h2 {
+    text-align: left !important
+  }
+
+  body .content-block .project-services p {
+    text-align: left !important;
+  }
+
+  body .content-block.full-bleed-image.text-only p {
+    max-width: 90%;
+  }
 
     .content-block.two-up {
     flex-direction: column;
@@ -4057,8 +4077,9 @@ width: 100%;
     width: 93%;
   }
 
-.content-block.credits div {
-    font-size: 16px !important
+.content-block.credits div,
+.content-block.credits li {
+    font-size: 14px !important
   }
 
   div.d-nav-paint {

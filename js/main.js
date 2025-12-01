@@ -170,6 +170,8 @@ function loadOverlay(file, clickedIndex = 0) {
 
       const credits = blocks.querySelector('section.content-block.credits');
       const projectDescription = blocks.querySelector('section.project-description');
+      
+      
 
       // ✅ Find the project info div
       const projectInfo = tempDiv.querySelector('.work.n-info-container');
@@ -304,6 +306,12 @@ newBlocks.setAttribute('data-file', normalizedFile);
           }
 
      
+          if (isMobile && projectDescription) {
+            // Remove any existing .project-description in newBlocks
+            newBlocks.querySelectorAll('section.project-description').forEach(desc => desc.remove());
+            // Insert clone at the top
+            newBlocks.insertBefore(projectDescription.cloneNode(true), newBlocks.firstChild);
+          }
             const lazyVideos = document.querySelectorAll('video.lazy');
             
             const videoObserver = new IntersectionObserver((entries, observer) => {
@@ -502,6 +510,11 @@ $(document).ready(function() {
     if ($(this).parent().hasClass('single-spotlight-container')) {
       globalSlideIndex = allSlidesInThisCarousel.length - 0;
     }
+    if ($(this).parent().hasClass('mobile-work-spotlight') && $(this).parent().hasClass('no-change')) {
+      globalSlideIndex = allSlidesInThisCarousel.length + 2;
+    }
+
+
 
 
     
