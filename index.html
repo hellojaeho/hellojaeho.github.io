@@ -1616,9 +1616,10 @@ function animateWords(element) {
         text-shadow: 0 1px 12px rgba(0,0,0,.45);
       }
       /* hide the intro splash + the "all inquiries" block for the clean look */
-      #simple-hero .top-bottom-info,
-      #simple-hero #hero-image,
-      #simple-hero .initial-bg{ display: none !important; }
+      #simple-hero .top-bottom-info{ display: none !important; }
+      /* Intro splash (#hero-image + frosted .initial-bg) stays enabled — its
+         z-indexes (1000/999) sit above the video (0), scrims (1) and text (2)
+         within this fixed hero's stacking context. */
 
       /* ---- trimmed fixed nav card (less content) ---- */
       .dynamic-nav .d-nav-video{ display: none !important; }              /* remove Play-Reel UI */
@@ -1879,7 +1880,7 @@ function animateWords(element) {
             display: grid;
             grid-template-columns: 1fr;                 /* MOBILE: one tile at a time */
             gap: var(--grid-gap);
-            padding: 100px 11px 0;
+            padding: 180px 11px 0;
             max-width: 2200px;
             margin: 0 auto;
             align-items: stretch;
