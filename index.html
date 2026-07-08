@@ -1541,9 +1541,8 @@ function animateWords(element) {
          (so it doesn't blur the pinned hero text), fades in once the grid is on. */
       .top-blur{ opacity: 0; transition: opacity .45s ease; }
       body.reveal-done .top-blur{ opacity: 1; }
-      /* Filter + side-top ride the grid's top edge up (scroll-linked), then pin.
-         Driven by JS via transform; start pushed off-screen to avoid a flash. */
-      #filter, #side-top{ transition: none !important; will-change: transform; transform: translateY(100vh); }
+      /* Filter + side-top live in a position:sticky bar at the top of the grid
+         section (see .grid-top-bar) — compositor-driven, no scroll lag. */
       /* Hero video darkens to black as you scroll through the reveal. */
       #simple-hero::before{
         content: ""; position: absolute; inset: 0; z-index: 1;
@@ -1721,44 +1720,10 @@ function animateWords(element) {
 
     </section>
    
-    <div id="filter">
-        <div class="filters">
-        <!-- SERVICES -->
-            <div class="filter-group" data-filter-type="service">
-                <span class="filter-heading">Service</span>
-                <div class="filter-options">
-                    <button class="filter-pill is-active" data-value="all">All</button>
-                    <button class="filter-pill" data-value="experience">Digital Experience</button>
-                    <button class="filter-pill" data-value="product">Product</button>
-                    <button class="filter-pill" data-value="ecommerce">Ecommerce</button>
-                    <button class="filter-pill" data-value="identity">Visual Identity</button>
-                </div>
-            </div>
-
-            <!-- INDUSTRY -->
-            <div class="filter-group" data-filter-type="industry">
-                <span class="filter-heading">Industry</span>
-                <div class="filter-options">
-                    <button class="filter-pill is-active" data-value="all">All</button>
-                    <button class="filter-pill" data-value="culture">Culture</button>
-                    <button class="filter-pill" data-value="technology">Technology</button>
-                    <button class="filter-pill" data-value="fashion-beauty">Fashion / Beauty</button>
-                    <button class="filter-pill" data-value="finance">Finance</button>
-                    <button class="filter-pill" data-value="b2b">B2B</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="side-top">
-        <div class="side-info">Site design and development by Jae Yoon.</div>
-        <div class="side-clock" aria-live="polite">
-            <time id="est-clock" datetime="">--:--:--</time>
-        </div>
-    </div>
-
-
     <script>
-      (function(){
+      // Runs before #est-clock exists in the DOM (the clock lives further down,
+      // inside the grid's sticky top bar) — so wait for DOMContentLoaded.
+      document.addEventListener('DOMContentLoaded', function(){
         const el = document.getElementById('est-clock');
         if (!el) return;
 
@@ -1783,11 +1748,49 @@ function animateWords(element) {
 
         updateClock();
         setInterval(updateClock, 1000);
-      })();
+      });
     </script>
     </div>
-     <div class="top-blur"></div>
     <div id="home-work-carousels">
+        <div class="top-blur"></div>
+        <!-- Sticky top bar: rides up with the grid section, pins at the top.
+             Compositor-driven (position: sticky) — no JS, no scroll lag. -->
+        <div class="grid-top-bar">
+            <div id="filter">
+                <div class="filters">
+                <!-- SERVICES -->
+                    <div class="filter-group" data-filter-type="service">
+                        <span class="filter-heading">Service</span>
+                        <div class="filter-options">
+                            <button class="filter-pill is-active" data-value="all">All</button>
+                            <button class="filter-pill" data-value="experience">Digital Experience</button>
+                            <button class="filter-pill" data-value="product">Product</button>
+                            <button class="filter-pill" data-value="ecommerce">Ecommerce</button>
+                            <button class="filter-pill" data-value="identity">Visual Identity</button>
+                        </div>
+                    </div>
+
+                    <!-- INDUSTRY -->
+                    <div class="filter-group" data-filter-type="industry">
+                        <span class="filter-heading">Industry</span>
+                        <div class="filter-options">
+                            <button class="filter-pill is-active" data-value="all">All</button>
+                            <button class="filter-pill" data-value="culture">Culture</button>
+                            <button class="filter-pill" data-value="technology">Technology</button>
+                            <button class="filter-pill" data-value="fashion-beauty">Fashion / Beauty</button>
+                            <button class="filter-pill" data-value="finance">Finance</button>
+                            <button class="filter-pill" data-value="b2b">B2B</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="side-top">
+                <div class="side-info">Site design and development by Jae Yoon.</div>
+                <div class="side-clock" aria-live="polite">
+                    <time id="est-clock" datetime="">--:--:--</time>
+                </div>
+            </div>
+        </div>
 
         <!-- ============================================================
              WORK GRID  ·  plug-and-play thumbnail gallery
@@ -1829,6 +1832,26 @@ function animateWords(element) {
             overflow: visible !important;
             margin-top: 100vh;                /* start below the fold, then scroll up over the hero */
             background: var(--reveal-bg, #efeff4);  /* opaque, so it covers the hero */
+          }
+
+          /* ---- STICKY TOP BAR (filter + credit/clock) ----
+             Scrolls up as the top edge of the grid section, then pins at 7px.
+             height:0 keeps it out of layout — children overlay the grid,
+             exactly like the old fixed positioning, minus the JS lag. */
+          #home-work-carousels .grid-top-bar{
+            position: sticky;
+            top: 7px;
+            height: 0;
+            overflow: visible;
+            z-index: 9999;                     /* above .top-blur (998) within this section */
+          }
+          #home-work-carousels .grid-top-bar #filter{
+            position: absolute !important;
+            top: 0 !important; left: 9px !important;
+          }
+          #home-work-carousels .grid-top-bar #side-top{
+            position: absolute !important;
+            top: 0 !important; right: 110px !important;
           }
 
           /* ---- GRID ---- */

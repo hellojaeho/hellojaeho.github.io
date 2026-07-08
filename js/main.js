@@ -18,30 +18,21 @@ window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 };
 
-// Filter + side-top act as the top of the grid section: they ride the grid's
-// top edge upward as you scroll, then pin to the top once they reach it — at
-// which point the top blur fades in and the grid keeps scrolling underneath.
+// The filter/side-top bar itself is position:sticky (see .grid-top-bar in
+// index.html) — the browser pins it with zero lag. JS only toggles the class
+// that fades the top blur in once the bar has pinned (grid fully revealed).
 (function () {
-  let filter, sideTop;     // queried lazily — main.js runs before the body exists
-  const REST = 7;          // resting (pinned) top, matches #filter/#side-top top:7px
   let ticking = false;
-  function updateBar() {
-    if (!filter) filter = document.querySelector('#filter');
-    if (!sideTop) sideTop = document.querySelector('#side-top');
+  function updateRevealState() {
     const y = window.scrollY || window.pageYOffset;
-    const t = Math.max(0, window.innerHeight - y - REST); // rides grid top, clamps at REST
-    const tf = 'translateY(' + t + 'px)';
-    if (filter) filter.style.transform = tf;
-    if (sideTop) sideTop.style.transform = tf;
-    document.body.classList.toggle('reveal-done', t <= 0.5); // pinned → blur fades in
+    document.body.classList.toggle('reveal-done', y >= window.innerHeight - 12);
     ticking = false;
   }
   window.addEventListener('scroll', () => {
-    if (!ticking) { requestAnimationFrame(updateBar); ticking = true; }
+    if (!ticking) { requestAnimationFrame(updateRevealState); ticking = true; }
   }, { passive: true });
-  window.addEventListener('resize', updateBar, { passive: true });
-  window.addEventListener('DOMContentLoaded', updateBar);
-  window.addEventListener('load', updateBar);
+  window.addEventListener('resize', updateRevealState, { passive: true });
+  window.addEventListener('DOMContentLoaded', updateRevealState);
 })();
 
 
