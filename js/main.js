@@ -18,22 +18,31 @@ window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 };
 
-//show filter and side-top after scrolling past hero
-window.addEventListener('scroll', () => {
-  const hero = document.querySelector('#hero-hero');
-  const filter = document.querySelector('#filter');
-  const sideTop = document.querySelector('#side-top');
-  let scrollPosition = window.scrollY || window.pageYOffset;
-
-  let heroHeight = hero ? hero.offsetHeight : 0;
-  if (scrollPosition > heroHeight + 400) {
-    filter && filter.classList.remove('before-scroll');
-    sideTop && sideTop.classList.remove('before-scroll');
-  } else {
-    filter && filter.classList.add('before-scroll');
-    sideTop && sideTop.classList.add('before-scroll');
+// Filter + side-top act as the top of the grid section: they ride the grid's
+// top edge upward as you scroll, then pin to the top once they reach it — at
+// which point the top blur fades in and the grid keeps scrolling underneath.
+(function () {
+  let filter, sideTop;     // queried lazily — main.js runs before the body exists
+  const REST = 7;          // resting (pinned) top, matches #filter/#side-top top:7px
+  let ticking = false;
+  function updateBar() {
+    if (!filter) filter = document.querySelector('#filter');
+    if (!sideTop) sideTop = document.querySelector('#side-top');
+    const y = window.scrollY || window.pageYOffset;
+    const t = Math.max(0, window.innerHeight - y - REST); // rides grid top, clamps at REST
+    const tf = 'translateY(' + t + 'px)';
+    if (filter) filter.style.transform = tf;
+    if (sideTop) sideTop.style.transform = tf;
+    document.body.classList.toggle('reveal-done', t <= 0.5); // pinned → blur fades in
+    ticking = false;
   }
-});
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(updateBar); ticking = true; }
+  }, { passive: true });
+  window.addEventListener('resize', updateBar, { passive: true });
+  window.addEventListener('DOMContentLoaded', updateBar);
+  window.addEventListener('load', updateBar);
+})();
 
 
 
@@ -76,8 +85,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     
     loadOverlay(fileToOpen);
-    console.log('deep ran');
-    console.log('Deep link file:', fileToOpen);
 
     $('#overlay').css('display', 'flex');
 
@@ -164,7 +171,6 @@ function loadOverlay(file, clickedIndex = 0) {
 
       const blocks = tempDiv.querySelector('.blocks');
       if (!blocks) {
-        console.warn('No .blocks found inside fetched file.');
         return;
       }
 
@@ -469,85 +475,42 @@ $(document).ready(function() {
 
   
 
-  // When user clicks an image or video to open the overlay
-  $('.load-overlay img, .load-overlay video').click(function() {
+  // When user clicks a work-grid tile, open the case-study modal.
+  // (Whole tile is the click target, so it works for img / video / vimeo thumbnails.)
+  // The modal-loading logic itself (loadOverlay) is unchanged.
+  $('#home-work-carousels').on('click', '.tile.load-overlay', function () {
+    const $tile = $(this);
 
-    // If the clicked .load-overlay also has .nda, do nothing
-    if ($(this).closest('.load-overlay').hasClass('nda')) {
+    // NDA tiles and any tile without a case-study file are not clickable
+    if ($tile.hasClass('nda') || $tile.hasClass('tile--quote')) return;
+    const file = $tile.data('file');
+    if (!file) {
       return;
     }
 
+    // Track position in the queue so "next project" loading still works
+    currentCarouselIndex = $('.carousel-row').index($tile);
+    globalSlideIndex = 0; // single thumbnail → open the case study from the top
 
-  // Get the current carousel row
-  var currentCarouselRow = $(this).closest('.carousel-row');
-  
-  // Store the carousel index
-  currentCarouselIndex = $('.carousel-row').index(currentCarouselRow);
-  console.log('Clicked carousel index:', currentCarouselIndex);
-  console.log('Clicked file:', projectQueue[currentCarouselIndex]);
-  
-  // Get all slides within this specific carousel row
-  var allSlidesInThisCarousel = currentCarouselRow.find('.slide');
-  
-  // Find the index of the parent among the slides in this carousel
-  globalSlideIndex = allSlidesInThisCarousel.index($(this).parent());
-    if ($(this).parent().hasClass('mobile-work-spotlight')) {
-      document.querySelectorAll('#home-work-carousels .mobile-work-spotlight').forEach(el => {
-        el.style.transition = 'opacity 550ms';
-        el.style.opacity = '0';
-      });
-      setTimeout(() => {
-        $('#home-work-carousels .mobile-work-spotlight').css('visibility', 'hidden');
-      }, 400);
-      setTimeout(() => {
-        document.querySelectorAll('#home-work-carousels .mobile-work-spotlight').forEach(el => {
-          el.style.transition = 'opacity 100ms';
-        });
-      }, 800);
-      globalSlideIndex = allSlidesInThisCarousel.length - 0;     
-    }
+    setTimeout(() => {
+      $('#overlay').css('display', 'flex');
+    }, 200);
 
-    if ($(this).parent().hasClass('single-spotlight-container')) {
-      globalSlideIndex = allSlidesInThisCarousel.length - 0;
-    }
-    if ($(this).parent().hasClass('mobile-work-spotlight') && $(this).parent().hasClass('no-change')) {
-      globalSlideIndex = allSlidesInThisCarousel.length + 2;
-    }
+    setTimeout(() => {
+      $('#overlay').addClass('n-show');
+      $('#overlay, #overlay-content').addClass('active');
+    }, 300);
 
+    loadOverlay(file, globalSlideIndex);
 
+    $('nav.dynamic-nav').addClass('case-study');
+    $('body').addClass('n-fixed');
 
-
-    
-setTimeout(() => {
-  $('#overlay').css('display', 'flex');
-}, 200);
-      
-      setTimeout(() => {
-        $('#overlay').addClass('n-show');
-        $('#overlay, #overlay-content').addClass('active');
-
-      }, 300);
-
-
-
-    const file = $(this).closest('.load-overlay').data('file');
-
-    if (file) {
-      loadOverlay(file, globalSlideIndex);
-
-      $('nav.dynamic-nav').addClass('case-study');
-      $('body').addClass('n-fixed');
-
-      setTimeout(() => {
-        $('.d-case-study-close').addClass('show');
-        $('.blocks').removeClass('n-hidden blurred');
-        detectDominantBlock();
-        
-      }, 200);
-    } else {
-      console.warn('Missing data-file on clicked element.');
-    }
-
+    setTimeout(() => {
+      $('.d-case-study-close').addClass('show');
+      $('.blocks').removeClass('n-hidden blurred');
+      detectDominantBlock();
+    }, 200);
   });
 
   overlayContent.addEventListener('scroll', () => {
@@ -556,7 +519,6 @@ setTimeout(() => {
     const clientHeight = overlayContent.clientHeight;
 
     if (window.innerWidth > 500 && scrollTop + clientHeight >= scrollHeight - 1000 && !loadingNextProject && document.getElementById('overlay').classList.contains('n-show')) {
-      console.log('Near bottom of overlay content.');
       loadNextProject(); 
     }
   });
@@ -564,7 +526,6 @@ setTimeout(() => {
   function loadNextProject() {
     if (currentCarouselIndex === null) return;
     if (currentCarouselIndex + 1 >= projectQueue.length) {
-      console.log('No more projects to load.');
       return;
     }
 
@@ -572,7 +533,6 @@ setTimeout(() => {
     currentCarouselIndex++;
 
     const nextFile = projectQueue[currentCarouselIndex];
-    console.log('Loading next project:', nextFile);
 
     fetch(nextFile)
       .then(res => res.text())
@@ -580,7 +540,6 @@ setTimeout(() => {
         const tempDiv = document.createElement('div');
         
         tempDiv.innerHTML = html;
-        console.log('Fetched HTML:', html);
         const nextBlocks = tempDiv.querySelector('.blocks');
         if (nextBlocks) {
           const clone = document.createElement('div');
@@ -592,7 +551,6 @@ setTimeout(() => {
 
           overlayContent.appendChild(clone);
           detectDominantBlock();
-          console.log('Next project appended.');
 
       document.querySelectorAll('.full-bleed-image img').forEach(el => {
         const observer = new MutationObserver((mutations) => {
@@ -634,7 +592,6 @@ setTimeout(() => {
             document.querySelectorAll(".mobile-video").forEach(v => v.remove());
           }
  
-        console.log('right before lazy in loadNextProject');
           $(function($) {
               $(".lazy").Lazy({
                   threshold: 1000,
@@ -650,7 +607,6 @@ setTimeout(() => {
                     
                   },
               });
-              console.log('lazy function has ran')
           });
 
      
@@ -680,12 +636,10 @@ setTimeout(() => {
             });
 
         } else {
-          console.warn('No .blocks found inside fetched file.');
         }
         loadingNextProject = false;
       })
       .catch(err => {
-        console.error('Failed to fetch next project:', err);
         loadingNextProject = false;
       });
 
@@ -758,13 +712,23 @@ $(window).on('scroll', function () {
 });
 
   document.addEventListener('click', function(event) {
-    console.log('run')
+    const overlay = document.getElementById('overlay');
+    // Only relevant while a case-study overlay is actually open.
+    // (This also prevents the opening click from closing it — the overlay
+    //  isn't marked .n-show yet at that instant.)
+    if (!overlay || !overlay.classList.contains('n-show')) return;
+
     const target = event.target;
-    if (!target.matches('img') && !target.closest('nav.dynamic-nav') && !target.matches('video') && !target.matches('p') && !target.matches('h2') && !target.matches('button')) {
-            closeOverlay();
-            console.log(target.matches)
-    }
-});
+    // Do NOT close when clicking: the work grid (opens the overlay), the nav,
+    // a link/button, or actual content (image / video / text).
+    if (target.closest('#home-work-carousels')) return;
+    if (target.closest('nav.dynamic-nav')) return;
+    if (target.closest('a, button')) return;
+    if (target.matches('img, video, p, h1, h2, h3, h4, h5, span, li, em, strong')) return;
+
+    // Otherwise the click landed on empty overlay space → close (same as "Close X").
+    closeOverlay();
+  });
 
 //when esc button key is pressed, close overlay
 window.addEventListener('keydown', (event) => {
@@ -982,10 +946,8 @@ $(window).on('scroll resize', function() {
 
     if (elementBottom > viewportTop + 400 && elementTop < viewportBottom - 400) {
       $navItem.addClass('active');
-      console.log('active');
     } else {
       $navItem.removeClass('active');
-      console.log('not active');
     }
   }
 });
@@ -1318,7 +1280,10 @@ if ($(window).width() < 500) {
   // jQuery(".lazy").hide();
 
   $(function($) {
-    $(".carousel-row img").Lazy({
+    // Exclude the work-grid tiles — they are handled by the dedicated tile media
+    // loader (which keeps object-fit:cover; jQuery-Lazy's afterLoad sets height:auto
+    // and would leave black bars in fixed-height tiles).
+    $(".carousel-row img").not(".tile-media-el").Lazy({
       chainable: false,          // so it returns the instance
     visibleOnly: true,         // 👈 respect visibility (display:none etc.)
     threshold: 200,
@@ -1338,7 +1303,9 @@ if ($(window).width() < 500) {
   });
 
 jQuery(function($) {
-  $("video").lazy({
+  // Exclude work-grid tile videos — the tile media loader controls their
+  // loading/unloading and the concurrency cap.
+  $("video").not(".tile-media-el").lazy({
     chainable: false,          // so it returns the instance
     visibleOnly: true,         // 👈 respect visibility (display:none etc.)
     threshold: 200,
@@ -1384,7 +1351,6 @@ $(window).scroll(function(event){
   $('.reel-exit').click(function(){
     $('.full-reel-container').removeClass('show');
     if ($('.vjs-paused').length){
-      console.log('exited while paused');
     }
     if ($('.vjs-playing').length){
       $('button.vjs-play-control').click();
@@ -1399,7 +1365,6 @@ $(window).scroll(function(event){
   $('.full-reel-wrapper img').click(function(){
     $('.full-reel-container').removeClass('show');
     if ($('.vjs-paused').length){
-      console.log('exited while paused');
     }
     if ($('.vjs-playing').length){
       $('button.vjs-play-control').click();
@@ -1415,7 +1380,7 @@ $(window).scroll(function(event){
         window.location = h;
     });
 
-    var stickyElements = Sticksy.initializeAll('.js-sticky-widget')
+    var stickyElements = window.Sticksy ? Sticksy.initializeAll('.js-sticky-widget') : []
 });
 
 

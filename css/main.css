@@ -54,7 +54,7 @@
 
 @font-face {
   font-family: respira;
-  src: url("../fonts/respira.otf") format("opentype");
+  src: url("../fonts/Respira.otf") format("opentype");
   -webkit-font-smoothing: antialiased;
 }
 
@@ -3917,6 +3917,7 @@ margin: 13px 0 0 0;
   
 
   nav.dynamic-nav {
+
     /* max-width: 317px; */
     width: 317px !important;
     /* transition-duration: 0.4s !important;
@@ -4210,28 +4211,19 @@ width: 100%;
   top: 0;
   left: 0;
   right: 0;
-  height: 120px;                          /* how tall the blur zone is */
+  height: 130px;                          /* how tall the blur zone is */
   pointer-events: none;                   /* don't block anything */
   z-index: 998;                           /* make sure it's on top */
 
   /* blur the content behind it */
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-
-  /* fade downward */
-  mask-image: linear-gradient(to bottom,
-    black 0%,
-    black 35%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(to bottom,
-    black 0%,
-    black 35%,
-    transparent 100%
-  );
+  backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(3px);
+    mask-image: linear-gradient(to bottom, black 0%, black 35%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 45%, transparent 100%);
+    /* background: linear-gradient(to bottom, rgb(239 239 244 / 85%), rgb(239 239 244 / 0%));
 
   /* optional tint for glass feel — delete if not wanted */
-    background: linear-gradient(to bottom, rgb(239 239 244 / 15%), rgb(239 239 244 / 0%));
+       background: linear-gradient(to bottom, rgb(220 220 228), rgb(239 239 244 / 0%));
 }
 
 #filter, #side-top {
@@ -4469,6 +4461,7 @@ h3.top-info {
 
 #simple-hero h3 span:first-of-type {
   margin-right: 14px;
+  margin-left: 30px;
 }
 
 #simple-hero h3 span:nth-of-type(2) {
@@ -4727,6 +4720,7 @@ margin-right: 20px;
 }
 
 nav.dynamic-nav {
+      z-index: 10009 !important;
   will-change: width, height, transform;
   height: 0;
   overflow: hidden;
@@ -4785,7 +4779,7 @@ nav.dynamic-nav.open {
   will-change: width, height, transform;
   transform: translateZ(0); /* GPU hack */
   backface-visibility: hidden;
-  height: 370px;
+  height: 180px;
   /* padding: 5px; */
   -webkit-transform:translate3d(0,0,0);
 
@@ -5242,7 +5236,6 @@ font-family: arial;
   display: flex;
   flex-direction: row;
   justify-content: end;
-  margin-top: 24px;
 }
 
 .d-nav-info-intro p {
@@ -5487,7 +5480,7 @@ nav.dynamic-nav.open.closing,
 
 
 nav.dynamic-nav.open.case-study {
-  height: 150px;
+  height: 141px;
   width: 642px;
   transition: width 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) 0.2s, height 0.15s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
 }
@@ -5608,8 +5601,8 @@ nav.dynamic-nav .n-description {
 
 .d-nav-logo {
   position: absolute;
-  right: 59px;
-  bottom: 9px;
+  right: 76px;
+  bottom: 7px;
 }
 
 
@@ -5665,7 +5658,7 @@ position: absolute;
 .d-nav-logo span {
   font-family: arial;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 16px;
   letter-spacing: -0.25px;
 }
 
@@ -5705,7 +5698,7 @@ position: absolute;
 }
 
 .d-nav-logo-additional {
-  margin-top: 21px;
+  margin-top: 12px;
     transition-delay: 0.2s;
   transition-duration: 0.15s;
   transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -5720,8 +5713,8 @@ position: absolute;
   font-weight: bold;
   text-transform: none;
   letter-spacing: -0.25px;
-  font-size: 12px;
-  margin-bottom: 1px;
+  font-size: 11px;
+  margin-bottom: -0.5px;
 }
 
 .d-nav-logo-email {
@@ -6592,7 +6585,7 @@ h2.nike span {
 
 .carousel-row {
   position: relative;
-  padding: 0 9px;
+  /* padding: 0 9px; */
   display: flex;
   flex-direction: column;
 }

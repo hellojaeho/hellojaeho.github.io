@@ -1,0 +1,6 @@
+.DS_Store
+_trash/
+_originals/
+_backup-before-audit/
+node_modules/
+*.log
