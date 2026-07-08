@@ -1752,10 +1752,13 @@ function animateWords(element) {
     </script>
     </div>
     <div id="home-work-carousels">
-        <div class="top-blur"></div>
         <!-- Sticky top bar: rides up with the grid section, pins at the top.
-             Compositor-driven (position: sticky) — no JS, no scroll lag. -->
+             Compositor-driven (position: sticky) — no JS, no scroll lag.
+             The blur strip lives INSIDE the bar (absolute, not fixed) because
+             #home-work-carousels has a filter, which breaks fixed positioning
+             for descendants. -->
         <div class="grid-top-bar">
+            <div class="top-blur"></div>
             <div id="filter">
                 <div class="filters">
                 <!-- SERVICES -->
@@ -1843,7 +1846,16 @@ function animateWords(element) {
             top: 7px;
             height: 0;
             overflow: visible;
-            z-index: 9999;                     /* above .top-blur (998) within this section */
+            z-index: 9999;
+          }
+          /* Blur strip: absolute within the sticky bar (NOT fixed — the section's
+             filter would break fixed positioning). top:-7px reaches the viewport
+             top once the bar pins; z-index 0 keeps it under the filter UI. */
+          #home-work-carousels .grid-top-bar .top-blur{
+            position: absolute !important;
+            top: -7px !important; left: 0 !important; right: 0 !important;
+            height: 130px;
+            z-index: 0 !important;
           }
           #home-work-carousels .grid-top-bar #filter{
             position: absolute !important;
