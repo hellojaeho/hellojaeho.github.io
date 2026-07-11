@@ -1398,86 +1398,127 @@ function animateWords(element) {
     //     });
     // });
 
-    // document.addEventListener('DOMContentLoaded', () => {
-    //     const heroImage = document.getElementById('hero-image');
-    //     let flickerCount = 0;
-    //     const flickerInterval = 80; // Equal interval in milliseconds
-
-    //     function flicker() {
-    //         if (flickerCount >= 20) {
-    //             heroImage.style.display = 'none';
-    //             return;
-    //         }
-
-    //         // Use requestAnimationFrame for more precise timing
-    //         requestAnimationFrame(() => {
-    //             heroImage.style.opacity = flickerCount % 2 === 0 ? '0' : '1';
-    //             flickerCount++;
-    //             setTimeout(flicker, flickerInterval);
-    //         });
-    //     }
-
-    //     setTimeout(() => {
-    //         heroImage.style.transition = `opacity ${flickerInterval/2}ms`;
-    //         flicker();
-    //     }, 500);
-    // });
-
 
 
     
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const heroImage = document.getElementById('hero-image');
-        
-        // Show image initially
-        setTimeout(() => {
-            heroImage.style.opacity = '1';
-        }, 500);
-        heroImage.style.transition = 'opacity 0s ease';
+    // ╔══════════════════════════════════════════════════════════════╗
+    // ║  INTRO FLICKER  ·  tweak these values, refresh, watch          ║
+    // ╚══════════════════════════════════════════════════════════════╝
+    const INTRO = {
+        appearAt:   200,    // ms after load before the type appears
+        wordRevealMs: 350,  // word-by-word random reveal duration BEFORE the flicker (ms)
+        flickerMs:  1900,    // how long the opening flicker burst lasts (ms)
+        frameMs:    36,     // ms per flicker frame — SMALLER = faster / more frantic
+        offOpacity: 0.7,      // the dim level it flickers down to (0 = full off; try 0.3, 0.5)
+        onOpacity:  1,      // the bright level it flickers up to
+        randomize:  false,   // true = organic irregular flicker · false = even on/off strobe
+        offChance:  0.4,    // (randomize only) chance each frame is a dim frame — higher = darker/twitchier
+        holdMs:     100,   // how long it stays fully solid after the flicker (ms)
+        fadeOutMs:  150,    // final fade-out duration for the TYPE (ms)
+        bgFadeMs:   600,    // final fade-out duration for the frosted BACKGROUND (ms)
+    };
+    window.__INTRO = INTRO; // tweak live in the console too, e.g. __INTRO.frameMs = 15
 
-        // After 5 seconds, start flicker sequence
-        setTimeout(() => {
-            // First flicker
-            heroImage.style.opacity = '0';
-            setTimeout(() => {
-                heroImage.style.opacity = '1';
-                setTimeout(() => {
-                    // Second flicker
-                    heroImage.style.opacity = '0';
-                    setTimeout(() => {
-                        heroImage.style.opacity = '1';
-                        // Final fadeout
-                        setTimeout(() => {
-                            heroImage.style.opacity = '0';
-                            // Remove from DOM after fade completes
-                            setTimeout(() => {
-                                heroImage.style.display = 'none';
-                            }, 1000);
-                        }, 100);
-                    }, 100);
-                }, 100);
-            }, 100);
-        }, 2000);
-    });
+    // ===== DEBUG: set to true to freeze the intro on screen =====
+    window.__HOLD_INTRO = false;
 
     document.addEventListener('DOMContentLoaded', () => {
-        const initialBg = document.querySelector('.initial-bg');
-        if (!initialBg) return;
+        const el = document.getElementById('hero-image');
+        if (!el) return;
+        const bg = document.querySelector('.initial-bg');
+        el.style.transition = 'opacity 0s linear';   // instant during flicker
 
-        // ensure smooth fade transition even if CSS doesn't define one
-        initialBg.style.transition = initialBg.style.transition || 'opacity .5s ease, visibility .5s';
+        // ---- word-by-word random reveal (runs SIMULTANEOUSLY with the flicker) ----
+        // Wrap every word of the intro type in a <span class="hw"> so each can fade
+        // in independently. Existing layout spans (JAE/YOON/STUDIO, etc.) keep their
+        // margins — the .hw wrappers live INSIDE them and are margin-reset in CSS.
+        const wrapWords = (node) => {
+            Array.from(node.childNodes).forEach((child) => {
+                if (child.nodeType === 3) {                       // text node
+                    if (!child.nodeValue.trim()) return;          // keep pure-whitespace nodes
+                    const frag = document.createDocumentFragment();
+                    child.nodeValue.split(/(\s+)/).forEach((part) => {
+                        if (part === '') return;
+                        if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+                        const s = document.createElement('span');
+                        s.className = 'hw';
+                        s.textContent = part;
+                        frag.appendChild(s);
+                    });
+                    node.replaceChild(frag, child);
+                } else if (child.nodeType === 1) {                // element — recurse into it
+                    wrapWords(child);
+                }
+            });
+        };
+        el.querySelectorAll('ul > li').forEach(wrapWords);
+        const words = Array.from(el.querySelectorAll('.hw'));
 
-        // wait 5s then fade out and remove after transition completes
+        let revealTimers = [];
+        const clearReveal = () => { revealTimers.forEach(clearTimeout); revealTimers = []; };
+        const revealWords = (duration) => {
+            clearReveal();
+            words.forEach((w) => { w.style.transition = 'none'; w.style.opacity = '0'; });
+            void el.offsetWidth;                                  // flush the reset before staggering
+            // Fisher–Yates shuffle so words appear in random order each run.
+            const order = words.slice();
+            for (let i = order.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [order[i], order[j]] = [order[j], order[i]];
+            }
+            const n = order.length;
+            order.forEach((w, i) => {
+                const at = n <= 1 ? 0 : (i / (n - 1)) * duration; // spread across the full duration
+                revealTimers.push(setTimeout(() => {
+                    w.style.transition = 'opacity 90ms ease';     // quick snap "in place"
+                    w.style.opacity = String(INTRO.onOpacity);
+                }, at));
+            });
+        };
+        window.__replayIntroReveal = revealWords;
+
+        words.forEach((w) => { w.style.opacity = '0'; });         // hidden until reveal starts
+
         setTimeout(() => {
-            initialBg.style.opacity = '0';
-            initialBg.style.visibility = 'hidden';
-            // remove from DOM after transition (1s) to avoid blocking interactions
-            setTimeout(() => {
-                if (initialBg.parentNode) initialBg.parentNode.removeChild(initialBg);
-            }, 1000);
-        }, 2500);
+            revealWords(INTRO.wordRevealMs);                      // START reveal + flicker together
+            const end = performance.now() + INTRO.flickerMs;
+            let toggle = false;
+            (function flick() {
+                toggle = !toggle;
+                el.style.opacity = INTRO.randomize
+                    ? (Math.random() < INTRO.offChance ? INTRO.offOpacity : INTRO.onOpacity)
+                    : (toggle ? INTRO.onOpacity : INTRO.offOpacity);
+
+                if (performance.now() < end) { setTimeout(flick, INTRO.frameMs); return; }
+
+                el.style.opacity = INTRO.onOpacity;            // settle solid
+                if (window.__HOLD_INTRO) return;               // DEBUG: hold here
+
+                setTimeout(() => {                             // hold, then fade type + frosted bg
+                    el.style.transition = 'opacity ' + INTRO.fadeOutMs + 'ms ease';
+                    el.style.opacity = '0';
+                    if (bg) {
+                        // opacity fades over bgFadeMs; visibility only flips to hidden
+                        // AFTER the fade finishes (0s change, delayed) — otherwise it
+                        // would hide instantly and you'd never see the fade.
+                        bg.style.transition = 'opacity ' + INTRO.bgFadeMs + 'ms ease, visibility 0s ' + INTRO.bgFadeMs + 'ms';
+                        bg.style.opacity = '0';
+                        bg.style.visibility = 'hidden';
+                    }
+                    var sh = document.getElementById('simple-hero');
+                    if (sh) sh.classList.add('hero-revealed');  // start video blur → 0
+                    setTimeout(() => {                          // remove after the slower of the two fades
+                        el.style.display = 'none';
+                        if (bg && bg.parentNode) bg.parentNode.removeChild(bg);
+                    }, Math.max(INTRO.fadeOutMs, INTRO.bgFadeMs) + 60);
+                }, INTRO.holdMs);
+            })();
+        }, INTRO.appearAt);
     });
+
+    // (The frosted .initial-bg is now faded out by the INTRO flicker plugin above,
+    //  so it stays perfectly in sync with the type — standalone handler removed.)
 
     document.addEventListener('DOMContentLoaded', () => {
         const heroImage = document.getElementById('hero-image');
@@ -1502,8 +1543,11 @@ function animateWords(element) {
         };
 
         heroImage.addEventListener('click', () => {
+            if (window.__HOLD_INTRO) return;   // DEBUG: ignore click-dismiss
             fadeOutElement(heroImage, 600);
             fadeOutElement(initialBg, 600);
+            var sh = document.getElementById('simple-hero');
+            if (sh) sh.classList.add('hero-revealed');  // start video blur → 0
         }, { passive: true });
     });
 
@@ -1563,11 +1607,15 @@ function animateWords(element) {
         overflow: hidden;
         z-index: 0;
       }
+      /* Registered so the intro blur can ANIMATE (plain custom props don't transition). */
+      @property --hero-intro-blur{ syntax: '<length>'; inherits: false; initial-value: 0px; }
       #simple-hero #hero-video{
         position: absolute;
         top: 50%; left: 50%;
         transform: translate(-50%, -50%) scale(1.08);   /* slight overscan so blurred edges never show a gap */
-        filter: blur(var(--hero-blur, 0px));
+        --hero-intro-blur: 32px;                          /* very blurred at first; JS clears it on intro fade */
+        filter: blur(calc(var(--hero-blur, 0px) + var(--hero-intro-blur, 0px)));
+        transition: --hero-intro-blur 1200ms cubic-bezier(.2,.7,.2,1);
         will-change: filter;
         width: 100% !important;
         height: 100% !important;
@@ -1577,6 +1625,8 @@ function animateWords(element) {
         border-radius: 0 !important;
         z-index: 0;
       }
+      /* JS adds .hero-revealed as the intro gray block fades → blur animates to 0. */
+      #simple-hero.hero-revealed #hero-video{ --hero-intro-blur: 0px; }
       /* blur-up placeholder: paints instantly, fades out when the video plays.
          Tiny inlined first-frame (no extra network request). Also the graceful
          fallback shown if the video source fails to load. */
@@ -1605,13 +1655,13 @@ function animateWords(element) {
         position: absolute;
         top: 1px; left: 1px;
         transform: none;
-        margin: 0;
+        margin: 0;  
         width: auto;
-        max-width: 750px;
+        max-width: 720px;
         text-align: left;
         color: #fff !important;
         z-index: 2;
-        font-size: 14px;
+        font-size: 17px;
         line-height: 1.05;
         text-shadow: 0 1px 12px rgba(0,0,0,.45);
       }
@@ -1792,7 +1842,7 @@ function animateWords(element) {
                 </div>
             </div>
             <div id="side-top">
-                <div class="side-info">Site design and development by Jae Yoon.</div>
+                <div class="side-info">info@jaeyoon.studio</div>
                 <div class="side-clock" aria-live="polite">
                     <time id="est-clock" datetime="">--:--:--</time>
                 </div>
@@ -1830,8 +1880,9 @@ function animateWords(element) {
           #home-work-carousels{
             --grid-gap: 14px;
             --tile-radius: 4px;
-            --tile-h-sm: clamp(200px, 26vw, 330px);
-            --tile-h-md: clamp(240px, 33vw, 660px);
+            --tile-h-xs: clamp(150px, 19vw, 320px);
+            --tile-h-sm: clamp(200px, 26vw, 435px);
+            --tile-h-md: clamp(240px, 33vw, 540px);
             --tile-h-lg: clamp(300px, 44vw, 660px);
             --caption-services-gap: 30px;   /* space between the client name and the services text */
             --bar-top: 7px;                 /* filter bar offset — same riding and pinned */
@@ -1872,7 +1923,25 @@ function animateWords(element) {
           }
           #home-work-carousels .grid-top-bar #side-top{
             position: absolute !important;
-            top: 0 !important; right: 110px !important;
+            top: 0 !important; right: 234px !important;
+          }
+          /* email link in the credit slot: inherit the surrounding type, not default blue */
+          #home-work-carousels .grid-top-bar #side-top .side-info a{
+            color: inherit; text-decoration: none;
+          }
+          #home-work-carousels .grid-top-bar #side-top .side-info a:hover{
+            text-decoration: underline;
+          }
+          /* MOBILE: credit + industry are hidden, so pin the EDT clock flush to the
+             viewport's right edge, on the same top row as the Service heading.
+             (Overrides main.css — this selector outranks its plain #side-top rule.) */
+          @media (max-width: 800px){
+            #home-work-carousels .grid-top-bar #side-top{
+              right: 58px !important; left: auto !important;
+            }
+            #home-work-carousels .grid-top-bar #side-top .side-clock{
+              margin-right: 0 !important;
+            }
           }
 
           /* ---- GRID ---- */
@@ -1894,16 +1963,36 @@ function animateWords(element) {
             #home-work-carousels .work-grid .tile.w-3{ grid-column: span 3; }  /* full */
           }
 
+          /* MOBILE (single column): tiles span the full width, so the fixed px heights
+             above turn every thumbnail into a skinny rectangle. Re-derive each height
+             from the FULL width using the same proportion the tile has on the desktop
+             3-col grid, so the thumbnail keeps its desktop aspect ratio. Ratios are
+             measured from the desktop clamp() values (h ÷ column-width):
+             1-up ≈ sm 0.81 · md 1.02 · lg 1.37 ;  w-2 tiles are ~2× wider, so ≈half.
+             (100vw − 22px) = full width minus the grid's 11px side padding. */
+          @media (max-width: 767px){
+            #home-work-carousels{
+              --tile-h-sm: calc((100vw - 22px) * 0.81);
+              --tile-h-md: calc((100vw - 22px) * 1.02);
+              --tile-h-lg: calc((100vw - 22px) * 1.37);
+            }
+            #home-work-carousels .work-grid .tile.w-2{
+              --tile-h-sm: calc((100vw - 22px) * 0.40);
+              --tile-h-md: calc((100vw - 22px) * 0.51);
+              --tile-h-lg: calc((100vw - 22px) * 0.68);
+            }
+          }
+
           /* ---- TILE ---- */
           #home-work-carousels .work-grid .tile{
             position: relative;
             display: flex;
             flex-direction: column;
             /* overflow: hidden; */
-            margin: 0 0 110px !important;
+            margin: 0 0 141px !important;
             min-height: 0 !important;
             border-radius: var(--tile-radius);
-            background: #101014;
+            background: #e6e6ec;   /* light neutral (near page bg) — a media gap must never read as a black band */
             cursor: pointer;
             transition: transform .6s cubic-bezier(.2,.7,.2,1);
           }
@@ -1915,7 +2004,7 @@ function animateWords(element) {
             flex: 1 1 auto;
             width: 100%;
             overflow: hidden;
-            background: #101014;
+            background: #e6e6ec;   /* match tile backing — no black band if media ever under-fills */
           }
           #home-work-carousels .work-grid .tile .tile-media .slide{
             width: 100%; height: 100%; margin: 0; display: block;
@@ -1929,6 +2018,19 @@ function animateWords(element) {
             border: 0;
             border-radius: 0;
             transition: opacity .3s ease;
+          }
+          /* Bulletproof cover: absolutely fill the (definite-height) .tile-media so the
+             media can never fall back to its intrinsic height and leak the dark tile
+             background below it. A plain height:100% is treated as indefinite on a flex
+             item's descendant once the image's natural size is known (e.g. a cached
+             image) — which is why the black band showed only sometimes. Scoped to
+             .h-fixed because ratio-sized tiles rely on in-flow media to set height. */
+          #home-work-carousels .work-grid .tile.h-fixed .tile-media-el{
+            position: absolute !important;
+            inset: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
           }
           /* hover: subtle gray overlay (robust — unaffected by the opacity rules) */
           #home-work-carousels .work-grid .tile::after{
@@ -1990,12 +2092,13 @@ function animateWords(element) {
               position: absolute;
               left: 0;
               right: 0;
-              bottom: -19px;
+              top: calc(100% + 6px);   /* anchored just below the thumbnail — extra lines grow DOWNWARD */
+              bottom: auto;
               z-index: 3;
               display: flex;
               flex-direction: row;
               justify-content: flex-start;
-              align-items: flex-end;
+              align-items: flex-start;
               gap: var(--caption-services-gap, 30px);
               /* padding: 12px 14px 11px; */
               /* background: linear-gradient(to top, rgba(0, 0, 0, .62), rgba(0, 0, 0, 0)); */
@@ -2017,11 +2120,11 @@ function animateWords(element) {
             gap: 8px;
           }
           #home-work-carousels .work-grid .tile .tile-caption h3.n-client-name{
-            color: #000 !important; font-size: 11px !important; margin: 0 0 0 0; letter-spacing: -.4px;
+            color: #000 !important; font-size: 13px !important; margin: 0 0 0 0; letter-spacing: -.4px;
 
           }
           #home-work-carousels .work-grid .tile .tile-caption .n-services{
-            color: rgba(0, 0, 0, 1); font-size: 10px; font-weight: 700; font-style: italic;
+            color: rgba(0, 0, 0, 1); font-size: 12.3px; font-weight: 700; font-style: italic;
             letter-spacing: -.1px; text-align: left;
           }
           #home-work-carousels .work-grid .tile .tile-caption .n-year{
@@ -2030,6 +2133,26 @@ function animateWords(element) {
            
           }
           #home-work-carousels .work-grid .tile .tile-caption .n-number{ display: none; }
+
+          /* MOBILE: main.css carries leftover old-design overrides (below 800px) that
+             move/stack this caption — bottom:-49px !important, n-client-project-info
+             flex-direction:column, n-services position:relative. Force the grid caption
+             back to the SAME layout as desktop (one row, anchored below the thumbnail).
+             !important + source order beats the main.css !important rule. */
+          @media (max-width: 800px){
+            #home-work-carousels .work-grid .tile .tile-caption{
+              top: calc(100% + 6px) !important;
+              bottom: auto !important;
+              flex-direction: row !important;
+            }
+            #home-work-carousels .work-grid .tile .tile-caption .n-client-project-info{
+              flex-direction: row !important;
+            }
+            #home-work-carousels .work-grid .tile .tile-caption .n-services{
+              position: static; top: auto; line-height: normal;
+              margin: 0 !important;   /* main.css mobile block adds margin-top:13px — kills baseline alignment */
+            }
+          }
 
           /* ---- NDA overlay ---- */
           #home-work-carousels .work-grid .tile.nda .tile-nda-label{
@@ -2067,8 +2190,9 @@ function animateWords(element) {
 
         <div class="tile carousel-row load-overlay w-2 h-fixed" data-file="/work/balenciaga.html" data-services="identity" data-industry="culture,fashion-beauty" style="--tile-h: var(--tile-h-lg);">
           <div class="tile-media">
+            <div class="tile-poster" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQUFBQUGBgUICAcICAsKCQkKCxEMDQwNDBEaEBMQEBMQGhcbFhUWGxcpIBwcICkvJyUnLzkzMzlHREddXX0BBQUFBQUFBQYGBQgIBwgICwoJCQoLEQwNDA0MERoQExAQExAaFxsWFRYbFykgHBwgKS8nJScvOTMzOUdER11dff/CABEIABsAMAMBIgACEQEDEQH/xAAwAAACAwEBAAAAAAAAAAAAAAAGCAQFBwEDAQACAwAAAAAAAAAAAAAAAAACBQMEBv/aAAwDAQACEAMQAAAA77j2v6jJ54bzzKIqxfdMXNe0A2xUfY5BaePUD9taXJ89y/0WP//EAC0QAAEDAwIEBQMFAAAAAAAAAAECAwQABREGEhMUITEHMlFxkRUiQUJhgaGx/9oACAEBAAE/AIraFFSWpOxz9JwM/wA5r67q+zL4jUtxxoHsPvGP3FC+zL44lagOOThTWcBXzWnLdd+b3vweXZTjqVAVqnV0OwxkMS0SEIXjDrHmTXi2pcuHaZbK3HmR3eX5qsmr7Lf+FGkMBqR7YJ9iKtttt77biUlaikflfX+6iaRtfNiY/lam+yBgfNNt7Q2tbKWmUeUCvEEtXyM/yjjrrjCTlIb6Ve9dzbrZ27PIt7bfCwCsE56VGeWw+06hwoUlQO4Vo3UzFzgsNOLW87gAqwEZNQ7TxAX07QfRvOevyKu0uHGQI8qYWMnG5WSabzBaEe3W8uqfTuU+s7QPQ4rXdnlWq/yePnLx3g4oVoFxYabwqok6YxBc4UhaPY4qAtcy7JVJWp47+7h3f7UY5SkEDt6V41tM8oHOC3vCsBRSK//EABwRAAICAwEBAAAAAAAAAAAAAAECAAMRIUEEEv/aAAgBAgEBPwAvWy50wllqgfKiWIq8wZ4zlyvCIK2LMWbQlzBt430z/8QAHREAAgICAwEAAAAAAAAAAAAAAQIAEQMSBCExQf/aAAgBAwEBPwDXLjeipBi47OxnHZmF/PJzlBxhvoM3XUAL2fZxbU1fR8E//9k=')"></div>
             <div class="slide">
-              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1130834272/rendition/720p/file.mp4%20%28720p%29.mp4?loc=external&signature=fc17ec6984271f67705c42456c2c296f79ab94b860496ecef8fcd11bfc502ee7" data-type="video/mp4"></video>
+              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1208203046/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&signature=ea91ef11bcef93edd9a3fb9ab55e62a6fc7f880d7cacc522cafcaa7d1396d6b9" data-type="video/mp4"></video>
             </div>
             
           </div>
@@ -2087,9 +2211,9 @@ function animateWords(element) {
           </div>
         </div>
 
-        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/tottenham.html" data-services="identity" data-industry="culture" style="--tile-h: var(--tile-h-lg);">
+        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/tottenham.html" data-services="identity" data-industry="culture" style="--tile-h: var(--tile-h-md);">
           <div class="tile-media">
-            <div class="tile-poster" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQUFBQUGBgUICAcICAsKCQkKCxEMDQwNDBEaEBMQEBMQGhcbFhUWGxcpIBwcICkvJyUnLzkzMzlHREddXX0BBQUFBQUFBQYGBQgIBwgICwoJCQoLEQwNDA0MERoQExAQExAaFxsWFRYbFykgHBwgKS8nJScvOTMzOUdER11dff/CABEIABsAMAMBIgACEQEDEQH/xAAxAAACAwEBAAAAAAAAAAAAAAAHCAEEBgMFAQACAwEAAAAAAAAAAAAAAAAAAQIDBAX/2gAMAwEAAhADEAAAAAxBmLndypxDc5KIvHgNWtWiGk1wKvtlO2DZQbBzn+Ni/8QALhAAAgIBBAAEBAUFAAAAAAAAAQIDBAUABhESEyEiMQcVQlEUIyRxskFhc4GC/9oACAEBAAE/AMfhHzUsor07crxqGIq1jYP/AEFI4GreCCymGSvlY5VPUo2OIbn7cd9fJI6pdZIsn3X3D0CvH7+vUuGglVT4WSQ/cUCR/PUu2ZYY1klgy6K3sWxrAfz1kai05I0X8R6l5/Pg8E/6HLcjXwAyUtDNbpIK9zTr9Of8mviLkzVv4S5g0jWaxeaG6RCJO7wkAoSdZiktl94RtEhM6WYYGZl5iNaPxAF5P9T6dXHwlXbqvDiWhyE2GadLCMQB0dEZ35J9QL8g8a3zUG2bGMStK4hmo2JZoBLJIGeDp0kPYn1HtxrdErm1VrSTPK9dZF7uCCyu3cH1fvxrZu7be07mWkrRUna1VSP9XIIwOrcgrqD4p7mqvZlWTEEzSmZy9hGAkP1gEeR1Nv7M2FVz8rZkWTq4thm5clif7kk6qb3FKKKM47FyqtRqoWxkncCF+OyAN7A8al3zJJXnRqeMfukUQeXJvKyRxN3VFLfTyNbpyPzW/BZK1g3g9CYJvGBAPlz9jqwS3BOgiFACvuNREo7BfIak9TeepVUQrwNRga//xAAeEQACAgICAwAAAAAAAAAAAAABAgADBBEhQRIiMf/aAAgBAgEBPwC3KdLzUF64O4uY7a9eTKL2u8T0ZbRWzFioJMGOmvgldKK2wJ//xAAaEQADAAMBAAAAAAAAAAAAAAAAAQIDERJR/9oACAEDAQE/AJxpx0PGkVKkmqS0mdP0dPR//9k=')"></div>
+            <div class="tile-poster" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQUFBQUGBgUICAcICAsKCQkKCxEMDQwNDBEaEBMQEBMQGhcbFhUWGxcpIBwcICkvJyUnLzkzMzlHREddXX0BBQUFBQUFBQYGBQgIBwgICwoJCQoLEQwNDA0MERoQExAQExAaFxsWFRYbFykgHBwgKS8nJScvOTMzOUdER11dff/CABEIABsAMAMBIgACEQEDEQH/xAAyAAEAAgIDAAAAAAAAAAAAAAAHBQgEBgECCQEAAgMBAAAAAAAAAAAAAAAAAwUAAQQG/9oADAMBAAIQAxAAAAACRTdz6XFs+BvKosPTY2Zg9oDKaheMqXi6efnC8toxKEnWIf/EADEQAAEDAwIFAQQLAAAAAAAAAAIBAwQABRIGEQcTFDFBIRUiMzQjMjVRUmFicoGRof/aAAgBAQABPwB9sXJ7QknooVoXRNhv7GopV4nHHiQHIgAqcxfflKoIiC2Jqu6pUXgjoqb7P6e+CfWg+TGzznqkb4u+4e6oeUWonCPh/OPBi+nkrzDQoXPDNZJYtEGTSZAa9j7VxD0NZ9FTrW3bZivGUiRHlJka4ONAB4+8I+HKm/ORaluE1MaMRyVA7Vwhfd9h6olNRzfcS86eUGQURI1GV9VFKro+6tnO748k7k1qSSbCd42fKZNsv1jiuX51rpjpoFhfgQmnJTd3trbAKfLEhR5FQMti2GuMzlxdlsOSYrceWt9n5stu84RXpYvY9hozfKVHR4dl8U59osfsrg/MtcJvVESdcUib3G0y2yUM8kiuq6o9xpydox+XJV+/ocB9y6qUXlIioFzAEMULPwSKVQ73B6W3MXXXaTlgzYbsc+lFv6GKeWzmx+rp+TrjJPtc+52x6BcUkpJuMyUQ4Y8rNllpB7rv8OpvzkankRJ8VfKpV/XB6Mo9yEt/4oH3VJEUv8Suod/En9JVrJVmon3KNXBER+Kvnev/xAAhEQEAAgIBAwUAAAAAAAAAAAABAgMAETEEEzISInGRkv/aAAgBAgEBPwC+Uo07HXifbjfcMTuy9ynPGnOmZSqrlJ26d5cEqvSqCHHznbq15z/JlESEIRFQEz//xAAaEQADAAMBAAAAAAAAAAAAAAAAAQIREiFR/9oACAEDAQE/AJw6NZ7wvlNEvFGz8RTzTZ//2Q==')"></div>
             <div class="slide">
               <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1083848532/rendition/720p/file.mp4%20%28720p%29.mp4?loc=external&signature=e1bd5ef6f3d719789a917d8da73ea4c5e25b4efa70ed2379a8b1a8740e47d318" data-type="video/mp4"></video>
             </div>
@@ -2112,6 +2236,7 @@ function animateWords(element) {
 
         <div class="tile carousel-row load-overlay h-fixed" data-file="/work/tekken.html" data-services="experience" data-industry="culture,fashion-beauty" style="--tile-h: var(--tile-h-sm);">
           <div class="tile-media">
+            <div class="tile-poster" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQUFBQUGBgUICAcICAsKCQkKCxEMDQwNDBEaEBMQEBMQGhcbFhUWGxcpIBwcICkvJyUnLzkzMzlHREddXX0BBQUFBQUFBQYGBQgIBwgICwoJCQoLEQwNDA0MERoQExAQExAaFxsWFRYbFykgHBwgKS8nJScvOTMzOUdER11dff/CABEIABsAMAMBIgACEQEDEQH/xAAvAAADAQEBAAAAAAAAAAAAAAAFBgcDBAgBAAMBAQAAAAAAAAAAAAAAAAEDBQQC/9oADAMBAAIQAxAAAACO8ujo6wNA0DF8dWX3+daGrlEj3RPZ6YAQfQ8XNANjd5//xAAtEAACAgEDAwMCBQUAAAAAAAABAgMEEQAFEhMhMQYiQTJhFSNCUVJxgYKS4f/aAAgBAQABPwCn6hFq5DVapEwiBWHopx7AknmwzkDz38a3HY7Mcy3Hux20mPJZYySAD8f2OqFAXa0boW/L4rM3Hsp/r98a2vatwN2czKywSRPNH7gxIEnHOPjVKnZC2ZZHR1QmTpseOR/3HbW9vt/WasbjPVjkbgIR1AVkx7vI7jHxqvt5tJDc2FeJnkEHAoeplzgswyQV++tup9f084EYhSsXgjJYEvGjcQxA8NpVp1VhSPY6UjkDL9aQc+x7kA9vOdem4KqW53O01UJrOFdZHJXv8auVSRbjYR8ZAysxOAowcHB+f216gO1bfdNgTiVJwkkcUZBw4I5Kf4hWGudhb9eCtYYVWcKxDFFbl7ctqtYu1Jqm3XbK9boKzcTnqov0ux+cg623fGhpitO4epxdGhPEZRvIz5751sz7Vtd5rArKuEdY+7Ery7du+t1v1LNjoSxPOtknqYHgD6cj7nA16op7ZXvVBBt+ZYM815e0ke7jj5RPGT9WutLjHUbznzo7puLOkjXZi6II1bkchB+kfbX4ruZ835/9zqHc9wM0Obkp96+WJ1AzJUedSRKsyKG+QMHUCh/UltGGVM4j/wAQyjGv/8QAIREAAgEDAwUAAAAAAAAAAAAAAQIDABESEyEiBEFRYaH/2gAIAQIBAT8ADRqyqpHsitZswKjJEoRsSrKTua0jcXIsKTp4I2ZkiRSzZMQoFz5NYcI1Fg7sOXcDc2+V/8QAIxEAAQQABAcAAAAAAAAAAAAAAgABAxETFCFRBCIjQUJhcf/aAAgBAwEBPwA4554pMdtWawf6srHRs8aGAGgcxsXF6LZRcdgibCxWXvStlmQ5uiNl3QncchFbi3iv/9k=')"></div>
             <div class="slide">
               <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1085299008/rendition/540p/file.mp4?loc=external&amp;signature=724c5baa479f1594200e40655bae37fc7ec79ef1e078ef6050150a36bb6608e6" data-type="video/mp4"></video>
             </div>
@@ -2134,6 +2259,7 @@ function animateWords(element) {
 
         <div class="tile carousel-row load-overlay h-fixed" data-file="/work/bibi.html" data-services="identity" data-industry="culture" style="--tile-h: var(--tile-h-md);">
           <div class="tile-media">
+            <div class="tile-poster" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQUFBQUGBgUICAcICAsKCQkKCxEMDQwNDBEaEBMQEBMQGhcbFhUWGxcpIBwcICkvJyUnLzkzMzlHREddXX0BBQUFBQUFBQYGBQgIBwgICwoJCQoLEQwNDA0MERoQExAQExAaFxsWFRYbFykgHBwgKS8nJScvOTMzOUdER11dff/CABEIABsAMAMBIgACEQEDEQH/xAAuAAADAQEBAAAAAAAAAAAAAAAGBwgFAQQBAQEBAQAAAAAAAAAAAAAAAAQDAgX/2gAMAwEAAhADEAAAAEBsOU8XzkQPVr1KYp8dkgZTYZZD7NOqmNuUyGe3qnE8M1n/AP/EACwQAAIBAwQBAwMDBQAAAAAAAAECAwQFEQAGEiETBzEyEBRBFiNxIkJRYYH/2gAIAQEAAT8A/Qs8dRBSy2WqM02RCFqY8OVPel2Hc7bUxvFarpTLO/ECOoiZ2j+JUFfds6t+16iiFNmz3aeZhI8q48kgDHgquoYAqwOR/vVft2eTjEtiuNP4YV7FPKGLEBQCAxyG/wA6q7BGKh/uKOrnIZFJmjqFYZ9yfc5GpKOwQvNmygqucZnmTPH+R+dUG96dLfF9/tipWcLwkli5gEp0rgEdE6tG47Xfpmpls8sMqRNJzqY2A66/pzx7OetUEVrSpqpxTURkMS5ZAwLuO2C8j0QPcHHejLb45FlCUAk4osJ4HkoILMASfiPz/dq+3LaFJcc1NTHDUeEeJ4lyPGc44ns6q32A9RLUveBEZMhzxb90+2W61bvV3ZqRLHU2OROXzCQxMBqD1Z2HWSxIlNMJ26XMPHW2NwWS20k0FwY+eaqkk4plvYZ7CfnUu69llWSoleNT2zEOMY6OdS7h9KZZfLJd6YugKqGD4AH/ADXqJftm1RgWwS+cxMPKGULE/wCRjrkwH09I7fR3HetGtXAJRBDNUxgk9SwjmjaeWRqqaYt+4tewDAY6JZsfxnVRTwPVVXKJW5uQwIyCByAyNbuhigvlTHFEqIFjwqgAfH6f/8QAHxEAAgIABwEAAAAAAAAAAAAAAQIAAwUREhMyQVFh/9oACAECAQE/AEo3HVB3BhVpJ4dexqdLMpyBHyNawBPggsZABBaxE//EACARAAICAQMFAAAAAAAAAAAAAAECAAMRBCFxExQiYYH/2gAIAQMBAT8AW+12CgjP2Hr7eYxGvdGKnJPpoulqJxvH0yWMWJOTxO1rVuJ//9k=')"></div>
             <div class="slide">
               <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/901030801/rendition/720p/file.mp4%20%28720p%29.mp4?loc=external&signature=68f9eb2909e924a9d174c13a141c6fe0bf74899d68347eb008d9069101611a17" data-type="video/mp4"></video>
             </div>
@@ -2156,8 +2282,10 @@ function animateWords(element) {
 
         <div class="tile carousel-row load-overlay h-fixed" data-file="/work/snkrs-code.html" data-services="identity" data-industry="culture,fashion-beauty" style="--tile-h: var(--tile-h-md);">
           <div class="tile-media">
+            <div class="tile-poster" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQUFBQUGBgUICAcICAsKCQkKCxEMDQwNDBEaEBMQEBMQGhcbFhUWGxcpIBwcICkvJyUnLzkzMzlHREddXX0BBQUFBQUFBQYGBQgIBwgICwoJCQoLEQwNDA0MERoQExAQExAaFxsWFRYbFykgHBwgKS8nJScvOTMzOUdER11dff/CABEIABsAMAMBIgACEQEDEQH/xAAvAAEAAgMBAQAAAAAAAAAAAAAFAwQBAgcGCAEBAQEAAAAAAAAAAAAAAAAAAwEC/9oADAMBAAIQAxAAAAD5fSB7FseTNV58qVfgRLA2hU61TIuInoKR+0P/xAAwEAACAQMDAgIHCQAAAAAAAAABAgMEBREAEiEGEzFhFBUzQVFiohYjMlJUcbHB4f/aAAgBAQABPwClo6SeujhnuUdPCUYmYxuV492EBPOvUln3uV6opFBb9NOcfRqqoKKGohhjucU0XfRTVCOQKFbxO1hnA0bJZFYj7bUroBwBTVQB+jVyttvoUX0K+wV2UZ27UMsRX5SZFXS2OyvFSueqKVJCgMimnqGKkjkE7MHGj7VB8h/kas3RnRIoN9z6xpZauqQpAsLhI4XI4Zi5BYjXU9torTd6qhobjHW0sckeydDkNlc4PmNWq026oiE9VcYUGSDEW2EebHxx+w1eaS20uBb6yScGJy7Mu0ZPht9+MfHXTljoL1LIKzqGktsaY9tku+fyDgaqrhAtTA8UEkCJCUUM2/xbPBwNGXvgyduRkAzkgkanuFumFIlHQvE8cobPc7mceW0aluyOvbd28wV/zT3G0+rZoBbpO+6Ed/ucZ+O3b/ehcRJGIw7HGCPLGj95y5LHeo5OpqidMRLO4T8O3ccY+GkZoO60TFDuYZB92dQkzzxmUliSck+Q0Wbe0e47MnjOlUJS5XIJUE86/8QAHhEBAAICAQUAAAAAAAAAAAAAAQACERIDMUFRUsH/2gAIAQIBAT8ANfUjhnIWQ15LUx4D6MtdWbZmpbr2n//EAB0RAQEAAgEFAAAAAAAAAAAAAAECABKRAxEhQnH/2gAIAQMBAT8ArZ96+AZOwdtnLK8BScZrJh0yZOcsM//Z')"></div>
             <div class="slide">
-              <img class="tile-media-el lazy" data-src="/images/work/snkrs-code/snkrs-code-tile.jpg" alt="Nike x SNKRS Code">
+              <!-- <img class="tile-media-el lazy" data-src="/images/work/snkrs-code/snkrs-code-tile.jpg" alt="Nike x SNKRS Code"> -->
+               <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1134900042/rendition/1080p/file.mp4?loc=external&amp;signature=870733f3c704fc8d7c5f55a621386debc1072220dac3e107dadc35409f785e54" type="video/mp4">" data-type="video/mp4"></video>
             </div>
             
           </div>
@@ -2176,79 +2304,11 @@ function animateWords(element) {
           </div>
         </div>
 
-        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/wyndham.html" data-services="experience,product" data-industry="" style="--tile-h: var(--tile-h-lg);">
-          <div class="tile-media">
-            <div class="slide">
-              <img class="tile-media-el lazy" data-src="/images/work/wyndham/hp5.jpg" alt="Wyndham Rewards">
-            </div>
-            
-          </div>
-          <div class="n-info-container tile-caption">
-            <div class="n-client-info">
-              <div class="n-number"></div>
-              <h3 class="n-client-name">Wyndham Rewards</h3>
-            </div>
-            <div class="n-client-project-info">
-              <p class="n-description" hidden>Creating the design system for the Wyndham Hotels ecosystem.</p>
-              <div class="n-info-right">
-                <span class="n-year">/ 2019</span>
-                <div class="n-services">Visual Design, Web Design, UX</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/yu-gi-oh.html" data-services="experience" data-industry="culture,fashion-beauty" style="--tile-h: var(--tile-h-md);">
-          <div class="tile-media">
-            <div class="tile-poster" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQUFBQUGBgUICAcICAsKCQkKCxEMDQwNDBEaEBMQEBMQGhcbFhUWGxcpIBwcICkvJyUnLzkzMzlHREddXX0BBQUFBQUFBQYGBQgIBwgICwoJCQoLEQwNDA0MERoQExAQExAaFxsWFRYbFykgHBwgKS8nJScvOTMzOUdER11dff/CABEIABsAMAMBIgACEQEDEQH/xAAvAAEBAAMBAAAAAAAAAAAAAAAIBwMFBgQBAAMBAQAAAAAAAAAAAAAAAAEDBAIA/9oADAMBAAIQAxAAAAAyoM/IqrXecDQtcxvQjJmjIY8iQil0R1E21AxvrkA3ZIxEv//EADMQAAEDAgMDCAsBAAAAAAAAAAECAwQAEQUGEgcTIQglJjJBdLLCFCIkMTZRYmRygYSh/9oACAEBAAE/AGRWwFPPmNK+UFH+uVtDiSIWIvYyrepjBqGhBLx3ZdLpDidBNuLYsaw0ZtflIdYekyn4iGoq3Yyi66w1rDhBKLqF9RH6rbGegb/eotSKbSBeuT8nnPMCvtmPGazFnNnFPSsCcw5xlRxJLbTwWFhxMR+6zbhbiitm+Lxjji0pZctLS5Gi9S6EIKpZ3tjdSrrsDW2g9CHe+x6km16HA1yfUe0ZkX9EUeOnmMmyH57LuVJYelPlbyt0pK1rCusk6ri5N+FLyplCPLbZbjSWH7qdbQw7IRbX6hKdBsK2yISzkRDadVkTIyRqNzYA1KI41ChxXYC3FsgrDhF+2wTXJ/ACsz/lF89dlH3GttnwT/ex5qldtf/EABwRAAICAgMAAAAAAAAAAAAAAAABAgMxMhASQv/aAAgBAgEBPwCOBYPJTap9klrxLU//xAAeEQABAwUBAQAAAAAAAAAAAAABAAIDERIzUYEEkf/aAAgBAwEBPwCHMxOtdKKONCvTm4FEwiSM7qrBofFPl4F//9k=')"></div>
-            <div class="slide">
-              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1130829220/rendition/540p/file.mp4%20%28540p%29.mp4?loc=external&amp;signature=1cb8d3891bc1babebe838d06fc2c0213cf558192a9185c6f2136775b1fed6456" data-type="video/mp4"></video>
-            </div>
-            
-          </div>
-          <div class="n-info-container tile-caption">
-            <div class="n-client-info">
-              <div class="n-number"></div>
-              <h3 class="n-client-name">Nike X Yu-Gi-Oh!</h3>
-            </div>
-            <div class="n-client-project-info">
-              <p class="n-description" hidden>Bringing the collaboration onto digital and billboard.</p>
-              <div class="n-info-right">
-                <span class="n-year">/ 2022</span>
-                <div class="n-services">Art Direction, Web Design, Motion, Editing</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/tinywins.html" data-services="experience,identity" data-industry="b2b" style="--tile-h: var(--tile-h-md);">
-          <div class="tile-media">
-            <div class="tile-poster" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQUFBQUGBgUICAcICAsKCQkKCxEMDQwNDBEaEBMQEBMQGhcbFhUWGxcpIBwcICkvJyUnLzkzMzlHREddXX0BBQUFBQUFBQYGBQgIBwgICwoJCQoLEQwNDA0MERoQExAQExAaFxsWFRYbFykgHBwgKS8nJScvOTMzOUdER11dff/CABEIABsAMAMBIgACEQEDEQH/xAAyAAABBQEBAAAAAAAAAAAAAAAAAwUGBwgBBAEAAgMBAAAAAAAAAAAAAAAAAAMEBQYC/9oADAMBAAIQAxAAAADYPA5GEzetqpuqAMrCDyrBTi9vwe5fORqcaZH/xAAnEAACAQMDAgYDAAAAAAAAAAABAgMEBREABhIHIRAgIjFRYhNxof/aAAgBAQABPwDJ+fC5bo23ZqgUtyv1DSTlA4innWNuJ9jg6tu6Nt3moNNbb9Q1c4QuYoJ1kbiPc4Hl6r2y13nqbFb6+d4GqbRClLMCAqz5fgH+p10stFnsvUgUduq55pI7NOtYJk4GOcOoZfLv7pJLva/x3dL+KMpTRwiP8Bk7xknOeQ1srpdXbV3LNfazczXKaSleBg8JVzyx3LFm8RI5ppZM+oB8H9ajYskJJ7suTo9wRqopxEnBKiqVRJgAVMvsQPtq1krRwJyYgPIPUxY4B+Toseaj5bH81//EACIRAAAFAwQDAAAAAAAAAAAAAAEEERITEBQVAAIDBSJRcf/aAAgBAgEBPwDWCK4sDU/POJWdjPBPtc/2tkBG5C3iibHsVnpUWn//xAAeEQACAQMFAAAAAAAAAAAAAAAREhMDEBQAAQIhIv/aAAgBAwEBPwDWNThduTIwHV8mtHG3kADa3//Z')"></div>
-            <div class="slide">
-              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1083300533/rendition/540p/file.mp4?loc=external&amp;signature=f66b8bfda1cab5b8d3dc9cf21798b4958f0468b04edf688d61fd1548152271fc" data-type="video/mp4"></video>
-            </div>
-            
-          </div>
-          <div class="n-info-container tile-caption">
-            <div class="n-client-info">
-              <div class="n-number"></div>
-              <h3 class="n-client-name">Tinywins</h3>
-            </div>
-            <div class="n-client-project-info">
-              <p class="n-description" hidden>Revamping the digital agency&#x27;s brand through website redesign.</p>
-              <div class="n-info-right">
-                <span class="n-year">/ 2024</span>
-                <div class="n-services">Brand Design, Web Design, Motion</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/nike-maxs-lab.html" data-services="experience,ecommerce" data-industry="culture,technology" style="--tile-h: var(--tile-h-lg);">
+        <div class="tile carousel-row load-overlay h-fixed w-2" data-file="/work/nike-maxs-lab.html" data-services="experience,ecommerce" data-industry="culture,technology" style="--tile-h: var(--tile-h-lg);">
           <div class="tile-media">
             <div class="tile-poster" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQUFBQUGBgUICAcICAsKCQkKCxEMDQwNDBEaEBMQEBMQGhcbFhUWGxcpIBwcICkvJyUnLzkzMzlHREddXX0BBQUFBQUFBQYGBQgIBwgICwoJCQoLEQwNDA0MERoQExAQExAaFxsWFRYbFykgHBwgKS8nJScvOTMzOUdER11dff/CABEIABsAMAMBIgACEQEDEQH/xAAxAAADAAIDAAAAAAAAAAAAAAACAwQABQEGCAEBAAMBAAAAAAAAAAAAAAAAAQACAwX/2gAMAwEAAhADEAAAAPOSRXnz+HU7926hk2xappWcBMcl0KpBP//EACoQAAIBBAECBAYDAAAAAAAAAAECAwAEESESBTFBYXGSBhMUIzOxRIGR/9oACAEBAAE/APu2nS/qYccyWTOmwPQ1Hb9RmiEonIVtg8kX90Z54ZCjXUmvFCp7+Ypp5ZMAXNxjHiR3q4e6h/mMR5OjfqnkZ7WFnBMjx5JqFwLO/JXRg4r6l1oyXptIgZnMWOKry0BXT7uziRYrjpVvcIDyBLGOTzGV711V/h+5hSW36XJYOwyqlg69vQaP+1Jhy5CDCjJ3U7j6awdY8ILVEY+YzUfzHsZ4libOM63nYoCKOIW9zcyoyHHDgAuqjW2Vxzm5L44YVcyQyAIJAEXt2z/ZFTyxSQJEHJI7n0qVH+ltl3kRDRqVmjKcGK68DSTS4/K/uNfOmB1M/uNG4nz+eT3GmuJ9/fk9xoOzrIzMWOO53X//xAAbEQACAwEBAQAAAAAAAAAAAAABEQACMSEQIv/aAAgBAgEBPwD6dhzYTUILsy1AthiwrPP/xAAeEQEAAgICAwEAAAAAAAAAAAABAhEAEiFhIjFCUf/aAAgBAwEBPwB2IxIzjbJ95opNESJ5SM+eUuzrNCQfl33eEatLLKecIRiUFF3n/9k=')"></div>
             <div class="slide">
-              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1083321716/rendition/540p/file.mp4?loc=external&amp;signature=c216b398c0ffd35fa557b11ab37963c4cb3c71aa216f9d28ee326b1123c8846f" data-type="video/mp4"></video>
+              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1083321716/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&signature=3e6c8eb6f5ab631fd6cff0c412c718e3c03b6b2c16fa98b4cd74cbc990c675a2" data-type="video/mp4"></video>
             </div>
             
           </div>
@@ -2267,56 +2327,11 @@ function animateWords(element) {
           </div>
         </div>
 
-        <div class="tile carousel-row load-overlay w-2 h-fixed" data-file="/work/wish.html" data-services="product,ecommerce" data-industry="technology" style="--tile-h: var(--tile-h-lg);">
-          <div class="tile-media">
-            <div class="slide">
-              <img class="tile-media-el lazy" data-src="/images/work/wish/wish_hero.jpg" alt="Wish">
-            </div>
-            
-          </div>
-          <div class="n-info-container tile-caption">
-            <div class="n-client-info">
-              <div class="n-number"></div>
-              <h3 class="n-client-name">Wish</h3>
-            </div>
-            <div class="n-client-project-info">
-              <p class="n-description" hidden>Redesigns across various initiatives including the loyalty program.</p>
-              <div class="n-info-right">
-                <span class="n-year">/ 2023</span>
-                <div class="n-services">Product Strategy, Product Design, UX, Motion</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/gossip.html" data-services="experience" data-industry="culture,b2b" style="--tile-h: var(--tile-h-lg);">
-          <div class="tile-media">
-            <div class="tile-poster" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQUFBQUGBgUICAcICAsKCQkKCxEMDQwNDBEaEBMQEBMQGhcbFhUWGxcpIBwcICkvJyUnLzkzMzlHREddXX0BBQUFBQUFBQYGBQgIBwgICwoJCQoLEQwNDA0MERoQExAQExAaFxsWFRYbFykgHBwgKS8nJScvOTMzOUdER11dff/CABEIABsAMAMBIgACEQEDEQH/xAAxAAACAgIDAAAAAAAAAAAAAAAGBwEFAwQAAggBAAMBAAAAAAAAAAAAAAAAAAACAwT/2gAMAwEAAhADEAAAAG7kV8gyNQHuQ2IvfPL6MF6EMpMy3aI9xamdD3CGn//EACwQAAICAgIBAwMBCQAAAAAAAAECAwQFBgAREgcTIRQxQXEVI0JRUmGBoaL/2gAIAQEAAT8A1vU9Zxmm+n0VH06xmUtZClCZZZ4kAQmD3mkmlMcnNX9PtL13B07b6ZTylvM5Lxtt7CWBALMp7A8h0sMPNb9PPTvAb9tmKj1WvO1mpWv1vqKwnggB7R4EZwQh7Abnp9jtUzVz1BE/pfSq5irkX6qWa0ZicJGEVIZSngB2vK6aQdc1C5b0/H1r1rN27U2P+jiewsEM0weM9KOwnN3g9Lcx6d7lkp8Ng6EUIlTFS14Ugt++kY6UgAHz9zmpb5umJ1vCUYs/FJFDThWMzU1Z1QKOl7BHfXNc2LbNbivwUdpZ4LNiawIZ6qSLDJO5dva/IHZ+3MDtOzYCbMNFtSWrOQtCzZe3Ajv5+AQBQpUKoC/A5jNx3GittP21DY+osyWJTLWCkmT8dxkEIObHl9cyeFruKgkySN34VxJAqyEdsQ3wSn/R5uGhQZqK5lJsnPGa1WRoayqDGngvf8RJPkR2x5jbOcTH4wx0EK/Sp0pP4WMEH9W+3Mbdt361wvEIZFYoh6PXfiD+fv0TzI4GvUwrWJUQ5GLppJwSWd+/n78x07z1qE7Dp5I42Yf3Yct3IaSRNIHZpJBHHHGvk7uR30B+g5ms/jGwWSKTl3epYX2VH71ekYHyQ9EePXzzT3eS7VLsWIgkA7/HwByQno/PLHzP7ZAKdeXiR2OwRzAzSDK3q3mfZSOvIqfhWf79fy5tsslXEi5C3jPWnjeF/wClifA/6JHLMaHX7spHbzQGaRvyzyVJmY/5J5//xAAdEQABAwUBAAAAAAAAAAAAAAABEBESAiEiMTKB/9oACAECAQE/AEwgNzfxKB1d2Kf/xAAeEQACAAcBAQAAAAAAAAAAAAABEQACAxASExQhMf/aAAgBAwEBPwCx5ueVCpvy9+YqCUIqEHWpU5Rb/9k=')"></div>
-            <div class="slide">
-              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1141642934/rendition/360p/file.mp4?loc=external&amp;signature=b1546a774eab3615205d5262809bde41f3248bc5e30016439754334c51bf72d4" data-type="video/mp4"></video>
-            </div>
-            
-          </div>
-          <div class="n-info-container tile-caption">
-            <div class="n-client-info">
-              <div class="n-number"></div>
-              <h3 class="n-client-name">Gossip</h3>
-            </div>
-            <div class="n-client-project-info">
-              <p class="n-description" hidden>Web design and motion from the ground up for the engineering studio.</p>
-              <div class="n-info-right">
-                <span class="n-year">/ 2022</span>
-                <div class="n-services">Art Direction, Web Design, Motion</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div class="tile carousel-row load-overlay h-fixed" data-file="/work/muir-dao.html" data-services="product,experience,identity" data-industry="technology,finance" style="--tile-h: var(--tile-h-lg);">
           <div class="tile-media">
-            <div class="tile-poster" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQUFBQUGBgUICAcICAsKCQkKCxEMDQwNDBEaEBMQEBMQGhcbFhUWGxcpIBwcICkvJyUnLzkzMzlHREddXX0BBQUFBQUFBQYGBQgIBwgICwoJCQoLEQwNDA0MERoQExAQExAaFxsWFRYbFykgHBwgKS8nJScvOTMzOUdER11dff/CABEIABsAMAMBIgACEQEDEQH/xAAyAAACAQUBAAAAAAAAAAAAAAAGCAQAAgMFBwkBAAMBAQAAAAAAAAAAAAAAAAIDBAAB/9oADAMBAAIQAxAAAABd3KTz0GOPU0F4I8MroyiyQpsfRM4llXWIYcfkjpKdkI47n//EACkQAAIBBAECBgEFAAAAAAAAAAECAwQFERIABiETIjFBUWEWFDJ0obP/2gAIAQEAAT8AoZHG7bBdR7e32edI9F3a02mF4brSSCrgimxJTFjGXAbsduUVTWVUtZTQQ0YkpCEmLIzBmLMoKgEYGF5VTVtNJDDLT0bGc6RlUKqGZ1TzA5yPPzq3o2Ovkq0S9wrLCkzOkVOWw48x2bbktTJWPNI4USEBgVUL+zlsamNPVgIXciNdfk5ye/3jljJNls/8Kn/zHKKrgi6r6reW5PA8VUoVN8KQ23qOdQXKCmFFJFdZZTsQvmB8MmRDuB88fqBWo5qWnSUEU8ndV23OpJPbizRRVERY+Rj3+l+uWLaKKWVo8gSoGBOpAIJ2z9csl+s5ttsgW5QM6UdOHPiKAp0HY5POpmovyvqKYz7LUVGyFWGrBcrlTy2VVJBdbbKHzFFMjSbkMuu6+vLtf7ZLaJU/X0SMqtq0BCEA+3bHtw027ElkyqA/I4SGoI6hkQzFjl9Rk9+Ndbi9WQat8J2UDsP65Ws35NSHY5aSBj39zgnnVp8OuqimF3d2bA9Tvy/SuYHGex5FNKkEyq5AIBOPkEc//8QAIhEAAQQCAQQDAAAAAAAAAAAAAgEDBBIAESEFEyIxFGFx/9oACAECAQE/AI4AZEpD6w+qRG5JxVZc7gqvlrx4S2dOmSpZSDfaFtLDQRxqS/de3VN+9/WBFU5HyCd5tuuuMeRb7T8z/8QAIBEAAgAGAgMAAAAAAAAAAAAAAQIAAwQREhMhQTFCYf/aAAgBAwEBPwCpdpYTE+YO7HZtGGF7dxRVLT1fL1I5idK2hCTwIdwqcL8inyWSFzJse4//2Q==')"></div>
+            <div class="tile-poster" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQUFBQUGBgUICAcICAsKCQkKCxEMDQwNDBEaEBMQEBMQGhcbFhUWGxcpIBwcICkvJyUnLzkzMzlHREddXX0BBQUFBQUFBQYGBQgIBwgICwoJCQoLEQwNDA0MERoQExAQExAaFxsWFRYbFykgHBwgKS8nJScvOTMzOUdER11dff/CABEIABsAMAMBIgACEQEDEQH/xAAwAAABBQEAAAAAAAAAAAAAAAAIAAQGBwkCAQEAAwEAAAAAAAAAAAAAAAADAAEEAv/aAAwDAQACEAMQAAAADJw30nswrscr4FMIpVBe1EluWjecj9E0PGUfuORkUdSjf//EACkQAAEEAQQCAQIHAAAAAAAAAAIBAwQFEQAGBxMSMRAhQRUWIDJTcYL/2gAIAQEAAT8A0xElSSEGIzrpF6EAUlX+sapuHN8X9LAuYEFpyNKdJsB7cOB4EoKRj9kymtr8IVhM7lr912SRLeKYLHJh1DaRpQQ1Ndcrcd1Gwfy+lfauzCmtOq75+OEVvH1HHzshkbTbu0J8ejYWQlTG6316gUU60RfEvaZ1QRHK+NOimIgQWU0lEVyidjxOYz/rV/Ywvxu5iyEVA7mfMg9lhkPouudJsGTZ7eahjgGYR5X7rk/nhKwkSuNdpKgBgAfYQ1P+JwtXXJG09pW06vu7LoluPnIROo1FWnP2kmM639yXWrumbJoZSz4UkQdI1EmvBzHioJnW5b9zcUxmSbXX1tI2iZz91X5atbNmOEZqxkgwBKQtC6SAil7VERfa6Nw3CUjMiJfakuV/R//EACARAAICAQMFAAAAAAAAAAAAAAECAxEABBASIjFBUXH/2gAIAQIBAT8AAHk1mpePSxRSkAhnVTfo5FMJ0EgTiDdD4a2lUTJwk6lFUMRFRQqigOwz/8QAHxEAAgICAQUAAAAAAAAAAAAAAQIDEgARIgQQE0Fh/9oACAEDAQE/AJHZAKpbJOonZZxGvNVNR9yG3iS55a2c1vFhRWLez2//2Q==')"></div>
             <div class="slide">
-              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/891871218/rendition/540p/file.mp4?loc=external&amp;signature=401471ffb0f2777deeb21602da90832790d29392f0b64ac9e7fda8f33884815e" data-type="video/mp4"></video>
+              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1208526703/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&signature=be7630def31a0696a50ad7737250bc9b6a81d05a5a8a1be4897ad74b3c657412" data-type="video/mp4"></video>
             </div>
             
           </div>
@@ -2335,7 +2350,32 @@ function animateWords(element) {
           </div>
         </div>
 
-        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/ambush.html" data-services="identity" data-industry="culture,fashion-beauty" style="--tile-h: var(--tile-h-lg);">
+       
+
+        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/yu-gi-oh.html" data-services="experience" data-industry="culture,fashion-beauty" style="--tile-h: var(--tile-h-lg);">
+          <div class="tile-media">
+            <div class="tile-poster" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQUFBQUGBgUICAcICAsKCQkKCxEMDQwNDBEaEBMQEBMQGhcbFhUWGxcpIBwcICkvJyUnLzkzMzlHREddXX0BBQUFBQUFBQYGBQgIBwgICwoJCQoLEQwNDA0MERoQExAQExAaFxsWFRYbFykgHBwgKS8nJScvOTMzOUdER11dff/CABEIABsAMAMBIgACEQEDEQH/xAAvAAEBAAMBAAAAAAAAAAAAAAAIBwMFBgQBAAMBAQAAAAAAAAAAAAAAAAEDBAIA/9oADAMBAAIQAxAAAAAyoM/IqrXecDQtcxvQjJmjIY8iQil0R1E21AxvrkA3ZIxEv//EADMQAAEDAgMDCAsBAAAAAAAAAAECAwQAEQUGEgcTIQglJjJBdLLCFCIkMTZRYmRygYSh/9oACAEBAAE/AGRWwFPPmNK+UFH+uVtDiSIWIvYyrepjBqGhBLx3ZdLpDidBNuLYsaw0ZtflIdYekyn4iGoq3Yyi66w1rDhBKLqF9RH6rbGegb/eotSKbSBeuT8nnPMCvtmPGazFnNnFPSsCcw5xlRxJLbTwWFhxMR+6zbhbiitm+Lxjji0pZctLS5Gi9S6EIKpZ3tjdSrrsDW2g9CHe+x6km16HA1yfUe0ZkX9EUeOnmMmyH57LuVJYelPlbyt0pK1rCusk6ri5N+FLyplCPLbZbjSWH7qdbQw7IRbX6hKdBsK2yISzkRDadVkTIyRqNzYA1KI41ChxXYC3FsgrDhF+2wTXJ/ACsz/lF89dlH3GttnwT/ex5qldtf/EABwRAAICAgMAAAAAAAAAAAAAAAABAgMxMhASQv/aAAgBAgEBPwCOBYPJTap9klrxLU//xAAeEQABAwUBAQAAAAAAAAAAAAABAAIDERIzUYEEkf/aAAgBAwEBPwCHMxOtdKKONCvTm4FEwiSM7qrBofFPl4F//9k=')"></div>
+            <div class="slide">
+              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1130829220/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&signature=0e73b82e4ae1b582f2e169844e3ab50a63468ed1a9094f3c1a85484690d8566f" data-type="video/mp4"></video>
+            </div>
+            
+          </div>
+          <div class="n-info-container tile-caption">
+            <div class="n-client-info">
+              <div class="n-number"></div>
+              <h3 class="n-client-name">Nike X Yu-Gi-Oh!</h3>
+            </div>
+            <div class="n-client-project-info">
+              <p class="n-description" hidden>Bringing the collaboration onto digital and billboard.</p>
+              <div class="n-info-right">
+                <span class="n-year">/ 2022</span>
+                <div class="n-services">Art Direction, Web Design, Motion, Editing</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+         <div class="tile carousel-row load-overlay w-2 h-fixed" data-file="/work/ambush.html" data-services="identity" data-industry="culture,fashion-beauty" style="--tile-h: var(--tile-h-lg);">
           <div class="tile-media">
             <div class="slide">
               <img class="tile-media-el lazy" data-src="/images/work/ambush/ambush_OOH4.jpg" alt="Ambush">
@@ -2356,167 +2396,55 @@ function animateWords(element) {
             </div>
           </div>
         </div>
-
-        <div class="tile carousel-row load-overlay w-2 nda h-fixed" data-services="experience,product" data-industry="technology" style="--tile-h: var(--tile-h-lg);">
+        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/graphics.html" data-services="identity" data-industry="culture,fashion-beauty" style="--tile-h: var(--tile-h-sm);">
           <div class="tile-media">
+            <div class="tile-poster" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQUFBQUGBgUICAcICAsKCQkKCxEMDQwNDBEaEBMQEBMQGhcbFhUWGxcpIBwcICkvJyUnLzkzMzlHREddXX0BBQUFBQUFBQYGBQgIBwgICwoJCQoLEQwNDA0MERoQExAQExAaFxsWFRYbFykgHBwgKS8nJScvOTMzOUdER11dff/CABEIABsAMAMBIgACEQEDEQH/xAAsAAEAAgMBAAAAAAAAAAAAAAAAAwUBBAYIAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAADxlnF6SS2esceliAO4rOaAH//EACkQAAICAQMBBwUBAAAAAAAAAAEDAgQRAAUSBhMUICExYWIVIjBBcYL/2gAIAQEAAT8A0AZECIJJ9ANUdtT9F3rcXwMnVW1VLScgYfzyyXtHhj+nW+7J3JdW5VXLuzalNrhnPYNswlIL/wBcDKPt4Ol3oq9TdPWHuipKdxqsayXkIQgwGUjqTbCOnrleBa+wzcItQxQLIrrrhMNzMeWJkxOPjqoZv2HdK9vvPb27NW4thhzymtBsJy9c4HPT4pi5sUMlNQkRCco8DKP6JGTjwLtUX7BsFUXKsHpN4NLpugUBpHGQ4eut3vUN3ZTs9tNElbbXrTTw5ffWUFDh8Z8cn8P/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AF//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AF//2Q==')"></div>
             <div class="slide">
-              <img class="tile-media-el lazy" data-src="/images/work/apple/apple-nda.jpg" alt="Apple">
+              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1131679071/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&signature=31ee130fbd7b3b7f9b6fa2f0bfb1649ecb2fb7f598a42beb2c4b8678a629a5f4" data-type="video/mp4"></video>
             </div>
-            <span class="tile-nda-label">Confidential Project, NDA</span>
+            
           </div>
           <div class="n-info-container tile-caption">
             <div class="n-client-info">
               <div class="n-number"></div>
-              <h3 class="n-client-name">Apple</h3>
+              <h3 class="n-client-name">Logo / Graphics</h3>
             </div>
             <div class="n-client-project-info">
-              <p class="n-description" hidden>Undisclosed project</p>
+              <p class="n-description" hidden>Unused graphic explorations</p>
               <div class="n-info-right">
                 <span class="n-year">/ 2023</span>
-                <div class="n-services">Product design, Visual design, UX</div>
+                <div class="n-services">Graphic Design, Logo Design</div>
               </div>
             </div>
           </div>
         </div>
-
-
-        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/atlas.html" data-services="experience,product" data-industry="technology,finance" style="--tile-h: var(--tile-h-md);">
+        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/gather.html" data-services="experience,product" data-industry="culture,technology,b2b" style="--tile-h: var(--tile-h-sm);">
           <div class="tile-media">
+            <div class="tile-poster" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQUFBQUGBgUICAcICAsKCQkKCxEMDQwNDBEaEBMQEBMQGhcbFhUWGxcpIBwcICkvJyUnLzkzMzlHREddXX0BBQUFBQUFBQYGBQgIBwgICwoJCQoLEQwNDA0MERoQExAQExAaFxsWFRYbFykgHBwgKS8nJScvOTMzOUdER11dff/CABEIABsAMAMBIgACEQEDEQH/xAArAAEBAQEAAAAAAAAAAAAAAAABAAUEAQEBAQAAAAAAAAAAAAAAAAAFBgD/2gAMAwEAAhADEAAAAMmiMK4HZ6KZzNhmQ4bbQOCQVoTyv//EACQQAAIBAwQCAgMAAAAAAAAAAAECAwQFEgYREyEAMRAgIjBx/9oACAEBAAE/APi72CnuMAqHd84ojiAuQ779eWiwwW6naZHfOaNSwK4j8d/QPY+uuaq601n0asAWNGoZiGRzkw5R2RsNj5oSpulRp7XHOA4Wmp8i7tuoybtRt9aqdqy2NQy1UjwmPERcpUfwHvbynmaltyUcdXKsQiCcXOzLsPQPoH9P/8QAHxEAAgAFBQAAAAAAAAAAAAAAERIAAQIQFAMTFSJh/9oACAECAQE/AIxKMMN1Qr6DfkdbbQSAFv/EACMRAAADBgcAAAAAAAAAAAAAAAEREgACAxAUMgQVMUJRcaH/2gAIAQMBAT8AZWDQmj2FeOvM80EHSpINiTL3uX//2Q==')"></div>
             <div class="slide">
-              <img class="tile-media-el lazy" data-src="/images/work/atlas/atlas-thumbnail-2.jpg" alt="Atlas">
+              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1135120303/rendition/720p/file.mp4?loc=external&signature=2afa02ccde48e407f392757f782699f12855237b0ff5e9024aa6fbe2400a34e8" data-type="video/mp4"></video>
             </div>
             
           </div>
           <div class="n-info-container tile-caption">
             <div class="n-client-info">
               <div class="n-number"></div>
-              <h3 class="n-client-name">Atlas</h3>
+              <h3 class="n-client-name">Gather</h3>
             </div>
             <div class="n-client-project-info">
-              <p class="n-description" hidden>Strategic design partnership shaping the product vision and experience.</p>
+              <p class="n-description" hidden>R&amp;D interaction explorations for the metaverse.</p>
               <div class="n-info-right">
-                <span class="n-year">/ 2022</span>
-                <div class="n-services">Product Strategy, Product Design, UX</div>
+                <span class="n-year">/ 2024</span>
+                <div class="n-services">Product design, prototyping, motion</div>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/capstone.html" data-services="identity" data-industry="finance,b2b" style="--tile-h: var(--tile-h-lg);">
+        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/1099-policy.html" data-services="experience,product,identity" data-industry="b2b" style="--tile-h: var(--tile-h-sm);">
           <div class="tile-media">
+            <div class="tile-poster" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQUFBQUGBgUICAcICAsKCQkKCxEMDQwNDBEaEBMQEBMQGhcbFhUWGxcpIBwcICkvJyUnLzkzMzlHREddXX0BBQUFBQUFBQYGBQgIBwgICwoJCQoLEQwNDA0MERoQExAQExAaFxsWFRYbFykgHBwgKS8nJScvOTMzOUdER11dff/CABEIABsAMAMBIgACEQEDEQH/xAAsAAADAQEBAAAAAAAAAAAAAAAFBgcBAgQBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAC1uCnQ0VdbOqXRrYpniSqzOkH4S6AtJVaLH//EADYQAAIBAgMDBg0FAAAAAAAAAAECAwAFBAYRMXSyEiEkUVaTBxMXIiMlNDVxgbHR0hhhcnOC/9oACAEBAAE/ALt7pu25z8BrB2OyJgsO4smCLGBCejx6nzfhTNZSpIykuo68HGKDWTsmuu5xVc8uZfmws872LBeNhw8rRnxCAqSn7Vaee12vdIOAVdl9UXbcp+A1gvY8H/RHwip4ExEbxuWAYaFkJVh8COcVFEkKIi6nkqBqx1Y6dZO01j/YLhu8vCatHuq17pBwCrpDO9quiJCxZ8JOqjTaShqHw8ZeghhhfLV/5cSKjdHj2r/uvL9lvs1f+4j/ADr9QGWuzd+7iP8AOp/D1l3EYbEQR5bvxeWN419BHtYfzq1RyR2y2q0ThlwsII5J2hBWZNVtMxRmQ8tOdGKnb1illn0HSp+9f703LcaHET/KZx9DSIyjmnn+czn6mvPKn08/fP8Aesvj1VBqzMdW52YsdvWa/8QAGREBAAIDAAAAAAAAAAAAAAAAAREhABAx/9oACAECAQE/AMqO3OKoCtc1Gv/EABcRAQEBAQAAAAAAAAAAAAAAAAAREDH/2gAIAQMBAT8A3irX/9k=')"></div>
             <div class="slide">
-              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1083770861/rendition/540p/file.mp4?loc=external&amp;signature=a772cdb8a0a360a89bcb28d53a813141e4c8362ee02ce22e8b4d7c16cd171151" data-type="video/mp4"></video>
-            </div>
-            
-          </div>
-          <div class="n-info-container tile-caption">
-            <div class="n-client-info">
-              <div class="n-number"></div>
-              <h3 class="n-client-name">Capstone</h3>
-            </div>
-            <div class="n-client-project-info">
-              <p class="n-description" hidden>New identity system for the asset management firm.</p>
-              <div class="n-info-right">
-                <span class="n-year">/ 2023</span>
-                <div class="n-services">Brand Design, Motion</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="tile carousel-row load-overlay w-2 h-fixed" data-file="/work/nike-air-max-day.html" data-services="experience" data-industry="culture" style="--tile-h: var(--tile-h-lg);">
-          <div class="tile-media">
-            <div class="slide">
-              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/891774797/rendition/540p/file.mp4?loc=external&amp;signature=460905c9156acf085f0ef3d4e8de9b55cdfa52e6acbd5330c75706278433daaa" data-type="video/mp4"></video>
-            </div>
-            
-          </div>
-          <div class="n-info-container tile-caption">
-            <div class="n-client-info">
-              <div class="n-number"></div>
-              <h3 class="n-client-name">Nike X Air Max Day</h3>
-            </div>
-            <div class="n-client-project-info">
-              <p class="n-description" hidden>Nike&#x27;s first-ever digital celebration of Air Max Day Worldwide.</p>
-              <div class="n-info-right">
-                <span class="n-year">/ 2022</span>
-                <div class="n-services">Concepts, Prototyping, UX</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/deno.html" data-services="product" data-industry="b2b,technology" style="--tile-h: var(--tile-h-sm);">
-          <div class="tile-media">
-            <div class="slide">
-              <img class="tile-media-el lazy" data-src="/images/work/deno/deno_lifestyle_cropped.jpg" alt="Deno">
-            </div>
-            
-          </div>
-          <div class="n-info-container tile-caption">
-            <div class="n-client-info">
-              <div class="n-number"></div>
-              <h3 class="n-client-name">Deno</h3>
-            </div>
-            <div class="n-client-project-info">
-              <p class="n-description" hidden>Overhaul of the backend design system for web developers.</p>
-              <div class="n-info-right">
-                <span class="n-year">/ 2022</span>
-                <div class="n-services">Design System, Visual Design, UI</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/current.html" data-services="experience" data-industry="finance" style="--tile-h: var(--tile-h-sm);">
-          <div class="tile-media">
-            <div class="slide">
-              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/901479067/rendition/360p/file.mp4?loc=external&amp;signature=08c81aa44edda8890a989945a585bf43e4d590e957f14c24eaaa5956b8a37139" data-type="video/mp4"></video>
-            </div>
-            
-          </div>
-          <div class="n-info-container tile-caption">
-            <div class="n-client-info">
-              <div class="n-number"></div>
-              <h3 class="n-client-name">Current</h3>
-            </div>
-            <div class="n-client-project-info">
-              <p class="n-description" hidden>Complete website redesign during the company’s brand overhaul.</p>
-              <div class="n-info-right">
-                <span class="n-year">/ 2023</span>
-                <div class="n-services">Visual Design, Content Strategy, Motion</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/carrot-and-stick.html" data-services="ecommerce" data-industry="fashion-beauty" style="--tile-h: var(--tile-h-sm);">
-          <div class="tile-media">
-            <div class="slide">
-              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/901397185/rendition/540p/file.mp4?loc=external&amp;signature=ebbbefb2b067a297f68b9599a1d6288a474d3739239fce887528ec582d7372da" data-type="video/mp4"></video>
-            </div>
-            
-          </div>
-          <div class="n-info-container tile-caption">
-            <div class="n-client-info">
-              <div class="n-number"></div>
-              <h3 class="n-client-name">Carrot &amp; Stick</h3>
-            </div>
-            <div class="n-client-project-info">
-              <p class="n-description" hidden>E-commerce website redesign optimized for conversion.</p>
-              <div class="n-info-right">
-                <span class="n-year">/ 2022</span>
-                <div class="n-services">Visual Design, Web Design, UX</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/1099-policy.html" data-services="experience,product,identity" data-industry="b2b" style="--tile-h: var(--tile-h-lg);">
-          <div class="tile-media">
-            <div class="slide">
-              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1133539983/rendition/360p/file.mp4?loc=external&amp;signature=5463e2986a92a46d95125437ee8542d0f7c6c773d0ccec7b2577f1d578aacf96" data-type="video/mp4"></video>
+              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1133539983/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&signature=4f5ff3e20966abac9066956a9821e1fc55737e9e43f2d0398bbc7d1ac801c21d" data-type="video/mp4"></video>
             </div>
             
           </div>
@@ -2535,52 +2463,7 @@ function animateWords(element) {
           </div>
         </div>
 
-        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/shoprite.html" data-services="product" data-industry="technology" style="--tile-h: var(--tile-h-md);">
-          <div class="tile-media">
-            <div class="slide">
-              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1133457906/rendition/360p/file.mp4%20%28360p%29.mp4?loc=external&amp;signature=6976371ddf22d52f45ca53e67433e0061bb55d28eb5b90d6f526af2bf7f29567" data-type="video/mp4"></video>
-            </div>
-            
-          </div>
-          <div class="n-info-container tile-caption">
-            <div class="n-client-info">
-              <div class="n-number"></div>
-              <h3 class="n-client-name">Shoprite</h3>
-            </div>
-            <div class="n-client-project-info">
-              <p class="n-description" hidden>Brand enhancement for the web3 company.</p>
-              <div class="n-info-right">
-                <span class="n-year">/ 2023</span>
-                <div class="n-services">Brand design, motion, web design</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/experiments.html" data-services="experience,product,ecommerce,identity" data-industry="technology,fashion-beauty,culture" style="--tile-h: var(--tile-h-md);">
-          <div class="tile-media">
-            <div class="slide">
-              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1133896841/rendition/360p/file.mp4%20%28360p%29.mp4?loc=external&amp;signature=bd65a469344c667628c231935547163bd0deb86f223d58e17d2ea14d46f4094d" data-type="video/mp4"></video>
-            </div>
-            
-          </div>
-          <div class="n-info-container tile-caption">
-            <div class="n-client-info">
-              <div class="n-number"></div>
-              <h3 class="n-client-name">Experiments / Index</h3>
-            </div>
-            <div class="n-client-project-info">
-              <p class="n-description" hidden>Collection of visual experiments and prototypes</p>
-              <div class="n-info-right">
-                <span class="n-year">/ 2022</span>
-                <div class="n-services">Art Direction, Prototyping, 3D, Motion, UX</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/eafc.html" data-services="experience" data-industry="culture" style="--tile-h: var(--tile-h-sm);">
+        <div class="tile carousel-row load-overlay w-2 h-fixed" data-file="/work/eafc.html" data-services="experience" data-industry="culture" style="--tile-h: var(--tile-h-lg);">
           <div class="tile-media">
             <div class="slide">
               <img class="tile-media-el lazy" data-src="/images/work/eafc/eafc-thumbnail.jpg" alt="NIKE x EAFC">
@@ -2603,10 +2486,146 @@ function animateWords(element) {
         </div>
 
 
-        <div class="tile carousel-row load-overlay w-2 h-fixed" data-file="/work/tinywins-2.html" data-services="identity,experience" data-industry="technology,b2b" style="--tile-h: var(--tile-h-lg);">
+        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/atlas.html" data-services="experience,product" data-industry="technology,finance" style="--tile-h: var(--tile-h-lg);">
           <div class="tile-media">
             <div class="slide">
-              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1131288286/rendition/540p/file.mp4?loc=external&amp;signature=d22f0b8f5b443ef16a9caa6a710771705612626a752f025dce5065ae732580a0" data-type="video/mp4"></video>
+              <img class="tile-media-el lazy" data-src="/images/work/atlas/atlas-tile.jpg" alt="Atlas">
+            </div>
+            
+          </div>
+          <div class="n-info-container tile-caption">
+            <div class="n-client-info">
+              <div class="n-number"></div>
+              <h3 class="n-client-name">Atlas</h3>
+            </div>
+            <div class="n-client-project-info">
+              <p class="n-description" hidden>Strategic design partnership shaping the product vision and experience.</p>
+              <div class="n-info-right">
+                <span class="n-year">/ 2022</span>
+                <div class="n-services">Product Strategy, Product Design, UX</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/gossip.html" data-services="experience" data-industry="culture,b2b" style="--tile-h: var(--tile-h-sm);">
+          <div class="tile-media">
+            <div class="tile-poster" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQUFBQUGBgUICAcICAsKCQkKCxEMDQwNDBEaEBMQEBMQGhcbFhUWGxcpIBwcICkvJyUnLzkzMzlHREddXX0BBQUFBQUFBQYGBQgIBwgICwoJCQoLEQwNDA0MERoQExAQExAaFxsWFRYbFykgHBwgKS8nJScvOTMzOUdER11dff/CABEIABsAMAMBIgACEQEDEQH/xAAxAAACAgIDAAAAAAAAAAAAAAAGBwEFAwQAAggBAAMBAAAAAAAAAAAAAAAAAAACAwT/2gAMAwEAAhADEAAAAG7kV8gyNQHuQ2IvfPL6MF6EMpMy3aI9xamdD3CGn//EACwQAAICAgIBAwMBCQAAAAAAAAECAwQFBgAREgcTIRQxQXEVI0JRUmGBoaL/2gAIAQEAAT8A1vU9Zxmm+n0VH06xmUtZClCZZZ4kAQmD3mkmlMcnNX9PtL13B07b6ZTylvM5Lxtt7CWBALMp7A8h0sMPNb9PPTvAb9tmKj1WvO1mpWv1vqKwnggB7R4EZwQh7Abnp9jtUzVz1BE/pfSq5irkX6qWa0ZicJGEVIZSngB2vK6aQdc1C5b0/H1r1rN27U2P+jiewsEM0weM9KOwnN3g9Lcx6d7lkp8Ng6EUIlTFS14Ugt++kY6UgAHz9zmpb5umJ1vCUYs/FJFDThWMzU1Z1QKOl7BHfXNc2LbNbivwUdpZ4LNiawIZ6qSLDJO5dva/IHZ+3MDtOzYCbMNFtSWrOQtCzZe3Ajv5+AQBQpUKoC/A5jNx3GittP21DY+osyWJTLWCkmT8dxkEIObHl9cyeFruKgkySN34VxJAqyEdsQ3wSn/R5uGhQZqK5lJsnPGa1WRoayqDGngvf8RJPkR2x5jbOcTH4wx0EK/Sp0pP4WMEH9W+3Mbdt361wvEIZFYoh6PXfiD+fv0TzI4GvUwrWJUQ5GLppJwSWd+/n78x07z1qE7Dp5I42Yf3Yct3IaSRNIHZpJBHHHGvk7uR30B+g5ms/jGwWSKTl3epYX2VH71ekYHyQ9EePXzzT3eS7VLsWIgkA7/HwByQno/PLHzP7ZAKdeXiR2OwRzAzSDK3q3mfZSOvIqfhWf79fy5tsslXEi5C3jPWnjeF/wClifA/6JHLMaHX7spHbzQGaRvyzyVJmY/5J5//xAAdEQABAwUBAAAAAAAAAAAAAAABEBESAiEiMTKB/9oACAECAQE/AEwgNzfxKB1d2Kf/xAAeEQACAAcBAQAAAAAAAAAAAAABEQACAxASExQhMf/aAAgBAwEBPwCx5ueVCpvy9+YqCUIqEHWpU5Rb/9k=')"></div>
+            <div class="slide">
+              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1141642934/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&signature=5ff623b528e97e66d7ec45f7faafed25a713993ffca39b8297520e672338b271" data-type="video/mp4"></video>
+            </div>
+            
+          </div>
+          <div class="n-info-container tile-caption">
+            <div class="n-client-info">
+              <div class="n-number"></div>
+              <h3 class="n-client-name">Gossip</h3>
+            </div>
+            <div class="n-client-project-info">
+              <p class="n-description" hidden>Web design and motion from the ground up for the engineering studio.</p>
+              <div class="n-info-right">
+                <span class="n-year">/ 2022</span>
+                <div class="n-services">Art Direction, Web Design, Motion</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/capstone.html" data-services="identity" data-industry="finance,b2b" style="--tile-h: var(--tile-h-sm);">
+          <div class="tile-media">
+            <div class="tile-poster" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQUFBQUGBgUICAcICAsKCQkKCxEMDQwNDBEaEBMQEBMQGhcbFhUWGxcpIBwcICkvJyUnLzkzMzlHREddXX0BBQUFBQUFBQYGBQgIBwgICwoJCQoLEQwNDA0MERoQExAQExAaFxsWFRYbFykgHBwgKS8nJScvOTMzOUdER11dff/CABEIABsAMAMBIgACEQEDEQH/xAAyAAACAgEFAAAAAAAAAAAAAAADCAYHCQABAgQFAQEBAQEAAAAAAAAAAAAAAAACAQQA/9oADAMBAAIQAxAAAABramtpBdWdsJdi/KVlT2D2GCrYykanLF5bo6lrOe8RKf/EADAQAAICAQMCAgYLAAAAAAAAAAECAwQFABESBgcQYRMUMTNRgSAhJVRxcqGjs8HC/9oACAEBAAE/ANZjvP0TgM7kcJlHvQWacojkf1fnGdxvuCmqXd3tve29H1bUj8pw8P8AIBqj1F09k+Io52hZLewQ2Y3J+QP0O/NP1XuXln+816s/7YT/AD4Vp2p2a1qP6pIJUlQ+aHkNU7SXqlS3Gd0sQxzL+Eihh490Og6PW3VD5NMjP6LH1Eq3I60Bdg6FpPeNsm4VtDtLgzQr/Yd6CZhzLTyvM/E+zn6Pgob4gal7PYx9+MthPlJ/atrpy51JisJicemGitwVK0ddJxOwdljHEFhw1RuG3GxeNY5F2Dx8iSp89wPBwF6dyhUAbrcY7fEu250nu0/KNFVb2qDoIsWRjEahRJBIzgDYEqygH9dMds5CPjRk389pF21//8QAGREAAgMBAAAAAAAAAAAAAAAAAAEQERIC/9oACAECAQE/AOnRtw1ZlR//xAAZEQACAwEAAAAAAAAAAAAAAAAAAQIQEhH/2gAIAQMBAT8AiusxSNOv/9k=')"></div>
+            <div class="slide">
+              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1208211325/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&signature=6363452cfece327f4595a65545a84c2e1f819a3c8786ab98842e705200bb3798" data-type="video/mp4"></video>
+            </div>
+            
+          </div>
+          <div class="n-info-container tile-caption">
+            <div class="n-client-info">
+              <div class="n-number"></div>
+              <h3 class="n-client-name">Capstone</h3>
+            </div>
+            <div class="n-client-project-info">
+              <p class="n-description" hidden>New identity system for the asset management firm.</p>
+              <div class="n-info-right">
+                <span class="n-year">/ 2023</span>
+                <div class="n-services">Brand Design, Motion</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/deem.html" data-services="product" data-industry="b2b,technology" style="--tile-h: var(--tile-h-sm);">
+          <div class="tile-media">
+            <div class="slide">
+              <img class="tile-media-el lazy" data-src="/images/work/deem/deem-tile.jpg" alt="Deem">
+            </div>
+            
+          </div>
+          <div class="n-info-container tile-caption">
+            <div class="n-client-info">
+              <div class="n-number"></div>
+              <h3 class="n-client-name">Deem</h3>
+            </div>
+            <div class="n-client-project-info">
+              <p class="n-description" hidden>Mobile experience that centralizes trip planning and booking details.</p>
+              <div class="n-info-right">
+                <span class="n-year">/ 2023</span>
+                <div class="n-services">Product Design</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/carrot-and-stick-2.html" data-services="experience,ecommerce" data-industry="fashion-beauty" style="--tile-h: var(--tile-h-sm);">
+          <div class="tile-media">
+            <div class="slide">
+              <img class="tile-media-el lazy" data-src="/images/work/carrot-and-stick/cns-tile-1.jpg" alt="Carrot and Stick">
+            </div>
+            
+          </div>
+          <div class="n-info-container tile-caption">
+            <div class="n-client-info">
+              <div class="n-number"></div>
+              <h3 class="n-client-name">Carrot and Stick</h3>
+            </div>
+            <div class="n-client-project-info">
+              <p class="n-description" hidden>Crafting a distinctive campaign concept for leading fashion brand.</p>
+              <div class="n-info-right">
+                <span class="n-year">/ 2023</span>
+                <div class="n-services">Identity Design, Brand Design</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tile carousel-row load-overlay w-2 h-fixed" data-file="/work/experiments.html" data-services="experience,product,ecommerce,identity" data-industry="technology,fashion-beauty,culture" style="--tile-h: var(--tile-h-lg);">
+          <div class="tile-media">
+            <div class="tile-poster" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQUFBQUGBgUICAcICAsKCQkKCxEMDQwNDBEaEBMQEBMQGhcbFhUWGxcpIBwcICkvJyUnLzkzMzlHREddXX0BBQUFBQUFBQYGBQgIBwgICwoJCQoLEQwNDA0MERoQExAQExAaFxsWFRYbFykgHBwgKS8nJScvOTMzOUdER11dff/CABEIABsAMAMBIgACEQEDEQH/xAAsAAACAwEBAAAAAAAAAAAAAAAEBQABBgIIAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAADzCeA3KrWdGIEPXkdpaHx2Tg4TyH//xAApEAABBAEDAgUFAQAAAAAAAAABAgMEEQUAEiExQQYQEyJhFBUWMDJx/9oACAEBAAE/ANMYzJSm0OsQH3W1EhKkNlQJHXX2DOXRw8y+OPRV340cFmkgFWIli+RbKtScfOhmpMN5k7d3vQU8Xtvn5484mey8BltmLOU02jftACeN5BPJHcjULxPFREgh7N5VMhCKf2BBQqlFSeTZNXrI+KmZMeUpnPZZUhTKkIDqGtqgurStQ5ojUrLZCa2hqRKU4hINAgDqrd2+fPE5yRh25aGWGHPXACi6CqqBHAuu+pniGVOdhuuxYu5j+abq/f6lnX5bJcUtcjEYuQ4pRUpxyMNxv/K1kswvJtMtqgw46WlqUPp2g3e4Ac116fo//8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwBf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwBf/9k=')"></div>
+            <div class="slide">
+              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1133896841/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&signature=4817db092cddddeb43cb72492296b3df78c6f276f3a95957a79f592ace77d699" data-type="video/mp4"></video>
+            </div>
+            
+          </div>
+          <div class="n-info-container tile-caption">
+            <div class="n-client-info">
+              <div class="n-number"></div>
+              <h3 class="n-client-name">Experiments / Index</h3>
+            </div>
+            <div class="n-client-project-info">
+              <p class="n-description" hidden>Collection of visual experiments and prototypes</p>
+              <div class="n-info-right">
+                <span class="n-year">/ 2022</span>
+                <div class="n-services">Art Direction, Prototyping, 3D, Motion, UX</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+         
+        <div class="tile carousel-row load-overlay w-2 h-fixed" data-file="/work/tinywins.html" data-services="experience,identity" data-industry="b2b" style="--tile-h: var(--tile-h-lg);">
+          <div class="tile-media">
+            <div class="tile-poster" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQUFBQUGBgUICAcICAsKCQkKCxEMDQwNDBEaEBMQEBMQGhcbFhUWGxcpIBwcICkvJyUnLzkzMzlHREddXX0BBQUFBQUFBQYGBQgIBwgICwoJCQoLEQwNDA0MERoQExAQExAaFxsWFRYbFykgHBwgKS8nJScvOTMzOUdER11dff/CABEIABsAMAMBIgACEQEDEQH/xAAsAAADAQEAAAAAAAAAAAAAAAAACAkFBgEBAQEAAAAAAAAAAAAAAAAAAAEC/9oADAMBAAIQAxAAAABMnAT+s8LiM5sCgphW6SIUBn8VRrv5TGN0SnaC/wD/xAAsEAABBAIBAgMHBQAAAAAAAAADAQIEBQYSAAgRECEiBxMUFTBBUTEyM0Jj/9oACAEBAAE/AOU/TjicyHDlS83KxDxmF0G1mzVcnAdMWFyS6Bzea9fw0YuF6Y8HC9wy5vPY9v6ooxcm9M+IjrbOXDzKcZ8WMU2ugv6M38YgCTcRqgA1cR1ZDRE7/gbeVEOfECrZriI5PSxivRWI37dkRPLwyGFDJTXpnxROKlfKXdWJt3QS+NBb43mGE32O0eSFg2BoEXaROVkdgX/5Kzs5U5gVXK9n0C6faZhV2xJDo/uWilquum238juGzSnWSCvbOA08mPuwyHGo2Oc37rt5KnBTsgoMZyeXkGZhuH/K5Ahxvigfuf6dm6fQ/8QAIREAAgEDAwUAAAAAAAAAAAAAAQIEAAMREBIhEyJBQmH/2gAIAQIBAT8A1HDo/lTkU5kXpt6TdkbldFHT2hQGHtxSqVz3Ej7X/8QAHREBAAEEAwEAAAAAAAAAAAAAAQIAAxEhECIxQf/aAAgBAwEBPwDnfmdPtQbcLZAtbF3lqcyYdAllyn0r/9k=')"></div>
+            <div class="slide">
+              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1208341790/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&signature=a7562ace687e9fa3f8281c4c666577bfe06fb0f3dc4a6741a023c5c09c0d87e7" data-type="video/mp4"></video>
             </div>
             
           </div>
@@ -2616,15 +2635,239 @@ function animateWords(element) {
               <h3 class="n-client-name">Tinywins</h3>
             </div>
             <div class="n-client-project-info">
-              <p class="n-description" hidden>R&amp;D explorations for the digital agency.</p>
+              <p class="n-description" hidden>Revamping the digital agency&#x27;s brand through website redesign.</p>
               <div class="n-info-right">
                 <span class="n-year">/ 2024</span>
-                <div class="n-services">Brand design, motion, web design</div>
+                <div class="n-services">Brand Design, Web Design, Motion</div>
               </div>
             </div>
           </div>
         </div>
 
+        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/wish.html" data-services="product,ecommerce" data-industry="technology" style="--tile-h: var(--tile-h-sm);">
+          <div class="tile-media">
+            <div class="slide">
+              <img class="tile-media-el lazy" data-src="/images/work/wish/wish_hero.jpg" alt="Wish">
+            </div>
+            
+          </div>
+          <div class="n-info-container tile-caption">
+            <div class="n-client-info">
+              <div class="n-number"></div>
+              <h3 class="n-client-name">Wish</h3>
+            </div>
+            <div class="n-client-project-info">
+              <p class="n-description" hidden>Redesigns across various initiatives including the loyalty program.</p>
+              <div class="n-info-right">
+                <span class="n-year">/ 2023</span>
+                <div class="n-services">Product Strategy, Product Design, UX, Motion</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/katalyst.html" data-services="identity,product" data-industry="technology" style="--tile-h: var(--tile-h-sm);">
+          <div class="tile-media">
+            <div class="tile-poster" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQUFBQUGBgUICAcICAsKCQkKCxEMDQwNDBEaEBMQEBMQGhcbFhUWGxcpIBwcICkvJyUnLzkzMzlHREddXX0BBQUFBQUFBQYGBQgIBwgICwoJCQoLEQwNDA0MERoQExAQExAaFxsWFRYbFykgHBwgKS8nJScvOTMzOUdER11dff/CABEIABsAMAMBIgACEQEDEQH/xAArAAEBAQEAAAAAAAAAAAAAAAAAAgEIAQEBAQAAAAAAAAAAAAAAAAAABAf/2gAMAwEAAhADEAAAAOqycJtpGlJoZondE0H/xAAhEAACAQQBBQEAAAAAAAAAAAABAgADElKRIRATIDAxU//aAAgBAQABPwDzLqOCw3O5T/Rdy9MxuCpTJADqSfnPW1cRLEwGpauIgRAQQo16P//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8AX//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8AX//Z')"></div>
+            <div class="slide">
+              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1208354604/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&signature=c80038073fd12681037e4af1ce9dfd2b0d33fb535cd1bde85c33db1d7a31b3e8" data-type="video/mp4"></video>
+            </div>
+            
+          </div>
+          <div class="n-info-container tile-caption">
+            <div class="n-client-info">
+              <div class="n-number"></div>
+              <h3 class="n-client-name">Katalyst</h3>
+            </div>
+            <div class="n-client-project-info">
+              <p class="n-description" hidden>Crafting a Brand Identity and Design System for AI Startup.</p>
+              <div class="n-info-right">
+                <span class="n-year">/ 2023</span>
+                <div class="n-services">Visual Design, Web Design, UX</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/inhouse.html" data-services="experience,ecommerce,product" data-industry="technology,fashion-beauty,b2b" style="--tile-h: var(--tile-h-sm);">
+          <div class="tile-media">
+            <div class="slide">
+              <img class="tile-media-el lazy" data-src="/images/work/inhouse/inhouse-thumbnail.jpg" alt="Inhouse">
+            </div>
+            
+          </div>
+          <div class="n-info-container tile-caption">
+            <div class="n-client-info">
+              <div class="n-number"></div>
+              <h3 class="n-client-name">Inhouse</h3>
+            </div>
+            <div class="n-client-project-info">
+              <p class="n-description" hidden>Creating the e-commerce management website for the hospitality brand.</p>
+              <div class="n-info-right">
+                <span class="n-year">/ 2023</span>
+                <div class="n-services">Design system, Ecommerce, Web Design</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tile carousel-row load-overlay nda h-fixed" data-services="experience,product" data-industry="technology" style="--tile-h: var(--tile-h-sm);">
+          <div class="tile-media">
+            <div class="slide">
+              <img class="tile-media-el lazy" data-src="/images/work/apple/apple-nda.jpg" alt="Apple">
+            </div>
+            <span class="tile-nda-label">Confidential Project, NDA</span>
+          </div>
+          <div class="n-info-container tile-caption">
+            <div class="n-client-info">
+              <div class="n-number"></div>
+              <h3 class="n-client-name">Apple</h3>
+            </div>
+            <div class="n-client-project-info">
+              <p class="n-description" hidden>Undisclosed project</p>
+              <div class="n-info-right">
+                <span class="n-year">/ 2023</span>
+                <div class="n-services">Product design, Visual design, UX</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+       
+
+       
+
+        
+
+ <div class="tile carousel-row load-overlay h-fixed" data-file="/work/carrot-and-stick.html" data-services="ecommerce" data-industry="fashion-beauty" style="--tile-h: var(--tile-h-sm);">
+          <div class="tile-media">
+            <div class="slide">
+              <img class="tile-media-el lazy" data-src="/images/work/carrot-and-stick/cns-tile-2.jpg" alt="Carrot &amp; Stick">
+            </div>
+            
+          </div>
+          <div class="n-info-container tile-caption">
+            <div class="n-client-info">
+              <div class="n-number"></div>
+              <h3 class="n-client-name">Carrot &amp; Stick</h3>
+            </div>
+            <div class="n-client-project-info">
+              <p class="n-description" hidden>E-commerce website redesign optimized for conversion.</p>
+              <div class="n-info-right">
+                <span class="n-year">/ 2022</span>
+                <div class="n-services">Visual Design, Web Design, UX</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tile carousel-row load-overlay w-2 h-fixed" data-file="/work/nike-air-max-day.html" data-services="experience" data-industry="culture" style="--tile-h: var(--tile-h-lg);">
+          <div class="tile-media">
+            <div class="tile-poster" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQUFBQUGBgUICAcICAsKCQkKCxEMDQwNDBEaEBMQEBMQGhcbFhUWGxcpIBwcICkvJyUnLzkzMzlHREddXX0BBQUFBQUFBQYGBQgIBwgICwoJCQoLEQwNDA0MERoQExAQExAaFxsWFRYbFykgHBwgKS8nJScvOTMzOUdER11dff/CABEIABsAMAMBIgACEQEDEQH/xAAwAAACAgMBAAAAAAAAAAAAAAAHCAMGAAIJBAEAAwEAAAAAAAAAAAAAAAAAAQIDAP/aAAwDAQACEAMQAAAAXAonqigrDMevMy3ISv0mxxVr1WUZK9BIEDye6jpMENaz/8QALhAAAQMDAwIEBQUBAAAAAAAAAQIDBAAFBhESEwchFDFSkQgiQUJTFTI0Q2HR/9oACAEBAAE/AOnmDyc6yWPZkuBgEcr7iuxQykjeUj6qrqJ0QgYbNskS3XKbclzmX3dvANwDJA7BFXjHWbQEJeLzb6tCGHm1tLKD9w3fSsZxNV/vVmgLQthiZMZYU/6Q4oJJSD5018K+OupXty+YSPSyiupuCRMGtNxscSe5MRClRpRdcASQZSNo7CsZvtyuN5jFLz8viiuuMpc2pDi1NkgBYFdb7hdod56d3EyDbZCGpQWgOEkguI1R8uhIVU63z8jA2YMyicyhoInS1ulfGg/tbSsEbattgyK05LjU6RZoyWUXiElbynVuKG95KRoNAKRIdPZxwEfTvXXViG/mkzxEpYbegxQ6jxKGEKDQJT5pVWJ3FoZMzKfWwxCDT/GQtKW06o0CEknQV1istlzKficpObWW3iGHipuY+CV7loPYIJoXbFo3GBmNnWNBvSJIG3T01Ln4zPTCbby+0BSZ0J7+SP6X0uFKf9OmgoX7GwCP1pnXXz8Uj/tfEG/Fk56lyK+HWjbowCgsLrqZYbTZunN6Xb4nAVyohOi1kfMvU9ia5HB96veuV38iveuVz8iveuRfrV70ST5kmv/EAB4RAQACAgEFAAAAAAAAAAAAAAECEQADEBIiMUFR/9oACAECAQE/ALvOl+ZCDOVCYVRRR6MdOt2Gxj3Hh4//xAAbEQEAAgMBAQAAAAAAAAAAAAABABECAzFREP/aAAgBAwEBPwBKlnsWptszbbesdmSJ735//9k=')"></div>
+            <div class="slide">
+              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/891774797/rendition/540p/file.mp4?loc=external&amp;signature=460905c9156acf085f0ef3d4e8de9b55cdfa52e6acbd5330c75706278433daaa" data-type="video/mp4"></video>
+            </div>
+            
+          </div>
+          <div class="n-info-container tile-caption">
+            <div class="n-client-info">
+              <div class="n-number"></div>
+              <h3 class="n-client-name">Nike X Air Max Day</h3>
+            </div>
+            <div class="n-client-project-info">
+              <p class="n-description" hidden>Nike&#x27;s first-ever digital celebration of Air Max Day Worldwide.</p>
+              <div class="n-info-right">
+                <span class="n-year">/ 2022</span>
+                <div class="n-services">Concepts, Prototyping, UX</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/shoprite.html" data-services="product" data-industry="technology" style="--tile-h: var(--tile-h-sm);">
+          <div class="tile-media">
+            <div class="tile-poster" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQUFBQUGBgUICAcICAsKCQkKCxEMDQwNDBEaEBMQEBMQGhcbFhUWGxcpIBwcICkvJyUnLzkzMzlHREddXX0BBQUFBQUFBQYGBQgIBwgICwoJCQoLEQwNDA0MERoQExAQExAaFxsWFRYbFykgHBwgKS8nJScvOTMzOUdER11dff/CABEIABsAMAMBIgACEQEDEQH/xAAsAAACAwEAAAAAAAAAAAAAAAAGBwMFCAQBAQEAAAAAAAAAAAAAAAAAAAUG/9oADAMBAAIQAxAAAAAoXr0TQtXccl/AkHyMxUnBVhZKI6XaJ2poq0tRj80uMF0aXX//xAAxEAABAwMDAQUFCQAAAAAAAAACAQMEAAURBhIhFAcTIjEyFTVRUrIjYXFydHWSs9H/2gAIAQEAAT8AlvXW4AysvT7bxR3EfYQwLh0PSqc8LWq35smWLs6IkaSVpaV1hFygLud4zTrDkmCDixy2sMtI0q9yIkLeCQV8Ir5Vfn7xMs/VPsC4x00g21FWUFkNmMLtTK8V2bbvat2FDEd0NkVUvzlV2mxLQ3FfdlNnHeQF70S8kc4Etvyr8abHaSr4lXnklWtf++pH7W19TlW/R+orlEiG1bmTbNsDZ78x2F9ngVIcouFrU+iNSwbHdHpcJqMxGguLlrCtqu3lUFM4rQLrbVzuqm6DaLEZ5NcJ6yq72+HcID0IH2EF1oRHZgtmwhJNv8aZmwh3okpkR55V4VrXpg5eHzAxMVtbWCFcovicq1yLxDsumEt0DqGltjCuObM5VB8q1U9c5uidVNXKGjQra31TAqOC25xXZvbZlxud36cQXZDY3bjEPUZfNS6Pv589GH496FN6Q04Qc2wfh6z/ANrWEKLb7g5Giso2yFrb2gn3m6tWl10bLYxF0xT2bE4QlTzFK7QMBo7UID5JbZH0V2Je8tUfoIv9h0SqhFyvor//xAAjEQACAgIBAwUBAAAAAAAAAAABAgMRABIEEyExFCMyQWHh/9oACAECAQE/APRT8dJXk58swNUr+B3wzzMR7Q1qi38rAy6Ku4DV2F5yS5gbZVq18H9wyL0tOil18vvONAkkEbG7z//EACMRAAEDAwQCAwAAAAAAAAAAAAIBAxEABAUGEhMhMVFhcnP/2gAIAQMBAT8A008B5m1QbcAVAe7T8yoGmQVBB9d0yiJ8pETNZ0zDLXPGaTvTcHUl0lacGyTM2qsOvke17owEUjjL0S0AlyiXIXlOq1JkHmM5ftiIQhD5+qV//9k=')"></div>
+            <div class="slide">
+              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1208390058/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&signature=ed639770479c7fa7c09a422f2d8179fdeb6ea35461e93f4161a584cd37ab5fe9" data-type="video/mp4"></video>
+            </div>
+            
+          </div>
+          <div class="n-info-container tile-caption">
+            <div class="n-client-info">
+              <div class="n-number"></div>
+              <h3 class="n-client-name">Shoprite</h3>
+            </div>
+            <div class="n-client-project-info">
+              <p class="n-description" hidden>Brand enhancement for the web3 company.</p>
+              <div class="n-info-right">
+                <span class="n-year">/ 2023</span>
+                <div class="n-services">Brand design, motion, web design</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/boston-celtics.html" data-services="identity,experience,product" data-industry="culture" style="--tile-h: var(--tile-h-sm);">
+          <div class="tile-media">
+            <div class="slide">
+              <img class="tile-media-el lazy" data-src="/images/work/celtics/celtics_temp2.jpg" alt="Boston Celtics">
+            </div>
+            
+          </div>
+          <div class="n-info-container tile-caption">
+            <div class="n-client-info">
+              <div class="n-number"></div>
+              <h3 class="n-client-name">Boston Celtics</h3>
+            </div>
+            <div class="n-client-project-info">
+              <p class="n-description" hidden>Art direction and product innovation concepts for the NBA franchise.</p>
+              <div class="n-info-right">
+                <span class="n-year">/ 2018</span>
+                <div class="n-services">Visual Design, Web Design, UX</div>
+              </div>
+            </div>
+          </div>
+        </div>
+         
+
+        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/deno.html" data-services="product" data-industry="b2b,technology" style="--tile-h: var(--tile-h-sm);">
+          <div class="tile-media">
+            <div class="slide">
+              <img class="tile-media-el lazy" data-src="/images/work/deno/deno-tile.jpg" alt="Deno">
+            </div>
+            
+          </div>
+          <div class="n-info-container tile-caption">
+            <div class="n-client-info">
+              <div class="n-number"></div>
+              <h3 class="n-client-name">Deno</h3>
+            </div>
+            <div class="n-client-project-info">
+              <p class="n-description" hidden>Overhaul of the backend design system for web developers.</p>
+              <div class="n-info-right">
+                <span class="n-year">/ 2022</span>
+                <div class="n-services">Design System, Visual Design, UI</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tile carousel-row load-overlay h-fixed w-2" data-file="/work/current.html" data-services="experience" data-industry="finance" style="--tile-h: var(--tile-h-lg);">
+          <div class="tile-media">
+            <div class="tile-poster" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQUFBQUGBgUICAcICAsKCQkKCxEMDQwNDBEaEBMQEBMQGhcbFhUWGxcpIBwcICkvJyUnLzkzMzlHREddXX0BBQUFBQUFBQYGBQgIBwgICwoJCQoLEQwNDA0MERoQExAQExAaFxsWFRYbFykgHBwgKS8nJScvOTMzOUdER11dff/CABEIABsAMAMBIgACEQEDEQH/xAAwAAACAgIDAAAAAAAAAAAAAAAFBgAIAQIDBAcBAQEBAAAAAAAAAAAAAAAAAAMABP/aAAwDAQACEAMQAAAAWpVeaTtd36tsVe34r0vVoVFNuZTPHg4mlJBtYAx//8QAMBAAAQMCAgcGBwEAAAAAAAAAAgEDBAAFERIQEyExYZPSBggYQ1SBBxQyM1FikdH/2gAIAQEAAT8A8R8v1N75kforxHzPU3vmR+imO8TOfMQSTe+Yx0VJ+PF2jtI8kq8ONY4Zxej9FF3jZw7373zI/RXiQmepvXMj9GlhpWhHBcC3qqV2fWzDcCcvJGrKAuVEFSQj/apeodkSDZY1TJGSg3vyjjsSnFFTJRTBMdmi04NSQkHHB4A8s8cpfygg2m5/YeWE8vlPLi2q8D/2pFgmwVTXsLlXcabRVOCpU/KDStj9RbPavluK6ILYJHYwFNootAKfirTOlsyWYwPLqHCwNpcCBfZa7UtNsXyY22CCA5cBTimj/8QAIxEAAAQFBAMAAAAAAAAAAAAAAAECAwQUU5PSEBEhQRIx4f/aAAgBAgEBPwCciqqbTeInYqoi03iJ2KqIst46G4Wxm4ny27LhX0cdeh//xAAgEQACAgEEAwEAAAAAAAAAAAABAgADEhExYpITYYHR/9oACAEDAQE/APHzfsZhzfsZhzfsYCVII3EVqb2VXrwcnTJNvq/ktrNVllZIJRip09T/2Q==')"></div>
+            <div class="slide">
+              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1208477601/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&signature=f14b91e8a7b388c7696da4fbb90af3907ad8be6b087c7c153550161a3f956190" data-type="video/mp4"></video>
+            </div>
+            
+          </div>
+          <div class="n-info-container tile-caption">
+            <div class="n-client-info">
+              <div class="n-number"></div>
+              <h3 class="n-client-name">Current</h3>
+            </div>
+            <div class="n-client-project-info">
+              <p class="n-description" hidden>Complete website redesign during the company’s brand overhaul.</p>
+              <div class="n-info-right">
+                <span class="n-year">/ 2023</span>
+                <div class="n-services">Visual Design, Content Strategy, Motion</div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="tile carousel-row load-overlay nda h-fixed" data-services="product,experience,ecommerce" data-industry="technology,fashion-beauty,b2b" style="--tile-h: var(--tile-h-sm);">
           <div class="tile-media">
             <div class="slide">
@@ -2646,55 +2889,70 @@ function animateWords(element) {
             </div>
           </div>
         </div>
-
-        <div class="tile carousel-row load-overlay w-2 h-fixed" data-file="/work/inhouse.html" data-services="experience,ecommerce,product" data-industry="technology,fashion-beauty,b2b" style="--tile-h: var(--tile-h-lg);">
+        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/wyndham.html" data-services="experience,product" data-industry="" style="--tile-h: var(--tile-h-xs);">
           <div class="tile-media">
             <div class="slide">
-              <img class="tile-media-el lazy" data-src="/images/work/inhouse/inhouse-thumbnail.jpg" alt="Inhouse">
+              <img class="tile-media-el lazy" data-src="/images/work/wyndham/wyndham-tile.jpg" alt="Wyndham Rewards">
             </div>
             
           </div>
           <div class="n-info-container tile-caption">
             <div class="n-client-info">
               <div class="n-number"></div>
-              <h3 class="n-client-name">Inhouse</h3>
+              <h3 class="n-client-name">Wyndham Rewards</h3>
             </div>
             <div class="n-client-project-info">
-              <p class="n-description" hidden>Creating the e-commerce management website for the hospitality brand.</p>
+              <p class="n-description" hidden>Creating the design system for the Wyndham Hotels ecosystem.</p>
               <div class="n-info-right">
-                <span class="n-year">/ 2023</span>
-                <div class="n-services">Design system, Ecommerce, Web Design</div>
+                <span class="n-year">/ 2019</span>
+                <div class="n-services">Visual Design, Web Design, UX</div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/gather.html" data-services="experience,product" data-industry="culture,technology,b2b" style="--tile-h: var(--tile-h-lg);">
+        
+
+       
+
+
+        
+
+        
+<!-- 
+        <div class="tile carousel-row load-overlay w-2 h-fixed" data-file="/work/tinywins-2.html" data-services="identity,experience" data-industry="technology,b2b" style="--tile-h: var(--tile-h-lg);">
           <div class="tile-media">
+            <div class="tile-poster" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQUFBQUGBgUICAcICAsKCQkKCxEMDQwNDBEaEBMQEBMQGhcbFhUWGxcpIBwcICkvJyUnLzkzMzlHREddXX0BBQUFBQUFBQYGBQgIBwgICwoJCQoLEQwNDA0MERoQExAQExAaFxsWFRYbFykgHBwgKS8nJScvOTMzOUdER11dff/CABEIABsAMAMBIgACEQEDEQH/xAAwAAABBQEBAAAAAAAAAAAAAAAIAAMEBQcBBgEAAwEAAAAAAAAAAAAAAAAAAAECA//aAAwDAQACEAMQAAAA9lLI2FcDXqwrORoT2ekW85rK+k4GWPaxfDnyUkf/xAAxEAACAgAEBQEFCAMAAAAAAAABAgMEAAUGEQcSEyExURAUMkNiFUFCUmFxcoGCsdL/2gAIAQEAAT8ATg5qCuLQisKRPBdO27D3W5ZtpKtqA+QwSMf5jE3CKWLN1mSyY8vXMYlWrF+HLTWEViH+c5QBjiHgtnbCeaO/TDTXCZ6sgcwTQdN1QOq7EMjPjINFZzS07Fl9jOjQtpmE1lZaLdRkjcbCNpGVOq3q7LjWOhbWoLNuausLPJkM1ATSoOczPNHIJCVH5UIxV4L5vBBLWa+oikrwIrqXElKU2erYkrN9aE7fqT7Ni1og/CGH+scONaavzbVOpK17WF8QhyqvLOxSIGUjHETXOssq1fp2tR1hmPQMqgmOd1SUCXDWOQgFD3J8Y3DJuPvGPt3J+ZkN+MOshjKkMCGHkeMDPsnS0znMYyGII7N+3jbD8I+F1e9dsU8xzas00hMphuyRg8x38hcLwf4XWbVO7aznMZ3rtGye8XpJNj8YHcYqWatyBZq06zRknZx6/wB4Pg4s0oS7y80wfnfuJpBt3Pjvg5fWNuQHq91X50nqB64fLapDA9bbnHz5P+sZRQrVY3kiEnPJ8ReV5N9j9ZPsPg4//8QAGREBAQEBAQEAAAAAAAAAAAAAAREAYQIQ/9oACAECAQE/APMbqWGRMMvTXnz/xAAbEQEBAAEFAAAAAAAAAAAAAAABEQACEBIhYf/aAAgBAwEBPwDWzjF7cjLlHEGeO/8A/9k=')"></div>
             <div class="slide">
-              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1133740519/rendition/360p/file.mp4?loc=external&amp;signature=4e3067907b936b0ac87d52cea42cbc6d488e54748da9fdbe41368861394ad384" data-type="video/mp4"></video>
+              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1131288286/rendition/540p/file.mp4?loc=external&amp;signature=d22f0b8f5b443ef16a9caa6a710771705612626a752f025dce5065ae732580a0" data-type="video/mp4"></video>
             </div>
             
           </div>
           <div class="n-info-container tile-caption">
             <div class="n-client-info">
               <div class="n-number"></div>
-              <h3 class="n-client-name">Gather</h3>
+              <h3 class="n-client-name">Tinywins</h3>
             </div>
             <div class="n-client-project-info">
-              <p class="n-description" hidden>R&amp;D interaction explorations for the metaverse.</p>
+              <p class="n-description" hidden>R&amp;D explorations for the digital agency.</p>
               <div class="n-info-right">
                 <span class="n-year">/ 2024</span>
-                <div class="n-services">Product design, prototyping, motion</div>
+                <div class="n-services">Brand design, motion, web design</div>
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
-        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/rco.html" data-services="ecommerce,experience" data-industry="fashion-beauty" style="--tile-h: var(--tile-h-md);">
+        
+
+        
+
+        
+
+        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/rco.html" data-services="ecommerce,experience" data-industry="fashion-beauty" style="--tile-h: var(--tile-h-sm);">
           <div class="tile-media">
             <div class="slide">
-              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/902527231/rendition/540p/file.mp4?loc=external&amp;signature=7e4b01b9613b24f833e7448c90096bb55e1426eef046868e786d487e35f2a93d" data-type="video/mp4"></video>
+              <img class="tile-media-el lazy" data-src="/images/work/rco/rco-tile.jpg" alt="R+Co">
             </div>
             
           </div>
@@ -2713,54 +2971,13 @@ function animateWords(element) {
           </div>
         </div>
 
-        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/graphics.html" data-services="identity" data-industry="culture,fashion-beauty" style="--tile-h: var(--tile-h-md);">
-          <div class="tile-media">
-            <div class="slide">
-              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1131679071/rendition/360p/file.mp4?loc=external&amp;signature=c9fd1dee017a0bcfe360a6a36537b7d66c55d35ebcb950fe584f31d1faf56e29" data-type="video/mp4"></video>
-            </div>
-            
-          </div>
-          <div class="n-info-container tile-caption">
-            <div class="n-client-info">
-              <div class="n-number"></div>
-              <h3 class="n-client-name">Logo / Graphics</h3>
-            </div>
-            <div class="n-client-project-info">
-              <p class="n-description" hidden>Unused graphic explorations</p>
-              <div class="n-info-right">
-                <span class="n-year">/ 2023</span>
-                <div class="n-services">Graphic Design, Logo Design</div>
-              </div>
-            </div>
-          </div>
-        </div>
+        
 
-        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/deem.html" data-services="product" data-industry="b2b,technology" style="--tile-h: var(--tile-h-md);">
+        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/tw3.html" data-services="experience" data-industry="technology,finance" style="--tile-h: var(--tile-h-sm);">
           <div class="tile-media">
+            <div class="tile-poster" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQUFBQUGBgUICAcICAsKCQkKCxEMDQwNDBEaEBMQEBMQGhcbFhUWGxcpIBwcICkvJyUnLzkzMzlHREddXX0BBQUFBQUFBQYGBQgIBwgICwoJCQoLEQwNDA0MERoQExAQExAaFxsWFRYbFykgHBwgKS8nJScvOTMzOUdER11dff/CABEIABsAMAMBIgACEQEDEQH/xAAvAAACAwEBAAAAAAAAAAAAAAAHCAUGCQIEAQEBAQEAAAAAAAAAAAAAAAAABAED/9oADAMBAAIQAxAAAAAFvOk+mADRlZRLOMKpvmjtLnTDJ2Xw1FtSH08Gnmb8NC0P/8QAMBAAAQMDAgMGBAcAAAAAAAAAAQIDBAAFBgcRIZTSEhMxN3WyFBdBViImMkJRYXT/2gAIAQEAAT8Awi2wrzmGMW2e2VxJdxYZfQCUkoWrYjcV8h9LCgkWRwp/1vdVHR7ST7df5t7rrLsDwS0TZjMHEO2pLI+FQ65KWHCtsnvVrS6AlCVAJNYVpFptkse6TJmIuQ2/igiIgypKVrYLSFAr3XWb2yHZcxya1QGi3Eh3F9hhBJUUoQrYDc1pn5h4T6vF99EBKVbD6HgKvGqclqU/Eg2fu1tlSFLkH8aFbcD2auka95vNkypdyZK3O4YXDBAceIaIKWE/wN91VozYDaMPYeefS85OdMhfD9K0pDJ9lal+Yua+sSvfWmnmHhXq8X30fA1P02vt3yG6y3XGGIr88OhfaKllv+gKgaa2lm0swpilOvokOPmS0kNrJX+368Kxq2RbTZbbCiIKGI7RQ0gknYbmtTPMTNvWJXvpiQ/EeZkRn1svNKC23G1FK0KHgUkcQalZvmYb4ZbeOde6qZzTMSEk5Zd+de6qGaZj913bnXeqk5tmQI/Nl3517qqRIflvuyJD63nnVFbjjiipa1HxKieJNf/EABsRAQACAwEBAAAAAAAAAAAAAAEAAgMEERBh/9oACAECAQE/AJXbwXUoqnzkTinmLXw42yVVXvWKqrP/xAAWEQADAAAAAAAAAAAAAAAAAAAAASD/2gAIAQMBAT8AFP8A/9k=')"></div>
             <div class="slide">
-              <img class="tile-media-el lazy" data-src="/images/work/deem/deem_thumbnail.jpg" alt="Deem">
-            </div>
-            
-          </div>
-          <div class="n-info-container tile-caption">
-            <div class="n-client-info">
-              <div class="n-number"></div>
-              <h3 class="n-client-name">Deem</h3>
-            </div>
-            <div class="n-client-project-info">
-              <p class="n-description" hidden>Mobile experience that centralizes trip planning and booking details.</p>
-              <div class="n-info-right">
-                <span class="n-year">/ 2023</span>
-                <div class="n-services">Product Design</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/tw3.html" data-services="experience" data-industry="technology,finance" style="--tile-h: var(--tile-h-lg);">
-          <div class="tile-media">
-            <div class="slide">
-              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1085393405/rendition/360p/file.mp4?loc=external&amp;signature=f558e2d98fafdf112d37daf713684f669c9688ffec9836bc989618f4b67a686e" data-type="video/mp4"></video>
+              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1085393405/rendition/1080p/file.mp4%20%281080p%29.mp4?loc=external&signature=2c78295dee5528a9b3b8bb4049c71ce94a48a800553ddfba3c8fdc8cab3e16d1" data-type="video/mp4"></video>
             </div>
             
           </div>
@@ -2779,30 +2996,11 @@ function animateWords(element) {
           </div>
         </div>
 
-        <div class="tile carousel-row load-overlay w-2 h-fixed" data-file="/work/boston-celtics.html" data-services="identity,experience,product" data-industry="culture" style="--tile-h: var(--tile-h-lg);">
-          <div class="tile-media">
-            <div class="slide">
-              <img class="tile-media-el lazy" data-src="/images/work/celtics/hp1.jpg" alt="Boston Celtics">
-            </div>
-            
-          </div>
-          <div class="n-info-container tile-caption">
-            <div class="n-client-info">
-              <div class="n-number"></div>
-              <h3 class="n-client-name">Boston Celtics</h3>
-            </div>
-            <div class="n-client-project-info">
-              <p class="n-description" hidden>Art direction and product innovation concepts for the NBA franchise.</p>
-              <div class="n-info-right">
-                <span class="n-year">/ 2018</span>
-                <div class="n-services">Visual Design, Web Design, UX</div>
-              </div>
-            </div>
-          </div>
-        </div>
+        
 
         <div class="tile carousel-row load-overlay h-fixed" data-file="/work/ready-set-rocket.html" data-services="experience" data-industry="b2b,technology" style="--tile-h: var(--tile-h-sm);">
           <div class="tile-media">
+            <div class="tile-poster" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQUFBQUGBgUICAcICAsKCQkKCxEMDQwNDBEaEBMQEBMQGhcbFhUWGxcpIBwcICkvJyUnLzkzMzlHREddXX0BBQUFBQUFBQYGBQgIBwgICwoJCQoLEQwNDA0MERoQExAQExAaFxsWFRYbFykgHBwgKS8nJScvOTMzOUdER11dff/CABEIABsAMAMBIgACEQEDEQH/xAAtAAABBQEBAAAAAAAAAAAAAAAEAQMFBgcACAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAA8xDzEQC2XO+NMWpPmpAWoMz0e+KAMzSH/8QALhAAAgEDAgQDBwUAAAAAAAAAAQIDAAQRBVEGEhMxISKSBxAUFRaRsTNUYYSy/9oACAEBAAE/AMVPcRW/J1CfNnGBtXzG23b7VbcU6bDYxwMsxdY+XwUY/NR3cc0cciHysoIzXXG9dBNq1uBhZxSKvkWXDHYsPD8e+0unW2iUA4AxXxcmzfajwzbfvJPSK1Dg438C2tvq1vCzSBi10SieH8qGqb2Za5bPyzX2mKvdXN7CFYbjLCvoKZf1eItGT+5G3+Ca0zhHRLXTuWfjPTzccxPTRZXX1IrU2h25J5Juoo7OuQD6gKJOe9XQyBmmghYgtEpO5FCGJeyAUvaiTmv/xAAVEQEBAAAAAAAAAAAAAAAAAAAQEf/aAAgBAgEBPwBsf//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8AX//Z')"></div>
             <div class="slide">
               <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/907283672/rendition/540p/file.mp4?loc=external&amp;signature=87c507de344cb547088821b58f7b38b5962bda03d4ea57a8cfd690aa1bca93ab" data-type="video/mp4"></video>
             </div>
@@ -2826,7 +3024,7 @@ function animateWords(element) {
         <div class="tile carousel-row load-overlay h-fixed" data-file="/work/caddy.html" data-services="identity,experience,product" data-industry="culture,technology" style="--tile-h: var(--tile-h-sm);">
           <div class="tile-media">
             <div class="slide">
-              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1087568929/rendition/540p/file.mp4?loc=external&amp;signature=5af267d61ee2419a405c78004568fe8ec970f57fd47536d5b03084a654aa0487" data-type="video/mp4"></video>
+              <img class="tile-media-el lazy" data-src="/images/work/caddy/caddy_billboard.jpg" alt="Caddy">
             </div>
             
           </div>
@@ -2845,7 +3043,7 @@ function animateWords(element) {
           </div>
         </div>
 
-        <div class="tile carousel-row load-overlay nda h-fixed" data-services="" data-industry="" style="--tile-h: var(--tile-h-sm);">
+        <!-- <div class="tile carousel-row load-overlay nda h-fixed" data-services="" data-industry="" style="--tile-h: var(--tile-h-sm);">
           <div class="tile-media">
             <div class="slide">
               <img class="tile-media-el lazy" data-src="/images/work/coinbase/coinbase-nda.jpg" alt="Coinbase">
@@ -2865,51 +3063,10 @@ function animateWords(element) {
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
-        <div class="tile carousel-row load-overlay w-2 h-fixed" data-file="/work/katalyst.html" data-services="identity,product" data-industry="technology" style="--tile-h: var(--tile-h-lg);">
-          <div class="tile-media">
-            <div class="slide">
-              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/891672128/rendition/540p/file.mp4?loc=external&amp;signature=7e8b888f4dedb0771b96a01d53f42f1a4839d56335fa4d8bd026fa622bb9cf67" data-type="video/mp4"></video>
-            </div>
-            
-          </div>
-          <div class="n-info-container tile-caption">
-            <div class="n-client-info">
-              <div class="n-number"></div>
-              <h3 class="n-client-name">Katalyst</h3>
-            </div>
-            <div class="n-client-project-info">
-              <p class="n-description" hidden>Crafting a Brand Identity and Design System for AI Startup.</p>
-              <div class="n-info-right">
-                <span class="n-year">/ 2023</span>
-                <div class="n-services">Visual Design, Web Design, UX</div>
-              </div>
-            </div>
-          </div>
-        </div>
+        
 
-        <div class="tile carousel-row load-overlay h-fixed" data-file="/work/carrot-and-stick-2.html" data-services="experience,ecommerce" data-industry="fashion-beauty" style="--tile-h: var(--tile-h-lg);">
-          <div class="tile-media">
-            <div class="slide">
-              <video class="tile-media-el tile-video" preload="none" autoplay loop muted playsinline data-src="https://player.vimeo.com/progressive_redirect/playback/1133598750/rendition/360p/file.mp4?loc=external&amp;signature=975e59b5dd885c7a0a32fae72c33c41adef1c0348dffd495924207615e6b4b93" data-type="video/mp4"></video>
-            </div>
-            
-          </div>
-          <div class="n-info-container tile-caption">
-            <div class="n-client-info">
-              <div class="n-number"></div>
-              <h3 class="n-client-name">Carrot and Stick</h3>
-            </div>
-            <div class="n-client-project-info">
-              <p class="n-description" hidden>Crafting a distinctive campaign concept for leading fashion brand.</p>
-              <div class="n-info-right">
-                <span class="n-year">/ 2023</span>
-                <div class="n-services">Identity Design, Brand Design</div>
-              </div>
-            </div>
-          </div>
-        </div>
         </div>
     </div>
     

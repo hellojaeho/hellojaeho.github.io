@@ -2368,7 +2368,17 @@ body .info-logo {
         align-items: center;
 }
 
+#home-work-carousels .work-grid .tile .tile-caption {
+      bottom: -49px !important;
+}
 
+body #hero-image ul {
+  transform: scale(0.7);
+}
+
+html #home-work-carousels .work-grid .tile {
+  margin: 0 0 32px !important;
+}
 
   div.n-info-container {
         flex-direction: column;
@@ -3588,7 +3598,7 @@ nav .d-nav-info-top ul li:nth-of-type(1) {
 
 nav .d-nav-info-intro {
   justify-content: initial;
-  margin-top: 36px !important;
+  /* margin-top: 36px !important; */
 }
 
 nav .d-nav-info-right {
@@ -3895,8 +3905,9 @@ margin: 13px 0 0 0;
   }
 
   nav .d-nav-logo {
-         bottom: -82px; 
-        right: 23px;
+    bottom: 5px;
+    right: 12px;
+    width: 259px;
     transition-duration: 0.4s;
     transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
   }
@@ -3919,7 +3930,7 @@ margin: 13px 0 0 0;
   nav.dynamic-nav {
 
     /* max-width: 317px; */
-    width: 317px !important;
+    width: 287px;
     /* transition-duration: 0.4s !important;
     transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1) !important; */
     transition-delay: .1s !important;
@@ -3940,6 +3951,7 @@ margin: 13px 0 0 0;
 
   body nav.dynamic-nav.open {
     height: 120px;
+    /* width: 268px; */
   }
 
   #home-work-carousels {
@@ -4060,7 +4072,7 @@ width: 100%;
   }
 
   .n-services {
-    top: 1px;
+    top: -1px;
     /* width: 120px; */
     line-height: 12px;
     position: relative;
@@ -4117,6 +4129,7 @@ width: 100%;
 
   div nav.dynamic-nav.open.case-study {
     height: 120px;
+    width: 92%;
   }
 
   nav.case-study .d-case-study-close.show {
@@ -4232,6 +4245,10 @@ width: 100%;
   z-index: 10000 !important;
 }
 
+.side-info {
+  text-decoration: underline;
+}
+
 #filter.before-scroll,
 #side-top.before-scroll {
   top:-120px;
@@ -4251,14 +4268,14 @@ width: 100%;
 #side-top {
   position: fixed;
   top: 7px;
-  right: 110px;
+  right: 234px;
   display: flex; 
   flex-direction: row-reverse;
   z-index: 999;
 }
 
 #side-top .side-clock {
-  margin-right: 110px;
+  margin-right: 56px;
 }
 
 
@@ -4376,7 +4393,7 @@ display: flex;
     flex-direction: row;
     justify-content: space-between;
     /* border-bottom: 1px solid #000; */
-    padding-top: 3px;
+    padding-top: 0;
     padding-bottom: 1px;
 }
 
@@ -4459,13 +4476,17 @@ h3.top-info {
   display: inline-block;
 }
 
+#simple-hero h3 span {
+  font-size: 15px;
+}
+
 #simple-hero h3 span:first-of-type {
-  margin-right: 14px;
-  margin-left: 30px;
+  margin-right: 12px;
+  margin-left: 63px;
 }
 
 #simple-hero h3 span:nth-of-type(2) {
-  margin-right: 39px;
+  margin-right: 32px;
 }
 
 #simple-hero h3 span:nth-of-type(3) {
@@ -7020,7 +7041,7 @@ h2.nike span {
   position: fixed;
   opacity: 0;
   /* position: absolute; */
-  z-index: 1000;
+  z-index: 999000;
   width: 100%;
   left: 50%;
   top: 50%;
@@ -7029,13 +7050,13 @@ h2.nike span {
 }
 
 #hero-image ul {
-  transform: scale(1.1);
+  transform: scale(0.26);
   width: 100%;
 }
 
 #hero-image ul li{
-  font-size: 70px;
-  margin-bottom: 3px;
+  font-size: 68px;
+  margin-bottom: -3px;
   letter-spacing: -0.8px;
     font-family: arial;
     font-weight: 700;
@@ -7051,11 +7072,11 @@ h2.nike span {
 
 #hero-image ul li:first-of-type {
   text-transform: uppercase;
-  font-size: 75px;
+  font-size: 73px;
 }
 
 #hero-image ul li:first-of-type span:first-of-type {
-  margin-right: 70px;
+  margin-right: 60px;
 }
 
 #hero-image ul li:first-of-type span:nth-of-type(2) {
@@ -7071,15 +7092,20 @@ h2.nike span {
 }
 
 #hero-image ul li:last-of-type span:first-of-type {
-    font-size: 57px;
+    font-size: 59px;
     position: relative;
-    top: -5px;
-    margin-right: 30px;
+    top: -4px;
+    font-weight: 900;
+    margin-right: 24px;
 }
 
   section #hero-image ul span:last-of-type{
     margin-right: 0;
   }
+
+/* Per-word reveal wrappers: live inside the existing layout spans, so they must
+   NOT inherit the inter-span margins — the parent span keeps the design spacing. */
+#hero-image .hw{ margin: 0 !important; display: inline; }
 
 .initial-bg {
   height: 100vh;
@@ -7087,7 +7113,7 @@ h2.nike span {
     width: 100vw;
     background: #efeff499;
     z-index: 999;
-    backdrop-filter: blur(18px);
+    backdrop-filter: blur(48px);
     -webkit-backdrop-filter: blur(18px) !important;
 }
 
