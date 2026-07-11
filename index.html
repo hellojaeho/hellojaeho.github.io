@@ -1409,14 +1409,14 @@ function animateWords(element) {
         appearAt:   200,    // ms after load before the type appears
         wordRevealMs: 350,  // word-by-word random reveal duration BEFORE the flicker (ms)
         flickerMs:  1900,    // how long the opening flicker burst lasts (ms)
-        frameMs:    36,     // ms per flicker frame — SMALLER = faster / more frantic
-        offOpacity: 0.7,      // the dim level it flickers down to (0 = full off; try 0.3, 0.5)
+        frameMs:    28,     // ms per flicker frame — SMALLER = faster / more frantic
+        offOpacity: 0.5,      // the dim level it flickers down to (0 = full off; try 0.3, 0.5)
         onOpacity:  1,      // the bright level it flickers up to
         randomize:  false,   // true = organic irregular flicker · false = even on/off strobe
         offChance:  0.4,    // (randomize only) chance each frame is a dim frame — higher = darker/twitchier
         holdMs:     100,   // how long it stays fully solid after the flicker (ms)
-        fadeOutMs:  150,    // final fade-out duration for the TYPE (ms)
-        bgFadeMs:   600,    // final fade-out duration for the frosted BACKGROUND (ms)
+        fadeOutMs:  0,    // final fade-out duration for the TYPE (ms)
+        bgFadeMs:   500,    // final fade-out duration for the frosted BACKGROUND (ms)
     };
     window.__INTRO = INTRO; // tweak live in the console too, e.g. __INTRO.frameMs = 15
 
